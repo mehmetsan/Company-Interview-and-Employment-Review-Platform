@@ -11,5 +11,6 @@ According to the feedback, to-do list:
 
 
 **LIMITATIONS**
+
 Limitations should be specified, such as "An employee can apply at most 2 company", etc.
 
