@@ -3,9 +3,9 @@ Grade: **81/100**
 According to the feedback, to-do list:
 
 **ER DIAGRAM**
-1) Binary relationships between company-admin, copany-review will be converted to the ternary relationship.
-2) total_followers() method in company will be changed.
-3) size() method in company will be changed.
+1) Binary relationships between company-admin, company-review will be converted to the ternary relationship. **+**
+2) total_followers() method in company will be changed. **+**
+3) size() method in company will be changed. **+**
 4) The member relationship between project and employee will be converted to the total participation. **+**
 5) The publish relationship between review and employee will be converted to the total participation. **+**
 6) The develop relationship between company and project will be changed (total participation will be canceled). **+**
@@ -15,4 +15,8 @@ According to the feedback, to-do list:
 **LIMITATIONS**
 
 Limitations should be specified, such as "An employee can apply at most 2 company", etc.
+
+**CHANGES**
+1) All the problems mentioned above is solved.
+2) follows relationship added.
 
