@@ -25,3 +25,6 @@ HLLLALALALLA
 	within their ranks with the pre-requirements they are looking for.
 	The platform, in turn, provides the employees and employment seekers
 	with possible job suggestions.
+
+geri geldim
+hoş geldin
