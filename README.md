@@ -28,3 +28,4 @@ BABALAR
 	with possible job suggestions.
 
 geri geldim
+hoş geldin
