@@ -763,6 +763,14 @@ input, select, textarea {
 		.row > .col-6 {
 			width: 50%;
 		}
+		.loginName{
+			width: 50%;
+			margin-left: 33em;
+		}
+		.loginMail{
+			width: 50%;
+			margin-left: 33em
+		}
 
 		.row > .off-6 {
 			margin-left: 50%;
@@ -2196,9 +2204,9 @@ input, select, textarea {
 
 /* Form */
 
-	form {
-		margin: 0 0 2em 0;
-	}
+form {
+	text-align: center;
+}
 
 		form.cta {
 			max-width: 35em;
