@@ -1,6 +1,15 @@
 var active = false;
 
-document.querySelector('.btn-hold').addEventListener('click', function() {
+var link1 = document.getElementById("edit-btn");
+if (typeof window.addEventListener != "undefined") {
+    link1.addEventListener("click",handleclick,false);
+} else {
+    link1.attachEvent("onclick",handleclick);
+}
+
+
+function handleclick(){
+
 
     if(active){
       document.getElementById('edit-btn').textContent = "Edit Profile";
@@ -21,5 +30,4 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
       active = true;
 
     }
-}
-);
+};
