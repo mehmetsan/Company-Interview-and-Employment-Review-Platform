@@ -2729,7 +2729,7 @@ form {
 
 	.table-wrapper {
 		-webkit-overflow-scrolling: touch;
-		overflow-x: auto;
+
 	}
 
 	table {
@@ -2773,16 +2773,18 @@ form {
 
 			table.alt tbody tr td {
 				border: solid 1px rgba(255, 255, 255, 0.3);
-				border-left-width: 0;
-				border-top-width: 0;
+				border-left-width: 100;
+				border-top-width: 100;
 			}
 
 				table.alt tbody tr td:first-child {
 					border-left-width: 1px;
+					text-align: center;
 				}
 
 			table.alt tbody tr:first-child td {
 				border-top-width: 1px;
+				text-align: center;
 			}
 
 			table.alt thead {
