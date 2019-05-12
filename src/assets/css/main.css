@@ -763,6 +763,14 @@ input, select, textarea {
 		.row > .col-6 {
 			width: 50%;
 		}
+		.loginName{
+			width: 50%;
+			margin-left: 30em;
+		}
+		.loginMail{
+			width: 50%;
+			margin-left: 30em
+		}
 
 		.row > .off-6 {
 			margin-left: 50%;
@@ -2196,9 +2204,9 @@ input, select, textarea {
 
 /* Form */
 
-	form {
-		margin: 0 0 2em 0;
-	}
+form {
+	text-align: center;
+}
 
 		form.cta {
 			max-width: 35em;
@@ -2721,7 +2729,7 @@ input, select, textarea {
 
 	.table-wrapper {
 		-webkit-overflow-scrolling: touch;
-		overflow-x: auto;
+
 	}
 
 	table {
@@ -2765,16 +2773,18 @@ input, select, textarea {
 
 			table.alt tbody tr td {
 				border: solid 1px rgba(255, 255, 255, 0.3);
-				border-left-width: 0;
-				border-top-width: 0;
+				border-left-width: 100;
+				border-top-width: 100;
 			}
 
 				table.alt tbody tr td:first-child {
 					border-left-width: 1px;
+					text-align: center;
 				}
 
 			table.alt tbody tr:first-child td {
 				border-top-width: 1px;
+				text-align: center;
 			}
 
 			table.alt thead {
@@ -2865,6 +2875,15 @@ input, select, textarea {
 		input[type="reset"].primary,
 		input[type="button"].primary,
 		.button.primary {
+
+			background-color: #e44c65;
+			box-shadow: none;
+			color: #ffffff !important;
+		}
+
+		input[type="button"].login,
+		.button.login {
+			margin-left: 37.25em;
 			background-color: #e44c65;
 			box-shadow: none;
 			color: #ffffff !important;
@@ -2877,10 +2896,20 @@ input, select, textarea {
 				background-color: #e76278;
 			}
 
+			input[type="button"].login:hover,
+			.button.login:hover {
+				background-color: #e76278;
+			}
+
 			input[type="submit"].primary:active,
 			input[type="reset"].primary:active,
 			input[type="button"].primary:active,
 			.button.primary:active {
+				background-color: #e13652;
+			}
+
+			input[type="button"].login:active,
+			.button.login:active {
 				background-color: #e13652;
 			}
 
@@ -3206,12 +3235,23 @@ input, select, textarea {
 				color: #e44c65 !important;
 			}
 
+			.wrapper.style2 input[type="button"].login,
+			.wrapper.style2 .button.login {
+				background-color: #ffffff;
+				color: #e44c65 !important;
+			}
+
+
+
 				.wrapper.style2 input[type="submit"].primary:hover, .wrapper.style2 input[type="submit"].primary:active,
 				.wrapper.style2 input[type="reset"].primary:hover,
 				.wrapper.style2 input[type="reset"].primary:active,
 				.wrapper.style2 input[type="button"].primary:hover,
+				.wrapper.style2 input[type="button"].primary:login,
 				.wrapper.style2 input[type="button"].primary:active,
+
 				.wrapper.style2 .button.primary:hover,
+				.wrapper.style2 .button.login:hover,
 				.wrapper.style2 .button.primary:active {
 					background-color: rgba(255, 255, 255, 0.075) !important;
 					box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5) !important;
@@ -3221,6 +3261,8 @@ input, select, textarea {
 				.wrapper.style2 input[type="submit"].primary:active,
 				.wrapper.style2 input[type="reset"].primary:active,
 				.wrapper.style2 input[type="button"].primary:active,
+				.wrapper.style2 input[type="button"].login:active,
+				.wrapper.style2 .button.login:active,
 				.wrapper.style2 .button.primary:active {
 					background-color: rgba(255, 255, 255, 0.25) !important;
 				}
