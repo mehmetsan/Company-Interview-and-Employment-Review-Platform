@@ -1,4 +1,6 @@
-
+<?php
+	include_once 'conn.php';
+?>
 <!DOCTYPE HTML>
 <!--
 	Landed by HTML5 UP
@@ -57,7 +59,7 @@
 
 							<!-- Form -->
 								<section>
-									<form method="post" action="#">
+									<form method="post" action="#" name = "sign">
 										<div class="row gtr-uniform gtr-50">
 											<div class="col-4 col-12-xsmall">
 												<input type="text" name="first_name" id="first_name" value="" placeholder="*First Name" />
@@ -91,13 +93,9 @@
 													<option value="3">None</option>
 												</select>
 											</div>
-											<div class="col-12-medium">
-												<input type="checkbox" id="human" name="human" checked>
-												<label for="human">I am a human and not a robot</label>
-											</div>
 											<div class="col-12">
 												<ul class="actions">
-													<li><input type="submit" value="Sign Up" name ="submit" class="primary"/></li>
+													<li><input type="submit" value="Sign Up" name ="submit" class="primary" onclick="isEmpty()"/></li>
 													<li><input type="reset" value="Reset" /></li>
 												</ul>
 											</div>
@@ -110,3 +108,44 @@
 
 	</body>
 </html>
+<script>
+    function isEmpty()
+    {
+        first_name = document.forms["sign"]["first_name"].value;
+        last_name = document.forms["sign"]["last_name"].value;
+				email = document.forms["sign"]["email"].value;
+				password = document.forms["sign"]["password"].value;
+        if (first_name == "" || last_name == "" || email == "" || password == "")
+        {
+            alert("Please fill all mandatory(*) fields");
+        }
+    }
+</script>
+<?php
+$error = '';
+if(isset($_POST['submit']))
+{
+
+	$first_name = $_POST['first_name'];
+	$last_name = $_POST['last_name'];
+	$email = $_POST['email'];
+	$password = $_POST['password'];
+	/*
+	$query = 'INSERT INTO user(userID, mail, password, phone_number1, phone_number2, profile_picture)
+						VALUES('123', .$email)'
+
+	$query = "SELECT * FROM customer WHERE cid = '$pass' AND LOWER(name) = LOWER('$user')";
+	$result = $connection-> query($query);
+	if($result -> num_rows == 1)
+	{
+		$_SESSION["cid"] = $pass;
+		header("Location: welcome.php");
+	}
+	else
+	{
+		$error = "<br></br>Wrong username or password";
+		echo $error;
+	}
+	*/
+}
+?>

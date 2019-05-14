@@ -1,4 +1,6 @@
-
+<?php
+	include_once 'conn.php';
+?>
 <!DOCTYPE HTML>
 <!--
 	Landed by HTML5 UP
