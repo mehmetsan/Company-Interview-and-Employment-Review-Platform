@@ -79,18 +79,18 @@
 											<div class="col-12">
 												<select name="education" id="education">
 													<option value="">Highest Education</option>
-													<option value="1">High School</option>
-													<option value="2">Bachelor's Degree</option>
-													<option value="3">Master's Degree</option>
-													<option value="4">PhD</option>
+													<option value="High School">High School</option>
+													<option value="Bachelor's Degree">Bachelor's Degree</option>
+													<option value="Master's Degree">Master's Degree</option>
+													<option value="PhD">PhD</option>
 												</select>
 											</div>
 											<div class="col-12">
 												<select name="gender" id="gender">
 													<option value="">Gender</option>
-													<option value="1">Male</option>
-													<option value="2">Female</option>
-													<option value="3">None</option>
+													<option value="Male">Male</option>
+													<option value="Female">Female</option>
+													<option value="None">None</option>
 												</select>
 											</div>
 											<div class="col-12">
@@ -128,12 +128,17 @@ if(isset($_POST['submit']))
 
 	$first_name = $_POST['first_name'];
 	$last_name = $_POST['last_name'];
+	$middle_name = $_POST['middle_name'];
 	$email = $_POST['email'];
 	$password = $_POST['password'];
-	
+
 	$query = "INSERT INTO user(userID,mail,password,phone_number1,phone_number2,profile_picture)
 						VALUES('000' , '$email' , '$password' , NULL, NULL, NULL)";
 
+	mysqli_query($conn, $query);
+
+	$query = "INSERT INTO employee(employeeID, first_name,middle_name, last_name, gender,highest_education,resume,position, Location)
+						VALUES((SELECT userID FROM user WHERE userID = '000') , '$first_name' , NULL , '$last_name' , NULL, NULL, NULL , NULL, NULL)";
 	mysqli_query($conn, $query);
 	/*
 	$query = "SELECT * FROM customer WHERE cid = '$pass' AND LOWER(name) = LOWER('$user')";
