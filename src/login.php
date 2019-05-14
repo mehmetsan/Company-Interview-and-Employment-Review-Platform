@@ -80,7 +80,7 @@ if(! $connection)
   											</div>
   											<div class="col-12">
   												<ul class="actions">
-  													<li><input type="submit" value="Sign Up" name ="submit" class="primary"/></li>
+  													<li><input type="submit" value="Login" name ="submit" class="primary"/></li>
   												</ul>
   											</div>
   										</div>
