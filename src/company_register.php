@@ -149,7 +149,10 @@ if(isset($_POST['submit']))
 				// 	echo $error;
 				// }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 132ac1e5b47ea85efb76b0f795de5743bfb02b35
 
 }
 ?>
