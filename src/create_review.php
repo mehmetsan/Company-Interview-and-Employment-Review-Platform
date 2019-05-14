@@ -31,7 +31,7 @@
         				<div id="main" class="wrapper style1">
         					<div class="container">
         						<header class="major">
-        							<h2>Employee Sign Up</h2>
+        							<h2>Create a Review</h2>
         							<p>Fill the given from to register (*areas are mandatory)</p>
         						</header>
         						<div class="sign">
