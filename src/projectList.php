@@ -28,15 +28,15 @@
 
 			<!-- Header -->
 				<header id="header">
-					<h1 id="logo"><a href="index.html"></a></h1>
+					<h1 id="logo"><a href="index.php"></a></h1>
 					<nav id="nav">
 						<ul>
-							<li><a href="index.html">Home</a></li>
+							<li><a href="index.php">Home</a></li>
 							<li>
 								<a href="#" class ="button primary">Sign Up</a>
 								<ul>
-									<li><a href="left-sidebar.html">Employee Register</a></li>
-									<li><a href="right-sidebar.html">Company Register</a></li>
+									<li><a href="left-sidebar.php">Employee Register</a></li>
+									<li><a href="right-sidebar.php">Company Register</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -45,13 +45,15 @@
 
 				<!-- Form -->
         <section>
-          <h3>POSTED JOB LIST</h3>
+          <h3>POSTED PROJECT LIST</h3>
           <div class="table-wrapper">
             <table>
               <thead>
                 <tr>
-                  <th>Job Title</th>
-                  <th>Job Link</th>
+                  <th>Project Title</th>
+                  <th>Start Date</th>
+                  <th>Status</th>
+                  <th>Project Page</th>
                   <th></th>
                 </tr>
               </thead>
@@ -59,6 +61,8 @@
                 <tr>
                   <td>PHP CODE</td>
                   <br></br>
+                  <td>PHP CODE</td>
+                  <td>PHP CODE</td>
                   <td><a href="#">LINK</a></td>
                   <td><a href="#" class="button primary" onclick="">DELETE</a></td>
                 </tr>
@@ -67,16 +71,9 @@
             </table>
           </div>
           <ul>
+
             <div>
-                <a href="#" class="button primary" style="text-align:center">Reviews</a>
-            </div>
-            <br>
-            <div>
-                <a href="#" class="button primary" style="text-align:center">Applicants</a>
-            </div>
-            <br>
-            <div>
-                <a href="companyProfile.html" class="button primary" style="text-align:center">My Profile</a>
+                <a href="companyProfile.php" class="button primary" style="text-align:center">My Profile</a>
             </div>
           </ul>
 

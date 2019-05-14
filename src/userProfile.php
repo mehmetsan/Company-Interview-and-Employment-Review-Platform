@@ -21,15 +21,15 @@
 
 	<body class="is-preload landing">
 		<header id="header">
-			<h1 id="logo"><a href="index.html"></a></h1>
+			<h1 id="logo"><a href="index.php"></a></h1>
 			<nav id="nav">
 				<ul>
-					<li><a href="index.html">Home</a></li>
+					<li><a href="index.php">Home</a></li>
 					<li>
 						<a href="#" class ="button primary">Sign Up</a>
 						<ul>
-							<li><a href="employee_register.html">Employee Register</a></li>
-							<li><a href="company_register.html">Company Register</a></li>
+							<li><a href="employee_register.php">Employee Register</a></li>
+							<li><a href="company_register.php">Company Register</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -74,10 +74,10 @@
 
 				</table>
 			</div>
-		                <a href="appliedJob.html" class="button primary" style="text-align:center">Applied Jobs</a>
+		                <a href="appliedJob.php" class="button primary" style="text-align:center">Applied Jobs</a>
 		                <a href="#" class="button primary" style="text-align:center">Projects</a>
-		                <a href="following.html" class="button primary" style="text-align:center">Following</a>
-		                <a href="myReviewList.html" class="button primary" style="text-align:center">Reviews</a>
+		                <a href="following.php" class="button primary" style="text-align:center">Following</a>
+		                <a href="myReviewList.php" class="button primary" style="text-align:center">Reviews</a>
 									  <a href="#" class ="button primary" id="edit-btn"="">Edit Profile</a>
 
 

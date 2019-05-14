@@ -28,15 +28,15 @@
 
 			<!-- Header -->
 				<header id="header">
-					<h1 id="logo"><a href="index.html"></a></h1>
+					<h1 id="logo"><a href="index.php"></a></h1>
 					<nav id="nav">
 						<ul>
-							<li><a href="index.html">Home</a></li>
+							<li><a href="index.php">Home</a></li>
 							<li>
 								<a href="#" class ="button primary">Sign Up</a>
 								<ul>
-									<li><a href="left-sidebar.html">Employee Register</a></li>
-									<li><a href="right-sidebar.html">Company Register</a></li>
+									<li><a href="left-sidebar.php">Employee Register</a></li>
+									<li><a href="right-sidebar.php">Company Register</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -45,22 +45,24 @@
 
 				<!-- Form -->
         <section>
-          <h3>MY FOLLOWERS</h3>
+          <h3>JOB TITLE</h3>
           <div class="table-wrapper">
             <table>
               <thead>
                 <tr>
                   <th>User Name</th>
-                  <th>Job Status</th>
                   <th>Link to Profile</th>
+                  <th></th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td>PHP CODE</td>
                   <br></br>
-                  <td>PHP CODE</td>
                   <td><a href="#">LINK</a></td>
+                  <td><a href="#" class="button primary" onclick="">ACCEPT</a></td>
+                  <td><a href="#" class="button primary" onclick="">REJECT</a></td>
                 </tr>
 
               </tbody>
@@ -69,7 +71,7 @@
           <ul>
 
             <div>
-                <a href="companyProfile.html" class="button primary" style="text-align:center">My Profile</a>
+                <a href="companyProfile.php" class="button primary" style="text-align:center">My Profile</a>
             </div>
           </ul>
 

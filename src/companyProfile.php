@@ -21,15 +21,15 @@
 
 	<body class="is-preload landing">
     <header id="header">
-      <h1 id="logo"><a href="index.html"></a></h1>
+      <h1 id="logo"><a href="index.php"></a></h1>
       <nav id="nav">
         <ul>
-          <li><a href="index.html">Home</a></li>
+          <li><a href="index.php">Home</a></li>
           <li>
             <a href="#" class ="button primary">Sign Up</a>
             <ul>
-              <li><a href="left-sidebar.html">Employee Register</a></li>
-              <li><a href="right-sidebar.html">Company Register</a></li>
+              <li><a href="left-sidebar.php">Employee Register</a></li>
+              <li><a href="right-sidebar.php">Company Register</a></li>
             </ul>
           </li>
         </ul>

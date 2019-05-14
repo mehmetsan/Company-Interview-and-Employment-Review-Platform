@@ -28,15 +28,15 @@
 
 			<!-- Header -->
 				<header id="header">
-					<h1 id="logo"><a href="index.html"></a></h1>
+					<h1 id="logo"><a href="index.php"></a></h1>
 					<nav id="nav">
 						<ul>
-							<li><a href="index.html">Home</a></li>
+							<li><a href="index.php">Home</a></li>
 							<li>
 								<a href="#" class ="button primary">Sign Up</a>
 								<ul>
-									<li><a href="left-sidebar.html">Employee Register</a></li>
-									<li><a href="right-sidebar.html">Company Register</a></li>
+									<li><a href="left-sidebar.php">Employee Register</a></li>
+									<li><a href="right-sidebar.php">Company Register</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -45,26 +45,22 @@
 
 				<!-- Form -->
         <section>
-          <h3>POSTED PROJECT LIST</h3>
+          <h3>FOLLOWINGS</h3>
           <div class="table-wrapper">
             <table>
               <thead>
                 <tr>
-                  <th>Project Title</th>
-                  <th>Start Date</th>
-                  <th>Status</th>
-                  <th>Project Page</th>
-                  <th></th>
+                  <th>Company Name</th>
+                  <th>Link to Company Page</th>
+									<th></th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td>PHP CODE</td>
                   <br></br>
-                  <td>PHP CODE</td>
-                  <td>PHP CODE</td>
                   <td><a href="#">LINK</a></td>
-                  <td><a href="#" class="button primary" onclick="">DELETE</a></td>
+									<td><a href="#" class="button primary" onclick="">UNFOLLOW</a></td>
                 </tr>
 
               </tbody>
@@ -73,7 +69,7 @@
           <ul>
 
             <div>
-                <a href="companyProfile.html" class="button primary" style="text-align:center">My Profile</a>
+                <a href="userProfile.php" class="button primary" style="text-align:center">My Profile</a>
             </div>
           </ul>
 

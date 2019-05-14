@@ -28,15 +28,15 @@
 
 			<!-- Header -->
 				<header id="header">
-					<h1 id="logo"><a href="index.html"></a></h1>
+					<h1 id="logo"><a href="index.php"></a></h1>
 					<nav id="nav">
 						<ul>
-							<li><a href="index.html">Home</a></li>
+							<li><a href="index.php">Home</a></li>
 							<li>
 								<a href="#" class ="button primary">Sign Up</a>
 								<ul>
-									<li><a href="left-sidebar.html">Employee Register</a></li>
-									<li><a href="right-sidebar.html">Company Register</a></li>
+									<li><a href="left-sidebar.php">Employee Register</a></li>
+									<li><a href="right-sidebar.php">Company Register</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -44,34 +44,25 @@
 				</header>
 
 				<!-- Form -->
-        <section>
-          <h3>FOLLOWINGS</h3>
-          <div class="table-wrapper">
-            <table>
-              <thead>
-                <tr>
-                  <th>Company Name</th>
-                  <th>Link to Company Page</th>
-									<th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>PHP CODE</td>
-                  <br></br>
-                  <td><a href="#">LINK</a></td>
-									<td><a href="#" class="button primary" onclick="">UNFOLLOW</a></td>
-                </tr>
+					<section>
+						<h3>LOGIN</h3>
+						<br></br>
+						<br></br>
+							<div class="row gtr-uniform gtr-50" >
+								<ul>
+										<div class="loginName">
+											<input align="center" type="text" name="name" id="name" value="" placeholder="Name" style= "text-align:center" />
+										</div>
+										<div class="loginMail">
+											<input align="center" type="email" name="email" id="email" value="" placeholder="Email"style= "text-align:center" />
+										</div>
+										<br></br>
+										<li><a href="userProfile.php" class="button login" style="text-align:center">Login</a></li>
+								</ul>
+							</div>
 
-              </tbody>
-            </table>
-          </div>
-          <ul>
 
-            <div>
-                <a href="userProfile.html" class="button primary" style="text-align:center">My Profile</a>
-            </div>
-          </ul>
+					</section>
 
 		</div>
 
