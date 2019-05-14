@@ -134,8 +134,9 @@ if(! $connection)
 						}
 						else
 						{
-							$error = "<br></br>Wrong username or password";
-							echo $error;
+              $message = "Incorrect userID or password";
+              echo "<script type='text/javascript'>alert('$message');</script>";
+
 						}
 
 		}
