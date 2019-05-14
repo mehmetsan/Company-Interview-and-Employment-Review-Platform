@@ -114,9 +114,8 @@ if(! $connection)
 
 				//	$result = $connection-> query($query);
 
-
-					$error = "<br></br>Wrong username or password";
-					echo $error;
+				$message = "wrong answer";
+				echo "<script type='text/javascript'>alert('$message');</script>";
 
 
 						// if($result -> num_rows == 1)
