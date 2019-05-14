@@ -147,7 +147,7 @@ if(isset($_POST['submit']))
 				$result = $connection-> query($query);
 
 				$query2 = "INSERT INTO company(companyID,name,website,industry,sector,revenue,establish_date,type,headquarter)
-									VALUES('1313' , '$name' , NULL , 'endüstri' , '$sector', 11, NULL ,'$type','$hq')";
+									VALUES((SELECT userID FROM user WHERE userID = '1313') , '$name' , NULL , 'endüstri' , '$sector', '11', NULL ,'tayp','$hq')";
 
 
 				$result2 = $connection-> query($query2);
