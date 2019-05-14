@@ -152,7 +152,7 @@ if(isset($_POST['submit']))
 				function randomSizDigit() {
 						$min = 0;
 						$max = 999999;
-	          $temp = rand ( int $min , int $max )
+	          $temp = rand ( int $min , int $max );
         }
 
 }
