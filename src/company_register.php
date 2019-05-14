@@ -5,6 +5,21 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
+
+<?php
+/*
+References
+https://www.youtube.com/watch?v=J5RHnJCy8AE
+*/
+session_start();
+$connection = mysqli_connect('dijkstra.ug.bcc.bilkent.edu.tr', 'ege.marasli', '8nhmQrdt', 'ege_marasli');
+
+if(! $connection)
+{
+    die('Connection Error!!! ' . mysqli_error());
+}
+?>
+
 <html>
 	<head>
 		<title>Left Sidebar - Landed by HTML5 UP</title>
@@ -103,3 +118,47 @@
 
 	</body>
 </html>
+
+
+
+
+<?php
+$error='';
+if(isset($_POST['submit']))
+{
+
+
+
+				$name = $_POST['name'];
+				$sector = $_POST['sector'];
+				$hq = $_POST['headquarter'];
+				$mail = $_POST['email'];
+				$pass = $_POST['password'];
+				$establish = $_POST['establish_date'];
+				$type = $_POST['type'];
+
+
+				$query = "INSERT INTO user(userID,mail,password,phone_number1,phone_number2,profile_picture)
+									VALUES('1313' , '$mail' , 'password' , '1' , '2' , NULL)";
+
+
+				$result = $connection-> query($query);
+
+				$query2 = "INSERT INTO company(companyID,name,website,industry,sector,revenue,establish_date,type,headquarter)
+									VALUES('1313' , '$name' , NULL , 'endüstri' , '$sector', 11, NULL ,'$type','$hq')";
+
+
+				$result2 = $connection-> query($query2);
+				// if($result -> num_rows == 1)
+				// {
+				// 	$_SESSION["cid"] = $pass;
+				// 	header("Location: welcome.php");
+				// }
+				// else
+				// {
+				// 	$error = "<br></br>Wrong username or password";
+				// 	echo $error;
+				// }
+
+}
+?>
