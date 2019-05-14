@@ -128,7 +128,7 @@ if(isset($_POST['submit']))
 
 
 				$query = "INSERT INTO user(userID,mail,password,phone_number1,phone_number2,profile_picture)
-									VALUES('1313' , '$mail' , 'password' , '1' , '2' , NULL)";
+									VALUES('1313' , '$mail' , '$pass' , '1' , '2' , NULL)";
 
 
 				$result = $connection-> query($query);
@@ -149,10 +149,6 @@ if(isset($_POST['submit']))
 				// 	echo $error;
 				// }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 132ac1e5b47ea85efb76b0f795de5743bfb02b35
 
 }
 ?>
