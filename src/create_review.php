@@ -53,30 +53,18 @@
         											<div class="col-6 col-12-xsmall">
         												<input type="text" name="location" id="location" value="" placeholder="Location" />
         											</div>
-        											<div class="col-12">
-        												<select name="visibility" id="education">
-        													<option value="">Highest Education</option>
-        													<option value="1">High School</option>
-        													<option value="2">Bachelor's Degree</option>
-        													<option value="3">Master's Degree</option>
-        													<option value="4">PhD</option>
-        												</select>
-        											</div>
-        											<div class="col-12">
-        												<select name="gender" id="gender">
-        													<option value="">Gender</option>
-        													<option value="1">Male</option>
-        													<option value="2">Female</option>
-        													<option value="3">None</option>
-        												</select>
-        											</div>
+															<div class="col-4 col-12-medium">
+																<input type="radio" id="anonymous" name="anonymous" checked>
+																<label for="anonymous">Anonymous</label>
+															</div>
+
         											<div class="col-12-medium">
         												<input type="checkbox" id="human" name="human" checked>
         												<label for="human">I am a human and not a robot</label>
         											</div>
         											<div class="col-12">
         												<ul class="actions">
-        													<li><input type="submit" value="Sign Up" name ="submit" class="primary"/></li>
+        													<li><input type="submit" value="submit" name ="submit" class="primary"/></li>
         													<li><input type="reset" value="Reset" /></li>
         												</ul>
         											</div>
