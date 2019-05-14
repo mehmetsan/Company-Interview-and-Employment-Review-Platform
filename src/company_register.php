@@ -149,15 +149,6 @@ if(isset($_POST['submit']))
 				// 	echo $error;
 				// }
 
-<<<<<<< HEAD
-				function randomSizDigit() {
-						$min = 0;
-						$max = 999999;
-	          $temp = rand ( int $min , int $max );
-        }
-=======
-				
->>>>>>> a2709f931aab704073c9be9252c5ae640244d9d6
 
 }
 ?>
