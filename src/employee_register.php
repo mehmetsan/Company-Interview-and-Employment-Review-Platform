@@ -130,10 +130,12 @@ if(isset($_POST['submit']))
 	$last_name = $_POST['last_name'];
 	$email = $_POST['email'];
 	$password = $_POST['password'];
-	/*
-	$query = 'INSERT INTO user(userID, mail, password, phone_number1, phone_number2, profile_picture)
-						VALUES('123', .$email)'
+	
+	$query = "INSERT INTO user(userID,mail,password,phone_number1,phone_number2,profile_picture)
+						VALUES('000' , '$email' , '$password' , NULL, NULL, NULL)";
 
+	mysqli_query($conn, $query);
+	/*
 	$query = "SELECT * FROM customer WHERE cid = '$pass' AND LOWER(name) = LOWER('$user')";
 	$result = $connection-> query($query);
 	if($result -> num_rows == 1)
