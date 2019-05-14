@@ -11,7 +11,6 @@
 				       Ayça Begüm Taşçıoğlu
 					 Erdem Ege Maraşlı
 
-HLLLALALALLA
 
 	# Company Interview and Employment Review Platform Database System
 
@@ -26,5 +25,3 @@ HLLLALALALLA
 	The platform, in turn, provides the employees and employment seekers
 	with possible job suggestions.
 
-geri geldim
-hoş geldin
