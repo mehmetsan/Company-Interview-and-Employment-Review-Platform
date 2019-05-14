@@ -59,26 +59,28 @@ if(! $connection)
 				</header>
 
 				<!-- Form -->
+			
+
 					<section>
-						<h3>LOGIN</h3>
-						<br></br>
-						<br></br>
-							<div class="row gtr-uniform gtr-50" >
-								<ul>
-										<div class="loginName">
-											<input align="center" type="text" name="mail" id="name" value="" placeholder="Mail" style= "text-align:center" />
-										</div>
-										<div class="loginMail">
-											<input align="center" type="email" name="password" id="email" value="" placeholder="Password"style= "text-align:center" />
-										</div>
-										<br></br>
-										<li><a type = "submit" class="button login" name = "login" style="text-align:center">Login</a></li>
-								</ul>
+						<form method="post" action="#">
+							<div class="row gtr-uniform gtr-50">
+
+								<div class="loginName">
+									<input align="center" type="text" name="mail" id="name" value="" placeholder="Mail" style= "text-align:center" />
+								</div>
+								<div class="loginMail">
+									<input align="center" type="email" name="password" id="email" value="" placeholder="Password"style= "text-align:center" />
+								</div>
+								<br></br>
+
+								<div class="col-12">
+									<ul class="actions">
+										<li><input type="submit" value="Sign Up" name ="submit" class="primary"/></li>
+									</ul>
+								</div>
 							</div>
-
-
+						</form>
 					</section>
-
 		</div>
 
 
@@ -100,7 +102,7 @@ if(! $connection)
 
 		<?php
 
-		if(isset($_POST['login']))
+		if(isset($_POST['submit']))
 		{
 
 
@@ -114,8 +116,7 @@ if(! $connection)
 
 				//	$result = $connection-> query($query);
 
-				$message = "wrong answer";
-				echo "<script type='text/javascript'>alert('$message');</script>";
+				header("Location: companyProfile.php");
 
 
 						// if($result -> num_rows == 1)
