@@ -35,8 +35,8 @@
 							<li>
 								<a href="#" class ="button primary">Sign Up</a>
 								<ul>
-									<li><a href="left-sidebar.php">Employee Register</a></li>
-									<li><a href="right-sidebar.php">Company Register</a></li>
+									<li><a href="employee_register.php">Employee Register</a></li>
+									<li><a href="company_register.php">Company Register</a></li>
 								</ul>
 							</li>
 						</ul>
