@@ -161,17 +161,28 @@ if(isset($_POST['submit']))
 				$type = $_POST['type'];
 				$userID = randomSixDigit();
 
-				$query = "INSERT INTO user(userID,mail,password,phone_number1,phone_number2,profile_picture)
-									VALUES('$userID' , '$mail' , '$pass' , '1' , '2' , NULL)";
+				$qu = "SELECT * FROM user WHERE mail = '$mail' ";
+				$res = $connection-> query($qu);
+				if($res -> num_rows == 0){
+					$query = "INSERT INTO user(userID,mail,password,phone_number1,phone_number2,profile_picture)
+										VALUES('$userID' , '$mail' , '$pass' , '1' , '2' , NULL)";
 
 
-				$result = $connection-> query($query);
+					$result = $connection-> query($query);
 
-				$query2 = "INSERT INTO company(companyID,name,website,industry,sector,revenue,establish_date,type,headquarter)
-									VALUES('$userID' , '$name' , NULL , 'endüstri' , '$sector', '11', NULL ,'tayp','$hq')";
+					$query2 = "INSERT INTO company(companyID,name,website,industry,sector,revenue,establish_date,type,headquarter)
+										VALUES('$userID' , '$name' , NULL , 'endüstri' , '$sector', '11', NULL ,'tayp','$hq')";
 
 
-				$result2 = $connection-> query($query2);
+					$result2 = $connection-> query($query2);
+
+					header("Location: login.php");
+		   	}
+
+				else {
+					$message = "PLEASE ENTER DIFFERENT MAIL";
+					echo "<script type='text/javascript'>alert('$message');</script>";
+				}
 
 
 }
