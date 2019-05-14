@@ -8,19 +8,6 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 
-<?php
-/*
-References
-https://www.youtube.com/watch?v=J5RHnJCy8AE
-*/
-session_start();
-$connection = mysqli_connect('dijkstra.ug.bcc.bilkent.edu.tr', 'ege.marasli', '8nhmQrdt', 'ege_marasli');
-
-if(! $connection)
-{
-    die('Connection Error!!! ' . mysqli_error());
-}
-?>
 
 <html>
 	<head>

@@ -4,6 +4,21 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
+
+<?php
+/*
+References
+https://www.youtube.com/watch?v=J5RHnJCy8AE
+*/
+session_start();
+$connection = mysqli_connect('dijkstra.ug.bcc.bilkent.edu.tr', 'ege.marasli', '8nhmQrdt', 'ege_marasli');
+
+if(! $connection)
+{
+    die('Connection Error!!! ' . mysqli_error());
+}
+?>
+
 <html>
 	<head>
 		<title>Landed by HTML5 UP</title>
@@ -51,13 +66,13 @@
 							<div class="row gtr-uniform gtr-50" >
 								<ul>
 										<div class="loginName">
-											<input align="center" type="text" name="name" id="name" value="" placeholder="Name" style= "text-align:center" />
+											<input align="center" type="text" name="mail" id="name" value="" placeholder="Mail" style= "text-align:center" />
 										</div>
 										<div class="loginMail">
-											<input align="center" type="email" name="email" id="email" value="" placeholder="Email"style= "text-align:center" />
+											<input align="center" type="email" name="password" id="email" value="" placeholder="Password"style= "text-align:center" />
 										</div>
 										<br></br>
-										<li><a href="userProfile.php" class="button login" style="text-align:center">Login</a></li>
+										<li><a type = "submit" class="button login" name = "login" style="text-align:center">Login</a></li>
 								</ul>
 							</div>
 
@@ -65,6 +80,8 @@
 					</section>
 
 		</div>
+
+
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
@@ -78,3 +95,40 @@
 
 	</body>
 </html>
+
+
+
+		<?php
+
+		if(isset($_POST['login']))
+		{
+
+
+
+
+
+
+
+						//$query = "SELECT * FROM user WHERE mail = '$mail' AND password = '$pass' ";
+
+
+				//	$result = $connection-> query($query);
+
+
+					$error = "<br></br>Wrong username or password";
+					echo $error;
+
+
+						// if($result -> num_rows == 1)
+						// {
+						// 	$_SESSION["cid"] = $pass;
+						// 	header("Location: welcome.php");
+						// }
+						// else
+						// {
+						// 	$error = "<br></br>Wrong username or password";
+						// 	echo $error;
+						// }
+
+		}
+		?>
