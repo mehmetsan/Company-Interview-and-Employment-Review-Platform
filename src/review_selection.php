@@ -37,22 +37,22 @@
         						<div class="sign">
 
                       <div class="col-6 col-12-xsmall">
-                        <ul class="actions fit">
-                          <li><a href="#" class="button primary fit">Salary Review</a></li>
+                        <ul>
+                          <li><a href="salary_review.php" class="button primary fit">Salary Review</a></li>
                         </ul>
                       </div>
                       <div class="col-6 col-12-xsmall">
-                        <ul class="actions fit">
+                        <ul>
                           <li><a href="#" class="button primary fit">Interview Review</a></li>
                         </ul>
                       </div>
                       <div class="col-6 col-12-xsmall">
-                        <ul class="actions fit">
+                        <ul>
                           <li><a href="#" class="button primary fit">Benefits Review</a></li>
                         </ul>
                       </div>
                       <div class="col-6 col-12-xsmall">
-                        <ul class="actions fit">
+                        <ul>
                           <li><a href="#" class="button primary fit">General Review</a></li>
                         </ul>
                       </div>
