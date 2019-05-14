@@ -1,5 +1,15 @@
 <?php
-	include_once 'conn.php';
+/*
+References
+https://www.youtube.com/watch?v=J5RHnJCy8AE
+*/
+session_start();
+$connection = mysqli_connect('dijkstra.ug.bcc.bilkent.edu.tr', 'ege.marasli', '8nhmQrdt', 'ege_marasli');
+
+if(! $connection)
+{
+    die('Connection Error!!! ' . mysqli_error());
+}
 ?>
 <!DOCTYPE HTML>
 <!--
@@ -116,7 +126,31 @@ $error='';
 if(isset($_POST['submit']))
 {
 
+	function randomSixDigit() {
 
+		$connection = mysqli_connect('dijkstra.ug.bcc.bilkent.edu.tr', 'ege.marasli', '8nhmQrdt', 'ege_marasli');
+
+		if(! $connection)
+		{
+		    die('Connection Error!!! ' . mysqli_error());
+		}
+			$min = 0;
+			$max = 999999;
+
+			$temp = rand (  $min ,  $max );
+
+			$query3 = "SELECT * FROM user WHERE userID = '$temp' ";
+			$result3 = $connection-> query($query3);
+			while( $result3 -> num_rows != 0){
+				$temp = rand (  $min ,  $max );
+
+				$query4 = "SELECT * FROM user WHERE userID = '$temp' ";
+				$result3 = $connection-> query($query4);
+
+			}
+			return $temp;
+
+	}
 
 				$name = $_POST['name'];
 				$sector = $_POST['sector'];
@@ -125,29 +159,19 @@ if(isset($_POST['submit']))
 				$pass = $_POST['password'];
 				$establish = $_POST['establish_date'];
 				$type = $_POST['type'];
-
+				$userID = randomSixDigit();
 
 				$query = "INSERT INTO user(userID,mail,password,phone_number1,phone_number2,profile_picture)
-									VALUES('1313' , '$mail' , '$pass' , '1' , '2' , NULL)";
+									VALUES('$userID' , '$mail' , '$pass' , '1' , '2' , NULL)";
 
 
 				$result = $connection-> query($query);
 
 				$query2 = "INSERT INTO company(companyID,name,website,industry,sector,revenue,establish_date,type,headquarter)
-									VALUES((SELECT userID FROM user WHERE userID = '1313') , '$name' , NULL , 'endüstri' , '$sector', '11', NULL ,'tayp','$hq')";
+									VALUES('$userID' , '$name' , NULL , 'endüstri' , '$sector', '11', NULL ,'tayp','$hq')";
 
 
 				$result2 = $connection-> query($query2);
-				// if($result -> num_rows == 1)
-				// {
-				// 	$_SESSION["cid"] = $pass;
-				// 	header("Location: welcome.php");
-				// }
-				// else
-				// {
-				// 	$error = "<br></br>Wrong username or password";
-				// 	echo $error;
-				// }
 
 
 }
