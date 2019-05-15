@@ -43,17 +43,17 @@
                       </div>
                       <div class="col-6 col-12-xsmall">
                         <ul>
-                          <li><a href="#" class="button primary fit">Interview Review</a></li>
+                          <li><a href="interview_review.php" class="button primary fit">Interview Review</a></li>
                         </ul>
                       </div>
                       <div class="col-6 col-12-xsmall">
                         <ul>
-                          <li><a href="#" class="button primary fit">Benefits Review</a></li>
+                          <li><a href="benefits_review.php" class="button primary fit">Benefits Review</a></li>
                         </ul>
                       </div>
                       <div class="col-6 col-12-xsmall">
                         <ul>
-                          <li><a href="#" class="button primary fit">General Review</a></li>
+                          <li><a href="general_review.php" class="button primary fit">General Review</a></li>
                         </ul>
                       </div>
 
