@@ -41,27 +41,26 @@
         								<section>
         									<form method="post" action="#">
         										<div class="row gtr-uniform gtr-50">
-        											<div class="col-4 col-12-xsmall">
+        											<div class="col-12 col-12-xsmall">
         												<input type="text" name="employment_status" id="employment_status" value="" placeholder="Employment Status" />
         											</div>
-        											<div class="col-4 col-12-xsmall">
+        											<div class="col-12 col-12-xsmall">
         												<input type="text" name="job_title" id="job_title" value="" placeholder="Job Title" />
         											</div>
-        											<div class="col-4 col-12-xsmall">
+        											<div class="col-12 col-12-xsmall">
         												<input type="text" name="rating" id="rating" value="" placeholder="Rating" />
         											</div>
-        											<div class="col-6 col-12-xsmall">
+        											<div class="col-12 col-12-xsmall">
         												<input type="text" name="location" id="location" value="" placeholder="Location" />
         											</div>
-															<div class="col-12-medium">
+                              <div class="col-12 col-12-xsmall">
+        												<input type="text" name="salary" id="salary" value="" placeholder="Salary" />
+        											</div>
+															<div class="col-12">
 																<input type="radio" id="anonymous" name="anonymous" checked>
 																<label for="anonymous">Anonymous</label>
 															</div>
 
-        											<div class="col-12-medium">
-        												<input type="checkbox" id="human" name="human" checked>
-        												<label for="human">I am a human and not a robot</label>
-        											</div>
         											<div class="col-12">
         												<ul class="actions">
         													<li><input type="submit" value="submit" name ="submit" class="primary"/></li>
