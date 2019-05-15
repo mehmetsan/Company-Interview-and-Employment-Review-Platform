@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Create a Review</title>
+		<title>Create a Salary Review</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -31,7 +31,7 @@
         				<div id="main" class="wrapper style1">
         					<div class="container">
         						<header class="major">
-        							<h2>Create a Review</h2>
+        							<h2>Create a Salary Review</h2>
         							<p></p>
         						</header>
         						<div class="sign">
@@ -57,10 +57,12 @@
         												<input type="text" name="salary" id="salary" value="" placeholder="Salary" />
         											</div>
 															<div class="col-12">
+																<textarea name="message" id="message" placeholder="Enter your comments about the review here..." rows="6"></textarea>
+															</div>
+															<div class="col-4-xsmall">
 																<input type="radio" id="anonymous" name="anonymous" checked>
 																<label for="anonymous">Anonymous</label>
 															</div>
-
         											<div class="col-12">
         												<ul class="actions">
         													<li><input type="submit" value="submit" name ="submit" class="primary"/></li>
