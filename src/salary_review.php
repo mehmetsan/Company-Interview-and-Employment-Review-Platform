@@ -1,3 +1,6 @@
+<?php
+	include_once 'conn.php';
+?>
 <!DOCTYPE HTML>
 <!--
 	Landed by HTML5 UP
@@ -57,7 +60,7 @@
         												<input type="text" name="salary" id="salary" value="" placeholder="Salary" />
         											</div>
 															<div class="col-12">
-																<textarea name="message" id="message" placeholder="Enter your comments about the review here..." rows="6"></textarea>
+																<textarea name="comment" id="comment" placeholder="Enter your comments about the review here..." rows="6"></textarea>
 															</div>
 															<div class="col-4-xsmall">
 																<input type="radio" id="anonymous" name="anonymous" checked>
@@ -78,3 +81,69 @@
 
         	</body>
         </html>
+				<?php
+				$error='';
+				if(isset($_POST['submit']))
+				{
+
+					function randomSixDigit() {
+
+						$connection = mysqli_connect('dijkstra.ug.bcc.bilkent.edu.tr', 'ege.marasli', '8nhmQrdt', 'ege_marasli');
+
+						if(! $connection)
+						{
+						    die('Connection Error!!! ' . mysqli_error());
+						}
+							$min = 0;
+							$max = 999999;
+
+							$temp = rand (  $min ,  $max );
+
+							$query3 = "SELECT * FROM user WHERE userID = '$temp' ";
+							$result3 = $connection-> query($query3);
+							while( $result3 -> num_rows != 0){
+								$temp = rand (  $min ,  $max );
+
+								$query4 = "SELECT * FROM user WHERE userID = '$temp' ";
+								$result3 = $connection-> query($query4);
+
+							}
+							return $temp;
+
+					}
+
+								$employment_status = $_POST['employment_status'];
+								$job_title = $_POST['job_title'];
+								$hq = $_POST['headquarter'];
+								$rating = $_POST['rating'];
+								$location = $_POST['location'];
+								$comment = $_POST['comment'];
+								$visibility = $_POST['visibility'];
+								$reviewID = randomSixDigit();
+
+								$qu = "SELECT * FROM user WHERE mail = '$mail' ";
+								$res = $connection-> query($qu);
+								if($res -> num_rows == 0){
+									$query = "INSERT INTO user(userID,mail,password,phone_number1,phone_number2,profile_picture)
+														VALUES('$userID' , '$mail' , '$pass' , '1' , '2' , NULL)";
+
+
+									$result = $connection-> query($query);
+
+									$query2 = "INSERT INTO company(companyID,name,website,industry,sector,revenue,establish_date,type,headquarter)
+														VALUES('$userID' , '$name' , NULL , 'endüstri' , '$sector', '11', NULL ,'tayp','$hq')";
+
+
+									$result2 = $connection-> query($query2);
+
+									header("Location: login.php");
+						   	}
+
+								else {
+									$message = "PLEASE ENTER DIFFERENT MAIL";
+									echo "<script type='text/javascript'>alert('$message');</script>";
+								}
+
+
+				}
+				?>
