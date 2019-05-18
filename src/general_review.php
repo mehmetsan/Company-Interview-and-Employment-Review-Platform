@@ -40,11 +40,13 @@
         								<section>
         									<form method="post" action="#">
         										<div class="row gtr-uniform gtr-50">
-															<select name="employment_status" id="employment_status">
-																<option value="">Employment_satatus</option>
-																<option value="0">Working</option>
-																<option value="1">Not Working</option>
-															</select>
+															<div class="col-12">
+																<select name="employment_status" id="employment_status">
+																	<option value="">Employment_satatus</option>
+																	<option value="0">Working</option>
+																	<option value="1">Not Working</option>
+																</select>
+															</div>
 															<div class="col-12 col-12-xsmall">
         												<input type="text" name="job_title" id="job_title" value="" placeholder="Job Title" />
         											</div>
