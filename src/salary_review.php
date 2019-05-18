@@ -133,7 +133,7 @@
 
 									$result = $connection-> query($query);
 									$query2 = "INSERT INTO salary_review(reviewID,salary)
-														VALUES('$reviewID' , '$salary')";
+														VALUES('$reviewID' , '5000')"; 
 
 
 									$result2 = $connection-> query($query2);
