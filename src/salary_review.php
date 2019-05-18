@@ -99,12 +99,12 @@
 
 							$temp = rand (  $min ,  $max );
 
-							$query3 = "SELECT * FROM user WHERE userID = '$temp' ";
+							$query3 = "SELECT * FROM review WHERE reviewID = '$temp' ";
 							$result3 = $connection-> query($query3);
 							while( $result3 -> num_rows != 0){
 								$temp = rand (  $min ,  $max );
 
-								$query4 = "SELECT * FROM user WHERE userID = '$temp' ";
+								$query4 = "SELECT * FROM review WHERE reviewID = '$temp' ";
 								$result3 = $connection-> query($query4);
 
 							}
@@ -114,29 +114,33 @@
 
 								$employment_status = $_POST['employment_status'];
 								$job_title = $_POST['job_title'];
-								$hq = $_POST['headquarter'];
 								$rating = $_POST['rating'];
 								$location = $_POST['location'];
 								$comment = $_POST['comment'];
 								$visibility = $_POST['visibility'];
 								$reviewID = randomSixDigit();
 
-								$qu = "SELECT * FROM user WHERE mail = '$mail' ";
+								$qu = "SELECT * FROM review WHERE reviewID = '$reviewID' ";
 								$res = $connection-> query($qu);
 								if($res -> num_rows == 0){
-									$query = "INSERT INTO user(userID,mail,password,phone_number1,phone_number2,profile_picture)
-														VALUES('$userID' , '$mail' , '$pass' , '1' , '2' , NULL)";
+
+									$query = "INSERT INTO review(reviewID,Employment_satatus,job_title,
+										publish_date,rating,location,
+									comment, visibility)
+														VALUES('$reviewID' , '$employment_status' , '$job_title' , '10.04.98' , '$rating' , '$location',
+														'$comment', '$visibility')";
 
 
 									$result = $connection-> query($query);
-
-									$query2 = "INSERT INTO company(companyID,name,website,industry,sector,revenue,establish_date,type,headquarter)
-														VALUES('$userID' , '$name' , NULL , 'endüstri' , '$sector', '11', NULL ,'tayp','$hq')";
+									$query2 = "INSERT INTO salary_review(reviewID,salary)
+														VALUES('$reviewID' , '$salary')";
 
 
 									$result2 = $connection-> query($query2);
 
-									header("Location: login.php");
+									$message = "Review added";
+									echo "<script type='text/javascript'>alert('$message');</script>";
+									header("Location: homepage.php");
 						   	}
 
 								else {
