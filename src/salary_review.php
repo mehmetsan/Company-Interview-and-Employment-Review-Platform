@@ -2,11 +2,7 @@
 	include_once 'conn.php';
 ?>
 <!DOCTYPE HTML>
-<!--
-	Landed by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
+
 <html>
 	<head>
 		<title>Create a Salary Review</title>
@@ -44,9 +40,13 @@
         								<section>
         									<form method="post" action="#">
         										<div class="row gtr-uniform gtr-50">
-        											<div class="col-12 col-12-xsmall">
-        												<input type="text" name="employment_status" id="employment_status" value="" placeholder="Employment Status" />
-        											</div>
+															<div class="col-12">
+																<select name="employment_status" id="employment_status">
+																	<option value="">Employment_satatus</option>
+																	<option value="0">Working</option>
+																	<option value="1">Not Working</option>
+																</select>
+															</div>
         											<div class="col-12 col-12-xsmall">
         												<input type="text" name="job_title" id="job_title" value="" placeholder="Job Title" />
         											</div>
@@ -62,14 +62,17 @@
 															<div class="col-12">
 																<textarea name="comment" id="comment" placeholder="Enter your comments about the review here..." rows="6"></textarea>
 															</div>
-															<div class="col-4-xsmall">
-																<input type="radio" id="anonymous" name="anonymous" checked>
-																<label for="anonymous">Anonymous</label>
+															<div class="col-12">
+																<select name="visibility" id="visibility">
+																	<option value="">Anonimity</option>
+																	<option value="0">Anonim</option>
+																	<option value="1">Not anonim</option>
+																</select>
 															</div>
         											<div class="col-12">
         												<ul class="actions">
         													<li><input type="submit" value="submit" name ="submit" class="primary"/></li>
-        													<li><input type="reset" value="Reset" /></li>
+        													<li><input type="reset" value="reset" /></li>
         												</ul>
         											</div>
         										</div>
@@ -85,8 +88,8 @@
 				$error='';
 				if(isset($_POST['submit']))
 				{
-
 					function randomSixDigit() {
+						$conn = mysqli_connect('dijkstra.ug.bcc.bilkent.edu.tr', 'ege.marasli', '8nhmQrdt', 'ege_marasli');
 							$min = 0;
 							$max = 999999;
 
@@ -111,29 +114,25 @@
 								$location = $_POST['location'];
 								$comment = $_POST['comment'];
 								$visibility = $_POST['visibility'];
+								$salary = $_POST['salary'];
 								$reviewID = randomSixDigit();
 
 								$qu = "SELECT * FROM review WHERE reviewID = '$reviewID' ";
 								$res = $conn-> query($qu);
 								if($res -> num_rows == 0){
 
-									$query = "INSERT INTO review(reviewID,Employment_satatus,job_title,
-										publish_date,rating,location,
-									comment, visibility)
-														VALUES('$reviewID' , '$employment_status' , '$job_title' , '10.04.98' , '$rating' , '$location',
-														'$comment', '$visibility')";
+									$query = "INSERT INTO review(reviewID,Employment_status,job_title,publish_date,rating,location,comment, visibility)
+														VALUES('$reviewID' , '$employment_status' , '$job_title' , '2008-11-11' , '$rating' , '$location','$comment', '$visibility')";
 
 
 									$result = $conn-> query($query);
 									$query2 = "INSERT INTO salary_review(reviewID,salary)
-														VALUES('$reviewID' , '5000')";
+														VALUES('$reviewID' , '$salary')";
 
 
-									$result2 = $connection-> query($query2);
+									$result2 = $conn-> query($query2);
 
-									$message = "Review added";
-									echo "<script type='text/javascript'>alert('$message');</script>";
-									header("Location: homepage.php");
+									header("Location: home_page.php");
 						   	}
 
 								else {
