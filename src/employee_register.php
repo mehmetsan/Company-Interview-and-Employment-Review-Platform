@@ -61,13 +61,10 @@
 								<section>
 									<form method="post" action="#" name = "sign">
 										<div class="row gtr-uniform gtr-50">
-											<div class="col-4 col-12-xsmall">
+											<div class="col-6 col-12-xsmall">
 												<input type="text" name="first_name" id="first_name" value="" placeholder="*First Name" />
 											</div>
-											<div class="col-4 col-12-xsmall">
-												<input type="text" name="middle_name" id="middle_name" value="" placeholder="Middle Name" />
-											</div>
-											<div class="col-4 col-12-xsmall">
+											<div class="col-6 col-12-xsmall">
 												<input type="text" name="last_name" id="last_name" value="" placeholder="*Last Name" />
 											</div>
 											<div class="col-6 col-12-xsmall">
@@ -75,23 +72,6 @@
 											</div>
 											<div class="col-6 col-12-xsmall">
 												<input type="password" name="password" id="password" value="" placeholder="*Password" />
-											</div>
-											<div class="col-12">
-												<select name="education" id="education">
-													<option value="">Highest Education</option>
-													<option value="High School">High School</option>
-													<option value="Bachelor's Degree">Bachelor's Degree</option>
-													<option value="Master's Degree">Master's Degree</option>
-													<option value="PhD">PhD</option>
-												</select>
-											</div>
-											<div class="col-12">
-												<select name="gender" id="gender">
-													<option value="">Gender</option>
-													<option value="Male">Male</option>
-													<option value="Female">Female</option>
-													<option value="None">None</option>
-												</select>
 											</div>
 											<div class="col-12">
 												<ul class="actions">
@@ -117,7 +97,7 @@
 				password = document.forms["sign"]["password"].value;
         if (first_name == "" || last_name == "" || email == "" || password == "")
         {
-            alert("Please fill all mandatory(*) fields");
+            alert("Please fill all fields");
         }
     }
 </script>
@@ -126,20 +106,42 @@ $error = '';
 if(isset($_POST['submit']))
 {
 
-	$first_name = $_POST['first_name'];
-	$last_name = $_POST['last_name'];
-	$middle_name = $_POST['middle_name'];
-	$email = $_POST['email'];
-	$password = $_POST['password'];
+	if(empty($_POST['first_name']) || empty($_POST['last_name']) || empty($_POST['email']) || empty($_POST['password']))
+	{
+			$error = "Wrong username or password";
+	}
+	else
+	{
+		$first_name = $_POST['first_name'];
+		$last_name = $_POST['last_name'];
+		$email = $_POST['email'];
+		$password = $_POST['password'];
 
-	$query = "INSERT INTO user(userID,mail,password,phone_number1,phone_number2,profile_picture)
-						VALUES('000' , '$email' , '$password' , NULL, NULL, NULL)";
+		if(isMailExist($email))
+		{
+			$error = "Wrong username or password";
+			$message = "PLEASE ENTER DIFFERENT MAIL";
+			echo "<script type='text/javascript'>alert('$message');</script>";
+		}
+		else
+		{
+			$userID = randomID_user();
 
-	mysqli_query($conn, $query);
+			$query = "INSERT INTO user(userID,mail,password,phone_number1,phone_number2,profile_picture)
+								VALUES('$userID' , '$email' , '$password' , NULL, NULL, NULL)";
 
-	$query = "INSERT INTO employee(employeeID, first_name,middle_name, last_name, gender,highest_education,resume,position, Location)
-						VALUES((SELECT userID FROM user WHERE userID = '000') , '$first_name' , NULL , '$last_name' , NULL, NULL, NULL , NULL, NULL)";
-	mysqli_query($conn, $query);
+			mysqli_query($conn, $query);
+
+			$query = "INSERT INTO employee(employeeID, first_name,middle_name, last_name, gender,highest_education,resume,position, Location)
+								VALUES((SELECT userID FROM user WHERE userID = '$userID') , '$first_name' , NULL , '$last_name' , NULL, NULL, NULL , NULL, NULL)";
+			mysqli_query($conn, $query);
+		}
+
+	}
+
+
+
+
 	/*
 	$query = "SELECT * FROM customer WHERE cid = '$pass' AND LOWER(name) = LOWER('$user')";
 	$result = $connection-> query($query);
