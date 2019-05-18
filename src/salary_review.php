@@ -87,25 +87,18 @@
 				{
 
 					function randomSixDigit() {
-
-						$connection = mysqli_connect('dijkstra.ug.bcc.bilkent.edu.tr', 'ege.marasli', '8nhmQrdt', 'ege_marasli');
-
-						if(! $connection)
-						{
-						    die('Connection Error!!! ' . mysqli_error());
-						}
 							$min = 0;
 							$max = 999999;
 
 							$temp = rand (  $min ,  $max );
 
 							$query3 = "SELECT * FROM review WHERE reviewID = '$temp' ";
-							$result3 = $connection-> query($query3);
+							$result3 = $conn-> query($query3);
 							while( $result3 -> num_rows != 0){
 								$temp = rand (  $min ,  $max );
 
 								$query4 = "SELECT * FROM review WHERE reviewID = '$temp' ";
-								$result3 = $connection-> query($query4);
+								$result3 = $conn-> query($query4);
 
 							}
 							return $temp;
@@ -121,7 +114,7 @@
 								$reviewID = randomSixDigit();
 
 								$qu = "SELECT * FROM review WHERE reviewID = '$reviewID' ";
-								$res = $connection-> query($qu);
+								$res = $conn-> query($qu);
 								if($res -> num_rows == 0){
 
 									$query = "INSERT INTO review(reviewID,Employment_satatus,job_title,
@@ -131,9 +124,9 @@
 														'$comment', '$visibility')";
 
 
-									$result = $connection-> query($query);
+									$result = $conn-> query($query);
 									$query2 = "INSERT INTO salary_review(reviewID,salary)
-														VALUES('$reviewID' , '5000')"; 
+														VALUES('$reviewID' , '5000')";
 
 
 									$result2 = $connection-> query($query2);
