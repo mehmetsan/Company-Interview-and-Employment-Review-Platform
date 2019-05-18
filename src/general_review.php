@@ -152,7 +152,7 @@
 								}
 
 								else {
-									$message = "PLEASE ENTER DIFFERENT MAIL";
+									$message = "Review Upload is failed!";
 									echo "<script type='text/javascript'>alert('$message');</script>";
 								}
 
