@@ -132,7 +132,9 @@
 
 									$result2 = $conn-> query($query2);
 
-									header("Location: home_page.php");
+									$message = "Review is uploaded succesfully";
+									echo "<script type='text/javascript'>alert('$message');
+									window.location = 'home_page.php' </script>";
 						   	}
 
 								else {
