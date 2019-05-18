@@ -2,11 +2,7 @@
 	include_once 'conn.php';
 ?>
 <!DOCTYPE HTML>
-<!--
-	Landed by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
+
 <html>
 	<head>
 		<title>Create a Salary Review</title>
@@ -76,7 +72,7 @@
         											<div class="col-12">
         												<ul class="actions">
         													<li><input type="submit" value="submit" name ="submit" class="primary"/></li>
-        													<li><input type="reset" value="Reset" /></li>
+        													<li><input type="reset" value="reset" /></li>
         												</ul>
         											</div>
         										</div>
@@ -92,8 +88,8 @@
 				$error='';
 				if(isset($_POST['submit']))
 				{
-
 					function randomSixDigit() {
+						$conn = mysqli_connect('dijkstra.ug.bcc.bilkent.edu.tr', 'ege.marasli', '8nhmQrdt', 'ege_marasli');
 							$min = 0;
 							$max = 999999;
 
@@ -125,11 +121,8 @@
 								$res = $conn-> query($qu);
 								if($res -> num_rows == 0){
 
-									$query = "INSERT INTO review(reviewID,Employment_satatus,job_title,
-										publish_date,rating,location,
-									comment, visibility)
-														VALUES('$reviewID' , '$employment_status' , '$job_title' , '2008-11-11' , '0.5' , '$location',
-														'$comment', '$visibility')";
+									$query = "INSERT INTO review(reviewID,Employment_status,job_title,publish_date,rating,location,comment, visibility)
+														VALUES('$reviewID' , '$employment_status' , '$job_title' , '2008-11-11' , '$rating' , '$location','$comment', '$visibility')";
 
 
 									$result = $conn-> query($query);
@@ -139,9 +132,7 @@
 
 									$result2 = $conn-> query($query2);
 
-									$message = "Review added";
-									echo "<script type='text/javascript'>alert('$message');</script>";
-									header("Location: homepage.php");
+									header("Location: home_page.php");
 						   	}
 
 								else {
