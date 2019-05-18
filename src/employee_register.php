@@ -135,6 +135,9 @@ if(isset($_POST['submit']))
 			$query = "INSERT INTO employee(employeeID, first_name,middle_name, last_name, gender,highest_education,resume,position, Location)
 								VALUES((SELECT userID FROM user WHERE userID = '$userID') , '$first_name' , NULL , '$last_name' , NULL, NULL, NULL , NULL, NULL)";
 			mysqli_query($conn, $query);
+			$message = "Register Succesful";
+			echo "<script type='text/javascript'>alert('$message');
+			window.location = 'login.php' </script>";
 		}
 
 	}
