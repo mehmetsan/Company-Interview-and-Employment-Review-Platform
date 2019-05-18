@@ -145,19 +145,5 @@ if(isset($_POST['submit']))
 
 
 
-	/*
-	$query = "SELECT * FROM customer WHERE cid = '$pass' AND LOWER(name) = LOWER('$user')";
-	$result = $connection-> query($query);
-	if($result -> num_rows == 1)
-	{
-		$_SESSION["cid"] = $pass;
-		header("Location: welcome.php");
-	}
-	else
-	{
-		$error = "<br></br>Wrong username or password";
-		echo $error;
-	}
-	*/
 }
 ?>
