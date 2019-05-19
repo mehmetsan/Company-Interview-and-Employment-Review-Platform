@@ -50,7 +50,7 @@ if($result -> num_rows == 1)
 			<h1 id="logo"><a href="index.php"></a></h1>
 			<nav id="nav">
 				<ul>
-					<li><a href="index.php">Home</a></li>
+					<li><a href="home_page.php">Home</a></li>
 					<li>
 						<a href="#" class ="button primary">Sign Up</a>
 						<ul>
@@ -117,11 +117,7 @@ if($result -> num_rows == 1)
 						</tr>
 						<tr>
 							<td>Password</td>
-<<<<<<< HEAD
-							<td class ="test" id="here">$result</td>
-=======
 							<td class ="test" name = "password" id="password">*********</td>
->>>>>>> df66e45dc1be06ae17613fccdd4024d70dded059
 						</tr>
 					</tbody>
 
