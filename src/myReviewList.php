@@ -28,7 +28,7 @@ if($result -> num_rows == 1)
 	$info = $result->fetch_assoc();
 	$query = "SELECT * FROM review WHERE reviewID = '$info[reviewID]'";
 	$result = $connection-> query($query);
-	$review = $result->fetch_assoc();
+	//$review = $result->fetch_assoc();
 
 }
 
@@ -87,13 +87,23 @@ if($result -> num_rows == 1)
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td><?php echo $review['reviewID']   ?></td>
+								<?php
+								while ($review = $result ->fetch_assoc())
+                {
+										$_SESSION['reviewID'] = $review['reviewID'];
+										$var = "<a href=\"displayReview.php\" class=\"button primary\" onclick=\"\">DISPLAY</a>";
+										$var2 = "<a href=\"#\" class=\"button primary\" onclick=\"\">DELETE</a>";
+                    echo "<tr><td>" . $review['reviewID'] . "</td><td>" . "COMPANY" . "</td><td>" . $var . "</td><td>" . $var2  ."</td></tr>";
+                }
+								?>
+                <!-- <tr>
+
+
                   <br></br>
                   <td>PHP CODE</td>
                   <td><a href="#" class="button primary" onclick="">DISPLAY</a></td>
-                  <td><a href="#" class="button primary" onclick="">DELETE</a></td>
-                </tr>
+                  <td><a href="#" class="button primary" onclick="">DELETE</a></td> -->
+
 
               </tbody>
             </table>
