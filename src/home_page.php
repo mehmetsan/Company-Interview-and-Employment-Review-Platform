@@ -26,7 +26,7 @@
 								$test = "employee";
 								$type = $_SESSION['UserType'];
 								if($type == $test){
-									echo "<li><a href=\"userProfile.php\">Profile</a></li>";
+									echo "<li><a href=\"employeeProfile.php\">Profile</a></li>";
 								}
 								else {
 									echo "<li><a href=\"companyProfile.php\">Profile</a></li>";

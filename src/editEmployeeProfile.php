@@ -101,7 +101,7 @@
             <div class="col-12">
               <ul class="actions">
                 <li><input type="submit" value="Update" name="update" class="primary" /></li>
-								<li><a href="companyProfile.php" class ="button primary">Cancel</a></li>
+								<li><a href="employeeProfile.php" class ="button primary">Cancel</a></li>
               </ul>
             </div>
           </div>

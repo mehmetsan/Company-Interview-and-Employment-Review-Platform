@@ -164,7 +164,7 @@ if(! $connection)
               $message = "company logged in";
               echo "<script type='text/javascript'>alert('$message');
               window.location = 'home_page.php' </script>";
-							//header("Location: userProfile.php");
+
 						}
             /*
             SESSION TRIAL

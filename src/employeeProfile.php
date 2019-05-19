@@ -132,7 +132,7 @@ if($result -> num_rows == 1)
 		                <a href="#" class="button primary" style="text-align:center">Projects</a>
 		                <a href="following.php" class="button primary" style="text-align:center">Following</a>
 		                <a href="myReviewList.php" class="button primary" style="text-align:center">Reviews</a>
-									  <a href="editUserProfile.php" class ="button primary" id="edit-btn"="">Edit Profile</a>
+									  <a href="editEmployeeProfile.php" class ="button primary" id="edit-btn"="">Edit Profile</a>
 
 
 		</section>
