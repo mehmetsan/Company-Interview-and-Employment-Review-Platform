@@ -90,11 +90,17 @@ if($result -> num_rows == 1)
 								<?php
 								while ($review = $result ->fetch_assoc())
                 {
-										$_SESSION['reviewID'] = $review[reviewID];
-										$var = "<a href=\"displayReview.php\" class=\"button primary\" onclick=\"\">DISPLAY</a>";
+
+										$var = "<a href=\"displayReview.php\" class=\"button primary\" onclick=\"echoHello()\">DISPLAY</a>";
 										$var2 = "<a href=\"#\" class=\"button primary\" onclick=\"\">DELETE</a>";
                     echo "<tr><td>" . $review['reviewID'] . "</td><td>" . "COMPANY" . "</td><td>" . $var . "</td><td>" . $var2  ."</td></tr>";
                 }
+
+
+								FUNCTION echoHello(){
+										$_SESSION['reviewID'] = $review['reviewID'];
+								 }
+
 								?>
 
 

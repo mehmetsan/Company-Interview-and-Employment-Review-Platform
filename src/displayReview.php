@@ -9,11 +9,16 @@
 	$connection = mysqli_connect('dijkstra.ug.bcc.bilkent.edu.tr', 'ege.marasli', '8nhmQrdt', 'ege_marasli');
 
   $reviewID = $_SESSION['reviewID'];
+	$userID = $_SESSION['userID'];
 	$query = "SELECT * FROM review WHERE reviewID = '$reviewID'";
 	$result = $connection-> query($query);
 
 	$info = $result->fetch_assoc();
 
+		$query = "SELECT * FROM employee WHERE employeeID = '$userID'";
+		$result = $connection-> query($query);
+
+		$user = $result->fetch_assoc();
  ?>
 <html>
 	<head>
@@ -60,21 +65,21 @@
             <table>
               <thead>
                 <tr>
-                  <th>Review No</th>
+                  <th>Review Information</th>
                   <th></th>
                 </tr>
               </thead>
               <tbody>
-                <tr><td>Review Information: </td>	<td></td> </tr>
-								<tr><td>Company Name: </td> <td></td> </tr>
-								<tr><td>Type: </td> <td></td> </tr>
-								<tr><td>Employment Status: </td> <td></td> </tr>
-								<tr><td>Job Title: </td> <td></td> </tr>
-								<tr><td>Date: </td> <td></td> </tr>
-								<tr><td>Rating: </td> <td></td> </tr>
-								<tr><td>Location: </td> <td></td> </tr>
-								<tr><td>Visibility: </td> <td></td> </tr>
-								<tr><td>Publisher's Name: </td> <td></td> </tr>
+                <tr><td>Review ID: </td>	<td><?php echo $info['reviewID'] ?></td> </tr>
+								<tr><td>Company Name: </td> <td>"COMPANY"</td> </tr>
+								<tr><td>Type: </td> <td>"TYPE"</td> </tr>
+								<tr><td>Employment Status: </td> <td><?php echo $info['Employment_status'] ?></td> </tr>
+								<tr><td>Job Title: </td> <td><?php echo $info['job_title'] ?></td> </tr>
+								<tr><td>Date: </td> <td><?php echo $info['publish_date'] ?></td> </tr>
+								<tr><td>Rating: </td> <td><?php echo $info['rating'] ?></td> </tr>
+								<tr><td>Location: </td> <td><?php echo $info['location'] ?></td> </tr>
+								<tr><td>Visibility: </td> <td><?php echo $info['visibility'] ?></td> </tr>
+								<tr><td>Publisher's Name: </td> <td><?php echo $user['first_name'] ?></td> </tr>
 
               </tbody>
 
@@ -82,15 +87,7 @@
           </div>
 					<pre>
 						<code>
-							i = 0;
-
-							while (!deck.isInOrder()) {
-							print 'Iteration ' + i;
-							deck.shuffle();
-							i++;
-							}
-
-							print 'It took ' + i + ' iterations to sort the deck.';
+							<?php echo $info['comment'] ?>
 						</code>
 				</pre>
           <ul>
