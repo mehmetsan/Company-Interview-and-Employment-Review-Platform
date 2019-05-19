@@ -1,9 +1,21 @@
+<?php
+	include_once 'conn.php';
+	$userID = $_SESSION['userID'];
+	$sessionquery = "SELECT * FROM employee WHERE employeeID = '$userID[userID]'";
+	$reses = $conn > query($sessionquery);
+
+	//Preperation for session based company page
+	if ($reses -> num_rows == 1){
+		$info = $reses->fetch_assoc();
+		$session_type = 'employee';
+	}
+	else if ($reses -> num_rows == 0){
+		$session_type = 'company';
+	}
+
+?>
+
 <!DOCTYPE HTML>
-<!--
-	Landed by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
 	<head>
 		<title>Landed by HTML5 UP</title>
@@ -103,8 +115,16 @@
 
 				</table>
 			</div>
-
-					<a  class ="button primary" id="edit-btn"="">Edit Profile</a>
+			<?php
+			while ($session_type == 'company')
+			{
+					$_SESSION['userID'] = $company['companyID'];
+					$var = "<a href=\"editUserProfile.php\" class=\"button primary\" onclick=\"\">Edit Profile</a>";
+					$var2 = "<a href=\"#\" class=\"button primary\" onclick=\"\">DELETE</a>";
+					echo "<tr><td>" . $company['companyID'] . "</td><td>"  . $var . "</td><td>" ;
+			}
+			?>
+					<!--<a  class ="button primary" id="edit-btn"="">Edit Profile</a>-->
           <br></br>
           <h3>ABOUT US</h3>
           <ul>
@@ -112,6 +132,7 @@
               <h1>Article Title</h1>
               <p><span class="image left"><img src="images/tayyip1.jpg" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Cras aliquet accumsan curae accumsan arcu amet egestas placerat odio morbi mi adipiscing col morbi felis faucibus in gravida sollicitudin interdum commodo. Ante aliquam vis iaculis accumsan lorem ipsum dolor sit amet nullam. Cras aliquet accumsan curae accumsan arcu amet egestas placerat odio morbi mi adipiscing col morbi felis faucibus in gravida sollicitudin interdum commodo. Ante aliquam vis iaculis accumsan lorem ipsum dolor sit amet nullam.</p>
             </div>
+
             <div>
 
               <p><span class="image right"><img src="images/adnan.jpg" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Cras aliquet accumsan curae accumsan arcu amet egestas placerat odio morbi mi adipiscing col morbi felis faucibus in gravida sollicitudin interdum commodo. Ante aliquam vis iaculis accumsan lorem ipsum dolor sit amet nullam. Cras aliquet accumsan curae accumsan arcu amet egestas placerat odio morbi mi adipiscing col morbi felis faucibus in gravida sollicitudin interdum commodo. Ante aliquam vis iaculis accumsan lorem ipsum dolor sit amet nullam.</p>
