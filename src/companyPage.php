@@ -3,6 +3,10 @@
 	$userID = $_SESSION['companyID'];
 	$query = "SELECT * FROM company WHERE companyID = '$userID'";
 	$result = $conn-> query($query);
+
+  $employeeID = $_SESSION['userID'];
+	$query = "SELECT * FROM follows WHERE employeeID = '$employeeID'";
+	$result2 = $conn-> query($query);
 ?>
 
 <!DOCTYPE HTML>
@@ -170,6 +174,19 @@
 			</div>
 
 
+			<form method="post" action="#" name = "login">
+				<ul class="actions">
+				<div class="col-6 col-12-xsmall">
+						<li><input type="submit" value="Follow Company" name ="follow" class="primary"/></li>
+				</div>
+						<li><a href="#" class="button primary fit">Display Job Offers</a><li>
+						<li><a href="#" class="button primary fit">Display Projects</a><li>
+					</ul>
+				</div>
+			</form>
+
+
+
 		</section>
 
 
@@ -187,3 +204,16 @@
 
 	</body>
 </html>
+
+<?php
+if(isset($_POST['follow']))
+{
+	$employeeID = $_SESSION['userID'];
+	$query2 = "INSERT INTO follows(employeeID , companyID)
+						VALUES('$employeeID' , '$userID')";
+
+
+	$result2 = $conn-> query($query2);
+echo "<script type='text/javascript'>window.location = 'companyPage.php' </script>";
+}
+?>
