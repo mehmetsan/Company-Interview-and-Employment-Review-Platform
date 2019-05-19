@@ -1,3 +1,6 @@
+<?php
+include_once 'conn.php';
+ ?>
 <!DOCTYPE HTML>
 <!--
 	Landed by HTML5 UP
@@ -62,93 +65,32 @@
 			<input type="submit" name="submit" value="Find">
 		</form>
 							<section>
-								<h3>Table</h3>
-								<h4>Default</h4>
+								<h4>Alternate</h4>
 								<div class="table-wrapper">
 									<table>
 										<thead>
 											<tr>
-												<th>Name</th>
-												<th>Description</th>
-												<th>Price</th>
+												<th>Company Name</th>
+												<th>Industry</th>
+												<th>Sector</th>
+                        <th>Revenue</th>
 											</tr>
 										</thead>
-										<tbody>
-											<tr>
-												<td>Item 1</td>
-												<td>Ante turpis integer aliquet porttitor.</td>
-												<td>29.99</td>
-											</tr>
-											<tr>
-												<td>Item 2</td>
-												<td>Vis ac commodo adipiscing arcu aliquet.</td>
-												<td>19.99</td>
-											</tr>
-											<tr>
-												<td>Item 3</td>
-												<td> Morbi faucibus arcu accumsan lorem.</td>
-												<td>29.99</td>
-											</tr>
-											<tr>
-												<td>Item 4</td>
-												<td>Vitae integer tempus condimentum.</td>
-												<td>19.99</td>
-											</tr>
-											<tr>
-												<td>Item 5</td>
-												<td>Ante turpis integer aliquet porttitor.</td>
-												<td>29.99</td>
-											</tr>
-										</tbody>
+                    <?php
+                        $query = "SELECT * FROM company;";
+                        $result = $conn -> query($query);
+
+                        if($result -> num_rows > 0)
+                        {
+                            while ($row = $result ->fetch_assoc())
+                            {
+                                echo "<tr><td>" . $row['name'] . "</td><td>" . $row['industry'] . "</td><td>" . $row['sector'] . "</td><td>" . $row['revenue'] . "</td></tr>";
+                            }
+                        }
+                    ?>
 										<tfoot>
 											<tr>
 												<td colspan="2"></td>
-												<td>100.00</td>
-											</tr>
-										</tfoot>
-									</table>
-								</div>
-								<h4>Alternate</h4>
-								<div class="table-wrapper">
-									<table class="alt">
-										<thead>
-											<tr>
-												<th>Name</th>
-												<th>Description</th>
-												<th>Price</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td>Item 1</td>
-												<td>Ante turpis integer aliquet porttitor.</td>
-												<td>29.99</td>
-											</tr>
-											<tr>
-												<td>Item 2</td>
-												<td>Vis ac commodo adipiscing arcu aliquet.</td>
-												<td>19.99</td>
-											</tr>
-											<tr>
-												<td>Item 3</td>
-												<td> Morbi faucibus arcu accumsan lorem.</td>
-												<td>29.99</td>
-											</tr>
-											<tr>
-												<td>Item 4</td>
-												<td>Vitae integer tempus condimentum.</td>
-												<td>19.99</td>
-											</tr>
-											<tr>
-												<td>Item 5</td>
-												<td>Ante turpis integer aliquet porttitor.</td>
-												<td>29.99</td>
-											</tr>
-										</tbody>
-										<tfoot>
-											<tr>
-												<td colspan="2"></td>
-												<td>100.00</td>
 											</tr>
 										</tfoot>
 									</table>
