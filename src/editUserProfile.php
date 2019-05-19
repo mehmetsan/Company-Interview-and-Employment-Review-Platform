@@ -48,13 +48,13 @@
         <form method="post" action="#">
           <div class="row gtr-uniform gtr-50">
             <div class="col-2 col-12-xsmall">
-              First Name <input type="text" name="first_name" id="name" value="First Name"/>
+              First Name <input type="text" name="first_name" id="first_name" value="First Name"/>
             </div>
             <div class="col-2 col-12-xsmall">
-              Middle Name <input type="text" name="middle_name" id="name" value="Middle Name"/>
+              Middle Name <input type="text" name="middle_name" id="middle_name" value="Middle Name"/>
             </div>
             <div class="col-2 col-12-xsmall">
-              Last Name <input type="text" name="last_name" id="name" value="Last Name"/>
+              Last Name <input type="text" name="last_name" id="last_name" value="Last Name"/>
             </div>
             <div class="col-2">
               Gender <select name="gender" id="gender">
@@ -65,7 +65,7 @@
               </select>
             </div>
             <div class="col-2 col-12-xsmall">
-              Position <input type="text" name="position" id="name" value="Engineer"/>
+              Position <input type="text" name="position" id="position" value="Engineer"/>
             </div>
             <div class="col-2">
               Highest Education <select name="education" id="education">
@@ -77,31 +77,31 @@
               </select>
             </div>
             <div class="col-2 col-12-xsmall">
-              Location <input type="text" name="location" id="location" value="Ankara"/>
+              Location <input type="text" name="location" id="location" value="location"/>
             </div>
             <div class="col-5 col-12-xsmall">
-              Phone Number 1 <input type="text" name="phone1" id="phone1" value="055532345432"/>
+              Phone Number 1 <input type="text" name="phone1" id="phone1" value="phone1"/>
             </div>
             <div class="col-5 col-12-xsmall">
-              Phone Number 2 <input type="text" name="phone2" id="phone2" value="0532123131"/>
+              Phone Number 2 <input type="text" name="phone2" id="phone2" value="phone1"/>
             </div>
             <div class="col-6 col-12-xsmall">
-              Email <input type="text" name="email" id="email" value="ege.marasli@ug.com"/>
+              Email <input type="text" name="mail" id="mail" value="mail"/>
             </div>
             <div class="col-6 col-12-xsmall">
-              Password <input type="text" name="password" id="password" value="123456"/>
+              Password <input type="text" name="password" id="password" value="password"/>
             </div>
-            <div class="col-12">
-              <ul class="actions">
-                <li><input type="submit" value="Update" class="primary" /></li>
-              </ul>
-            </div>
+						<div class="col-12">
+							<ul class="actions">
+								<li><input type="submit" value="submit" name ="submit" class="primary"/></li>
+							</ul>
+						</div>
           </div>
         </form>
       </section>
 
 
-		<!-- Scripts -->
+		<!-- Scripts
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.scrolly.min.js"></script>
 			<script src="assets/js/jquery.dropotron.min.js"></script>
@@ -111,6 +111,43 @@
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 			<script src="assets/js/editUserProfile.js"></script>
-
+-->
 	</body>
 </html>
+<?php
+
+if(isset($_POST['submit']))
+{
+	$new_first_name = $_POST['first_name'];
+	$new_middle_name = $_POST['middle_name'];
+	$new_last_name = $_POST['last_name'];
+	$new_gender = $_POST['gender'];
+	$new_position = $_POST['position'];
+	$new_education = $_POST['education'];
+	$new_location = $_POST['location'];
+	$new_phone1 = $_POST['phone1'];
+	$new_phone2 = $_POST['phone2'];
+	$new_mail = $_POST['mail'];
+	$new_education = $_POST['education'];
+	$new_password = $_POST['password'];
+
+
+
+			$query = "SELECT * FROM user WHERE userID = '$userID' ";
+			$result = $conn-> query($query);
+
+			$query_emp = "SELECT * FROM employee WHERE employeeID = '$userID' ";
+			$result_emp = $conn-> query($query_emp);
+
+				if($result -> num_rows == 1)
+				{
+				$sql = "UPDATE user SET mail = '$new_mail' WHERE userID = '$userID'";
+				$act = $conn-> query($sql);
+				if($act){
+					$message = "Profile is updated succesfully";
+					echo "<script type='text/javascript'>alert('$message');
+					window.location = 'home_page.php' </script>";
+				}
+				}
+}
+?>
