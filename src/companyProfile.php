@@ -23,10 +23,10 @@
 
 	<body class="is-preload landing">
     <header id="header">
-      <h1 id="logo"><a href="index.php"></a></h1>
+      <h1 id="logo"><a href="home_page.php"></a></h1>
       <nav id="nav">
         <ul>
-          <li><a href="index.php">Home</a></li>
+          <li><a href="home_page.php">Home</a></li>
           <li><a href="index.php">Logout</a></li>
         </ul>
       </nav>
