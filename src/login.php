@@ -133,9 +133,33 @@ if(! $connection)
               $userID = $result->fetch_assoc();
 
               $_SESSION['userID'] = $userID[userID];
-							header("Location: userProfile.php");
 
+
+              /*
+              SESSION TRIAL
+              */
+
+              $sessionquery = "SELECT * FROM employee WHERE employeeID = '$userID[userID]'";
+              $reses = $connection-> query($sessionquery);
+              if ($reses -> num_rows == 1){
+                $message = "employee logged in";
+                echo "<script type='text/javascript'>alert('$message');
+                window.location = 'home_page.php' </script>";
+              }
+              else if ($reses -> num_rows == 0){
+              /*
+              SESSION TRIAL
+              */
+              $message = "company logged in";
+              echo "<script type='text/javascript'>alert('$message');
+              window.location = 'home_page.php' </script>";
+							//header("Location: userProfile.php");
 						}
+            /*
+            SESSION TRIAL
+            */
+
+
 						else
 						{
               $message = "Incorrect mail or password";
@@ -145,4 +169,5 @@ if(! $connection)
 
 
 		}
+  }
 		?>
