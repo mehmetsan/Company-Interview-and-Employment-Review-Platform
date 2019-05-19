@@ -52,6 +52,15 @@
 							<p>Ipsum dolor feugiat aliquam tempus sed magna lorem consequat accumsan</p>
 						</header>
 						<!-- Table -->
+            <form method="post" action="search.php">
+			<input type="text" name="q" placeholder="Search Company">
+			<select name="column">
+				<option value="">Select Filter</option>
+				<option value="Name">First Name</option>
+				<option value="lastName">Last Name</option>
+			</select>
+			<input type="submit" name="submit" value="Find">
+		</form>
 							<section>
 								<h3>Table</h3>
 								<h4>Default</h4>
