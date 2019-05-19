@@ -93,7 +93,7 @@ if($result -> num_rows == 1)
 								while ($review = $result ->fetch_assoc())
                 {
 										$reviewID =  $review['reviewID'];
-
+									//	$var = "<a href=\"#\" type=\"display\" name=\"disp\" value=$reviewID class=\"primary\" >DISPLAY</a>";
 									$var=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$reviewID\" name =\"submit\" class=\"primary\"/></li>	</ul>	</div>	</form>
   								</section>";
 										$var2 = "<a href=\"#\" class=\"button primary\" onclick=\"\">DELETE</a>";
@@ -105,15 +105,12 @@ if($result -> num_rows == 1)
 									$message =$_POST['submit'];
 									$_SESSION['reviewID'] = $message;
 									header("Location: displayReview.php");
+								//	echo "<script type='text/javascript'>alert('$message');</script>";
+								//	$_SESSION['reviewID'] = $_GET['id'];
 
 								}
 
-
-
-
-
-
-
+								?>
               </tbody>
             </table>
           </div>
