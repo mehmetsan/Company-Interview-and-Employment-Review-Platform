@@ -27,7 +27,7 @@ if($result -> num_rows == 1)
 {
 	$info = $result->fetch_assoc();
 	$query = "SELECT * FROM review WHERE reviewID = '$info[reviewID]'";
-	$result = $connn-> query($query);
+	$result = $conn-> query($query);
 	//$review = $result->fetch_assoc();
 
 }
@@ -98,8 +98,8 @@ if($result -> num_rows == 1)
 									//	$var = "<a href=\"#\" type=\"display\" name=\"disp\" value=$reviewID class=\"primary\" >DISPLAY</a>";
 									$var=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$reviewID\" name =\"submit\" class=\"primary\"/></li>	</ul>	</div>	</form>
   								</section>";
-										$var2 = "<a href=\"#\" class=\"button primary\" onclick=\"\">DELETE</a>";
-                    echo "<tr><td>" . $review['reviewID'] . "</td><td>" . "COMPANY" . "</td><td>" . $reviewType . "</td><td>" . $var . "</td><td>" . $var2  ."</td></tr>";
+
+                    echo "<tr><td>" . $review['reviewID'] . "</td><td>" . "COMPANY" . "</td><td>" . $reviewType . "</td><td>" . $var  ."</td></tr>";
 
 
                 }

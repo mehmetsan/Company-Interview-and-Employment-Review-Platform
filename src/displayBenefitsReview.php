@@ -95,13 +95,28 @@ include_once 'conn.php';
 						<code>
 							<?php echo $info['comment'] ?>
 						</code>
-				</pre>
-          <ul>
+				  </pre>
+          </section>
 
-            <div>
-                <a href="userProfile.php" class="button primary" style="text-align:center">My Profile</a>
-            </div>
-          </ul>
+          <section>
+            <form method="post" action="#" name = "login">
+
+                <div class="col-12">
+                  <ul class="actions">
+                    <li><input type="submit" value="DELETE REVIEW" name ="submit" class="primary"/><li>
+                  </ul>
+                </div>
+
+                <div class="col-12">
+                  <ul class="actions">
+                    <li> <input type="submit" value="MY PROFILE" name ="submit" class="primary"/><li>
+                  </ul>
+                </div>
+
+            </form>
+          </section>
+
+
 
 		</div>
 
@@ -117,3 +132,22 @@ include_once 'conn.php';
 
 	</body>
 </html>
+
+
+<?php
+if(isset($_POST['submit'])){
+  if($_POST['submit'] == "MY PROFILE"){
+    header("Location: userProfile.php");
+  }
+
+  else{
+    $query = "DELETE FROM review WHERE reviewID = '$reviewID'";
+  	$result = $conn-> query($query);
+    $message = "YOUR REVIEW HAS BEEN DELETED!!";
+    echo "<script type='text/javascript'>alert('$message');</script>";
+      header("Location: myReviewList.php");
+  }
+}
+
+
+?>
