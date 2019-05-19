@@ -155,6 +155,11 @@ if(! $connection)
               window.location = 'home_page.php' </script>";
 							//header("Location: userProfile.php");
 						}
+            /*
+            SESSION TRIAL
+            */
+
+
 						else
 						{
               $message = "Incorrect mail or password";
