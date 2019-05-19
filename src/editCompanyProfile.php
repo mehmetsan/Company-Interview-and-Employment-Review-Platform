@@ -4,6 +4,16 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
+<?php
+	include_once 'conn.php';
+	$companyID = $_SESSION['userID'];
+
+	$query = "SELECT * FROM company WHERE companyID = '$companyID'";
+	$result = $conn-> query($query);
+	$arr = $result ->fetch_assoc();
+
+?>
+
 <html>
 	<head>
 		<title>Landed by HTML5 UP</title>
@@ -79,12 +89,13 @@
             </div>
             <div class="col-12">
               <ul class="actions">
-                <li><input type="submit" value="Update" class="primary" /></li>
+                <li><input type="submit" value="Update" name="update" class="primary" /></li>
               </ul>
             </div>
           </div>
         </form>
       </section>
+
 
 
 		<!-- Scripts -->
@@ -100,3 +111,32 @@
 
 	</body>
 </html>
+
+<?php
+$connection = mysqli_connect('dijkstra.ug.bcc.bilkent.edu.tr', 'ege.marasli', '8nhmQrdt', 'ege_marasli');
+
+	if(isset($_POST['update']))
+	{
+		$message = "Incorrect mail or password";
+
+
+		$newName = $_POST['name'];
+		$newWebsite = $_POST['website'];
+		$newIndustry = $_POST['industry'];
+		$newSector = $_POST['sector'];
+		$newRevenue = $_POST['revenue'];
+		$newEstablishDate = $_POST['establish_date'];
+		$newType = $_POST['type'];
+		$newHeadquarter= $_POST['headquarter'];
+		$newMail = $_POST['email'];
+		$newPassword = $_POST['password'];
+		$newPhoneNumber1 = $_POST['phone1'];
+		$newPhoneNumber2 = $_POST['phone2'];
+
+		$query = "UPDATE company SET name = '$newName', website='$newWebsite', industry ='$newIndustry',sector ='$newSector', revenue ='$newRevenue', establish_date ='$newEstablishDate', type ='$newType',headquarter ='$newHeadquarter' WHERE companyID = $companyID;";
+		$result = $connection-> query($query);
+
+		$query2 = "UPDATE user SET mail ='$newMail', password ='$newPassword', phone_number1 ='$newPhoneNumber1', phone_number2 ='$newPhoneNumber2' WHERE userID = $companyID;";
+		$result = $connection-> query($query2);
+	}
+ ?>
