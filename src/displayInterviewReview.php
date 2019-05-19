@@ -79,7 +79,7 @@ include_once 'conn.php';
               <tbody>
                 <tr><td>Review ID: </td>	<td><?php echo $info['reviewID'] ?></td> </tr>
 								<tr><td>Company Name: </td> <td>"COMPANY"</td> </tr>
-								<tr><td>Employment Status: </td> <td><?php echo $info['Employment_status'] ?></td> </tr>
+								<tr><td>Employment Status: </td> <td><?php if($info['Employment_status'] == 1 ) echo "WORKING"; else echo "NOT WORKING"; ?></td> </tr>
 								<tr><td>Job Title: </td> <td><?php echo $info['job_title'] ?></td> </tr>
 								<tr><td>Date: </td> <td><?php echo $info['publish_date'] ?></td> </tr>
 								<tr><td>Rating: </td> <td><?php echo $info['rating'] ?></td> </tr>
