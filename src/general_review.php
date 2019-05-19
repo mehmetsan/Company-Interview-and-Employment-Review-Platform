@@ -56,9 +56,6 @@
         											<div class="col-12 col-12-xsmall">
         												<input type="text" name="location" id="location" value="" placeholder="Location" />
         											</div>
-                              <div class="col-12 col-12-xsmall">
-        												<input type="text" name="salary" id="salary" value="" placeholder="Salary" />
-        											</div>
 															<div class="col-12">
 																<textarea name="comment" id="comment" placeholder="Enter your comments about the review here..." rows="6"></textarea>
 															</div>
