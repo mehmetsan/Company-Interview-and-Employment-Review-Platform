@@ -58,7 +58,7 @@ include_once 'conn.php';
             <form method="post" action="#">
 			<input type="text" name="search" placeholder="Search Company">
 			<select name="filter">
-				<option value="">Select Filter</option>
+				<option value="all">Select Filter(All show all companies)</option>
 				<option value="name">Company Name</option>
 				<option value="industry">Industry</option>
         <option value="sector">Sector</option>
@@ -82,21 +82,22 @@ include_once 'conn.php';
                         {
                           $filter = $_POST['filter'];
                           $search = $_POST['search'];
-                          $query = "SELECT * FROM company where $filter = '$search';";
-
-                          $result = $conn -> query($query);
-
-                          if($result -> num_rows > 0)
+                          if($filter == 'all')
                           {
-                              while ($row = $result ->fetch_assoc())
-                              {
-                                  echo "<tr><td>" . $row['name'] . "</td><td>" . $row['industry'] . "</td><td>" . $row['sector'] . "</td><td>" . $row['revenue'] . "</td></tr>";
-                              }
+                            $query = "SELECT * FROM company;";
+                            $result = $conn -> query($query);
+
+                            if($result -> num_rows > 0)
+                            {
+                                while ($row = $result ->fetch_assoc())
+                                {
+                                    echo "<tr><td>" . $row['name'] . "</td><td>" . $row['industry'] . "</td><td>" . $row['sector'] . "</td><td>" . $row['revenue'] . "</td></tr>";
+                                }
+                            }
                           }
-                          /*
-                          if($filter == "name")
+                          else
                           {
-                            $query = "SELECT * FROM company where name = '$search';";
+                            $query = "SELECT * FROM company where $filter LIKE '%$search%';";
 
                             $result = $conn -> query($query);
 
@@ -108,36 +109,6 @@ include_once 'conn.php';
                                 }
                             }
                           }
-                          else if($filter == "industry")
-                          {
-                            $query = "SELECT * FROM company where industry = '$search';";
-
-                            $result = $conn -> query($query);
-
-                            if($result -> num_rows > 0)
-                            {
-                                while ($row = $result ->fetch_assoc())
-                                {
-                                    echo "<tr><td>" . $row['name'] . "</td><td>" . $row['industry'] . "</td><td>" . $row['sector'] . "</td><td>" . $row['revenue'] . "</td></tr>";
-                                }
-                            }
-                          }
-                          else if($filter == "sector")
-                          {
-                            $query = "SELECT * FROM company where sector = '$search';";
-
-                            $result = $conn -> query($query);
-
-                            if($result -> num_rows > 0)
-                            {
-                                while ($row = $result ->fetch_assoc())
-                                {
-                                    echo "<tr><td>" . $row['name'] . "</td><td>" . $row['industry'] . "</td><td>" . $row['sector'] . "</td><td>" . $row['revenue'] . "</td></tr>";
-                                }
-                            }
-                          }*/
-
-
                         }
                         else
                         {
