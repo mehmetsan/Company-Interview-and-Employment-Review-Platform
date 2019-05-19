@@ -80,6 +80,8 @@ function findReviewType($reviewID)
   if( $result -> num_rows != 0){
     $review_type = "general_review";
   }
-  $review_type = "None";
+  //$review_type = "None";
+
+  return $review_type;
 }
 ?>
