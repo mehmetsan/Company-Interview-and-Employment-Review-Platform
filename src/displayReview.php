@@ -4,19 +4,22 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
+
 <?php
-	session_start();
-	$connection = mysqli_connect('dijkstra.ug.bcc.bilkent.edu.tr', 'ege.marasli', '8nhmQrdt', 'ege_marasli');
+
+include_once 'conn.php';
+
 
   $reviewID = $_SESSION['reviewID'];
+	$reviewType = findReviewType($reviewID);
 	$userID = $_SESSION['userID'];
 	$query = "SELECT * FROM review WHERE reviewID = '$reviewID'";
-	$result = $connection-> query($query);
+	$result = $conn-> query($query);
 
 	$info = $result->fetch_assoc();
 
 		$query = "SELECT * FROM employee WHERE employeeID = '$userID'";
-		$result = $connection-> query($query);
+		$result = $conn-> query($query);
 
 		$user = $result->fetch_assoc();
  ?>

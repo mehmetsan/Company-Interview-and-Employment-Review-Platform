@@ -51,31 +51,32 @@ function isMailExist($email)
 function findReviewType($reviewID)
 {
   $conn = mysqli_connect('dijkstra.ug.bcc.bilkent.edu.tr', 'ege.marasli', '8nhmQrdt', 'ege_marasli');
+  $review_type = "";
 
   if(! $conn)
   {
       die('Connection Error!!! ' . mysqli_error());
   }
 
-  $query = "SELECT * FROM salary_review WHERE reveiwID = '$reviewID' ";
+  $query = "SELECT * FROM salary_review WHERE reviewID = '$reviewID' ";
   $result = $conn-> query($query);
   if( $result -> num_rows != 0){
     $review_type = "salary_review";
   }
 
-  $query = "SELECT * FROM interview_review WHERE reveiwID = '$reviewID' ";
+  $query = "SELECT * FROM interview_review WHERE reviewID = '$reviewID' ";
   $result = $conn-> query($query);
   if( $result -> num_rows != 0){
     $review_type = "interview_review";
   }
 
-  $query = "SELECT * FROM benefits_review WHERE reveiwID = '$reviewID' ";
+  $query = "SELECT * FROM benefits_review WHERE reviewID = '$reviewID' ";
   $result = $conn-> query($query);
   if( $result -> num_rows != 0){
     $review_type = "benefits_review";
   }
 
-  $query = "SELECT * FROM general_review WHERE reveiwID = '$reviewID' ";
+  $query = "SELECT * FROM general_review WHERE reviewID = '$reviewID' ";
   $result = $conn-> query($query);
   if( $result -> num_rows != 0){
     $review_type = "general_review";
