@@ -88,20 +88,39 @@ if($result -> num_rows == 1)
               </thead>
               <tbody>
 								<?php
+
+
 								while ($review = $result ->fetch_assoc())
                 {
-
-										$var = "<a href=\"displayReview.php\" class=\"button primary\" onclick=\"echoHello()\">DISPLAY</a>";
+										$reviewID =  $review['reviewID'];
+									//	$var = "<a href=\"#\" type=\"display\" name=\"disp\" value=$reviewID class=\"primary\" >DISPLAY</a>";
+									$var=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$reviewID\" name =\"submit\" class=\"primary\"/></li>	</ul>	</div>	</form>
+  								</section>";
 										$var2 = "<a href=\"#\" class=\"button primary\" onclick=\"\">DELETE</a>";
                     echo "<tr><td>" . $review['reviewID'] . "</td><td>" . "COMPANY" . "</td><td>" . $var . "</td><td>" . $var2  ."</td></tr>";
+
+
                 }
+								if(isset($_POST['submit'])){
+									$message =$_POST['submit'];
+									$_SESSION['reviewID'] = $message;
+									header("Location: displayReview.php");
+								//	echo "<script type='text/javascript'>alert('$message');</script>";
+								//	$_SESSION['reviewID'] = $_GET['id'];
 
+								}
 
-								FUNCTION echoHello(){
-										$_SESSION['reviewID'] = $review['reviewID'];
-								 }
+								function echoHello() {
+
+								}
 
 								?>
+								<script type = 'text/javascript'>
+									function hello(){
+										<?php echoHello(); ?>;
+									}
+								</script>
+
 
 
 
