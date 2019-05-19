@@ -4,6 +4,32 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
+
+<?php
+/*
+References
+https://www.youtube.com/watch?v=J5RHnJCy8AE
+*/
+session_start();
+$connection = mysqli_connect('dijkstra.ug.bcc.bilkent.edu.tr', 'ege.marasli', '8nhmQrdt', 'ege_marasli');
+
+if(! $connection)
+{
+    die('Connection Error!!! ' . mysqli_error());
+}
+
+$userID = $_SESSION['userID'];
+
+$query = "SELECT * FROM user WHERE userID = '$userID'";
+$result = $connection-> query($query);
+
+if($result -> num_rows == 1)
+{
+	$info = $result->fetch_assoc();
+}
+
+?>
+
 <html>
 	<head>
 		<title>Landed by HTML5 UP</title>
@@ -68,7 +94,7 @@
 						</tr>
 						<tr>
 							<td>Password</td>
-							<td class ="test" id="here">Mehmet</td>
+							<td class ="test" id="here">$result</td>
 						</tr>
 					</tbody>
 
