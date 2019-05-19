@@ -87,11 +87,15 @@ include_once 'conn.php';
 												<th>Sector</th>
                         <th>Revenue</th>
                         <th>Headquarter</th>
+                        <th>Link to Company Page</th>
 											</tr>
 										</thead>
+                    <tbody>
                     <?php
-                        if(isset($_POST['submit']))
-                        {
+                    ob_start();
+                    if(isset($_POST['submit']))
+                    {
+
                           $filter = $_POST['filter'];
                           $search = $_POST['search'];
                           if($filter == 'all')
@@ -101,10 +105,18 @@ include_once 'conn.php';
 
                             if($result -> num_rows > 0)
                             {
+
                                 while ($row = $result ->fetch_assoc())
                                 {
-                                    echo "<tr><td>" . $row['name'] . "</td><td>" . $row['industry'] . "</td><td>" . $row['sector'] . "</td><td>" . $row['revenue'] . "</td><td>" . $row['headquarter'] ."</td></tr>";
+                                  $companyID = $row['companyID'];
+                                  //$var2=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$companyID\" name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>	</section>";
+
+                                  $var=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$companyID name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
+                                  </section>";
+                                    echo "<tr><td>" . $row['name'] . "</td><td>" . $row['industry'] . "</td><td>" . $row['sector'] . "</td><td>" . $row['revenue'] . "</td><td>" . $row['headquarter'] . "</td><td>" . $var ."</td></tr>";
                                 }
+
+
                             }
                           }
                           else
@@ -115,26 +127,32 @@ include_once 'conn.php';
 
                             if($result -> num_rows > 0)
                             {
-                                while ($row = $result ->fetch_assoc())
-                                {
-                                    echo "<tr><td>" . $row['name'] . "</td><td>" . $row['industry'] . "</td><td>" . $row['sector'] . "</td><td>" . $row['revenue'] . "</td><td>" . $row['headquarter'] ."</td></tr>";
-                                }
+                              while ($row = $result ->fetch_assoc())
+                              {
+                                $companyID = $row['companyID'];
+                                $var=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$companyID\" name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
+                                </section>";
+                                  echo "<tr><td>" . $row['name'] . "</td><td>" . $row['industry'] . "</td><td>" . $row['sector'] . "</td><td>" . $row['revenue'] . "</td><td>" . $row['headquarter'] . "</td><td>" . $var ."</td></tr>";
+                              }
+
                             }
-                          }
                         }
+                      }
+
                         else if(isset($_POST['ascending_sort']))
                         {
                           $filter = $_POST['sort'];
                           $query = "SELECT * FROM company ORDER BY $filter ASC;";
                           $result = $conn -> query($query);
 
-                          if($result -> num_rows > 0)
+                          while ($row = $result ->fetch_assoc())
                           {
-                              while ($row = $result ->fetch_assoc())
-                              {
-                                  echo "<tr><td>" . $row['name'] . "</td><td>" . $row['industry'] . "</td><td>" . $row['sector'] . "</td><td>" . $row['revenue'] . "</td><td>" . $row['headquarter'] ."</td></tr>";
-                              }
+                            $companyID = $row['companyID'];
+                            $var=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$companyID\" name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
+                            </section>";
+                              echo "<tr><td>" . $row['name'] . "</td><td>" . $row['industry'] . "</td><td>" . $row['sector'] . "</td><td>" . $row['revenue'] . "</td><td>" . $row['headquarter'] . "</td><td>" . $var ."</td></tr>";
                           }
+
                         }
                         else if(isset($_POST['descending_sort']))
                         {
@@ -145,10 +163,15 @@ include_once 'conn.php';
 
                           if($result -> num_rows > 0)
                           {
-                              while ($row = $result ->fetch_assoc())
-                              {
-                                  echo "<tr><td>" . $row['name'] . "</td><td>" . $row['industry'] . "</td><td>" . $row['sector'] . "</td><td>" . $row['revenue'] . "</td><td>" . $row['headquarter'] ."</td></tr>";
-                              }
+                            while ($row = $result ->fetch_assoc())
+                            {
+                              $companyID = $row['companyID'];
+                              $var=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$companyID\" name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
+                              </section>";
+                                echo "<tr><td>" . $row['name'] . "</td><td>" . $row['industry'] . "</td><td>" . $row['sector'] . "</td><td>" . $row['revenue'] . "</td><td>" . $row['headquarter'] . "</td><td>" . $var ."</td></tr>";
+                            }
+
+
                           }
                         }
                         else
@@ -158,19 +181,35 @@ include_once 'conn.php';
 
                           if($result -> num_rows > 0)
                           {
-                              while ($row = $result ->fetch_assoc())
-                              {
-                                  echo "<tr><td>" . $row['name'] . "</td><td>" . $row['industry'] . "</td><td>" . $row['sector'] . "</td><td>" . $row['revenue'] . "</td><td>" . $row['headquarter'] ."</td></tr>";
-                              }
+                            while ($row = $result ->fetch_assoc())
+                            {
+                              $companyID = $row['companyID'];
+                              $var=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$companyID\" name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
+                              </section>";
+                                echo "<tr><td>" . $row['name'] . "</td><td>" . $row['industry'] . "</td><td>" . $row['sector'] . "</td><td>" . $row['revenue'] . "</td><td>" . $row['headquarter'] . "</td><td>" . $var ."</td></tr>";
+                            }
+
+
                           }
                         }
 
                     ?>
+                    </tbody>
 										<tfoot>
 											<tr>
 												<td colspan="2"></td>
 											</tr>
 										</tfoot>
+
 									</table>
 								</div>
 							</section>
+
+              <?php
+              if(isset($_POST['link']))
+              {
+                $message =$_POST['link'];
+                $_SESSION['companyID'] = $message;
+                header("Location: companyPage.php");
+              }
+               ?>

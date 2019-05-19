@@ -2825,6 +2825,8 @@ form {
 		white-space: nowrap;
 	}
 
+	.button.submit
+
 		input[type="submit"]:hover, input[type="submit"]:active,
 		input[type="reset"]:hover,
 		input[type="reset"]:active,
@@ -2881,12 +2883,10 @@ form {
 			color: #ffffff !important;
 		}
 
-		input[type="button"].login,
-		.button.login {
-			margin-left: 37.25em;
-			background-color: #e44c65;
-			box-shadow: none;
-			color: #ffffff !important;
+		input[type="submit"].noText,
+		.submit.noText {
+			font-size: 0%;
+
 		}
 
 			input[type="submit"].primary:hover,
@@ -2897,7 +2897,7 @@ form {
 			}
 
 			input[type="button"].login:hover,
-			.button.login:hover {
+			.button.noText:hover {
 				background-color: #e76278;
 			}
 
@@ -2909,7 +2909,7 @@ form {
 			}
 
 			input[type="button"].login:active,
-			.button.login:active {
+			.button.noText:active {
 				background-color: #e13652;
 			}
 
@@ -3236,7 +3236,7 @@ form {
 			}
 
 			.wrapper.style2 input[type="button"].login,
-			.wrapper.style2 .button.login {
+			.wrapper.style2 .button.noText {
 				background-color: #ffffff;
 				color: #e44c65 !important;
 			}
@@ -3251,7 +3251,7 @@ form {
 				.wrapper.style2 input[type="button"].primary:active,
 
 				.wrapper.style2 .button.primary:hover,
-				.wrapper.style2 .button.login:hover,
+				.wrapper.style2 .button.noText:hover,
 				.wrapper.style2 .button.primary:active {
 					background-color: rgba(255, 255, 255, 0.075) !important;
 					box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5) !important;
@@ -3262,7 +3262,7 @@ form {
 				.wrapper.style2 input[type="reset"].primary:active,
 				.wrapper.style2 input[type="button"].primary:active,
 				.wrapper.style2 input[type="button"].login:active,
-				.wrapper.style2 .button.login:active,
+				.wrapper.style2 .button.noText:active,
 				.wrapper.style2 .button.primary:active {
 					background-color: rgba(255, 255, 255, 0.25) !important;
 				}

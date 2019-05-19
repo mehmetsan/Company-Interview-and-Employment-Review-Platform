@@ -170,14 +170,16 @@ if(! $connection)
             */
 
 
-						else
-						{
-              $message = "Incorrect mail or password";
-              echo "<script type='text/javascript'>alert('$message');</script>";
-
-						}
 
 
 		}
+
+    else
+    {
+      $message = "Incorrect mail or password";
+      echo "<script type='text/javascript'>alert('$message');</script>";
+
+    }
+
   }
 		?>
