@@ -169,10 +169,13 @@
 				</table>
 			</div>
 			<div class="col-6 col-12-xsmall">
-				<ul>
+				<ul class="actions">
 					<li><a href="editCompanyProfile.php" class="button primary fit">Edit profile</a></li>
+					<li><a href="createJob.php" class="button primary fit">Create a Job</a></li>
+					<li><a href="createProject.php" class="button primary fit">Create a Project</a></li>
 				</ul>
 			</div>
+
 
 		</section>
 

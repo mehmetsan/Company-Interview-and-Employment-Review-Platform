@@ -56,19 +56,19 @@
         <form method="post" action="#">
           <div class="row gtr-uniform gtr-50">
             <div class="col-2 col-12-xsmall">
-              Name <input type="text" name="name" id="name" value= "Name" />
+              Name <input type="text" name="name" id="name" value= <?php echo $arr['name']  ?> />
             </div>
             <div class="col-2 col-12-xsmall">
-              Website <input type="text" name="website" id="website" value= "Website"/>
+              Website <input type="text" name="website" id="website" value= <?php echo $arr['website']  ?>/>
             </div>
             <div class="col-2 col-12-xsmall">
-              Industry <input type="text" name="industry" id=industry"" value="Industry" />
+              Industry <input type="text" name="industry" id=industry"" value=<?php echo $arr['industry']  ?> />
             </div>
             <div class="col-2 col-12-xsmall">
               Sector <input type="text" name="sector" id="sector" value="Sector"/>
             </div>
             <div class="col-2 col-12-xsmall">
-              Revenue <input type="text" name="revenue" id="revenue" value="Revenue">
+              Revenue <input type="text" name="revenue" id="revenue" value=<?php echo $arr['revenue']  ?>>
             </div>
 						<div class="col-2 col-12-xsmall">
               Establish_date <input type="text" name="establish_date" id="establish_date" value="Establish Date"/>
