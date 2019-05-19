@@ -130,7 +130,11 @@ if(! $connection)
 						if($result -> num_rows == 1)
 						{
 						//	$_SESSION["cid"] = $pass;
-							header("Location: home_page.php");
+              $userID = $result->fetch_assoc();
+
+              $_SESSION['userID'] = $userID[userID];
+							header("Location: userProfile.php");
+
 						}
 						else
 						{
@@ -138,6 +142,7 @@ if(! $connection)
               echo "<script type='text/javascript'>alert('$message');</script>";
 
 						}
+
 
 		}
 		?>
