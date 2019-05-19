@@ -58,31 +58,31 @@
               Industry <input type="text" name="industry" id=industry"" value=<?php echo $arr['industry']  ?> />
             </div>
             <div class="col-2 col-12-xsmall">
-              Sector <input type="text" name="sector" id="sector" value=<?php echo $arr['sector']  ?>/>
+              Sector <input type="text" name="sector" id="sector" value="Sector"/>
             </div>
             <div class="col-2 col-12-xsmall">
               Revenue <input type="text" name="revenue" id="revenue" value=<?php echo $arr['revenue']  ?>>
             </div>
 						<div class="col-2 col-12-xsmall">
-              Establish_date <input type="text" name="establish_date" id="establish_date" value=<?php echo $arr['establish_date']  ?>/>
+              Establish_date <input type="text" name="establish_date" id="establish_date" value="Establish Date"/>
             </div>
 						<div class="col-2 col-12-xsmall">
-              Type <input type="text" name="type" id="type" value=<?php echo $arr['type']  ?>/>
+              Type <input type="text" name="type" id="type" value="Type"/>
             </div>
 						<div class="col-2 col-12-xsmall">
-              Headquarter <input type="text" name="headquarter" id="headquarter" value=<?php echo $arr['headquarter']  ?>/>
+              Headquarter <input type="text" name="headquarter" id="headquarter" value="Headquarter"/>
             </div>
             <div class="col-5 col-12-xsmall">
-              Phone Number 1 <input type="text" name="phone1" id="phone1" value=<?php echo $arr2['phone_number1']  ?>/>
+              Phone Number 1 <input type="text" name="phone1" id="phone1" value="Phone1"/>
             </div>
             <div class="col-5 col-12-xsmall">
-              Phone Number 2 <input type="text" name="phone2" id="phone2" value=<?php echo $arr2['phone_number2']  ?>>/>
+              Phone Number 2 <input type="text" name="phone2" id="phone2" value="Phone2"/>
             </div>
             <div class="col-6 col-12-xsmall">
-              Email <input type="text" name="email" id="email" value=<?php echo $arr2['mail']  ?>/>
+              Email <input type="text" name="email" id="email" value="Mail"/>
             </div>
             <div class="col-6 col-12-xsmall">
-              Password <input type="text" name="password" id="password" value="<?php echo $arr2['password']  ?>"/>
+              Password <input type="text" name="password" id="password" value="Password"/>
             </div>
             <div class="col-12">
               <ul class="actions">
@@ -105,7 +105,7 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-			<script src="assets/js/editUserProfile.js"></script>
+			<script src="assets/js/editemployeeProfile.js"></script>
 
 	</body>
 </html>

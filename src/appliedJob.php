@@ -74,7 +74,7 @@
             </div>
             <br>
             <div>
-                <a href="userProfile.php" class="button primary" style="text-align:center">My Profile</a>
+                <a href="employeeProfile.php" class="button primary" style="text-align:center">My Profile</a>
             </div>
           </ul>
 
