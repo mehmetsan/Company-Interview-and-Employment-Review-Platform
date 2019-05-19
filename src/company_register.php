@@ -1,15 +1,5 @@
 <?php
-/*
-References
-https://www.youtube.com/watch?v=J5RHnJCy8AE
-*/
-session_start();
-$connection = mysqli_connect('dijkstra.ug.bcc.bilkent.edu.tr', 'ege.marasli', '8nhmQrdt', 'ege_marasli');
-
-if(! $connection)
-{
-    die('Connection Error!!! ' . mysqli_error());
-}
+include_once 'conn.php';
 ?>
 <!DOCTYPE HTML>
 <!--
@@ -77,9 +67,12 @@ if(! $connection)
 												<input type="text" name="name" id="name" value="" placeholder="*Name" />
 											</div>
 											<div class="col-4 col-12-xsmall">
-												<input type="text" name="sector" id="sector" value="" placeholder="Sector" />
+												<input type="text" name="sector" id="sector" value="" placeholder="*Sector" />
 											</div>
-											<div class="col-4 col-12-xsmall">
+                      <div class="col-3 col-12-xsmall">
+                        <input type="text" name="industry" id="industry" value="" placeholder="*Industry" />
+                      </div>
+											<div class="col-3 col-12-xsmall">
 												<input type="text" name="headquarter" id="headquarter" value="" placeholder="*Headquarter" />
 											</div>
 											<div class="col-6 col-12-xsmall">
@@ -88,23 +81,19 @@ if(! $connection)
 											<div class="col-6 col-12-xsmall">
 												<input type="password" name="password" id="password" value="" placeholder="*Password" />
 											</div>
-											<div class="col-12">
+											<div class="col-6">
 												<select name="type" id="type">
-													<option value="">*Type</option>
-													<option value="1">Private</option>
-													<option value="2">Public</option>
+													<option value="">Type</option>
+													<option value="Private">Private</option>
+													<option value="Public">Public</option>
 												</select>
 											</div>
 											<div class="col-12-medium">
-												Establish Date: <input type="date" style="background-color:black;" name="establish_date">
-											</div>
-											<div class="col-12-medium">
-												<input type="checkbox" id="human" name="human" checked>
-												<label for="human">I am a human and not a robot</label>
+												*Establish Date: <input type="date" style="background-color:black;" name="establish_date">
 											</div>
 											<div class="col-12">
 												<ul class="actions">
-													<li><input type="submit" value="Sign Up" name ="submit" class="primary"/></li>
+													<li><input type="submit" value="Sign Up" name ="submit" class="primary"  onclick="isEmptyCompany()"/></li>
 													<li><input type="reset" value="Reset" /></li>
 												</ul>
 											</div>
@@ -119,71 +108,69 @@ if(! $connection)
 </html>
 
 
-
+<script>
+    function isEmptyCompany()
+    {
+        name = document.forms["sign"]["name"].value;
+        sector = document.forms["sign"]["sector"].value;
+        industry = document.forms["sign"]["industry"].value;
+				headquarter = document.forms["sign"]["headquarter"].value;
+				email = document.forms["sign"]["email"].value;
+        password = document.forms["sign"]["password"].value;
+				type = document.forms["sign"]["type"].value;
+        establish_date = document.forms["sign"]["establish_date"].value;
+        if (name == "" || sector == "" || sector == "" || headquarter == "" || email == "" || password == "" || type == "" || establish_date == "")
+        {
+            alert("Please fill all fields");
+        }
+    }
+</script>
 
 <?php
 $error='';
 if(isset($_POST['submit']))
 {
+        if(empty($_POST['name']) || empty($_POST['sector']) || empty($_POST['industry'])|| empty($_POST['establish_date'])|| empty($_POST['headquarter']) || empty($_POST['email']) || empty($_POST['password']) || empty($_POST['type']))
+        {
+          $message = "Please fill all fields";
+          echo "<script type='text/javascript'>alert('$message');</script>";
+        }
+        else
+        {
+          $name = $_POST['name'];
+          $sector = $_POST['sector'];
+          $industry = $_POST['industry'];
+          $hq = $_POST['headquarter'];
+          $mail = $_POST['email'];
+          $pass = $_POST['password'];
+          $type = $_POST['type'];
 
-	function randomSixDigit() {
-
-		$connection = mysqli_connect('dijkstra.ug.bcc.bilkent.edu.tr', 'ege.marasli', '8nhmQrdt', 'ege_marasli');
-
-		if(! $connection)
-		{
-		    die('Connection Error!!! ' . mysqli_error());
-		}
-			$min = 0;
-			$max = 999999;
-
-			$temp = rand (  $min ,  $max );
-
-			$query3 = "SELECT * FROM user WHERE userID = '$temp' ";
-			$result3 = $connection-> query($query3);
-			while( $result3 -> num_rows != 0){
-				$temp = rand (  $min ,  $max );
-
-				$query4 = "SELECT * FROM user WHERE userID = '$temp' ";
-				$result3 = $connection-> query($query4);
-
-			}
-			return $temp;
-
-	}
-
-				$name = $_POST['name'];
-				$sector = $_POST['sector'];
-				$hq = $_POST['headquarter'];
-				$mail = $_POST['email'];
-				$pass = $_POST['password'];
-				$establish = $_POST['establish_date'];
-				$type = $_POST['type'];
-				$userID = randomSixDigit();
-
-				$qu = "SELECT * FROM user WHERE mail = '$mail' ";
-				$res = $connection-> query($qu);
-				if($res -> num_rows == 0){
-					$query = "INSERT INTO user(userID,mail,password,phone_number1,phone_number2,profile_picture)
-										VALUES('$userID' , '$mail' , '$pass' , '1' , '2' , NULL)";
+          $establish_date = strtotime($_POST["establish_date"]);
+          $establish_date = date('Y-m-d H:i:s', $establish_date); //now you can save in DB
+            if(isMailExist($mail))
+            {
+              $message = "PLEASE ENTER DIFFERENT MAIL";
+              echo "<script type='text/javascript'>alert('$message');</script>";
+            }
+            else
+            {
+              $userID = randomID_user();
+              $query = "INSERT INTO user(userID,mail,password,phone_number1,phone_number2,profile_picture)
+    										VALUES('$userID' , '$mail' , '$pass' , NULL, NULL, NULL)";
 
 
-					$result = $connection-> query($query);
+    					$result = $conn-> query($query);
 
-					$query2 = "INSERT INTO company(companyID,name,website,industry,sector,revenue,establish_date,type,headquarter)
-										VALUES('$userID' , '$name' , NULL , 'endüstri' , '$sector', '11', NULL ,'tayp','$hq')";
-
-
-					$result2 = $connection-> query($query2);
-
-					header("Location: login.php");
-		   	}
-
-				else {
-					$message = "PLEASE ENTER DIFFERENT MAIL";
-					echo "<script type='text/javascript'>alert('$message');</script>";
-				}
+    					$query2 = "INSERT INTO company(companyID,name,website,industry,sector,revenue,establish_date,type,headquarter)
+    										VALUES('$userID' , '$name' , NULL , '$industry' , '$sector', NULL, '$establish_date' , '$type','$hq')";
 
 
+    					$result2 = $conn-> query($query2);
+
+              $message = "Register Succesful";
+        			echo "<script type='text/javascript'>alert('$message');
+        			window.location = 'login.php' </script>";
+            }
+        }
 }
 ?>
