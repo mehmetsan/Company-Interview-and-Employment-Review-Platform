@@ -170,7 +170,7 @@
 			</div>
 			<div class="col-6 col-12-xsmall">
 				<ul>
-					<li><a href="editUserProfile.php" class="button primary fit">Edit profile</a></li>
+					<li><a href="editCompanyProfile.php" class="button primary fit">Edit profile</a></li>
 				</ul>
 			</div>
 
