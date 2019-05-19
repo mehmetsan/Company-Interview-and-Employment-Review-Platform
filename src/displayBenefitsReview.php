@@ -137,7 +137,7 @@ include_once 'conn.php';
 <?php
 if(isset($_POST['submit'])){
   if($_POST['submit'] == "MY PROFILE"){
-    header("Location: userProfile.php");
+    header("Location: employeeProfile.php");
   }
 
   else{
