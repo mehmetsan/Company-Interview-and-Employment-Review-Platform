@@ -20,12 +20,10 @@ include_once 'conn.php';
 
 			<!-- Header -->
 				<header id="header">
-					<h1 id="logo"><a href="index.php">Landed</a></h1>
 					<nav id="nav">
 						<ul>
-							<li><a href="index.php">Home</a></li>
+							<li><a href="home_page.php">Home</a></li>
 							<li>
-								<a href="#">Layouts</a>
 								<ul>
 									<li><a href="left-sidebar.php">Left Sidebar</a></li>
 									<li><a href="right-sidebar.php">Right Sidebar</a></li>
@@ -41,8 +39,7 @@ include_once 'conn.php';
 									</li>
 								</ul>
 							</li>
-							<li><a href="elements.php">Elements</a></li>
-							<li><a href="#" class="button primary">Sign Up</a></li>
+							<li><a href="index.php" class="button primary">Logout</a></li>
 						</ul>
 					</nav>
 				</header>
