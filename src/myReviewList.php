@@ -82,7 +82,8 @@ if($result -> num_rows == 1)
                 <tr>
                   <th>Review ID</th>
                   <th>Company Name</th>
-                  <th></th>
+									<th>Review Type</th>
+                  <th>DISPLAY</th>
                   <th></th>
                 </tr>
               </thead>
@@ -93,11 +94,12 @@ if($result -> num_rows == 1)
 								while ($review = $result ->fetch_assoc())
                 {
 										$reviewID =  $review['reviewID'];
+										$reviewType = findReviewType($reviewID);
 									//	$var = "<a href=\"#\" type=\"display\" name=\"disp\" value=$reviewID class=\"primary\" >DISPLAY</a>";
 									$var=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$reviewID\" name =\"submit\" class=\"primary\"/></li>	</ul>	</div>	</form>
   								</section>";
 										$var2 = "<a href=\"#\" class=\"button primary\" onclick=\"\">DELETE</a>";
-                    echo "<tr><td>" . $review['reviewID'] . "</td><td>" . "COMPANY" . "</td><td>" . $var . "</td><td>" . $var2  ."</td></tr>";
+                    echo "<tr><td>" . $review['reviewID'] . "</td><td>" . "COMPANY" . "</td><td>" . $reviewType . "</td><td>" . $var . "</td><td>" . $var2  ."</td></tr>";
 
 
                 }
