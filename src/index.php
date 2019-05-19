@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Landed by HTML5 UP</title>
+		<title>MESA</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -21,7 +21,6 @@
 					<nav id="nav">
 						<ul>
 							<li><a href="index.php">Home</a></li>
-							<li><a href="elements.php">Elements</a></li>
 							<li><a href="login.php" class="button primary">Login</a></li>
 							<li>
 								<a href="#" class ="button primary">Sign Up</a>

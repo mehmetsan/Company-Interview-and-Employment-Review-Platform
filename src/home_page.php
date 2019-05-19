@@ -32,7 +32,6 @@
 									echo "<li><a href=\"companyProfile.php\">Profile</a></li>";
 								}
 							 ?>
-							<li><a href="elements.php">Elements</a></li>
 							<li><a href="index.php" class="button primary">Logout</a></li>
 						</ul>
 					</nav>
