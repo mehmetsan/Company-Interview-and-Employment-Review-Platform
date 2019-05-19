@@ -55,12 +55,13 @@ include_once 'conn.php';
 							<p>Ipsum dolor feugiat aliquam tempus sed magna lorem consequat accumsan</p>
 						</header>
 						<!-- Table -->
-            <form method="post" action="search.php">
-			<input type="text" name="q" placeholder="Search Company">
-			<select name="column">
+            <form method="post" action="#">
+			<input type="text" name="search" placeholder="Search Company">
+			<select name="filter">
 				<option value="">Select Filter</option>
-				<option value="Name">First Name</option>
-				<option value="lastName">Last Name</option>
+				<option value="name">Company Name</option>
+				<option value="industry">Industry</option>
+        <option value="sector">Sector</option>
 			</select>
 			<input type="submit" name="submit" value="Find">
 		</form>
@@ -77,16 +78,81 @@ include_once 'conn.php';
 											</tr>
 										</thead>
                     <?php
-                        $query = "SELECT * FROM company;";
-                        $result = $conn -> query($query);
-
-                        if($result -> num_rows > 0)
+                        if(isset($_POST['submit']))
                         {
-                            while ($row = $result ->fetch_assoc())
+                          $filter = $_POST['filter'];
+                          $search = $_POST['search'];
+                          $query = "SELECT * FROM company where $filter = '$search';";
+
+                          $result = $conn -> query($query);
+
+                          if($result -> num_rows > 0)
+                          {
+                              while ($row = $result ->fetch_assoc())
+                              {
+                                  echo "<tr><td>" . $row['name'] . "</td><td>" . $row['industry'] . "</td><td>" . $row['sector'] . "</td><td>" . $row['revenue'] . "</td></tr>";
+                              }
+                          }
+                          /*
+                          if($filter == "name")
+                          {
+                            $query = "SELECT * FROM company where name = '$search';";
+
+                            $result = $conn -> query($query);
+
+                            if($result -> num_rows > 0)
                             {
-                                echo "<tr><td>" . $row['name'] . "</td><td>" . $row['industry'] . "</td><td>" . $row['sector'] . "</td><td>" . $row['revenue'] . "</td></tr>";
+                                while ($row = $result ->fetch_assoc())
+                                {
+                                    echo "<tr><td>" . $row['name'] . "</td><td>" . $row['industry'] . "</td><td>" . $row['sector'] . "</td><td>" . $row['revenue'] . "</td></tr>";
+                                }
                             }
+                          }
+                          else if($filter == "industry")
+                          {
+                            $query = "SELECT * FROM company where industry = '$search';";
+
+                            $result = $conn -> query($query);
+
+                            if($result -> num_rows > 0)
+                            {
+                                while ($row = $result ->fetch_assoc())
+                                {
+                                    echo "<tr><td>" . $row['name'] . "</td><td>" . $row['industry'] . "</td><td>" . $row['sector'] . "</td><td>" . $row['revenue'] . "</td></tr>";
+                                }
+                            }
+                          }
+                          else if($filter == "sector")
+                          {
+                            $query = "SELECT * FROM company where sector = '$search';";
+
+                            $result = $conn -> query($query);
+
+                            if($result -> num_rows > 0)
+                            {
+                                while ($row = $result ->fetch_assoc())
+                                {
+                                    echo "<tr><td>" . $row['name'] . "</td><td>" . $row['industry'] . "</td><td>" . $row['sector'] . "</td><td>" . $row['revenue'] . "</td></tr>";
+                                }
+                            }
+                          }*/
+
+
                         }
+                        else
+                        {
+                          $query = "SELECT * FROM company;";
+                          $result = $conn -> query($query);
+
+                          if($result -> num_rows > 0)
+                          {
+                              while ($row = $result ->fetch_assoc())
+                              {
+                                  echo "<tr><td>" . $row['name'] . "</td><td>" . $row['industry'] . "</td><td>" . $row['sector'] . "</td><td>" . $row['revenue'] . "</td></tr>";
+                              }
+                          }
+                        }
+
                     ?>
 										<tfoot>
 											<tr>
