@@ -62,8 +62,19 @@ include_once 'conn.php';
 				<option value="name">Company Name</option>
 				<option value="industry">Industry</option>
         <option value="sector">Sector</option>
+        <option value="headquarter">Headquarter</option>
 			</select>
 			<input type="submit" name="submit" value="Find">
+      <select name="sort">
+				<option value="all">Sort By</option>
+				<option value="name">Company Name</option>
+				<option value="industry">Industry</option>
+        <option value="sector">Sector</option>
+        <option value="headquarter">Headquarter</option>
+        <option value="revenue">Revenue</option>
+			</select>
+			<input type="submit" name="ascending_sort" value="Ascending Sort">
+      <input type="submit" name="descending_sort" value="Descending Sort">
 		</form>
 							<section>
 								<h4>Alternate</h4>
@@ -75,6 +86,7 @@ include_once 'conn.php';
 												<th>Industry</th>
 												<th>Sector</th>
                         <th>Revenue</th>
+                        <th>Headquarter</th>
 											</tr>
 										</thead>
                     <?php
@@ -91,7 +103,7 @@ include_once 'conn.php';
                             {
                                 while ($row = $result ->fetch_assoc())
                                 {
-                                    echo "<tr><td>" . $row['name'] . "</td><td>" . $row['industry'] . "</td><td>" . $row['sector'] . "</td><td>" . $row['revenue'] . "</td></tr>";
+                                    echo "<tr><td>" . $row['name'] . "</td><td>" . $row['industry'] . "</td><td>" . $row['sector'] . "</td><td>" . $row['revenue'] . "</td><td>" . $row['headquarter'] ."</td></tr>";
                                 }
                             }
                           }
@@ -105,9 +117,38 @@ include_once 'conn.php';
                             {
                                 while ($row = $result ->fetch_assoc())
                                 {
-                                    echo "<tr><td>" . $row['name'] . "</td><td>" . $row['industry'] . "</td><td>" . $row['sector'] . "</td><td>" . $row['revenue'] . "</td></tr>";
+                                    echo "<tr><td>" . $row['name'] . "</td><td>" . $row['industry'] . "</td><td>" . $row['sector'] . "</td><td>" . $row['revenue'] . "</td><td>" . $row['headquarter'] ."</td></tr>";
                                 }
                             }
+                          }
+                        }
+                        else if(isset($_POST['ascending_sort']))
+                        {
+                          $filter = $_POST['sort'];
+                          $query = "SELECT * FROM company ORDER BY $filter ASC;";
+                          $result = $conn -> query($query);
+
+                          if($result -> num_rows > 0)
+                          {
+                              while ($row = $result ->fetch_assoc())
+                              {
+                                  echo "<tr><td>" . $row['name'] . "</td><td>" . $row['industry'] . "</td><td>" . $row['sector'] . "</td><td>" . $row['revenue'] . "</td><td>" . $row['headquarter'] ."</td></tr>";
+                              }
+                          }
+                        }
+                        else if(isset($_POST['descending_sort']))
+                        {
+                          $filter = $_POST['sort'];
+                          $query = "SELECT * FROM company ORDER BY $filter DESC;";
+
+                          $result = $conn -> query($query);
+
+                          if($result -> num_rows > 0)
+                          {
+                              while ($row = $result ->fetch_assoc())
+                              {
+                                  echo "<tr><td>" . $row['name'] . "</td><td>" . $row['industry'] . "</td><td>" . $row['sector'] . "</td><td>" . $row['revenue'] . "</td><td>" . $row['headquarter'] ."</td></tr>";
+                              }
                           }
                         }
                         else
@@ -119,7 +160,7 @@ include_once 'conn.php';
                           {
                               while ($row = $result ->fetch_assoc())
                               {
-                                  echo "<tr><td>" . $row['name'] . "</td><td>" . $row['industry'] . "</td><td>" . $row['sector'] . "</td><td>" . $row['revenue'] . "</td></tr>";
+                                  echo "<tr><td>" . $row['name'] . "</td><td>" . $row['industry'] . "</td><td>" . $row['sector'] . "</td><td>" . $row['revenue'] . "</td><td>" . $row['headquarter'] ."</td></tr>";
                               }
                           }
                         }
