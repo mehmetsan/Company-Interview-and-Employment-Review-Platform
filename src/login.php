@@ -120,8 +120,6 @@ if(! $connection)
 
 
 					$query = "SELECT * FROM user WHERE mail = '$mail' AND password = '$pass' ";
-
-
 					$result = $connection-> query($query);
 
 
@@ -133,6 +131,22 @@ if(! $connection)
               $userID = $result->fetch_assoc();
 
               $_SESSION['userID'] = $userID[userID];
+
+
+              $query = "SELECT * FROM employee WHERE employeeID = $userID[userID]";
+    					$result2 = $connection-> query($query);
+
+              if($result2 -> num_rows == 1)
+              {
+                $_SESSION['UserType'] = "employee";
+                $message = "0";
+                echo "<script type='text/javascript'>alert('$message');</script>";
+              }
+              else {
+                $_SESSION['UserType'] = "company";
+                $message = "1";
+                echo "<script type='text/javascript'>alert('$message');</script>";
+              }
 
 
               /*

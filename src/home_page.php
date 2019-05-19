@@ -20,6 +20,18 @@
 					<nav id="nav">
 						<ul>
 							<li><a href="home_page.php">Home</a></li>
+							<?php
+							session_start();
+							$connection = mysqli_connect('dijkstra.ug.bcc.bilkent.edu.tr', 'ege.marasli', '8nhmQrdt', 'ege_marasli');
+								$test = "employee";
+								$type = $_SESSION['UserType'];
+								if($type == $test){
+									echo "<li><a href=\"userProfile.php\">Profile</a></li>";
+								}
+								else {
+									echo "<li><a href=\"companyProfile.php\">Profile</a></li>";
+								}
+							 ?>
 							<li><a href="elements.php">Elements</a></li>
 							<li><a href="index.php" class="button primary">Logout</a></li>
 						</ul>
