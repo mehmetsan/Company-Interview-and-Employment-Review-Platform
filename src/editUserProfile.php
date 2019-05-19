@@ -1,14 +1,8 @@
 <?php
 	include_once 'conn.php';
 	$userID = $_SESSION['userID'];
-	$query = "SELECT * FROM company WHERE companyID = '$userID'";
+	$query = "SELECT * FROM employee WHERE employeeID = '$userID'";
 	$result = $conn-> query($query);
-	if ($result -> num_rows == 1){
-		$mode = 'company';
-	}
-	else if ($reses -> num_rows == 0){
-		$mode = 'employee';
-	}
 ?>
 <!DOCTYPE HTML>
 <!--
