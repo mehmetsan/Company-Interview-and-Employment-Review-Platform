@@ -6,19 +6,10 @@
 -->
 <?php
 
-	$query = "SELECT * FROM review WHERE reviewId = '' AND password = '$pass' ";
+	$query = "SELECT * FROM review WHERE reviewId = $_SESSION['reviewID']";
 	$result = $connection-> query($query);
 
-	if($result -> num_rows == 1)
-	{
-	//	$_SESSION["cid"] = $pass;
-		$userID = $result->fetch_assoc();
-
-		$_SESSION['userID'] = $userID[userID];
-		header("Location: userProfile.php");
-
-	}
-
+	$info = $result->fetch_assoc();
 
  ?>
 <html>
