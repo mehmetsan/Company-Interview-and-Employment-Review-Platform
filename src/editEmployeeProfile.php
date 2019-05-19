@@ -151,5 +151,6 @@ $connection = mysqli_connect('dijkstra.ug.bcc.bilkent.edu.tr', 'ege.marasli', '8
 
 		$query2 = "UPDATE user SET mail ='$newMail', password ='$newPassword', phone_number1 ='$newPhoneNumber1', phone_number2 ='$newPhoneNumber2' WHERE userID = $userID;";
 		$result = $connection-> query($query2);
+		echo "<script type='text/javascript'>window.location = 'employeeProfile.php' </script>";
 	}
  ?>
