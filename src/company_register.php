@@ -93,7 +93,7 @@ include_once 'conn.php';
 											</div>
 											<div class="col-12">
 												<ul class="actions">
-													<li><input type="submit" value="Sign Up" name ="submit" class="primary" onclick = "isEmpty()"/></li>
+													<li><input type="submit" value="Sign Up" name ="submit" class="primary"  onclick="isEmptyCompany()"/></li>
 													<li><input type="reset" value="Reset" /></li>
 												</ul>
 											</div>
@@ -109,7 +109,7 @@ include_once 'conn.php';
 
 
 <script>
-    function isEmpty()
+    function isEmptyCompany()
     {
         name = document.forms["sign"]["name"].value;
         sector = document.forms["sign"]["sector"].value;
@@ -118,7 +118,8 @@ include_once 'conn.php';
 				email = document.forms["sign"]["email"].value;
         password = document.forms["sign"]["password"].value;
 				type = document.forms["sign"]["type"].value;
-        if (name == "" || sector == "" || sector == "" || headquarter == "" || email == "" || password == "" || type == "")
+        establish_date = document.forms["sign"]["establish_date"].value;
+        if (name == "" || sector == "" || sector == "" || headquarter == "" || email == "" || password == "" || type == "" || establish_date == "")
         {
             alert("Please fill all fields");
         }
@@ -129,9 +130,10 @@ include_once 'conn.php';
 $error='';
 if(isset($_POST['submit']))
 {
-        if(empty($_POST['name']) || empty($_POST['sector']) || empty($_POST['industry'])|| empty($_POST['headquarter']) || empty($_POST['email']) || empty($_POST['password']) || empty($_POST['type']))
+        if(empty($_POST['name']) || empty($_POST['sector']) || empty($_POST['industry'])|| empty($_POST['establish_date'])|| empty($_POST['headquarter']) || empty($_POST['email']) || empty($_POST['password']) || empty($_POST['type']))
         {
-            $error = "Wrong username or password";
+          $message = "Please fill all fields";
+          echo "<script type='text/javascript'>alert('$message');</script>";
         }
         else
         {
@@ -141,9 +143,10 @@ if(isset($_POST['submit']))
           $hq = $_POST['headquarter'];
           $mail = $_POST['email'];
           $pass = $_POST['password'];
-          $establish = $_POST['establish_date'];
           $type = $_POST['type'];
-          $date = $_POST['date'];
+
+          $establish_date = strtotime($_POST["establish_date"]);
+          $establish_date = date('Y-m-d H:i:s', $establish_date); //now you can save in DB
             if(isMailExist($mail))
             {
               $message = "PLEASE ENTER DIFFERENT MAIL";
@@ -159,7 +162,7 @@ if(isset($_POST['submit']))
     					$result = $conn-> query($query);
 
     					$query2 = "INSERT INTO company(companyID,name,website,industry,sector,revenue,establish_date,type,headquarter)
-    										VALUES('$userID' , '$name' , NULL , '$industry' , '$sector', NULL, NULL , '$type','$hq')";
+    										VALUES('$userID' , '$name' , NULL , '$industry' , '$sector', NULL, '$establish_date' , '$type','$hq')";
 
 
     					$result2 = $conn-> query($query2);
