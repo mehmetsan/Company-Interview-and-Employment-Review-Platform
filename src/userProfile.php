@@ -56,16 +56,12 @@ if($result -> num_rows == 1)
 
 	<body class="is-preload landing">
 		<header id="header">
-			<h1 id="logo"><a href="index.php"></a></h1>
+			<h1 id="logo"><a href="home_page.php"></a></h1>
 			<nav id="nav">
 				<ul>
 					<li><a href="home_page.php">Home</a></li>
 					<li>
-						<a href="#" class ="button primary">Sign Up</a>
-						<ul>
-							<li><a href="employee_register.php">Employee Register</a></li>
-							<li><a href="company_register.php">Company Register</a></li>
-						</ul>
+						<a href="index.php" class ="button primary">Logout</a>
 					</li>
 				</ul>
 			</nav>
