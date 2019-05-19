@@ -52,6 +52,7 @@ if(! $connection)
 								<ul>
 									<li><a href="employee_register.php">Employee Register</a></li>
 									<li><a href="company_register.php">Company Register</a></li>
+                  <li><a href="company_list.php">Company List</a></li>
 								</ul>
 							</li>
 						</ul>
