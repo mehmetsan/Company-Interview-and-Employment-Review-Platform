@@ -1,3 +1,15 @@
+<?php
+	include_once 'conn.php';
+	$userID = $_SESSION['userID'];
+	$query = "SELECT * FROM company WHERE companyID = '$userID'";
+	$result = $conn-> query($query);
+	if ($result -> num_rows == 1){
+		$mode = 'company';
+	}
+	else if ($reses -> num_rows == 0){
+		$mode = 'employee';
+	}
+?>
 <!DOCTYPE HTML>
 <!--
 	Landed by HTML5 UP
@@ -42,13 +54,13 @@
         <form method="post" action="#">
           <div class="row gtr-uniform gtr-50">
             <div class="col-2 col-12-xsmall">
-              First Name <input type="text" name="first_name" id="name" value="Erdem"/>
+              First Name <input type="text" name="first_name" id="name" value="First Name"/>
             </div>
             <div class="col-2 col-12-xsmall">
-              Middle Name <input type="text" name="middle_name" id="name" value="Ege"/>
+              Middle Name <input type="text" name="middle_name" id="name" value="Middle Name"/>
             </div>
             <div class="col-2 col-12-xsmall">
-              Last Name <input type="text" name="last_name" id="name" value="Marasli"/>
+              Last Name <input type="text" name="last_name" id="name" value="Last Name"/>
             </div>
             <div class="col-2">
               Gender <select name="gender" id="gender">
