@@ -14,7 +14,7 @@
 
 	$query2 = "SELECT * FROM user WHERE userID = '$companyID'";
 	$result2 = $conn-> query($query2);
-	$arr2 = $result ->fetch_assoc();
+	$arr2 = $result2 ->fetch_assoc();
 
 ?>
 
@@ -39,13 +39,6 @@
 			<nav id="nav">
 				<ul>
 					<li><a href="index.php">Home</a></li>
-					<li>
-						<a href="#" class ="button primary">Sign Up</a>
-						<ul>
-							<li><a href="employee_register.php">Employee Register</a></li>
-							<li><a href="company_register.php">Company Register</a></li>
-						</ul>
-					</li>
 				</ul>
 			</nav>
 		</header>
