@@ -25,7 +25,16 @@ $result = $connection-> query($query);
 
 if($result -> num_rows == 1)
 {
-	$info = $result->fetch_assoc();
+	$userInfo = $result->fetch_assoc();
+}
+
+// Query to access employee based information
+$query = "SELECT * FROM employee WHERE employeeID = '$userID'";
+$result = $connection-> query($query);
+
+if($result -> num_rows == 1)
+{
+	$employeeInfo = $result->fetch_assoc();
 }
 
 ?>
@@ -77,43 +86,43 @@ if($result -> num_rows == 1)
 					<tbody>
 						<tr>
 							<td>First Name</td>
-							<td class ="test" name = "first_name" id="first_name">Mehmet</td>
+							<td class ="test" name = "first_name" id="first_name"><?php echo  $employeeInfo['first_name']; ?></td>
 						</tr>
 						<tr>
 							<td>Middle Name</td>
-							<td class ="test" name = "middle_name" id="middle_name">Mehmet</td>
+							<td class ="test" name = "middle_name" id="middle_name"><?php echo  $employeeInfo['middle_name']; ?></td>
 						</tr>
 						<tr>
 							<td>Last Name</td>
-							<td class ="test" name = "last_name" id="last_name">Mehmet</td>
+							<td class ="test" name = "last_name" id="last_name"><?php echo  $employeeInfo['last_name']; ?></td>
 						</tr>
 						<tr>
 							<td>Gender</td>
-							<td class ="test" name = "gender" id="gender">Mehmet</td>
+							<td class ="test" name = "gender" id="gender"><?php echo  $employeeInfo['gender']; ?></td>
 						</tr>
 						<tr>
 							<td>Position</td>
-							<td class ="test" name = "position" id="position">Mehmet</td>
+							<td class ="test" name = "position" id="position"><?php echo  $employeeInfo['position']; ?></td>
 						</tr>
 						<tr>
 							<td>Highest Education</td>
-							<td class ="test" name = "gender" id="gender">Mehmet</td>
+							<td class ="test" name = "highest-ed" id="highest-ed"><?php echo  $employeeInfo['highest_education']; ?></td>
 						</tr>
 						<tr>
 							<td>Location</td>
-							<td class ="test" name = "location" id="location">Mehmet</td>
+							<td class ="test" name = "location" id="location"><?php echo  $employeeInfo['Location']; ?></td>
 						</tr>
 						<tr>
 							<td>Phone Number 1</td>
-							<td class ="test" name = "phone1" id="phone1">Mehmet</td>
+							<td class ="test" name = "phone1" id="phone1"><?php echo  $userInfo['phone_number1']; ?></td>
 						</tr>
 						<tr>
 							<td>Phone Number 2</td>
-							<td class ="test" name = "phone2" id="phone2">Mehmet</td>
+							<td class ="test" name = "phone2" id="phone2"><?php echo  $userInfo['phone_number2']; ?></td>
 						</tr>
 						<tr>
 							<td>Email</td>
-							<td class ="test" name = "email" id="email">Mehmet</td>
+							<td class ="test" name = "email" id="email"><?php echo  $userInfo['mail']; ?></td>
 						</tr>
 						<tr>
 							<td>Password</td>

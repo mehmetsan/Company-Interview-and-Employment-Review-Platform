@@ -10,10 +10,10 @@
 References
 https://www.youtube.com/watch?v=J5RHnJCy8AE
 */
-session_start();
-$connection = mysqli_connect('dijkstra.ug.bcc.bilkent.edu.tr', 'ege.marasli', '8nhmQrdt', 'ege_marasli');
+include_once 'conn.php';
+$conn = mysqli_connect('dijkstra.ug.bcc.bilkent.edu.tr', 'ege.marasli', '8nhmQrdt', 'ege_marasli');
 
-if(! $connection)
+if(! $conn)
 {
     die('Connection Error!!! ' . mysqli_error());
 }
@@ -21,13 +21,13 @@ if(! $connection)
 $userID = $_SESSION['userID'];
 
 $query = "SELECT * FROM publishes WHERE employeeID = '$userID'";
-$result = $connection-> query($query);
+$result = $conn-> query($query);
 
 if($result -> num_rows == 1)
 {
 	$info = $result->fetch_assoc();
 	$query = "SELECT * FROM review WHERE reviewID = '$info[reviewID]'";
-	$result = $connection-> query($query);
+	$result = $connn-> query($query);
 	//$review = $result->fetch_assoc();
 
 }
@@ -104,7 +104,18 @@ if($result -> num_rows == 1)
 								if(isset($_POST['submit'])){
 									$message =$_POST['submit'];
 									$_SESSION['reviewID'] = $message;
-									header("Location: displayReview.php");
+									$reviewType = findReviewType($message);
+									if($reviewType == "salary_review")
+										header("Location: displaySalaryReview.php");
+
+									else if($reviewType == "benefits_review")
+										header("Location: displayBenefitsReview.php");
+
+									else if($reviewType == "general_review")
+										header("Location: displayGeneralReview.php");
+
+									else if($reviewType == "interview_review")
+										header("Location: displayInterviewReview.php");
 								//	echo "<script type='text/javascript'>alert('$message');</script>";
 								//	$_SESSION['reviewID'] = $_GET['id'];
 

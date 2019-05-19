@@ -11,17 +11,21 @@ include_once 'conn.php';
 
 
   $reviewID = $_SESSION['reviewID'];
-	$reviewType = findReviewType($reviewID);
 	$userID = $_SESSION['userID'];
 	$query = "SELECT * FROM review WHERE reviewID = '$reviewID'";
 	$result = $conn-> query($query);
 
 	$info = $result->fetch_assoc();
 
-		$query = "SELECT * FROM employee WHERE employeeID = '$userID'";
-		$result = $conn-> query($query);
+	$query = "SELECT * FROM employee WHERE employeeID = '$userID'";
+	$result = $conn-> query($query);
 
-		$user = $result->fetch_assoc();
+	$user = $result->fetch_assoc();
+
+  $query = "SELECT * FROM benefits_review WHERE reviewID = '$reviewID'";
+	$result = $conn-> query($query);
+
+	$benefits = $result->fetch_assoc();
  ?>
 <html>
 	<head>
@@ -68,21 +72,20 @@ include_once 'conn.php';
             <table>
               <thead>
                 <tr>
-                  <th>Review Information</th>
+                  <th>BENEFITS REVIEW</th>
                   <th></th>
                 </tr>
               </thead>
               <tbody>
                 <tr><td>Review ID: </td>	<td><?php echo $info['reviewID'] ?></td> </tr>
 								<tr><td>Company Name: </td> <td>"COMPANY"</td> </tr>
-								<tr><td>Type: </td> <td>"TYPE"</td> </tr>
+								<tr><td>Opportunities: </td> <td><?php echo $benefits['opportunities'] ?></td> </tr>
 								<tr><td>Employment Status: </td> <td><?php echo $info['Employment_status'] ?></td> </tr>
 								<tr><td>Job Title: </td> <td><?php echo $info['job_title'] ?></td> </tr>
 								<tr><td>Date: </td> <td><?php echo $info['publish_date'] ?></td> </tr>
 								<tr><td>Rating: </td> <td><?php echo $info['rating'] ?></td> </tr>
 								<tr><td>Location: </td> <td><?php echo $info['location'] ?></td> </tr>
 								<tr><td>Visibility: </td> <td><?php echo $info['visibility'] ?></td> </tr>
-								<tr><td>Publisher's Name: </td> <td><?php echo $user['first_name'] ?></td> </tr>
 
               </tbody>
 
