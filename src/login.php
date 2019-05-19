@@ -139,13 +139,9 @@ if(! $connection)
               if($result2 -> num_rows == 1)
               {
                 $_SESSION['UserType'] = "employee";
-                $message = "0";
-                echo "<script type='text/javascript'>alert('$message');</script>";
               }
               else {
                 $_SESSION['UserType'] = "company";
-                $message = "1";
-                echo "<script type='text/javascript'>alert('$message');</script>";
               }
 
 
