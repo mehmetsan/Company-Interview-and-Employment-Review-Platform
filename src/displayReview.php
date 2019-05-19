@@ -5,8 +5,11 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <?php
+	session_start();
+	$connection = mysqli_connect('dijkstra.ug.bcc.bilkent.edu.tr', 'ege.marasli', '8nhmQrdt', 'ege_marasli');
 
-	$query = "SELECT * FROM review WHERE reviewId = $_SESSION['reviewID']";
+  $reviewID = $_SESSION['reviewID'];
+	$query = "SELECT * FROM review WHERE reviewID = '$reviewID'";
 	$result = $connection-> query($query);
 
 	$info = $result->fetch_assoc();
