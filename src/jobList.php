@@ -18,19 +18,11 @@ if(! $conn)
     die('Connection Error!!! ' . mysqli_error());
 }
 
-$userID = $_SESSION['userID'];
+$userID = $_SESSION['companyID'];
 
-$query = "SELECT * FROM publishes WHERE employeeID = '$userID'";
+$query = "SELECT * FROM job WHERE companyID = '$userID'";
 $result = $conn-> query($query);
 
-if($result -> num_rows == 1)
-{
-	$info = $result->fetch_assoc();
-	$query = "SELECT * FROM review WHERE reviewID = '$info[reviewID]'";
-	$result = $conn-> query($query);
-	//$review = $result->fetch_assoc();
-
-}
 
 ?>
 
@@ -75,14 +67,13 @@ if($result -> num_rows == 1)
 
 				<!-- Form -->
         <section>
-          <h3>MY REVIEWS</h3>
+          <h3>JOB LIST</h3>
           <div class="table-wrapper">
             <table>
               <thead>
                 <tr>
-                  <th>Review ID</th>
-                  <th>Company Name</th>
-									<th>Review Type</th>
+                  <th>Job Title</th>
+                  <th>Post Date</th>
                   <th>DISPLAY</th>
                   <th></th>
                 </tr>
@@ -91,14 +82,13 @@ if($result -> num_rows == 1)
 								<?php
 
 
-								while ($review = $result ->fetch_assoc())
+								while ($jobs = $result ->fetch_assoc())
                 {
-										$reviewID =  $review['reviewID'];
-										$reviewType = findReviewType($reviewID);
+
 									//	$var = "<a href=\"#\" type=\"display\" name=\"disp\" value=$reviewID class=\"primary\" >DISPLAY</a>";
 									$var=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$reviewID\" name =\"submit\" class=\"primary\"/></li>	</ul>	</div>	</form>
   								</section>";
-									
+
 
                     echo "<tr><td>" . $review['reviewID'] . "</td><td>" . "COMPANY" . "</td><td>" . $reviewType . "</td><td>" . $var  ."</td></tr>";
 
