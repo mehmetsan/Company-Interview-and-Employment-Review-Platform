@@ -133,9 +133,10 @@ $connection = mysqli_connect('dijkstra.ug.bcc.bilkent.edu.tr', 'ege.marasli', '8
 		$newPhoneNumber1 = $_POST['phone1'];
 		$newPhoneNumber2 = $_POST['phone2'];
 
-		$query = "UPDATE company SET name = '$newName', website='$newWebsite', industry ='$newIndustry',sector ='$newSector', revenue ='$newRevenue', establish_date ='$newEstablishDate', type ='$newType',headquarter ='$newHeadquarter', mail ='$newMail', password ='$newPassword', phone_number1 ='$newPhoneNumber1', phone_number2 ='$newPhoneNumber2'	WHERE companyID = $companyID;";
+		$query = "UPDATE company SET name = '$newName', website='$newWebsite', industry ='$newIndustry',sector ='$newSector', revenue ='$newRevenue', establish_date ='$newEstablishDate', type ='$newType',headquarter ='$newHeadquarter' WHERE companyID = $companyID;";
 		$result = $connection-> query($query);
 
-
+		$query2 = "UPDATE user SET mail ='$newMail', password ='$newPassword', phone_number1 ='$newPhoneNumber1', phone_number2 ='$newPhoneNumber2' WHERE userID = $companyID;";
+		$result = $connection-> query($query2);
 	}
  ?>
