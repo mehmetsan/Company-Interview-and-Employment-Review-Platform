@@ -4,6 +4,36 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
+
+<?php
+/*
+References
+https://www.youtube.com/watch?v=J5RHnJCy8AE
+*/
+session_start();
+$connection = mysqli_connect('dijkstra.ug.bcc.bilkent.edu.tr', 'ege.marasli', '8nhmQrdt', 'ege_marasli');
+
+if(! $connection)
+{
+    die('Connection Error!!! ' . mysqli_error());
+}
+
+$userID = $_SESSION['userID'];
+
+$query = "SELECT * FROM publishes WHERE employeeID = '$userID'";
+$result = $connection-> query($query);
+
+if($result -> num_rows == 1)
+{
+	$info = $result->fetch_assoc();
+	$query = "SELECT * FROM review WHERE reviewID = '$info[reviewID]'";
+	$result = $connection-> query($query);
+	$review = $result->fetch_assoc();
+
+}
+
+?>
+
 <html>
 	<head>
 		<title>Landed by HTML5 UP</title>
@@ -50,7 +80,7 @@
             <table>
               <thead>
                 <tr>
-                  <th>Rating</th>
+                  <th>Review ID</th>
                   <th>Company Name</th>
                   <th></th>
                   <th></th>
@@ -58,7 +88,7 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>PHP CODE</td>
+                  <td><?php echo $review['reviewID']   ?></td>
                   <br></br>
                   <td>PHP CODE</td>
                   <td><a href="#" class="button primary" onclick="">DISPLAY</a></td>

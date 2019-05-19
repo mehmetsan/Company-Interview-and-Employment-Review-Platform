@@ -85,6 +85,7 @@
         	</body>
         </html>
 				<?php
+				$userID = $_SESSION['userID'];
 				$error='';
 				if(isset($_POST['submit']))
 				{
@@ -131,6 +132,11 @@
 
 
 									$result2 = $conn-> query($query2);
+
+									$query3 = "INSERT INTO publishes(reviewID, employeeID)
+															VALUES('$reviewID' , '$userID')";
+
+									$result3 = $conn-> query($query3);
 
 									$message = "Review is uploaded succesfully";
 									echo "<script type='text/javascript'>alert('$message');

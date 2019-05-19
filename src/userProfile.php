@@ -4,6 +4,32 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
+
+<?php
+/*
+References
+https://www.youtube.com/watch?v=J5RHnJCy8AE
+*/
+session_start();
+$connection = mysqli_connect('dijkstra.ug.bcc.bilkent.edu.tr', 'ege.marasli', '8nhmQrdt', 'ege_marasli');
+
+if(! $connection)
+{
+    die('Connection Error!!! ' . mysqli_error());
+}
+
+$userID = $_SESSION['userID'];
+
+$query = "SELECT * FROM user WHERE userID = '$userID'";
+$result = $connection-> query($query);
+
+if($result -> num_rows == 1)
+{
+	$info = $result->fetch_assoc();
+}
+
+?>
+
 <html>
 	<head>
 		<title>Landed by HTML5 UP</title>
@@ -50,25 +76,52 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td>Name</td>
-							<td class ="test" id="here">Mehmet</td>
-
+							<td>First Name</td>
+							<td class ="test" name = "first_name" id="first_name">Mehmet</td>
+						</tr>
+						<tr>
+							<td>Middle Name</td>
+							<td class ="test" name = "middle_name" id="middle_name">Mehmet</td>
+						</tr>
+						<tr>
+							<td>Last Name</td>
+							<td class ="test" name = "last_name" id="last_name">Mehmet</td>
+						</tr>
+						<tr>
+							<td>Gender</td>
+							<td class ="test" name = "gender" id="gender">Mehmet</td>
+						</tr>
+						<tr>
+							<td>Position</td>
+							<td class ="test" name = "position" id="position">Mehmet</td>
+						</tr>
+						<tr>
+							<td>Highest Education</td>
+							<td class ="test" name = "gender" id="gender">Mehmet</td>
 						</tr>
 						<tr>
 							<td>Location</td>
-							<td class ="test" id="here">Mehmet</td>
+							<td class ="test" name = "location" id="location">Mehmet</td>
 						</tr>
 						<tr>
-							<td>Phone Number</td>
-							<td class ="test" id="here">Mehmet</td>
+							<td>Phone Number 1</td>
+							<td class ="test" name = "phone1" id="phone1">Mehmet</td>
 						</tr>
 						<tr>
-							<td>Mail</td>
-							<td class ="test" id="here">Mehmet</td>
+							<td>Phone Number 2</td>
+							<td class ="test" name = "phone2" id="phone2">Mehmet</td>
+						</tr>
+						<tr>
+							<td>Email</td>
+							<td class ="test" name = "email" id="email">Mehmet</td>
 						</tr>
 						<tr>
 							<td>Password</td>
-							<td class ="test" id="here">Mehmet</td>
+<<<<<<< HEAD
+							<td class ="test" id="here">$result</td>
+=======
+							<td class ="test" name = "password" id="password">*********</td>
+>>>>>>> df66e45dc1be06ae17613fccdd4024d70dded059
 						</tr>
 					</tbody>
 
@@ -78,7 +131,7 @@
 		                <a href="#" class="button primary" style="text-align:center">Projects</a>
 		                <a href="following.php" class="button primary" style="text-align:center">Following</a>
 		                <a href="myReviewList.php" class="button primary" style="text-align:center">Reviews</a>
-									  <a href="#" class ="button primary" id="edit-btn"="">Edit Profile</a>
+									  <a href="editUserProfile.php" class ="button primary" id="edit-btn"="">Edit Profile</a>
 
 
 		</section>
