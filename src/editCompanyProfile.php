@@ -12,6 +12,10 @@
 	$result = $conn-> query($query);
 	$arr = $result ->fetch_assoc();
 
+	$query2 = "SELECT * FROM user WHERE userID = '$companyID'";
+	$result2 = $conn-> query($query2);
+	$arr2 = $result ->fetch_assoc();
+
 ?>
 
 <html>
@@ -52,44 +56,45 @@
         <form method="post" action="#">
           <div class="row gtr-uniform gtr-50">
             <div class="col-2 col-12-xsmall">
-              Name <input type="text" name="name" id="name" value="Google"/>
+              Name <input type="text" name="name" id="name" value= "Name" />
             </div>
             <div class="col-2 col-12-xsmall">
-              Website <input type="text" name="website" id="website" value="https://www.google.com.tr/"/>
+              Website <input type="text" name="website" id="website" value= "Website"/>
             </div>
             <div class="col-2 col-12-xsmall">
-              Industry <input type="text" name="industry" id="industry" value="Tech"/>
+              Industry <input type="text" name="industry" id=industry"" value="Industry" />
             </div>
             <div class="col-2 col-12-xsmall">
-              Sector <input type="text" name="sector" id="sector" value="Communication"/>
+              Sector <input type="text" name="sector" id="sector" value="Sector"/>
             </div>
             <div class="col-2 col-12-xsmall">
-              Revenue <input type="text" name="revenue" id="revenue" value="$100 billion"/>
+              Revenue <input type="text" name="revenue" id="revenue" value="Revenue">
             </div>
 						<div class="col-2 col-12-xsmall">
-              Establish_date <input type="text" name="establish_date" id="establish_date" value="August 19, 2004"/>
+              Establish_date <input type="text" name="establish_date" id="establish_date" value="Establish Date"/>
             </div>
 						<div class="col-2 col-12-xsmall">
-              Type <input type="text" name="type" id="type" value="Private"/>
+              Type <input type="text" name="type" id="type" value="Type"/>
             </div>
 						<div class="col-2 col-12-xsmall">
-              Headquarter <input type="text" name="headquarter" id="headquarter" value="1600 Amphitheatre Pkwy, Mountain View, CA 94043, USA"/>
+              Headquarter <input type="text" name="headquarter" id="headquarter" value="Headquarter"/>
             </div>
             <div class="col-5 col-12-xsmall">
-              Phone Number 1 <input type="text" name="phone1" id="phone1" value="055532345432"/>
+              Phone Number 1 <input type="text" name="phone1" id="phone1" value="Phone1"/>
             </div>
             <div class="col-5 col-12-xsmall">
-              Phone Number 2 <input type="text" name="phone2" id="phone2" value="0532123131"/>
+              Phone Number 2 <input type="text" name="phone2" id="phone2" value="Phone2"/>
             </div>
             <div class="col-6 col-12-xsmall">
-              Email <input type="text" name="email" id="email" value="google@gmail.com"/>
+              Email <input type="text" name="email" id="email" value="Mail"/>
             </div>
             <div class="col-6 col-12-xsmall">
-              Password <input type="text" name="password" id="password" value="123456"/>
+              Password <input type="text" name="password" id="password" value="Password"/>
             </div>
             <div class="col-12">
               <ul class="actions">
                 <li><input type="submit" value="Update" name="update" class="primary" /></li>
+								<li><a href="companyProfile.php" class ="button primary">Cancel</a></li>
               </ul>
             </div>
           </div>

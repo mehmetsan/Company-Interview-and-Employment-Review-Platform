@@ -93,7 +93,8 @@
             </div>
 						<div class="col-12">
 							<ul class="actions">
-								<li><input type="submit" value="submit" name ="submit" class="primary"/></li>
+								<li><input type="submit" value="Submit" name ="submit" class="primary"/></li>
+								<li><a href="userProfile.php" class ="button primary">Cancel</a></li>
 							</ul>
 						</div>
           </div>
