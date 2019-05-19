@@ -1,18 +1,8 @@
 <?php
 	include_once 'conn.php';
 	$userID = $_SESSION['userID'];
-	$sessionquery = "SELECT * FROM employee WHERE employeeID = '$userID[userID]'";
-	$reses = $conn > query($sessionquery);
-
-	//Preperation for session based company page
-	if ($reses -> num_rows == 1){
-		$info = $reses->fetch_assoc();
-		$session_type = 'employee';
-	}
-	else if ($reses -> num_rows == 0){
-		$session_type = 'company';
-	}
-
+	$query = "SELECT * FROM company WHERE companyID = '$userID'";
+	$result = $conn-> query($query);
 ?>
 
 <!DOCTYPE HTML>
@@ -37,13 +27,7 @@
       <nav id="nav">
         <ul>
           <li><a href="index.php">Home</a></li>
-          <li>
-            <a href="#" class ="button primary">Sign Up</a>
-            <ul>
-              <li><a href="left-sidebar.php">Employee Register</a></li>
-              <li><a href="right-sidebar.php">Company Register</a></li>
-            </ul>
-          </li>
+          <li><a href="index.php">Logout</a></li>
         </ul>
       </nav>
     </header>
@@ -68,76 +52,127 @@
 					<tbody>
 						<tr>
 							<td>Company Name</td>
-							<td class ="test" id="here">Microsoft</td>
-
+							<?php
+							$query = "SELECT * FROM company WHERE companyID = '$userID'";
+							$result = $conn-> query($query);
+							while ($arr = $result ->fetch_assoc())
+							{
+						  	echo "<td>" . $arr['name'] . "</td>";
+							}
+							?>
 						</tr>
 						<tr>
 							<td>Website Link</td>
-							<td class ="test" id="here">https://www.microsoft.com</td>
+							<?php
+							$query = "SELECT * FROM company WHERE companyID = '$userID'";
+							$result = $conn-> query($query);
+							while ($arr = $result ->fetch_assoc())
+							{
+						  	echo "<td>" . $arr['website'] . "</td>";
+						  }
+							?>
 						</tr>
 						<tr>
 							<td>HQ Location</td>
-							<td class ="test" id="here">Burbank, California, 06800</td>
+							<?php
+							$query = "SELECT * FROM company WHERE companyID = '$userID'";
+							$result = $conn-> query($query);
+							while ($arr = $result ->fetch_assoc())
+							{
+						  	echo "<td>" . $arr['headquarter'] . "</td>";
+							}
+							?>
 						</tr>
 						<tr>
 							<td>Establish Date</td>
-							<td class ="test" id="here">12.12.1997</td>
+							<?php
+							$query = "SELECT * FROM company WHERE companyID = '$userID'";
+							$result = $conn-> query($query);
+							while ($arr = $result ->fetch_assoc())
+							{
+						  	echo "<td>" . $arr['establish_date'] . "</td>";
+							}
+							?>
 						</tr>
 						<tr>
 							<td>Phone Number</td>
-							<td class ="test" id="here">05XX-XXX-XX-XX</td>
+							<?php
+							$query = "SELECT * FROM user WHERE userID = '$userID'";
+							$result = $conn-> query($query);
+							while ($arr = $result ->fetch_assoc())
+							{
+						  	echo "<td>" . $arr['phone_number1'] . "</td>";
+							}
+							?>
 						</tr>
             <tr>
 							<td>Mail</td>
-							<td class ="test" id="here">microsoft@gmail.com</td>
+							<?php
+							$query = "SELECT * FROM user WHERE userID = '$userID'";
+							$result = $conn-> query($query);
+							while ($arr = $result ->fetch_assoc())
+							{
+						  	echo "<td>" . $arr['mail'] . "</td>";
+							}
+							?>
 						</tr>
             <tr>
 							<td>Industry</td>
-							<td class ="test" id="here">Communication</td>
+							<?php
+							$query = "SELECT * FROM company WHERE companyID = '$userID'";
+							$result = $conn-> query($query);
+							while ($arr = $result ->fetch_assoc())
+							{
+						  	echo "<td>" . $arr['industry'] . "</td>";
+							}
+							?>
 						</tr>
             <tr>
 							<td>Sector</td>
-							<td class ="test" id="here">Tech</td>
+							<?php
+							$query = "SELECT * FROM company WHERE companyID = '$userID'";
+							$result = $conn-> query($query);
+							while ($arr = $result ->fetch_assoc())
+							{
+						  	echo "<td>" . $arr['sector'] . "</td>";
+							}
+							?>
 						</tr>
             <tr>
 							<td>Revenue</td>
-							<td class ="test" id="here">$100,000-$200,000</td>
+							<?php
+							$query = "SELECT * FROM company WHERE companyID = '$userID'";
+							$result = $conn-> query($query);
+							while ($arr = $result ->fetch_assoc())
+							{
+						  	echo "<td>" . $arr['revenue'] . "</td>";
+							}
+							?>
 						</tr>
             <tr>
 							<td>Type</td>
-							<td class ="test" id="here">Corporate</td>
+							<?php
+							$query = "SELECT * FROM company WHERE companyID = '$userID'";
+							$result = $conn-> query($query);
+							while ($arr = $result ->fetch_assoc())
+							{
+						  	echo "<td>" . $arr['type'] . "</td>";
+							}
+							?>
 						</tr>
             <tr>
 							<td>Password</td>
-							<td class ="test" id="here">abc123</td>
+							<td class ="test" id="here">*****</td>
 						</tr>
 					</tbody>
 
 				</table>
 			</div>
-			<?php
-			while ($session_type == 'company')
-			{
-					$_SESSION['userID'] = $company['companyID'];
-					$var = "<a href=\"editUserProfile.php\" class=\"button primary\" onclick=\"\">Edit Profile</a>";
-					$var2 = "<a href=\"#\" class=\"button primary\" onclick=\"\">DELETE</a>";
-					echo "<tr><td>" . $company['companyID'] . "</td><td>"  . $var . "</td><td>" ;
-			}
-			?>
-					<!--<a  class ="button primary" id="edit-btn"="">Edit Profile</a>-->
-          <br></br>
-          <h3>ABOUT US</h3>
-          <ul>
-            <div>
-              <h1>Article Title</h1>
-              <p><span class="image left"><img src="images/tayyip1.jpg" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Cras aliquet accumsan curae accumsan arcu amet egestas placerat odio morbi mi adipiscing col morbi felis faucibus in gravida sollicitudin interdum commodo. Ante aliquam vis iaculis accumsan lorem ipsum dolor sit amet nullam. Cras aliquet accumsan curae accumsan arcu amet egestas placerat odio morbi mi adipiscing col morbi felis faucibus in gravida sollicitudin interdum commodo. Ante aliquam vis iaculis accumsan lorem ipsum dolor sit amet nullam.</p>
-            </div>
-
-            <div>
-
-              <p><span class="image right"><img src="images/adnan.jpg" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Cras aliquet accumsan curae accumsan arcu amet egestas placerat odio morbi mi adipiscing col morbi felis faucibus in gravida sollicitudin interdum commodo. Ante aliquam vis iaculis accumsan lorem ipsum dolor sit amet nullam. Cras aliquet accumsan curae accumsan arcu amet egestas placerat odio morbi mi adipiscing col morbi felis faucibus in gravida sollicitudin interdum commodo. Ante aliquam vis iaculis accumsan lorem ipsum dolor sit amet nullam.</p>
-            </div>
-          </ul>
+			<div class="col-6 col-12-xsmall">
+				<ul>
+					<li><a href="editUserProfile.php" class="button primary fit">Edit profile</a></li>
+				</ul>
+			</div>
 
 		</section>
 
