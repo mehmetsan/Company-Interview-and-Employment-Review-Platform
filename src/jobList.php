@@ -74,7 +74,13 @@ include_once 'conn.php';
                     <?php
                     if(isset($_POST['submit']))
                     {
-                          $companyID = $_SESSION['companyID'];
+                          $userType = $_SESSION['UserType'];
+                          if($userType == "company"){
+                            $companyID = $_SESSION['userID'];
+                          }
+                          else
+                            $companyID = $_SESSION['companyID'];
+
                           $filter = $_POST['filter'];
                           $search = $_POST['search'];
                           if($filter == 'all')
@@ -120,7 +126,12 @@ include_once 'conn.php';
 
                         else if(isset($_POST['ascending_sort']))
                         {
-                          $companyID = $_SESSION['companyID'];
+                          $userType = $_SESSION['UserType'];
+                          if($userType == "company"){
+                            $companyID = $_SESSION['userID'];
+                          }
+                          else
+                            $companyID = $_SESSION['companyID'];
                           $filter = $_POST['sort'];
                           $query = "SELECT * FROM job where companyID = '$companyID' ORDER BY $filter ASC;";
                           $result = $conn -> query($query);
@@ -136,7 +147,12 @@ include_once 'conn.php';
                         }
                         else if(isset($_POST['descending_sort']))
                         {
-                          $companyID = $_SESSION['companyID'];
+                          $userType = $_SESSION['UserType'];
+                          if($userType == "company"){
+                            $companyID = $_SESSION['userID'];
+                          }
+                          else
+                            $companyID = $_SESSION['companyID'];
                           $filter = $_POST['sort'];
                           $query = "SELECT * FROM job where companyID = '$companyID' ORDER BY $filter DESC;";
 
@@ -157,7 +173,12 @@ include_once 'conn.php';
                         }
                         else
                         {
-                          $companyID = $_SESSION['companyID'];
+                          $userType = $_SESSION['UserType'];
+                          if($userType == "company"){
+                            $companyID = $_SESSION['userID'];
+                          }
+                          else
+                            $companyID = $_SESSION['companyID'];
                           $query = "SELECT * FROM job where companyID = '$companyID';";
                           $result = $conn -> query($query);
 
@@ -186,7 +207,15 @@ include_once 'conn.php';
 									</table>
 								</div>
 
-                <a href="companyPage.php" class="button primary" style="text-align:center">Return To Company Page</a>
+                <?php
+
+                    if($userType == "company")
+                      echo "<a href=\"companyProfile.php\" class=\"button primary\" style=\"text-align:center\">Return To Company Page</a>";
+                    else {
+                      echo "<a href=\"companyPage.php\" class=\"button primary\" style=\"text-align:center\">Return To Company Page</a>";
+
+                    }
+                 ?>
 							</section>
 
               <?php
