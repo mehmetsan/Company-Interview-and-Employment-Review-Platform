@@ -51,38 +51,38 @@
             <div class="col-2 col-12-xsmall">
               Name <input type="text" name="name" id="name" value= <?php echo $arr['name']  ?> />
             </div>
-            <div class="col-2 col-12-xsmall">
-              Website <input type="text" name="website" id="website" value= <?php echo $arr['website']  ?>/>
+						<div class="col-2 col-12-xsmall">
+              Website <input type="text" name="website" id="website" value=<?php echo $arr['website']  ?> />
             </div>
             <div class="col-2 col-12-xsmall">
-              Industry <input type="text" name="industry" id=industry"" value=<?php echo $arr['industry']  ?> />
+              Industry <input type="text" name="industry" id="industry" value=<?php echo $arr['industry']  ?> />
             </div>
-            <div class="col-2 col-12-xsmall">
-              Sector <input type="text" name="sector" id="sector" value=<?php echo $arr['sector']  ?>/>
+						<div class="col-2 col-12-xsmall">
+              Sector <input type="text" name="sector" id=sector"" value=<?php echo $arr['sector']  ?> />
             </div>
             <div class="col-2 col-12-xsmall">
               Revenue <input type="text" name="revenue" id="revenue" value=<?php echo $arr['revenue']  ?>>
             </div>
 						<div class="col-2 col-12-xsmall">
-              Type <input type="text" name="type" id="type" value=<?php echo $arr['type']  ?>/>
+              Type <input type="text" name="type" id=type"" value=<?php echo $arr['type']  ?> />
             </div>
 						<div class="col-2 col-12-xsmall">
-              Headquarter <input type="text" name="headquarter" id="headquarter" value=<?php echo $arr['headquarter']  ?>/>
+              Headquarter <input type="text" name="headquarter" id="headquarter" value=<?php echo $arr['headquarter']  ?> />
             </div>
-            <div class="col-5 col-12-xsmall">
-              Phone Number 1 <input type="text" name="phone1" id="phone1" value=<?php echo $arr2['phone_number1']  ?>/>
+						<div class="col-2 col-12-xsmall">
+              Phone Number 1 <input type="text" name="phone_number1" id="phone_number1" value=<?php echo $arr2['phone_number1']  ?>>
             </div>
-            <div class="col-5 col-12-xsmall">
-              Phone Number 2 <input type="text" name="phone2" id="phone2" value=<?php echo $arr2['phone_number2']  ?>/>
-            </div>
-            <div class="col-6 col-12-xsmall">
-              Email <input type="text" name="email" id="email" value=<?php echo $arr2['mail']  ?>/>
+						<div class="col-2 col-12-xsmall">
+              Phone Number 2 <input type="text" name="phone_number2" id="phone_number2" value=<?php echo $arr2['phone_number2']  ?> />
             </div>
             <div class="col-6 col-12-xsmall">
-              Password <input type="text" name="password" id="password" value=<?php echo $arr2['password']  ?>/>
+              Email <input type="text" name="email" id="email" value=<?php echo $arr2['mail']  ?> />
+            </div>
+            <div class="col-6 col-12-xsmall">
+              Password <input type="text" name="password" id="password" value=<?php echo $arr2['password']  ?> />
             </div>
 						<div class="col-12-medium">
-							*Establish Date: <input type="date" style="background-color:black;" name="establish_date" id="establish_date">
+							Establish Date <input type="date" style="background-color:black;" name="establish_date" id="establish_date">
 						</div>
             <div class="col-12">
               <ul class="actions">
@@ -128,8 +128,8 @@ $connection = mysqli_connect('dijkstra.ug.bcc.bilkent.edu.tr', 'ege.marasli', '8
 		$newHeadquarter= $_POST['headquarter'];
 		$newMail = $_POST['email'];
 		$newPassword = $_POST['password'];
-		$newPhoneNumber1 = $_POST['phone1'];
-		$newPhoneNumber2 = $_POST['phone2'];
+		$newPhoneNumber1 = $_POST['phone_number1'];
+		$newPhoneNumber2 = $_POST['phone_number2'];
 
 		$query = "UPDATE company SET name = '$newName', website='$newWebsite', industry ='$newIndustry',sector ='$newSector', revenue ='$newRevenue', establish_date ='$newEstablishDate', type ='$newType',headquarter ='$newHeadquarter' WHERE companyID = $companyID;";
 		$result = $connection-> query($query);

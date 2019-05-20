@@ -95,13 +95,24 @@
 							?>
 						</tr>
 						<tr>
-							<td>Phone Number</td>
+							<td>Phone Number 1</td>
 							<?php
 							$query = "SELECT * FROM user WHERE userID = '$userID'";
 							$result = $conn-> query($query);
 							while ($arr = $result ->fetch_assoc())
 							{
 						  	echo "<td>" . $arr['phone_number1'] . "</td>";
+							}
+							?>
+						</tr>
+						<tr>
+							<td>Phone Number 2</td>
+							<?php
+							$query = "SELECT * FROM user WHERE userID = '$userID'";
+							$result = $conn-> query($query);
+							while ($arr = $result ->fetch_assoc())
+							{
+						  	echo "<td>" . $arr['phone_number2'] . "</td>";
 							}
 							?>
 						</tr>

@@ -58,7 +58,7 @@
               First Name <input type="text" name="firstName" id="firstName" value= <?php echo $arr['first_name']  ?> />
             </div>
 						<div class="col-2 col-12-xsmall">
-              Middle Name <input type="text" name="middleName" id="middleName" value= <?php echo $arr['middle_name']  ?> />
+              Middle Name <input type="text" name="middleName" id="middleName" value=<?php echo $arr['middle_name']  ?>>
             </div>
 						<div class="col-2 col-12-xsmall">
               Last Name <input type="text" name="lastName" id="lastName" value= <?php echo $arr['last_name']  ?> />
@@ -70,27 +70,23 @@
 								<option value="female">Female</option>
 							</select>
 						</div>
-            <div class="col-2 col-12-xsmall">
-              Highest Education <input type="text" name="highestEducation" id=highestEducation"" value=<?php echo $arr['highest_education']  ?> />
+						<div class="col-2 col-12-xsmall">
+              Highest Education <input type="text" name="highestEducation" id="highestEducation" value=<?php echo $arr['highest_education']  ?>>
             </div>
             <div class="col-2 col-12-xsmall">
               Position <input type="text" name="position" id="position" value=<?php echo $arr['position']  ?>>
             </div>
 						<div class="col-2 col-12-xsmall">
-							<?php  $message = $arr['Location'];?>
-              Location <input type="text" name="location" id="location" value=<?php echo $message  ?>/>
-
-
+              Location <input type="text" name="location" id="location" value=<?php echo $arr['Location']  ?>>
             </div>
-
-            <div class="col-5 col-12-xsmall">
-              Phone Number 1 <input type="text" name="phone1" id="phone1" value=<?php echo $arr2['phone_number1']?>/>
+						<div class="col-2 col-12-xsmall">
+              Phone Number 1 <input type="text" name="phone_number1" id="phone_number1" value=<?php echo $arr2['phone_number1']  ?>>
             </div>
-            <div class="col-5 col-12-xsmall">
-              Phone Number 2 <input type="text" name="phone2" id="phone2" value=<?php echo $arr2['phone_number2']?>/>
+						<div class="col-2 col-12-xsmall">
+              Phone Number 2 <input type="text" name="phone_number2" id="phone_number2" value=<?php echo $arr2['phone_number2']  ?>>
             </div>
-            <div class="col-6 col-12-xsmall">
-              Email <input type="text" name="email" id="email" value=<?php echo $arr2['mail']?>/>
+						<div class="col-2 col-12-xsmall">
+              Email <input type="text" name="email" id="email" value=<?php echo $arr2['mail']  ?>>
             </div>
             <div class="col-6 col-12-xsmall">
               Password <input type="text" name="password" id="password" value="<?php echo $arr2['password']?>"/>
@@ -140,8 +136,8 @@ $connection = mysqli_connect('dijkstra.ug.bcc.bilkent.edu.tr', 'ege.marasli', '8
 		$newResume= $_POST['resume'];
 		$newPosition= $_POST['position'];
 		$newLocation= $_POST['location'];
-		$newPhoneNumber1 = $_POST['phone1'];
-		$newPhoneNumber2 = $_POST['phone2'];
+		$newPhoneNumber1 = $_POST['phone_number1'];
+		$newPhoneNumber2 = $_POST['phone_number2'];
 		$newMail = $_POST['email'];
 		$newPassword = $_POST['password'];
 
