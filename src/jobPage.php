@@ -127,6 +127,7 @@ if($result -> num_rows == 1)
       else {
         echo "<a href=\"companyProfile.php\" class=\"button primary\" style=\"text-align:center\">Return To Company Page</a>";
         $_SESSION['jobID'] = $jobID;
+        echo " ";
         echo "<a href=\"applicants.php\" class=\"button primary\" style=\"text-align:center\">See Applicants</a>";
       }
        ?>
