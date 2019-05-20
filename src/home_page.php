@@ -30,7 +30,7 @@ $connection = mysqli_connect('dijkstra.ug.bcc.bilkent.edu.tr', 'ege.marasli', '8
 									echo "<li><a href=\"companyList.php\">Companies</a></li>";
 									echo "<li><a href=\"myReviewList.php\">My Reviews</a></li>";
 									echo "<li><a href=\"jobList.php\">Jobs</a></li>";
-									echo "<li><a href=\"projectList.php\">Projects</a></li>";
+									echo "<li><a href=\"allProjectList.php\">Projects</a></li>";
 								}
 								else {
 									echo "<li><a href=\"companyProfile.php\">Profile</a></li>";

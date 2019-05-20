@@ -101,7 +101,7 @@ if($result -> num_rows == 1)
       else {
         echo "<a href=\"companyProfile.php\" class=\"button primary\" style=\"text-align:center\">Return To Company Page</a>";
       }
-      
+
       ?>
 
 
