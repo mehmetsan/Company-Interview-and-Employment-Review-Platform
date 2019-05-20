@@ -38,45 +38,34 @@
 			<h1 id="logo"><a href="index.php"></a></h1>
 			<nav id="nav">
 				<ul>
-					<li><a href="index.php">Home</a></li>
-					<li>
-						<ul>
-							<li><a href="employee_register.php">Employee Register</a></li>
-							<li><a href="company_register.php">Company Register</a></li>
-						</ul>
-					</li>
+					<li><a href="home_page.php">Home</a></li>
 				</ul>
 			</nav>
 		</header>
 
     <!-- Form -->
       <section>
-        <h3>Form</h3>
+        <h3>Edit Profile</h3>
         <form method="post" action="#">
           <div class="row gtr-uniform gtr-50">
-            <div class="col-2 col-12-xsmall">
-              First Name <input type="text" name="firstName" id="firstName" value= <?php echo $arr['first_name']  ?> />
-            </div>
-						<div class="col-2 col-12-xsmall">
-              Middle Name <input type="text" name="middleName" id="middleName" value=<?php echo $arr['middle_name']  ?>>
-            </div>
-						<div class="col-2 col-12-xsmall">
-              Last Name <input type="text" name="lastName" id="lastName" value= <?php echo $arr['last_name']  ?> />
-            </div>
-						<div class="col-12">
-							<select name="gender" id="gender">
-								<option value="">Gender</option>
-								<option value="male">Male</option>
-								<option value="female">Female</option>
-							</select>
-						</div>
-						<div class="col-2 col-12-xsmall">
-              Highest Education <input type="text" name="highestEducation" id="highestEducation" value=<?php echo $arr['highest_education']  ?>>
-            </div>
-            <div class="col-2 col-12-xsmall">
-              Position <input type="text" name="position" id="position" value=<?php echo $arr['position']  ?>>
-            </div>
-						<div class="col-2 col-12-xsmall">
+							<div class="col-2 col-12-xsmall">
+	              First Name <input type="text" name="firstName" id="firstName" value= <?php echo $arr['first_name']  ?> />
+	            </div>
+							<div class="col-2 col-12-xsmall">
+	              Middle Name <input type="text" name="middleName" id="middleName" value=<?php echo $arr['middle_name']  ?>>
+	            </div>
+							<div class="col-2 col-12-xsmall">
+	              Last Name <input type="text" name="lastName" id="lastName" value= <?php echo $arr['last_name']  ?> />
+	            </div>
+
+								<div class="col-4 col-12-medium">
+		              Highest Education <input type="text" name="highestEducation" id="highestEducation" value=<?php echo $arr['highest_education']  ?>>
+		            </div>
+		            <div class="col-2 col-12-xsmall">
+		              Position <input type="text" name="position" id="position" value=<?php echo $arr['position']  ?>>
+		            </div>
+
+						<div class="col-4 col-12-medium">
               Location <input type="text" name="location" id="location" value=<?php echo $arr['Location']  ?>>
             </div>
 						<div class="col-2 col-12-xsmall">
@@ -86,23 +75,51 @@
               Phone Number 2 <input type="text" name="phone_number2" id="phone_number2" value=<?php echo $arr2['phone_number2']  ?>>
             </div>
 						<div class="col-2 col-12-xsmall">
+							Gender <select name="gender" id="gender">
+								<?php
+								$gender = $arr['gender'];
+								if ($gender=="") {
+									echo "<option value=\"empty\" selected>" . "Select Gender" . "</option>";
+									echo "<option value=\"male\" >" . "Male" . "</option>";
+									echo "<option value=\"female\">" . "Female" . "</option>";
+								}
+								else if($gender=="male") {
+									echo "<option value=\"male\"selected>" . "Male" . "</option>";
+									echo "<option value=\"female\">" . "Female" . "</option>";
+								}
+								else{
+									echo "<option value=\"male\" >" . "Male" . "</option>";
+									echo "<option value=\"female\"selected>" . "female" . "</option>";
+								}
+								 ?>
+							</select>
+						</div>
+						<div class="col-4 col-12-xsmall">
               Email <input type="text" name="email" id="email" value=<?php echo $arr2['mail']  ?>>
             </div>
-            <div class="col-6 col-12-xsmall">
-              Password <input type="text" name="password" id="password" value="<?php echo $arr2['password']?>"/>
-            </div>
-						<div class="col-2 col-12-xsmall">
-							Resume	<textarea name="resume" id="resume" placeholder=<?php echo $arr['resume']  ?> rows="6"></textarea>
-            </div>
-            <div class="col-12">
-              <ul class="actions">
-                <li><input type="submit" value="Update" name="update" class="primary" /></li>
-								<li><a href="employeeProfile.php" class ="button primary">Cancel</a></li>
-              </ul>
-            </div>
+
+							<div class="col-2 col-12-xsmall">
+	              Password <input type="text" name="password" id="password" value="<?php echo $arr2['password']?>"/>
+	            </div>
+
+
+
           </div>
-        </form>
+
       </section>
+
+			<section>
+				 <div>
+					 Resume	<textarea name="resume" id="resume" rows="6" cols="20"><?php echo $arr['resume']  ?></textarea>
+				 </div>
+				 <div class="col-12">
+	 				<ul class="actions">
+	 					<li><input type="submit" value="Update" name="update" class="primary" /></li>
+	 					<li><a href="employeeProfile.php" class ="button primary">Cancel</a></li>
+	 				</ul>
+	 			</div>
+				</form>
+			 </section>
 
 
 
