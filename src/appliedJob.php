@@ -91,11 +91,7 @@ if($result -> num_rows == 1)
                 {
 										$jobID =  $job['jobID'];
 
-                    $query = "SELECT * FROM publishes WHERE jobID = '$jobID'";
-                    $result2 = $conn-> query($query);
-
-                    $temp = $result2->fetch_assoc();
-                    $companyID = $temp['companyID'];
+                    $companyID = $job['companyID'];
 
                     $query = "SELECT * FROM company WHERE companyID = '$companyID'";
                     $result2 = $conn-> query($query);
