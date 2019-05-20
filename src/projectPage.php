@@ -28,6 +28,7 @@ $result = $connection-> query($query);
 if($result -> num_rows == 1)
 {
 	$projectInfo = $result->fetch_assoc();
+  $_SESSION['companyID'] = $projectInfo['companyID'];
 }
 
 ?>
@@ -108,12 +109,14 @@ if($result -> num_rows == 1)
       if($userType == "employee"){
         echo "<a href=\"allProjectList.php\" class=\"button primary\" style=\"text-align:center\">Return To Project List</a>";
         echo"\n";
-        echo "<a href=\"companyPage.php\" class=\"button primary\" style=\"text-align:center\">Return To Company Page</a>";
+        echo "<a href=\"companyPage.php\" class=\"button primary\" style=\"text-align:center\">Go To Company Page</a>";
       }
       else {
         echo "<a href=\"companyProfile.php\" class=\"button primary\" style=\"text-align:center\">Return To Company Profile</a>";
         echo " ";
         echo "<section> <form method=\"post\" action=\"#\"><div class=\"col-12\"> <ul class=\"actions\"> <li><input type=\"submit\" value=\"Delete this Project\" name =\"delete\" class=\"primary\"/></li></ul></div></form></section>";
+        echo " ";
+        echo "<section> <form method=\"post\" action=\"#\"><div class=\"col-12\"> <ul class=\"actions\"> <li><input type=\"submit\" value=\"Add a Member\" name =\"member\" class=\"primary\"/></li></ul></div></form></section>";
       }
 
       ?>

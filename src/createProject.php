@@ -33,8 +33,8 @@
         				<div id="main" class="wrapper style1">
         					<div class="container">
         						<header class="major">
-        							<h2>Create a Benefits Review</h2>
-        							<p>Tell us the opportunities of the company!</p>
+        							<h2>Create a Project</h2>
+        							<p>Create a project of your own!</p>
         						</header>
         						<div class="sign">
 
@@ -46,15 +46,15 @@
 														<div class="col-12 col-12-xsmall">
 															<input type="text" name="title" id="title" value="" placeholder="Title" />
 														</div>
-														<div class="col-12 col-12-xsmall">
-															<input type="text" name="start_date" id="start_date" start_date="" placeholder="Start Date" />
-														</div>
 														<div class="col-12">
 															<select name="status" id="status">
 																<option value="">Project Status</option>
 																<option value="Ongoing">Ongoing</option>
 																<option value="Finished">Finished</option>
 															</select>
+														</div>
+														<div class="col-12-medium">
+															Start Date <input type="date" style="background-color:black;" name="start_date" id="start_date"/>
 														</div>
 														<div class="col-12">
 															<textarea name="description" id="description" placeholder="Enter your project description here..." rows="6"></textarea>

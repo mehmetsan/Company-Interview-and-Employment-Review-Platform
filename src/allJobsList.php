@@ -9,7 +9,7 @@ include_once 'conn.php';
 -->
 <html>
 	<head>
-		<title>All Jobs List</title>
+		<title>Elements - Landed by HTML5 UP</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -22,8 +22,24 @@ include_once 'conn.php';
 				<header id="header">
 					<nav id="nav">
 						<ul>
-							<li><a href="home_page.php" class ="button primary">Home</a></li>
-		          <li><a href="index.php" class ="button primary">Logout</a></li>
+							<li><a href="home_page.php">Home</a></li>
+							<li>
+								<ul>
+									<li><a href="left-sidebar.php">Left Sidebar</a></li>
+									<li><a href="right-sidebar.php">Right Sidebar</a></li>
+									<li><a href="no-sidebar.php">No Sidebar</a></li>
+									<li>
+										<a href="#">Submenu</a>
+										<ul>
+											<li><a href="#">Option 1</a></li>
+											<li><a href="#">Option 2</a></li>
+											<li><a href="#">Option 3</a></li>
+											<li><a href="#">Option 4</a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li><a href="index.php" class="button primary">Logout</a></li>
 						</ul>
 					</nav>
 				</header>
@@ -40,15 +56,12 @@ include_once 'conn.php';
 			<input type="text" name="search" placeholder="Search Jobs">
 			<select name="filter">
 				<option value="all">Select Filter(Show all jobs)</option>
-        <option value="name">Company Name</option>
 				<option value="title">Job Title</option>
         <option value="position">Position</option>
 			</select>
 			<input type="submit" name="submit" value="Find">
       <select name="sort">
 				<option value="all">Sort By</option>
-        <option value="name">Company Name</option>
-				<option value="title">Job Title</option>
         <option value="High School">Salary of High School Jobs</option>
         <option value="Bachelors">Salary of Bachelors Jobs</option>
         <option value="Masters">Salary of Masters Jobs</option>
@@ -107,33 +120,6 @@ include_once 'conn.php';
                           }
                           else
                           {
-                            if($filter == 'name')
-                            {
-
-                              $query = "SELECT * FROM (SELECT * FROM job NATURAL JOIN company) as q WHERE q.name LIKE '%$search%';";
-                              $result = $conn -> query($query);
-
-                              if($result -> num_rows > 0)
-                              {
-
-                                  while ($row = $result ->fetch_assoc())
-                                  {
-                                    $jobID = $row['jobID'];
-                                    $companyID = $row['companyID'];
-                                    $queryCompany = "SELECT name FROM company WHERE companyID = '$companyID';";
-                                    $resultCompany = $conn -> query($queryCompany);
-                                    $companyName = $resultCompany ->fetch_assoc();
-                                    $companyName = $companyName['name'];
-
-                                    $var=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$jobID name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
-                                    </section>";
-
-                                    echo "<tr><td>"  . $companyName . "</td><td>". $row['title'] . "</td><td>" . $row['education'] .  "</td><td>" . $row['position'] .  "</td><td>" . $row['type'] .  "</td><td>" . $row['salary'] .  "</td><td>" . $var ."</td></tr>";
-                                  }
-                              }
-                            }
-                            else
-                            {
                               $query = "SELECT * FROM job where $filter LIKE '%$search%';";
 
                               $result = $conn -> query($query);
@@ -155,87 +141,18 @@ include_once 'conn.php';
                                 }
 
                               }
-                            }
 
                         }
                       }
 
                         else if(isset($_POST['ascending_sort']))
                         {
-                          $filter = $_POST['sort'];
-                          if($filter == 'name')
-                          {
-                            $query = "SELECT * FROM (SELECT * FROM job NATURAL JOIN company) as q ORDER BY q.name ASC;";
-                            $result = $conn -> query($query);
-
-                            while ($row = $result ->fetch_assoc())
+                            $filter = $_POST['sort'];
+                            if($filter == 'High School' || $filter == 'Bachelors' || $filter == 'Masters' || $filter == 'PhD')
                             {
-                              $jobID = $row['jobID'];
-                              $companyID = $row['companyID'];
-                              $queryCompany = "SELECT name FROM company WHERE companyID = '$companyID';";
-                              $resultCompany = $conn -> query($queryCompany);
-                              $companyName = $resultCompany ->fetch_assoc();
-                              $companyName = $companyName['name'];
+                              $query = "SELECT * FROM job WHERE education = '$filter' ORDER BY salary ASC;";
+                              $result = $conn -> query($query);
 
-                              $var=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$jobID\" name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
-                              </section>";
-                              echo "<tr><td>"  . $companyName . "</td><td>". $row['title'] . "</td><td>" . $row['education'] .  "</td><td>" . $row['position'] .  "</td><td>" . $row['type'] .  "</td><td>" . $row['salary'] .  "</td><td>" . $var ."</td></tr>";
-                            }
-
-                          }
-                          else
-                          {
-                            $query = "SELECT * FROM job ORDER BY $filter ASC;";
-                            $result = $conn -> query($query);
-
-                            while ($row = $result ->fetch_assoc())
-                            {
-                              $jobID = $row['jobID'];
-                              $companyID = $row['companyID'];
-                              $queryCompany = "SELECT name FROM company WHERE companyID = '$companyID';";
-                              $resultCompany = $conn -> query($queryCompany);
-                              $companyName = $resultCompany ->fetch_assoc();
-                              $companyName = $companyName['name'];
-
-                              $var=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$jobID\" name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
-                              </section>";
-                              echo "<tr><td>"  . $companyName . "</td><td>". $row['title'] . "</td><td>" . $row['education'] .  "</td><td>" . $row['position'] .  "</td><td>" . $row['type'] .  "</td><td>" . $row['salary'] .  "</td><td>" . $var ."</td></tr>";
-                            }
-                          }
-
-
-                        }
-                        else if(isset($_POST['descending_sort']))
-                        {
-                          $filter = $_POST['sort'];
-                          if($filter == 'name')
-                          {
-                            $query = "SELECT * FROM (SELECT * FROM job NATURAL JOIN company) as q ORDER BY q.name DESC;";
-                            $result = $conn -> query($query);
-
-                            while ($row = $result ->fetch_assoc())
-                            {
-                              $jobID = $row['jobID'];
-                              $companyID = $row['companyID'];
-                              $queryCompany = "SELECT name FROM company WHERE companyID = '$companyID';";
-                              $resultCompany = $conn -> query($queryCompany);
-                              $companyName = $resultCompany ->fetch_assoc();
-                              $companyName = $companyName['name'];
-
-                              $var=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$jobID\" name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
-                              </section>";
-                              echo "<tr><td>"  . $companyName . "</td><td>". $row['title'] . "</td><td>" . $row['education'] .  "</td><td>" . $row['position'] .  "</td><td>" . $row['type'] .  "</td><td>" . $row['salary'] .  "</td><td>" . $var ."</td></tr>";
-                            }
-
-                          }
-                          else
-                          {
-                            $query = "SELECT * FROM job ORDER BY $filter DESC;";
-
-                            $result = $conn -> query($query);
-
-                            if($result -> num_rows > 0)
-                            {
                               while ($row = $result ->fetch_assoc())
                               {
                                 $jobID = $row['jobID'];
@@ -250,13 +167,33 @@ include_once 'conn.php';
                                 echo "<tr><td>"  . $companyName . "</td><td>". $row['title'] . "</td><td>" . $row['education'] .  "</td><td>" . $row['position'] .  "</td><td>" . $row['type'] .  "</td><td>" . $row['salary'] .  "</td><td>" . $var ."</td></tr>";
                               }
                             }
-                          }
-                          $query = "SELECT * FROM job ORDER BY $filter DESC;";
+                            else {
+                              $query = "SELECT * FROM job WHERE type = '$filter' ORDER BY salary ASC;";
+                              $result = $conn -> query($query);
 
-                          $result = $conn -> query($query);
+                              while ($row = $result ->fetch_assoc())
+                              {
+                                $jobID = $row['jobID'];
+                                $companyID = $row['companyID'];
+                                $queryCompany = "SELECT name FROM company WHERE companyID = '$companyID';";
+                                $resultCompany = $conn -> query($queryCompany);
+                                $companyName = $resultCompany ->fetch_assoc();
+                                $companyName = $companyName['name'];
 
-                          if($result -> num_rows > 0)
+                                $var=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$jobID\" name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
+                                </section>";
+                                echo "<tr><td>"  . $companyName . "</td><td>". $row['title'] . "</td><td>" . $row['education'] .  "</td><td>" . $row['position'] .  "</td><td>" . $row['type'] .  "</td><td>" . $row['salary'] .  "</td><td>" . $var ."</td></tr>";
+                              }
+                            }
+                        }
+                        else if(isset($_POST['descending_sort']))
+                        {
+                          $filter = $_POST['sort'];
+                          if($filter == 'High School' || $filter == 'Bachelors' || $filter == 'Masters' || $filter == 'PhD')
                           {
+                            $query = "SELECT * FROM job WHERE education = '$filter' ORDER BY salary DESC;";
+                            $result = $conn -> query($query);
+
                             while ($row = $result ->fetch_assoc())
                             {
                               $jobID = $row['jobID'];
@@ -271,57 +208,25 @@ include_once 'conn.php';
                               echo "<tr><td>"  . $companyName . "</td><td>". $row['title'] . "</td><td>" . $row['education'] .  "</td><td>" . $row['position'] .  "</td><td>" . $row['type'] .  "</td><td>" . $row['salary'] .  "</td><td>" . $var ."</td></tr>";
                             }
                           }
-
-
-                          }
-                          else if(isset($_POST['filter_finished']))
-                          {
-                            $query = "SELECT * FROM job where status = 'Finished'";
+                          else {
+                            $query = "SELECT * FROM job WHERE type = '$filter' ORDER BY salary DESC;";
                             $result = $conn -> query($query);
 
-                            if($result -> num_rows > 0)
+                            while ($row = $result ->fetch_assoc())
                             {
+                              $jobID = $row['jobID'];
+                              $companyID = $row['companyID'];
+                              $queryCompany = "SELECT name FROM company WHERE companyID = '$companyID';";
+                              $resultCompany = $conn -> query($queryCompany);
+                              $companyName = $resultCompany ->fetch_assoc();
+                              $companyName = $companyName['name'];
 
-                                while ($row = $result ->fetch_assoc())
-                                {
-                                  $jobID = $row['jobID'];
-                                  $companyID = $row['companyID'];
-                                  $queryCompany = "SELECT name FROM company WHERE companyID = '$companyID';";
-                                  $resultCompany = $conn -> query($queryCompany);
-                                  $companyName = $resultCompany ->fetch_assoc();
-                                  $companyName = $companyName['name'];
-
-                                  $var=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$jobID name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
-                                  </section>";
-
-                                  echo "<tr><td>"  . $companyName . "</td><td>". $row['title'] . "</td><td>" . $row['education'] .  "</td><td>" . $row['position'] .  "</td><td>" . $row['type'] .  "</td><td>" . $row['salary'] .  "</td><td>" . $var ."</td></tr>";
-                                }
+                              $var=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$jobID\" name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
+                              </section>";
+                              echo "<tr><td>"  . $companyName . "</td><td>". $row['title'] . "</td><td>" . $row['education'] .  "</td><td>" . $row['position'] .  "</td><td>" . $row['type'] .  "</td><td>" . $row['salary'] .  "</td><td>" . $var ."</td></tr>";
                             }
                           }
-                          else if(isset($_POST['filter_ongoing']))
-                          {
-                            $query = "SELECT * FROM job where status = 'Ongoing'";
-                            $result = $conn -> query($query);
-
-                            if($result -> num_rows > 0)
-                            {
-
-                                while ($row = $result ->fetch_assoc())
-                                {
-                                  $jobID = $row['jobID'];
-                                  $companyID = $row['companyID'];
-                                  $queryCompany = "SELECT name FROM company WHERE companyID = '$companyID';";
-                                  $resultCompany = $conn -> query($queryCompany);
-                                  $companyName = $resultCompany ->fetch_assoc();
-                                  $companyName = $companyName['name'];
-
-                                  $var=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$jobID name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
-                                  </section>";
-
-                                  echo "<tr><td>"  . $companyName . "</td><td>". $row['title'] . "</td><td>" . $row['education'] .  "</td><td>" . $row['position'] .  "</td><td>" . $row['type'] .  "</td><td>" . $row['salary'] .  "</td><td>" . $var ."</td></tr>";
-                                }
-                            }
-                          }
+                        }
                         else
                         {
                           $query = "SELECT * FROM job;";
@@ -338,7 +243,8 @@ include_once 'conn.php';
                               $companyName = $resultCompany ->fetch_assoc();
                               $companyName = $companyName['name'];
 
-                              $var=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$jobID\" name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form> </section>";
+                              $var=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$jobID\" name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
+                              </section>";
                               echo "<tr><td>"  . $companyName . "</td><td>". $row['title'] . "</td><td>" . $row['education'] .  "</td><td>" . $row['position'] .  "</td><td>" . $row['type'] .  "</td><td>" . $row['salary'] .  "</td><td>" . $var ."</td></tr>";
                             }
 
@@ -363,11 +269,8 @@ include_once 'conn.php';
               {
                 $message =$_POST['link'];
                 $_SESSION['jobID'] = $message;
-                $query = "SELECT companyID FROM job where jobID = '$message';";
-                $result = $conn -> query($query);
-                $result = $result ->fetch_assoc();
-                $companyID = $result['name'];
-                $_SESSION['companyID'] = $companyID;
-                header("Location: jobPage.php");
+								
+                $temp = "<script>window.location ='jobPage.php';</script>";
+                echo $temp;
               }
                ?>

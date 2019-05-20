@@ -48,7 +48,6 @@ if(! $connection)
 								<ul>
 									<li><a href="employee_register.php">Employee Register</a></li>
 									<li><a href="company_register.php">Company Register</a></li>
-                  <li><a href="company_list.php">Company List</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -150,6 +149,7 @@ if(! $connection)
               }
               else if ($result2 -> num_rows == 0 && $adminCont -> num_rows == 0 ){
                 $_SESSION['UserType'] = "company";
+                $_SESSION['companyID'] = $userID[userID];
               }
 
 

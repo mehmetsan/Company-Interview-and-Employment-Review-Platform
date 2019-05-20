@@ -12,7 +12,6 @@ public class Main {
         dropMembersTable();
         dropPublishesTable();
         dropResponsesTable();
-        dropRequestsTable();
         dropSalary_reviewTable();
         dropBenefits_reviewTable();
         dropGeneral_reviewTable();
@@ -38,17 +37,13 @@ public class Main {
         createWorksTable();
         createJobTable();
         createProjectTable();
-        createPhotoTable();
-        createAwardTable();
         createSalary_reviewTable();
         createInterview_reviewTable();
         createBenefits_reviewTable();
         createGeneral_reviewTable();
         createAppliesTable();
-        createResponsesTable();
         createPublishesTable();
         createRelatedTable();
-        createRequestsTable();
         createMembersTable();
     }
 
@@ -371,21 +366,6 @@ public class Main {
         }
     }
 
-    public static void dropRequestsTable()
-            throws Exception
-    {
-        try
-        {
-            Connection con = getConnection();
-            PreparedStatement posted = con.prepareStatement("DROP TABLE requests");
-            posted.executeUpdate();
-        }
-        catch (Exception e) {System.out.println(e);}
-        finally
-        {
-            System.out.println("requests table drop complete");
-        }
-    }
 
     public static void dropMembersTable()
             throws Exception
@@ -550,41 +530,7 @@ public class Main {
     }
 
 
-    public static void createPhotoTable()
-    {
-        try
-        {
-            Connection connection = getConnection();
-            PreparedStatement ownsT = connection.prepareStatement("create table photo("
-                    + "companyID	varchar(20),"
-                    + "photo_name	varchar(20),"
-                    + "photo_url	varchar(200),"
-                    + "PRIMARY KEY(companyID, photo_name, photo_url),"
-                    + "FOREIGN KEY(companyID) REFERENCES company(companyID) ON UPDATE CASCADE ON DELETE CASCADE)"
-                    + "Engine=InnoDB");
-            ownsT.executeUpdate();
-        }
-        catch (Exception e) {System.out.print(e);}
-        finally{System.out.println("photo table created");}
-    }
 
-    public static void createAwardTable()
-    {
-        try
-        {
-            Connection connection = getConnection();
-            PreparedStatement ownsT = connection.prepareStatement("CREATE TABLE award("
-                    + "companyID		varchar(20),"
-                    + "award_name		varchar(20),"
-                    + "committee_name	varchar(20),"
-                    + "PRIMARY KEY(companyID, award_name, committee_name),"
-                    + "FOREIGN KEY(companyID) REFERENCES company(companyID) ON UPDATE CASCADE ON DELETE CASCADE)"
-                    + "Engine=InnoDB");
-            ownsT.executeUpdate();
-        }
-        catch (Exception e) {System.out.print(e);}
-        finally{System.out.println("award table created");}
-    }
 
     public static void createAppliesTable()
     {
@@ -617,7 +563,8 @@ public class Main {
                     + "rating			    double NOT NULL,"
                     + "location		        varchar(40) NOT NULL,"
                     + "comment		        varchar(500) NOT NULL,"
-                    + "visibility		    bit NOT NULL )"
+                    + "visibility		    bit NOT NULL,"
+                    + "requested		    bit NOT NULL)"
                     + "Engine=InnoDB");
             ownsT.executeUpdate();
         }
@@ -625,24 +572,7 @@ public class Main {
         finally{System.out.println("review table created");}
     }
 
-    public static void createResponsesTable()
-    {
-        try
-        {
-            Connection connection = getConnection();
-            PreparedStatement ownsT = connection.prepareStatement("CREATE TABLE responses("
-                    + "respond	varchar(200),"
-                    + "reviewID          	int,"
-                    + "employeeID     	varchar(20),"
-                    + "PRIMARY KEY (reviewID, respond),"
-                    + "FOREIGN KEY (reviewID) references review(reviewID) ON UPDATE CASCADE ON DELETE CASCADE,"
-                    + "FOREIGN KEY (employeeID) references employee(employeeID) ON UPDATE CASCADE ON DELETE CASCADE)"
-                    + "Engine=InnoDB");
-            ownsT.executeUpdate();
-        }
-        catch (Exception e) {System.out.print(e);}
-        finally{System.out.println("responses table created");}
-    }
+
 
     public static void createPublishesTable()
     {
@@ -764,26 +694,6 @@ public class Main {
         }
         catch (Exception e) {System.out.print(e);}
         finally{System.out.println("interview_review table created");}
-    }
-
-    public static void createRequestsTable()
-    {
-        try
-        {
-            Connection connection = getConnection();
-            PreparedStatement ownsT = connection.prepareStatement("CREATE TABLE requests ("
-                    + "reviewID         int,"
-                    + "companyID        varchar(20),"
-                    + "adminID          varchar(20),"
-                    + "PRIMARY KEY (reviewID),"
-                    + "FOREIGN KEY (reviewID) references review(reviewID) ON UPDATE CASCADE ON DELETE CASCADE,"
-                    + "FOREIGN KEY (companyID) references company(companyID) ON UPDATE CASCADE ON DELETE CASCADE,"
-                    + "FOREIGN KEY (adminID) references admin(adminID) ON UPDATE CASCADE ON DELETE CASCADE)"
-                    + "Engine=InnoDB");
-            ownsT.executeUpdate();
-        }
-        catch (Exception e) {System.out.print(e);}
-        finally{System.out.println("requests table created");}
     }
 
     public static void createMembersTable()

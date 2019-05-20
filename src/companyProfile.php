@@ -183,10 +183,15 @@
 					<li><a href="followers.php" class="button primary fit">My Followers</a></li>
 					<li><a href="createJob.php" class="button primary fit">Create a Job</a></li>
 					<li><a href="createProject.php" class="button primary fit">Create a Project</a></li>
-					<li><a href="jobList.php" class="button primary fit">My Offered Jobs</a></li>
-					<li><a href="projectList.php" class="button primary fit">My Published Projects</a></li>
-					<li><a href="reviewListForCompany.php" class="button primary fit">Reviews about My Company</a></li>
-				</ul>
+			 </ul>
+				<div class="col-6 col-12-xsmall">
+					<ul class="actions">
+						<li><a href="jobList.php" class="button primary fit">My Offered Jobs</a></li>
+						<li><a href="projectList.php" class="button primary fit">My Published Projects</a></li>
+						<li><a href="reviewListForCompany.php" class="button primary fit">Reviews about My Company</a></li>
+						<li><a href="employeeList.php" class="button primary fit">Add a Worker</a></li>
+					</ul>
+
 			</div>
 
 

@@ -33,7 +33,7 @@ include_once 'conn.php';
 					<div class="container">
 						<header class="major">
 							<h2>Job List</h2>
-							<p>You can find every job offerings from the company here.</p>
+							<p>You can find your company's job offerings from here.</p>
 						</header>
 						<!-- Table -->
             <form method="post" action="#">
