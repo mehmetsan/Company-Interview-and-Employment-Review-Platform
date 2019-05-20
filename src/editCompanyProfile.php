@@ -82,7 +82,7 @@
               Password <input type="text" name="password" id="password" value=<?php echo $arr2['password']  ?> />
             </div>
 						<div class="col-12-medium">
-							Establish Date <input type="date" style="background-color:black;" name="establish_date" id="establish_date">
+							Establish Date <input type="date" style="background-color:black;" name="establish_date" id="establish_date" value=<?php echo $arr['establish_date']  ?> />
 						</div>
             <div class="col-12">
               <ul class="actions">
@@ -136,5 +136,6 @@ $connection = mysqli_connect('dijkstra.ug.bcc.bilkent.edu.tr', 'ege.marasli', '8
 
 		$query2 = "UPDATE user SET mail ='$newMail', password ='$newPassword', phone_number1 ='$newPhoneNumber1', phone_number2 ='$newPhoneNumber2' WHERE userID = $companyID;";
 		$result = $connection-> query($query2);
+		echo "<script type='text/javascript'>window.location = 'companyProfile.php' </script>";
 	}
  ?>
