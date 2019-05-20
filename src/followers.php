@@ -111,7 +111,7 @@ include_once 'conn.php';
 	                                  $employeeID = $row['employeeID'];
 	                                  //$var2=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$companyID\" name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>	</section>";
 
-	                                  $var=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$companyID name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
+	                                  $var=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$employeeID name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
 	                                  </section>";
 	                                    echo "<tr><td>" . $row['first_name'] . "</td><td>" . $row['last_name'] . "</td><td>" . $row['highest_education'] . "</td><td>" . $var ."</td></tr>";
 	                                }
@@ -130,7 +130,7 @@ include_once 'conn.php';
 	                                while ($row2 = $result2 ->fetch_assoc())
 	                                {
 																			$temp = $row2['employeeID'];
-	                            				$query = "SELECT * FROM employee WHERE employeeID = '$temp' AND $filter LIKE '%$search%';";
+	                            				$query = "SELECT * FROM employee WHERE employeeID = '$temp' AND '$filter' LIKE '%$search%';";
 	                            				$result = $conn -> query($query);
 
 	                            		if($result -> num_rows > 0)
@@ -140,7 +140,7 @@ include_once 'conn.php';
 																				$employeeID = $row['employeeID'];
 																				//$var2=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$companyID\" name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>	</section>";
 
-																				$var=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$companyID name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
+																				$var=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$employeeID name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
 																				</section>";
 																					echo "<tr><td>" . $row['first_name'] . "</td><td>" . $row['last_name'] . "</td><td>" . $row['highest_education'] . "</td><td>" . $var ."</td></tr>";
 																			}
@@ -174,7 +174,7 @@ include_once 'conn.php';
 																	$employeeID = $row['employeeID'];
 																	//$var2=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$companyID\" name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>	</section>";
 
-																	$var=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$companyID name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
+																	$var=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$employeeID name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
 																	</section>";
 																		echo "<tr><td>" . $row['first_name'] . "</td><td>" . $row['last_name'] . "</td><td>" . $row['highest_education'] . "</td><td>" . $var ."</td></tr>";
 																}
@@ -201,29 +201,29 @@ include_once 'conn.php';
 															{
 														while ($row = $result ->fetch_assoc())
 														{
-															$employeeID = $row['employeeID'];
-															//$var2=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$companyID\" name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>	</section>";
+																	$employeeID = $row['employeeID'];
+																	//$var2=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$companyID\" name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>	</section>";
 
-															$var=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$companyID name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
-															</section>";
-																echo "<tr><td>" . $row['first_name'] . "</td><td>" . $row['last_name'] . "</td><td>" . $row['highest_education'] . "</td><td>" . $var ."</td></tr>";
+																	$var=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$employeeID name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
+																	</section>";
+																		echo "<tr><td>" . $row['first_name'] . "</td><td>" . $row['last_name'] . "</td><td>" . $row['highest_education'] . "</td><td>" . $var ."</td></tr>";
+																}
+															}
 														}
-													}
-													}
                           }
                         }
                         else
                         {
-													$employeeID = $_SESSION['userID'];
-													$qu = "SELECT * FROM follows WHERE employeeID = '$employeeID';";
+													$companyID = $_SESSION['userID'];
+													$qu = "SELECT * FROM follows WHERE companyID = '$companyID';";
 													$result2 = $conn -> query($qu);
 
 													if($result2 -> num_rows > 0)
 													{
 															while ($row2 = $result2 ->fetch_assoc())
 															{
-																	$temp = $row2['companyID'];
-																	$query = "SELECT * FROM company WHERE companyID = '$temp';";
+																	$temp = $row2['employeeID'];
+																	$query = "SELECT * FROM employee WHERE employeeID = '$temp';";
 																	$result = $conn -> query($query);
 
 															if($result -> num_rows > 0)
@@ -233,15 +233,16 @@ include_once 'conn.php';
 																	$employeeID = $row['employeeID'];
 																	//$var2=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$companyID\" name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>	</section>";
 
-																	$var=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$companyID name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
+																	$var=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$employeeID name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
 																	</section>";
 																		echo "<tr><td>" . $row['first_name'] . "</td><td>" . $row['last_name'] . "</td><td>" . $row['highest_education'] . "</td><td>" . $var ."</td></tr>";
 																}
 
-													}
-													}
+															}
+														}
                           }
                         }
+
 
                     ?>
                     </tbody>
@@ -259,6 +260,7 @@ include_once 'conn.php';
               if(isset($_POST['link']))
               {
                 $message =$_POST['link'];
+								$_SESSION['employeeID'] = $message;
                 header("Location: employeeProfile.php");
               }
                ?>
