@@ -11,7 +11,7 @@ include_once 'conn.php';
 
 <html>
 	<head>
-		<title>Left Sidebar - Landed by HTML5 UP</title>
+		<title>Company Register</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -27,24 +27,12 @@ include_once 'conn.php';
 						<ul>
 							<li><a href="index.php">Home</a></li>
 							<li>
-								<a href="#">Layouts</a>
+								<a href="#" class ="button primary">Sign Up</a>
 								<ul>
-									<li><a href="left-sidebar.php">Left Sidebar</a></li>
-									<li><a href="right-sidebar.php">Right Sidebar</a></li>
-									<li><a href="no-sidebar.php">No Sidebar</a></li>
-									<li>
-										<a href="#">Submenu</a>
-										<ul>
-											<li><a href="#">Option 1</a></li>
-											<li><a href="#">Option 2</a></li>
-											<li><a href="#">Option 3</a></li>
-											<li><a href="#">Option 4</a></li>
-										</ul>
-									</li>
+									<li><a href="employee_register.php">Employee Register</a></li>
+									<li><a href="company_register.php">Company Register</a></li>
 								</ul>
 							</li>
-							<li><a href="elements.php">Elements</a></li>
-							<li><a href="#" class="button primary">Sign Up</a></li>
 						</ul>
 					</nav>
 				</header>

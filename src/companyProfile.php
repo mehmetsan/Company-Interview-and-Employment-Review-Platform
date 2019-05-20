@@ -23,7 +23,6 @@
 
 	<body class="is-preload landing">
     <header id="header">
-      <h1 id="logo"><a href="home_page.php"></a></h1>
       <nav id="nav">
         <ul>
           <li><a href="home_page.php">Home</a></li>
@@ -46,7 +45,6 @@
 						<tr>
 							<th></th>
 							<th></th>
-
 						</tr>
 					</thead>
 					<tbody>

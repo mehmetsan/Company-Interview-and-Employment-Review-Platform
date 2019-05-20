@@ -41,7 +41,7 @@ if($result -> num_rows == 1)
 
 <html>
 	<head>
-		<title>Landed by HTML5 UP</title>
+		<title>Employee Profile</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -59,14 +59,14 @@ if($result -> num_rows == 1)
 			<h1 id="logo"><a href="home_page.php"></a></h1>
 			<nav id="nav">
 				<ul>
-					<li><a href="home_page.php">Home</a></li>
+					<li><a href="home_page.php" class ="button primary">Home</a></li>
           <?php
             $type = $_SESSION['UserType'];
             if($type =="employee"){
-              echo "<li><a href=\"companyList.php\">Companies</a></li>";
-              echo "<li><a href=\"myReviewList.php\">My Reviews</a></li>";
-              echo "<li><a href=\"jobList.php\">Jobs</a></li>";
-              echo "<li><a href=\"projectList.php\">Projecs</a></li>";
+              echo "<li><a href=\"companyList.php\" class =\"button primary\">Companies</a></li>";
+              echo "<li><a href=\"myReviewList.php\" class =\"button primary\">My Reviews</a></li>";
+              echo "<li><a href=\"jobList.php\" class =\"button primary\">Jobs</a></li>";
+              echo "<li><a href=\"projectList.php\" class =\"button primary\">Projects</a></li>";
             }
             else {
               echo "<li><a href=\"companyProfile.php\">Profile</a></li>";
