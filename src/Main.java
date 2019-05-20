@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
-public class Main{
+public class Main {
     public static void main(String[] args) throws Exception
     {
         dropRelatedTable();
@@ -24,7 +24,6 @@ public class Main{
         dropWorksTable();
         dropFollowsTable();
         dropAdminTable();
-        dropEmployerTable();
         dropEmployeeTable();
         dropCompanyTable();
         dropReviewTable();
@@ -32,7 +31,6 @@ public class Main{
 
         createUserTable();
         createEmployeeTable();
-        createEmployerTable();
         createCompanyTable();
         createAdminTable();
         createReviewTable();
@@ -439,26 +437,12 @@ public class Main{
                     + "resume		varchar(40),"
                     + "position		varchar(40),"
                     + "Location		varchar(40),"
-                    + "FOREIGN KEY(employeeID) REFERENCES user(userID) )"
+                    + "FOREIGN KEY(employeeID) REFERENCES user(userID) ON UPDATE CASCADE ON DELETE CASCADE)"
                     + "Engine=InnoDB");
             ownsT.executeUpdate();
         }
         catch (Exception e) {System.out.print(e);}
         finally{System.out.println("employee table created");}
-    }
-    public static void createEmployerTable()
-    {
-        try
-        {
-            Connection connection = getConnection();
-            PreparedStatement ownsT = connection.prepareStatement("CREATE TABLE employer("
-                    + "employerID		varchar(20) PRIMARY KEY,"
-                    + "FOREIGN KEY(employerID) REFERENCES employee(employeeID) )"
-                    + "Engine=InnoDB");
-            ownsT.executeUpdate();
-        }
-        catch (Exception e) {System.out.print(e);}
-        finally{System.out.println("employer table created");}
     }
     public static void createCompanyTable()
     {
@@ -475,7 +459,7 @@ public class Main{
                     + "establish_date	date,"
                     + "type		varchar(10) NOT NULL,"
                     + "headquarter	varchar(10) NOT NULL,"
-                    + "FOREIGN KEY(companyID) REFERENCES user(userID) )"
+                    + "FOREIGN KEY(companyID) REFERENCES user(userID) ON UPDATE CASCADE ON DELETE CASCADE)"
                     + "Engine=InnoDB");
             ownsT.executeUpdate();
         }
@@ -491,8 +475,8 @@ public class Main{
                     + "employeeID		varchar(20),"
                     + "companyID		varchar(20),"
                     + "PRIMARY KEY(employeeID, companyID),"
-                    + "FOREIGN KEY(employeeID) REFERENCES employee(employeeID),"
-                    + "FOREIGN KEY(companyID) REFERENCES company(companyID) )"
+                    + "FOREIGN KEY(employeeID) REFERENCES employee(employeeID) ON UPDATE CASCADE ON DELETE CASCADE,"
+                    + "FOREIGN KEY(companyID) REFERENCES company(companyID) ON UPDATE CASCADE ON DELETE CASCADE)"
                     + "Engine=InnoDB");
             ownsT.executeUpdate();
         }
@@ -510,8 +494,8 @@ public class Main{
                     + "employeeID		varchar(20),"
                     + "companyID		varchar(20),"
                     + "PRIMARY KEY(employeeID, companyID),"
-                    + "FOREIGN KEY(employeeID) REFERENCES employee(employeeID),"
-                    + "FOREIGN KEY(companyID) REFERENCES company(companyID) )"
+                    + "FOREIGN KEY(employeeID) REFERENCES employee(employeeID) ON UPDATE CASCADE ON DELETE CASCADE,"
+                    + "FOREIGN KEY(companyID) REFERENCES company(companyID) ON UPDATE CASCADE ON DELETE CASCADE)"
                     + "Engine=InnoDB");
             ownsT.executeUpdate();
         }
@@ -528,14 +512,13 @@ public class Main{
                     + "title			varchar(40),"
                     + "salary			double,"
                     + "post_date		date,"
-                    + "jobID			varchar(20),"
                     + "education		varchar(40),"
                     + "position		    varchar(20) NOT NULL,"
                     + "experience		varchar(40),"
                     + "benefits		    varchar(40),"
                     + "type			    varchar(40) NOT NULL,"
-                    + "PRIMARY KEY(companyID, title,salary,post_date),"
-                    + "FOREIGN KEY(companyID) REFERENCES company(companyID) )"
+                    + "PRIMARY KEY(companyID,title, salary, post_date),"
+                    + "FOREIGN KEY(companyID) REFERENCES company(companyID) ON UPDATE CASCADE ON DELETE CASCADE )"
                     + "Engine=InnoDB");
             ownsT.executeUpdate();
         }
@@ -550,13 +533,12 @@ public class Main{
             Connection connection = getConnection();
             PreparedStatement ownsT = connection.prepareStatement("CREATE TABLE project("
                     + "companyID		varchar(20),"
-                    + "projectID		varchar(20),"
                     + "title			varchar(20),"
                     + "start_date		date,"
                     + "status			varchar(40),"
                     + "description		varchar(40),"
-                    + "PRIMARY KEY(companyID ,title,start_date),"
-                    + "FOREIGN KEY(companyID) REFERENCES company(companyID) )"
+                    + "PRIMARY KEY(companyID ,title, start_date),"
+                    + "FOREIGN KEY(companyID) REFERENCES company(companyID) ON UPDATE CASCADE ON DELETE CASCADE)"
                     + "Engine=InnoDB");
             ownsT.executeUpdate();
         }
@@ -574,7 +556,7 @@ public class Main{
                     + "photo_name	varchar(20),"
                     + "photo_url	varchar(200),"
                     + "PRIMARY KEY(companyID, photo_name, photo_url),"
-                    + "FOREIGN KEY(companyID) REFERENCES company(companyID) )"
+                    + "FOREIGN KEY(companyID) REFERENCES company(companyID) ON UPDATE CASCADE ON DELETE CASCADE)"
                     + "Engine=InnoDB");
             ownsT.executeUpdate();
         }
@@ -592,7 +574,7 @@ public class Main{
                     + "award_name		varchar(20),"
                     + "committee_name	varchar(20),"
                     + "PRIMARY KEY(companyID, award_name, committee_name),"
-                    + "FOREIGN KEY(companyID) REFERENCES company(companyID) )"
+                    + "FOREIGN KEY(companyID) REFERENCES company(companyID) ON UPDATE CASCADE ON DELETE CASCADE)"
                     + "Engine=InnoDB");
             ownsT.executeUpdate();
         }
@@ -612,8 +594,8 @@ public class Main{
                     + "salary		double,"
                     + "post_date	date,"
                     + "PRIMARY KEY ( employeeID, companyID, title, salary, post_date ),"
-                    + "FOREIGN KEY ( employeeID) REFERENCES employee(employeeID),"
-                    + "FOREIGN KEY ( companyID, title, salary,post_date ) references job(companyID, title, salary, post_date) )"
+                    + "FOREIGN KEY ( employeeID) REFERENCES employee(employeeID) ON UPDATE CASCADE ON DELETE CASCADE,"
+                    + "FOREIGN KEY ( companyID, title, salary,post_date ) references job(companyID, title, salary, post_date) ON UPDATE CASCADE ON DELETE CASCADE)"
                     + "Engine=InnoDB");
             ownsT.executeUpdate();
         }
@@ -650,10 +632,10 @@ public class Main{
             PreparedStatement ownsT = connection.prepareStatement("CREATE TABLE responses("
                     + "respond	varchar(200),"
                     + "reviewID          	int,"
-                    + "employerID     	varchar(20),"
+                    + "employeeID     	varchar(20),"
                     + "PRIMARY KEY (reviewID, respond),"
-                    + "FOREIGN KEY (reviewID) references review(reviewID),"
-                    + "FOREIGN KEY (employerID) references employer(employerID) )"
+                    + "FOREIGN KEY (reviewID) references review(reviewID) ON UPDATE CASCADE ON DELETE CASCADE,"
+                    + "FOREIGN KEY (employeeID) references employee(employeeID) ON UPDATE CASCADE ON DELETE CASCADE)"
                     + "Engine=InnoDB");
             ownsT.executeUpdate();
         }
@@ -670,8 +652,8 @@ public class Main{
                     + "reviewID          	           	int,"
                     + "employeeID    	           	varchar(20),"
                     + "PRIMARY KEY (reviewID),"
-                    + "FOREIGN KEY (reviewID) references review(reviewID),"
-                    + "FOREIGN KEY (employeeID) references employee(employeeID) )"
+                    + "FOREIGN KEY (reviewID) references review(reviewID) ON UPDATE CASCADE ON DELETE CASCADE,"
+                    + "FOREIGN KEY (employeeID) references employee(employeeID) ON UPDATE CASCADE ON DELETE CASCADE)"
                     + "Engine=InnoDB");
             ownsT.executeUpdate();
         }
@@ -688,8 +670,8 @@ public class Main{
                     + "reviewID          	           	int,"
                     + "companyID     	           	varchar(20),"
                     + "PRIMARY KEY ( reviewID),"
-                    + "FOREIGN KEY ( reviewID) references review(reviewID),"
-                    + "FOREIGN KEY ( companyID) references company(companyID) )"
+                    + "FOREIGN KEY ( reviewID) references review(reviewID) ON UPDATE CASCADE ON DELETE CASCADE,"
+                    + "FOREIGN KEY ( companyID) references company(companyID) ON UPDATE CASCADE ON DELETE CASCADE)"
                     + "Engine=InnoDB");
             ownsT.executeUpdate();
         }
@@ -704,7 +686,7 @@ public class Main{
             Connection connection = getConnection();
             PreparedStatement ownsT = connection.prepareStatement("CREATE TABLE admin("
                     + "adminID          	varchar(20) PRIMARY KEY,"
-                    + "FOREIGN KEY(adminID) REFERENCES user(userID) )"
+                    + "FOREIGN KEY(adminID) REFERENCES user(userID) ON UPDATE CASCADE ON DELETE CASCADE)"
                     + "Engine=InnoDB");
             ownsT.executeUpdate();
         }
@@ -720,7 +702,7 @@ public class Main{
             PreparedStatement ownsT = connection.prepareStatement("CREATE TABLE salary_review("
                     + "reviewID          	           int PRIMARY KEY,"
                     + "salary                              double NOT NULL,"
-                    + "FOREIGN KEY(reviewID) REFERENCES review(reviewID) )"
+                    + "FOREIGN KEY(reviewID) REFERENCES review(reviewID) ON UPDATE CASCADE ON DELETE CASCADE)"
                     + "Engine=InnoDB");
             ownsT.executeUpdate();
         }
@@ -736,7 +718,7 @@ public class Main{
             PreparedStatement ownsT = connection.prepareStatement("CREATE TABLE benefits_review("
                     + "reviewID          	           int PRIMARY KEY,"
                     + "opportunities  	           varchar(100) NOT NULL,"
-                    + "FOREIGN KEY(reviewID) REFERENCES review(reviewID) )"
+                    + "FOREIGN KEY(reviewID) REFERENCES review(reviewID) ON UPDATE CASCADE ON DELETE CASCADE)"
                     + "Engine=InnoDB");
             ownsT.executeUpdate();
         }
@@ -754,7 +736,7 @@ public class Main{
                     + "pros   	        varchar(100) NOT NULL,"
                     + "cons               varchar(100) NOT NULL,"
                     + "advice_to_management         varchar(200),"
-                    + "FOREIGN KEY(reviewID) REFERENCES review(reviewID) )"
+                    + "FOREIGN KEY(reviewID) REFERENCES review(reviewID) ON UPDATE CASCADE ON DELETE CASCADE)"
                     + "Engine=InnoDB");
             ownsT.executeUpdate();
         }
@@ -775,7 +757,7 @@ public class Main{
                     + "offer_status   bit NOT NULL,"
                     + "length         int NOT NULL,"
                     + "Questions		varchar(200) NOT NULL,"
-                    + "FOREIGN KEY(reviewID) REFERENCES review(reviewID) )"
+                    + "FOREIGN KEY(reviewID) REFERENCES review(reviewID) ON UPDATE CASCADE ON DELETE CASCADE)"
                     + "Engine=InnoDB");
             ownsT.executeUpdate();
         }
@@ -793,9 +775,9 @@ public class Main{
                     + "companyID        varchar(20),"
                     + "adminID          varchar(20),"
                     + "PRIMARY KEY (reviewID),"
-                    + "FOREIGN KEY (reviewID) references review(reviewID),"
-                    + "FOREIGN KEY (companyID) references company(companyID),"
-                    + "FOREIGN KEY (adminID) references admin(adminID) )"
+                    + "FOREIGN KEY (reviewID) references review(reviewID) ON UPDATE CASCADE ON DELETE CASCADE,"
+                    + "FOREIGN KEY (companyID) references company(companyID) ON UPDATE CASCADE ON DELETE CASCADE,"
+                    + "FOREIGN KEY (adminID) references admin(adminID) ON UPDATE CASCADE ON DELETE CASCADE)"
                     + "Engine=InnoDB");
             ownsT.executeUpdate();
         }
@@ -814,8 +796,8 @@ public class Main{
                     + "title            varchar(40),"
                     + "start_date       date,"
                     + "PRIMARY KEY ( employeeID, companyID, title, start_date),"
-                    + "FOREIGN KEY ( employeeID ) references employee(employeeID),"
-                    + "FOREIGN KEY ( companyID, title, start_date ) references project(companyID, title, start_date) )"
+                    + "FOREIGN KEY ( employeeID ) references employee(employeeID) ON UPDATE CASCADE ON DELETE CASCADE,"
+                    + "FOREIGN KEY ( companyID, title, start_date ) references project(companyID, title, start_date) ON UPDATE CASCADE ON DELETE CASCADE)"
                     + "Engine=InnoDB");
             ownsT.executeUpdate();
         }
