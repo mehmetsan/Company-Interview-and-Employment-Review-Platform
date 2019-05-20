@@ -114,8 +114,7 @@ if($result -> num_rows == 1)
         echo "<ul><li><section> <form method=\"post\" action=\"#\"><div class=\"col-12\"> <ul class=\"actions\"> <li><input type=\"submit\" value=\"Apply this Job\" name =\"submit\" class=\"primary\"/></li></ul></div></form></section><li><a href=\"jobList.php\" class=\"button primary\" style=\"text-align:center\">Return To Job List</a><li>><a href=\"companyPage.php\" class=\"button primary\" style=\"text-align:center\">Return To Company Page</a></div>";
 
 
-<<<<<<< HEAD
-=======
+
         $userType = $_SESSION['UserType'];
           $userID = $_SESSION['userID'];
           $companyID = $_SESSION['companyID'];
@@ -128,7 +127,7 @@ if($result -> num_rows == 1)
                 echo "<section> <form method=\"post\" action=\"#\"><div class=\"col-12\"> <ul class=\"actions\"> <li><input type=\"submit\" value=\"Apply this Job\" name =\"submit\" class=\"primary\"/></li></ul></div></form></section>";
           else
                 echo "<section> <form method=\"post\" action=\"#\"><div class=\"col-12\"> <ul class=\"actions\"> <li><input type=\"submit\" value=\"Unapply\" name =\"unapply\" class=\"primary\"/></li></ul></div></form></section>";
->>>>>>> 8ab2043f9bfc5830ec3e8395d316d70b9ecac2b0
+
 
 
       }
