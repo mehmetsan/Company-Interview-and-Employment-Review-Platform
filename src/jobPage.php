@@ -159,13 +159,13 @@ if($userType == "employee"){
   $companyID = $_SESSION['companyID'];
   $jobID = $_SESSION['jobID'];
   $title = $jobInfo['title'];
-  $query = "SELECT * FROM applies WHERE employeeID = '$userID' AND companyID = '$companyID' AND jobID = '$jobID'";
+  $query = "SELECT * FROM applies WHERE employeeID = '$userID'  AND jobID = '$jobID'";
   $result = $connection-> query($query);
 
 
       if($result -> num_rows == 0){
-        $query = "INSERT INTO applies(employeeID,companyID,jobID,title)
-                  VALUES('$userID','$companyID','$jobID','$title')";
+        $query = "INSERT INTO applies(employeeID,jobID)
+                  VALUES('$userID','$jobID')";
         $result = $connection-> query($query);
 
         $message = "You have been applied this job SUCCESSFULLY!";
@@ -190,7 +190,7 @@ if($userType == "employee"){
   $companyID = $_SESSION['companyID'];
   $jobID = $_SESSION['jobID'];
   $title = $jobInfo['title'];
-  $query = "DELETE FROM applies WHERE employeeID = '$userID' AND companyID = '$companyID' AND jobID = '$jobID'";
+  $query = "DELETE FROM applies WHERE employeeID = '$userID' AND jobID = '$jobID'";
   $result = $connection-> query($query);
 
         $message = "You have been unapplied this job SUCCESSFULLY";
