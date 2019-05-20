@@ -112,6 +112,8 @@ if($result -> num_rows == 1)
       }
       else {
         echo "<a href=\"companyProfile.php\" class=\"button primary\" style=\"text-align:center\">Return To Company Profile</a>";
+        echo " ";
+        echo "<section> <form method=\"post\" action=\"#\"><div class=\"col-12\"> <ul class=\"actions\"> <li><input type=\"submit\" value=\"Delete this Project\" name =\"delete\" class=\"primary\"/></li></ul></div></form></section>";
       }
 
       ?>
@@ -131,3 +133,23 @@ if($result -> num_rows == 1)
 
 	</body>
 </html>
+<?php
+if(isset($_POST['delete']))
+{
+$userType = $_SESSION['UserType'];
+if($userType == "company"){
+  $projectID = $_SESSION['projectID'];
+
+
+  $query = "DELETE FROM project WHERE projectID = '$projectID'";
+  $result = $connection-> query($query);
+
+        $message = "You have been deleted this project SUCCESSFULLY";
+        echo "<script type='text/javascript'>alert('$message');
+        window.location = 'companyProfile.php' </script>";
+
+
+    }
+}
+
+?>
