@@ -1,7 +1,6 @@
 <?php
 include_once 'conn.php';
-$type = $_SESSION['userID'];
- ?>
+?>
 <!DOCTYPE HTML>
 <!--
 	Landed by HTML5 UP
@@ -10,7 +9,7 @@ $type = $_SESSION['userID'];
 -->
 <html>
 	<head>
-		<title>Elements - Landed by HTML5 UP</title>
+		<title>All Jobs List</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -23,11 +22,8 @@ $type = $_SESSION['userID'];
 				<header id="header">
 					<nav id="nav">
 						<ul>
-              <li><a href="home_page.php" class ="button primary">Home</a></li>
-    					<li><a href="employeeProfile.php" class ="button primary">Profile</a></li>
-    					<li><a href="companyList.php" class ="button primary">Companies</a></li>
-    					<li><a href="allJobsList.php" class ="button primary">Jobs</a></li>
-    					<li><a href="allProjectList.php" class ="button primary">Projects</a></li>
+							<li><a href="home_page.php" class ="button primary">Home</a></li>
+		          <li><a href="index.php" class ="button primary">Logout</a></li>
 						</ul>
 					</nav>
 				</header>
@@ -36,27 +32,33 @@ $type = $_SESSION['userID'];
 				<div id="main" class="wrapper style1">
 					<div class="container">
 						<header class="major">
-							<h2>Project List</h2>
-							<p>You can find every projects here.</p>
+							<h2>Job List</h2>
+							<p>You can find every job offers on here.</p>
 						</header>
-						<!-- Table -->
-            <form method="post" action="#">
-			<input type="text" name="search" placeholder="Search Projects">
+			<!-- Table -->
+      <form method="post" action="#">
+			<input type="text" name="search" placeholder="Search Jobs">
 			<select name="filter">
-				<option value="all">Select Filter(Show all projects)</option>
+				<option value="all">Select Filter(Show all jobs)</option>
         <option value="name">Company Name</option>
-				<option value="title">Project Title</option>
+				<option value="title">Job Title</option>
+        <option value="position">Position</option>
 			</select>
 			<input type="submit" name="submit" value="Find">
       <select name="sort">
 				<option value="all">Sort By</option>
         <option value="name">Company Name</option>
-				<option value="title">Project Title</option>
+				<option value="title">Job Title</option>
+        <option value="High School">Salary of High School Jobs</option>
+        <option value="Bachelors">Salary of Bachelors Jobs</option>
+        <option value="Masters">Salary of Masters Jobs</option>
+        <option value="PhD">Salary of PhD Jobs</option>
+        <option value="Internship">Salary of Internship Jobs</option>
+        <option value="Part Time">Salary of Part Time Jobs</option>
+        <option value="Full Time">Salary of Full Time Jobs</option>
 			</select>
 			<input type="submit" name="ascending_sort" value="Ascending Sort">
       <input type="submit" name="descending_sort" value="Descending Sort">
-      <input type="submit" name="filter_finished" value="Filter Finished Projects">
-      <input type="submit" name="filter_ongoing" value="Filter Ongoing Projects">
 		</form>
 							<section>
 								<h4>Alternate</h4>
@@ -65,9 +67,12 @@ $type = $_SESSION['userID'];
 										<thead>
 											<tr>
                         <th>Company Name</th>
-												<th>Project Title</th>
-												<th>Status</th>
-                        <th>Link to Project Page</th>
+												<th>Job Title</th>
+												<th>Education</th>
+                        <th>Position</th>
+                        <th>Type</th>
+                        <th>Salary</th>
+                        <th>Link to Job Page</th>
 											</tr>
 										</thead>
                     <tbody>
@@ -78,7 +83,7 @@ $type = $_SESSION['userID'];
                           $search = $_POST['search'];
                           if($filter == 'all')
                           {
-                            $query = "SELECT * FROM project";
+                            $query = "SELECT * FROM job";
                             $result = $conn -> query($query);
 
                             if($result -> num_rows > 0)
@@ -86,17 +91,17 @@ $type = $_SESSION['userID'];
 
                                 while ($row = $result ->fetch_assoc())
                                 {
-                                  $projectID = $row['projectID'];
+                                  $jobID = $row['jobID'];
                                   $companyID = $row['companyID'];
                                   $queryCompany = "SELECT name FROM company WHERE companyID = '$companyID';";
                                   $resultCompany = $conn -> query($queryCompany);
                                   $companyName = $resultCompany ->fetch_assoc();
                                   $companyName = $companyName['name'];
 
-                                  $var=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$projectID name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
+                                  $var=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$jobID name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
                                   </section>";
 
-                                  echo "<tr><td>"  . $companyName . "</td><td>". $row['title'] . "</td><td>" . $row['status'] .  "</td><td>" . $var ."</td></tr>";
+                                  echo "<tr><td>"  . $companyName . "</td><td>". $row['title'] . "</td><td>" . $row['education'] .  "</td><td>" . $row['position'] .  "</td><td>" . $row['type'] .  "</td><td>" . $row['salary'] .  "</td><td>" . $var ."</td></tr>";
                                 }
                             }
                           }
@@ -105,7 +110,7 @@ $type = $_SESSION['userID'];
                             if($filter == 'name')
                             {
 
-                              $query = "SELECT * FROM (SELECT * FROM project NATURAL JOIN company) as q WHERE q.name LIKE '%$search%';";
+                              $query = "SELECT * FROM (SELECT * FROM job NATURAL JOIN company) as q WHERE q.name LIKE '%$search%';";
                               $result = $conn -> query($query);
 
                               if($result -> num_rows > 0)
@@ -113,23 +118,23 @@ $type = $_SESSION['userID'];
 
                                   while ($row = $result ->fetch_assoc())
                                   {
-                                    $projectID = $row['projectID'];
+                                    $jobID = $row['jobID'];
                                     $companyID = $row['companyID'];
                                     $queryCompany = "SELECT name FROM company WHERE companyID = '$companyID';";
                                     $resultCompany = $conn -> query($queryCompany);
                                     $companyName = $resultCompany ->fetch_assoc();
                                     $companyName = $companyName['name'];
 
-                                    $var=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$projectID name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
+                                    $var=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$jobID name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
                                     </section>";
 
-                                    echo "<tr><td>"  . $companyName . "</td><td>". $row['title'] . "</td><td>" . $row['status'] .  "</td><td>" . $var ."</td></tr>";
+                                    echo "<tr><td>"  . $companyName . "</td><td>". $row['title'] . "</td><td>" . $row['education'] .  "</td><td>" . $row['position'] .  "</td><td>" . $row['type'] .  "</td><td>" . $row['salary'] .  "</td><td>" . $var ."</td></tr>";
                                   }
                               }
                             }
                             else
                             {
-                              $query = "SELECT * FROM project where $filter LIKE '%$search%';";
+                              $query = "SELECT * FROM job where $filter LIKE '%$search%';";
 
                               $result = $conn -> query($query);
 
@@ -137,16 +142,16 @@ $type = $_SESSION['userID'];
                               {
                                 while ($row = $result ->fetch_assoc())
                                 {
-                                  $projectID = $row['projectID'];
+                                  $jobID = $row['jobID'];
                                   $companyID = $row['companyID'];
                                   $queryCompany = "SELECT name FROM company WHERE companyID = '$companyID';";
                                   $resultCompany = $conn -> query($queryCompany);
                                   $companyName = $resultCompany ->fetch_assoc();
                                   $companyName = $companyName['name'];
 
-                                  $var=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$projectID\" name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
+                                  $var=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$jobID\" name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
                                   </section>";
-                                  echo "<tr><td>"  . $companyName . "</td><td>". $row['title'] . "</td><td>" . $row['status'] .  "</td><td>" . $var ."</td></tr>";
+                                  echo "<tr><td>"  . $companyName . "</td><td>". $row['title'] . "</td><td>" . $row['education'] .  "</td><td>" . $row['position'] .  "</td><td>" . $row['type'] .  "</td><td>" . $row['salary'] .  "</td><td>" . $var ."</td></tr>";
                                 }
 
                               }
@@ -160,41 +165,41 @@ $type = $_SESSION['userID'];
                           $filter = $_POST['sort'];
                           if($filter == 'name')
                           {
-                            $query = "SELECT * FROM (SELECT * FROM project NATURAL JOIN company) as q ORDER BY q.name ASC;";
+                            $query = "SELECT * FROM (SELECT * FROM job NATURAL JOIN company) as q ORDER BY q.name ASC;";
                             $result = $conn -> query($query);
 
                             while ($row = $result ->fetch_assoc())
                             {
-                              $projectID = $row['projectID'];
+                              $jobID = $row['jobID'];
                               $companyID = $row['companyID'];
                               $queryCompany = "SELECT name FROM company WHERE companyID = '$companyID';";
                               $resultCompany = $conn -> query($queryCompany);
                               $companyName = $resultCompany ->fetch_assoc();
                               $companyName = $companyName['name'];
 
-                              $var=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$projectID\" name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
+                              $var=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$jobID\" name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
                               </section>";
-                              echo "<tr><td>"  . $companyName . "</td><td>". $row['title'] . "</td><td>" . $row['status'] .  "</td><td>" . $var ."</td></tr>";
+                              echo "<tr><td>"  . $companyName . "</td><td>". $row['title'] . "</td><td>" . $row['education'] .  "</td><td>" . $row['position'] .  "</td><td>" . $row['type'] .  "</td><td>" . $row['salary'] .  "</td><td>" . $var ."</td></tr>";
                             }
 
                           }
                           else
                           {
-                            $query = "SELECT * FROM project ORDER BY $filter ASC;";
+                            $query = "SELECT * FROM job ORDER BY $filter ASC;";
                             $result = $conn -> query($query);
 
                             while ($row = $result ->fetch_assoc())
                             {
-                              $projectID = $row['projectID'];
+                              $jobID = $row['jobID'];
                               $companyID = $row['companyID'];
                               $queryCompany = "SELECT name FROM company WHERE companyID = '$companyID';";
                               $resultCompany = $conn -> query($queryCompany);
                               $companyName = $resultCompany ->fetch_assoc();
                               $companyName = $companyName['name'];
 
-                              $var=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$projectID\" name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
+                              $var=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$jobID\" name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
                               </section>";
-                              echo "<tr><td>"  . $companyName . "</td><td>". $row['title'] . "</td><td>" . $row['status'] .  "</td><td>" . $var ."</td></tr>";
+                              echo "<tr><td>"  . $companyName . "</td><td>". $row['title'] . "</td><td>" . $row['education'] .  "</td><td>" . $row['position'] .  "</td><td>" . $row['type'] .  "</td><td>" . $row['salary'] .  "</td><td>" . $var ."</td></tr>";
                             }
                           }
 
@@ -205,27 +210,27 @@ $type = $_SESSION['userID'];
                           $filter = $_POST['sort'];
                           if($filter == 'name')
                           {
-                            $query = "SELECT * FROM (SELECT * FROM project NATURAL JOIN company) as q ORDER BY q.name DESC;";
+                            $query = "SELECT * FROM (SELECT * FROM job NATURAL JOIN company) as q ORDER BY q.name DESC;";
                             $result = $conn -> query($query);
 
                             while ($row = $result ->fetch_assoc())
                             {
-                              $projectID = $row['projectID'];
+                              $jobID = $row['jobID'];
                               $companyID = $row['companyID'];
                               $queryCompany = "SELECT name FROM company WHERE companyID = '$companyID';";
                               $resultCompany = $conn -> query($queryCompany);
                               $companyName = $resultCompany ->fetch_assoc();
                               $companyName = $companyName['name'];
 
-                              $var=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$projectID\" name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
+                              $var=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$jobID\" name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
                               </section>";
-                              echo "<tr><td>"  . $companyName . "</td><td>". $row['title'] . "</td><td>" . $row['status'] .  "</td><td>" . $var ."</td></tr>";
+                              echo "<tr><td>"  . $companyName . "</td><td>". $row['title'] . "</td><td>" . $row['education'] .  "</td><td>" . $row['position'] .  "</td><td>" . $row['type'] .  "</td><td>" . $row['salary'] .  "</td><td>" . $var ."</td></tr>";
                             }
 
                           }
                           else
                           {
-                            $query = "SELECT * FROM project ORDER BY $filter DESC;";
+                            $query = "SELECT * FROM job ORDER BY $filter DESC;";
 
                             $result = $conn -> query($query);
 
@@ -233,20 +238,20 @@ $type = $_SESSION['userID'];
                             {
                               while ($row = $result ->fetch_assoc())
                               {
-                                $projectID = $row['projectID'];
+                                $jobID = $row['jobID'];
                                 $companyID = $row['companyID'];
                                 $queryCompany = "SELECT name FROM company WHERE companyID = '$companyID';";
                                 $resultCompany = $conn -> query($queryCompany);
                                 $companyName = $resultCompany ->fetch_assoc();
                                 $companyName = $companyName['name'];
 
-                                $var=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$projectID\" name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
+                                $var=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$jobID\" name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
                                 </section>";
-                                echo "<tr><td>"  . $companyName . "</td><td>". $row['title'] . "</td><td>" . $row['status'] .  "</td><td>" . $var ."</td></tr>";
+                                echo "<tr><td>"  . $companyName . "</td><td>". $row['title'] . "</td><td>" . $row['education'] .  "</td><td>" . $row['position'] .  "</td><td>" . $row['type'] .  "</td><td>" . $row['salary'] .  "</td><td>" . $var ."</td></tr>";
                               }
                             }
                           }
-                          $query = "SELECT * FROM project ORDER BY $filter DESC;";
+                          $query = "SELECT * FROM job ORDER BY $filter DESC;";
 
                           $result = $conn -> query($query);
 
@@ -254,16 +259,16 @@ $type = $_SESSION['userID'];
                           {
                             while ($row = $result ->fetch_assoc())
                             {
-                              $projectID = $row['projectID'];
+                              $jobID = $row['jobID'];
                               $companyID = $row['companyID'];
                               $queryCompany = "SELECT name FROM company WHERE companyID = '$companyID';";
                               $resultCompany = $conn -> query($queryCompany);
                               $companyName = $resultCompany ->fetch_assoc();
                               $companyName = $companyName['name'];
 
-                              $var=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$projectID\" name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
+                              $var=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$jobID\" name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
                               </section>";
-                              echo "<tr><td>"  . $companyName . "</td><td>". $row['title'] . "</td><td>" . $row['status'] .  "</td><td>" . $var ."</td></tr>";
+                              echo "<tr><td>"  . $companyName . "</td><td>". $row['title'] . "</td><td>" . $row['education'] .  "</td><td>" . $row['position'] .  "</td><td>" . $row['type'] .  "</td><td>" . $row['salary'] .  "</td><td>" . $var ."</td></tr>";
                             }
                           }
 
@@ -271,7 +276,7 @@ $type = $_SESSION['userID'];
                           }
                           else if(isset($_POST['filter_finished']))
                           {
-                            $query = "SELECT * FROM project where status = 'Finished'";
+                            $query = "SELECT * FROM job where status = 'Finished'";
                             $result = $conn -> query($query);
 
                             if($result -> num_rows > 0)
@@ -279,23 +284,23 @@ $type = $_SESSION['userID'];
 
                                 while ($row = $result ->fetch_assoc())
                                 {
-                                  $projectID = $row['projectID'];
+                                  $jobID = $row['jobID'];
                                   $companyID = $row['companyID'];
                                   $queryCompany = "SELECT name FROM company WHERE companyID = '$companyID';";
                                   $resultCompany = $conn -> query($queryCompany);
                                   $companyName = $resultCompany ->fetch_assoc();
                                   $companyName = $companyName['name'];
 
-                                  $var=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$projectID name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
+                                  $var=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$jobID name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
                                   </section>";
 
-                                  echo "<tr><td>"  . $companyName . "</td><td>". $row['title'] . "</td><td>" . $row['status'] .  "</td><td>" . $var ."</td></tr>";
+                                  echo "<tr><td>"  . $companyName . "</td><td>". $row['title'] . "</td><td>" . $row['education'] .  "</td><td>" . $row['position'] .  "</td><td>" . $row['type'] .  "</td><td>" . $row['salary'] .  "</td><td>" . $var ."</td></tr>";
                                 }
                             }
                           }
                           else if(isset($_POST['filter_ongoing']))
                           {
-                            $query = "SELECT * FROM project where status = 'Ongoing'";
+                            $query = "SELECT * FROM job where status = 'Ongoing'";
                             $result = $conn -> query($query);
 
                             if($result -> num_rows > 0)
@@ -303,43 +308,43 @@ $type = $_SESSION['userID'];
 
                                 while ($row = $result ->fetch_assoc())
                                 {
-                                  $projectID = $row['projectID'];
+                                  $jobID = $row['jobID'];
                                   $companyID = $row['companyID'];
                                   $queryCompany = "SELECT name FROM company WHERE companyID = '$companyID';";
                                   $resultCompany = $conn -> query($queryCompany);
                                   $companyName = $resultCompany ->fetch_assoc();
                                   $companyName = $companyName['name'];
 
-                                  $var=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$projectID name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
+                                  $var=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$jobID name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
                                   </section>";
 
-                                  echo "<tr><td>"  . $companyName . "</td><td>". $row['title'] . "</td><td>" . $row['status'] .  "</td><td>" . $var ."</td></tr>";
+                                  echo "<tr><td>"  . $companyName . "</td><td>". $row['title'] . "</td><td>" . $row['education'] .  "</td><td>" . $row['position'] .  "</td><td>" . $row['type'] .  "</td><td>" . $row['salary'] .  "</td><td>" . $var ."</td></tr>";
                                 }
                             }
                           }
                         else
                         {
-                          $query = "SELECT * FROM project;";
+                          $query = "SELECT * FROM job;";
                           $result = $conn -> query($query);
 
                           if($result -> num_rows > 0)
                           {
                             while ($row = $result ->fetch_assoc())
                             {
-                              $projectID = $row['projectID'];
+                              $jobID = $row['jobID'];
                               $companyID = $row['companyID'];
                               $queryCompany = "SELECT name FROM company WHERE companyID = '$companyID';";
                               $resultCompany = $conn -> query($queryCompany);
                               $companyName = $resultCompany ->fetch_assoc();
                               $companyName = $companyName['name'];
 
-                              $var=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$projectID\" name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
+                              $var=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$jobID\" name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
                               </section>";
-                              echo "<tr><td>"  . $companyName . "</td><td>". $row['title'] . "</td><td>" . $row['status'] .  "</td><td>" . $var ."</td></tr>";                          }
+                              echo "<tr><td>"  . $companyName . "</td><td>". $row['title'] . "</td><td>" . $row['education'] .  "</td><td>" . $row['position'] .  "</td><td>" . $row['type'] .  "</td><td>" . $row['salary'] .  "</td><td>" . $var ."</td></tr>";
                             }
 
                           }
-
+                        }
 
                     ?>
                     </tbody>
@@ -358,12 +363,12 @@ $type = $_SESSION['userID'];
               if(isset($_POST['link']))
               {
                 $message =$_POST['link'];
-                $_SESSION['projectID'] = $message;
-                $query = "SELECT companyID FROM project where projectID = '$message';";
+                $_SESSION['jobID'] = $message;
+                $query = "SELECT companyID FROM job where jobID = '$message';";
                 $result = $conn -> query($query);
                 $result = $result ->fetch_assoc();
                 $companyID = $result['name'];
                 $_SESSION['companyID'] = $companyID;
-                header("Location: projectPage.php");
+                header("Location: jobPage.php");
               }
                ?>

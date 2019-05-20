@@ -23,7 +23,6 @@ include_once 'conn.php';
 					<nav id="nav">
 						<ul>
               <li><a href="home_page.php" class ="button primary">Home</a></li>
-    					<li><a href="projectList.php" class ="button primary">Projects</a></li>
               <li><a href="index.php" class ="button primary">Logout</a></li>
 						</ul>
 					</nav>
@@ -246,6 +245,6 @@ include_once 'conn.php';
               {
                 $message =$_POST['link'];
 								$_SESSION['employeeID'] = $message;
-                header("Location: employeeProfile.php");
+                echo "<script type='text/javascript'>window.location = 'employeeProfile.php' </script>";
               }
                ?>

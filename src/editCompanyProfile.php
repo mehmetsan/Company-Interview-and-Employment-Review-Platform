@@ -38,7 +38,8 @@
 			<h1 id="logo"><a href="index.php"></a></h1>
 			<nav id="nav">
 				<ul>
-					<li><a href="index.php">Home</a></li>
+					<li><a href="home_page.php" class ="button primary">Home</a></li>
+					<li><a href="index.php" class ="button primary">Logout</a></li>
 				</ul>
 			</nav>
 		</header>
@@ -64,8 +65,12 @@
               Revenue <input type="text" name="revenue" id="revenue" value=<?php echo $arr['revenue']  ?>>
             </div>
 						<div class="col-2 col-12-xsmall">
-              Type <input type="text" name="type" id=type"" value=<?php echo $arr['type']  ?> />
-            </div>
+							Type<select name="type" id="type">
+								<option value="Private" selected>Private</option>
+								<option value="Public">Public</option>
+							</select>
+						</div>
+
 						<div class="col-2 col-12-xsmall">
               Headquarter <input type="text" name="headquarter" id="headquarter" value=<?php echo $arr['headquarter']  ?> />
             </div>

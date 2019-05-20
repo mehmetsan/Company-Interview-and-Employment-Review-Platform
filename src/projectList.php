@@ -228,6 +228,6 @@ $userType = $_SESSION['UserType'];
               {
                 $message =$_POST['link'];
                 $_SESSION['projectID'] = $message;
-                header("Location: projectPage.php");
+                echo "<script type='text/javascript'>window.location = 'projectPage.php' </script>";
               }
                ?>
