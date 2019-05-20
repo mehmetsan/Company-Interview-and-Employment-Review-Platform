@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
-public class Main {
+public class Main{
     public static void main(String[] args) throws Exception
     {
         dropRelatedTable();
@@ -528,12 +528,13 @@ public class Main {
                     + "title			varchar(40),"
                     + "salary			double,"
                     + "post_date		date,"
+                    + "jobID			varchar(20),"
                     + "education		varchar(40),"
                     + "position		    varchar(20) NOT NULL,"
                     + "experience		varchar(40),"
                     + "benefits		    varchar(40),"
                     + "type			    varchar(40) NOT NULL,"
-                    + "PRIMARY KEY(companyID,title, salary, post_date),"
+                    + "PRIMARY KEY(companyID, title,salary,post_date),"
                     + "FOREIGN KEY(companyID) REFERENCES company(companyID) )"
                     + "Engine=InnoDB");
             ownsT.executeUpdate();
@@ -549,11 +550,12 @@ public class Main {
             Connection connection = getConnection();
             PreparedStatement ownsT = connection.prepareStatement("CREATE TABLE project("
                     + "companyID		varchar(20),"
+                    + "projectID		varchar(20),"
                     + "title			varchar(20),"
                     + "start_date		date,"
                     + "status			varchar(40),"
                     + "description		varchar(40),"
-                    + "PRIMARY KEY(companyID ,title, start_date),"
+                    + "PRIMARY KEY(companyID ,title,start_date),"
                     + "FOREIGN KEY(companyID) REFERENCES company(companyID) )"
                     + "Engine=InnoDB");
             ownsT.executeUpdate();
