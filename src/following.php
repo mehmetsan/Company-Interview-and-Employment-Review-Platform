@@ -48,8 +48,8 @@ include_once 'conn.php';
 				<div id="main" class="wrapper style1">
 					<div class="container">
 						<header class="major">
-							<h2>FollowingList</h2>
-							<p>Ipsum dolor feugiat aliquam tempus sed magna lorem consequat accumsan</p>
+							<h2>Followings</h2>
+							<p>This is your folowing companies</p>
 						</header>
 						<!-- Table -->
             <form method="post" action="#">
