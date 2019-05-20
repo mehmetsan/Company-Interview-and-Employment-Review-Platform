@@ -86,10 +86,6 @@ if($result -> num_rows == 1)
 							<td>Description</td>
 							<td class ="test" name = "description" id="description"><?php echo  $projectInfo['description']; ?></td>
 						</tr>
-						<tr>
-							<td>Position</td>
-							<td class ="test" name = "position" id="position"><?php echo  $projectInfo['position']; ?></td>
-						</tr>
 					</tbody>
 
 				</table>
