@@ -194,7 +194,7 @@ if($userType == "company"){
 
     if($result -> num_rows > 0) {
         $message = "You have been added this eployee as a worker SUCCESSFULLY";
-        echo "<script type='text/javascript'>alert('$message')
+        echo "<script type='text/javascript'>alert('$message');
         window.location = 'companyProfile.php' </script>";
       }
 
