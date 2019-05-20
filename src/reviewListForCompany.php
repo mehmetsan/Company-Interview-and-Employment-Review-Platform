@@ -66,6 +66,7 @@ if($result -> num_rows == 1)
                   <th>Review ID</th>
 									<th>Review Type</th>
                   <th>DISPLAY</th>
+                  <th>REQUEST</th>
                 </tr>
               </thead>
               <tbody>
@@ -91,9 +92,10 @@ if($result -> num_rows == 1)
 									//	$var = "<a href=\"#\" type=\"display\" name=\"disp\" value=$reviewID class=\"primary\" >DISPLAY</a>";
 									$var=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$reviewID\" name =\"submit\" class=\"primary\"/></li>	</ul>	</div>	</form>
   								</section>";
+                  $req=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$reviewID\" name =\"request\" class=\"primary\"/></li>	</ul>	</div>	</form>
+                  </section>";
 
-
-                    echo "<tr><td>" . $review['reviewID'] . "</td><td>" . $reviewType . "</td><td>" . $var  ."</td></tr>";
+                    echo "<tr><td>" . $review['reviewID'] . "</td><td>" . $reviewType . "</td><td>" . $var  ."</td><td>" . $req  ."</td></tr>";
 
                 }
 								if(isset($_POST['submit'])){
@@ -112,6 +114,11 @@ if($result -> num_rows == 1)
 									else if($reviewType == "interview_review")
 										header("Location: displayInterviewReview.php");
 
+								}
+                if(isset($_POST['request'])){
+									$message =$_POST['request'];
+									//$_SESSION['reviewID'] = $message;
+									$request_statement = "INSERT INTO requests(reviewID,companyID,adminID) VALUES ('$message',''$userID',0) ";
 								}
 
 								?>
