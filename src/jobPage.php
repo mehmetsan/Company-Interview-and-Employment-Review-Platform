@@ -111,7 +111,7 @@ if($result -> num_rows == 1)
       <?php
       $mode = $_SESSION['UserType'];
       if($mode == "employee"){
-        echo "<ul><li><section> <form method=\"post\" action=\"#\"><div class=\"col-12\"> <ul class=\"actions\"> <li><input type=\"submit\" value=\"Apply this Job\" name =\"submit\" class=\"primary\"/></li></ul></div></form></section><li><a href=\"jobList.php\" class=\"button primary\" style=\"text-align:center\">Return To Job List</a><li>><a href=\"companyPage.php\" class=\"button primary\" style=\"text-align:center\">Return To Company Page</a></div>";
+        
 
 
 

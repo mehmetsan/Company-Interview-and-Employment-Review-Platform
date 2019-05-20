@@ -51,10 +51,12 @@ if($result -> num_rows == 1)
 			<h1 id="logo"><a href="home_page.php"></a></h1>
 			<nav id="nav">
 				<ul>
-					<li><a href="home_page.php">Home</a></li>
-					<li>
-						<a href="index.php" class ="button primary">Logout</a>
-					</li>
+          <li><a href="home_page.php" class ="button primary">Home</a></li>
+          <li><a href="employeeProfile.php" class ="button primary">Profile</a></li>
+          <li><a href="companyList.php" class ="button primary">Companies</a></li>
+          <li><a href="jobList.php" class ="button primary">Jobs</a></li>
+          <li><a href="projectList.php" class ="button primary">Projects</a></li>
+          <li><a href="index.php" class ="button primary">Logout</a></li>
 				</ul>
 			</nav>
 		</header>
@@ -96,12 +98,13 @@ if($result -> num_rows == 1)
       $userType = $_SESSION['UserType'];
       if($userType == "employee"){
         echo "<a href=\"projectList.php\" class=\"button primary\" style=\"text-align:center\">Return To Project List</a>";
+        echo"\n";
         echo "<a href=\"companyPage.php\" class=\"button primary\" style=\"text-align:center\">Return To Company Page</a>";
       }
       else {
         echo "<a href=\"companyProfile.php\" class=\"button primary\" style=\"text-align:center\">Return To Company Page</a>";
       }
-      
+
       ?>
 
 
