@@ -453,12 +453,12 @@ public class Main {
                     + "companyID	varchar(20) PRIMARY KEY,"
                     + "name		varchar(20) NOT NULL,"
                     + "website	varchar(50),"
-                    + "industry	varchar(10) NOT NULL,"
-                    + "sector		varchar(10) NOT NULL,"
+                    + "industry	varchar(20) NOT NULL,"
+                    + "sector		varchar(20) NOT NULL,"
                     + "revenue	double,"
                     + "establish_date	date,"
-                    + "type		varchar(10) NOT NULL,"
-                    + "headquarter	varchar(10) NOT NULL,"
+                    + "type		varchar(20) NOT NULL,"
+                    + "headquarter	varchar(20) NOT NULL,"
                     + "FOREIGN KEY(companyID) REFERENCES user(userID) ON UPDATE CASCADE ON DELETE CASCADE)"
                     + "Engine=InnoDB");
             ownsT.executeUpdate();
@@ -519,7 +519,7 @@ public class Main {
                     + "experience		varchar(40),"
                     + "benefits		    varchar(40),"
                     + "type			    varchar(40) NOT NULL,"
-                    + "PRIMARY KEY(companyID, jobID),"
+                    + "PRIMARY KEY(jobID),"
                     + "FOREIGN KEY(companyID) REFERENCES company(companyID) ON UPDATE CASCADE ON DELETE CASCADE  )"
                     + "Engine=InnoDB");
             ownsT.executeUpdate();
@@ -540,7 +540,7 @@ public class Main {
                     + "start_date		date,"
                     + "status			varchar(40),"
                     + "description		varchar(40),"
-                    + "PRIMARY KEY(companyID,projectID),"
+                    + "PRIMARY KEY(projectID),"
                     + "FOREIGN KEY(companyID) REFERENCES company(companyID) ON UPDATE CASCADE ON DELETE CASCADE )"
                     + "Engine=InnoDB");
             ownsT.executeUpdate();
@@ -593,12 +593,10 @@ public class Main {
             Connection connection = getConnection();
             PreparedStatement ownsT = connection.prepareStatement("CREATE TABLE applies("
                     + "employeeID     varchar(20),"
-                    + "companyID      varchar(20),"
                     + "jobID          varchar(10),"
-                    + "title 		  varchar(40),"
-                    + "PRIMARY KEY ( employeeID, companyID, jobID),"
+                    + "PRIMARY KEY ( employeeID, jobID),"
                     + "FOREIGN KEY ( employeeID) references employee(employeeID) ON UPDATE CASCADE ON DELETE CASCADE,"
-                    + "FOREIGN KEY ( companyID, jobID) references job(companyID, jobID) ON UPDATE CASCADE ON DELETE CASCADE)"
+                    + "FOREIGN KEY ( jobID) references job(jobID) ON UPDATE CASCADE ON DELETE CASCADE)"
                     + "Engine=InnoDB");
             ownsT.executeUpdate();
         }
@@ -795,11 +793,10 @@ public class Main {
             Connection connection = getConnection();
             PreparedStatement ownsT = connection.prepareStatement("CREATE TABLE members ("
                     + "employeeID       varchar(20),"
-                    + "companyID        varchar(20),"
                     + "projectID		varchar(10),"
-                    + "PRIMARY KEY ( employeeID, companyID, projectID),"
+                    + "PRIMARY KEY ( employeeID,  projectID),"
                     + "FOREIGN KEY ( employeeID ) references employee(employeeID) ON UPDATE CASCADE ON DELETE CASCADE,"
-                    + "FOREIGN KEY ( companyID, projectID ) references project(companyID, projectID) ON UPDATE CASCADE ON DELETE CASCADE)"
+                    + "FOREIGN KEY ( projectID ) references project (projectID) ON UPDATE CASCADE ON DELETE CASCADE)"
                     + "Engine=InnoDB");
             ownsT.executeUpdate();
         }
