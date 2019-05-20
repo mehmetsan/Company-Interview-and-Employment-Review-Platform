@@ -197,6 +197,8 @@ include_once 'conn.php';
 
 									</table>
 								</div>
+
+                <a href="companyPage.php" class="button primary" style="text-align:center">Return To Company Page</a>
 							</section>
 
               <?php
