@@ -86,15 +86,15 @@
 								$title = $_POST['title'];
 								$startDate = $_POST['start_date'];
 								$status = $_POST['status'];
-								$descritpion = $_POST['description'];
-
+								$description = $_POST['description'];
+								$projectID = randomID_user();;
 
 								$qu = "SELECT * FROM project WHERE title = '$title' AND start_date = '$startDate' AND status = '$status' ";
 								$res = $conn-> query($qu);
 								if($res -> num_rows == 0){
 
-									$query = "INSERT INTO project(companyID,title,start_date,status,description)
-														VALUES('$userID','$title','$startDate','$status','$descritpion')";
+									$query = "INSERT INTO project(companyID,projectID,title,start_date,status,description)
+														VALUES('$userID','$projectID',$title','$startDate','$status','$description')";
 									$result = $conn-> query($query);
 
 									$message = "Project is created succesfully";
