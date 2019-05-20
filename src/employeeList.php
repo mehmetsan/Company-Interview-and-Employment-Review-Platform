@@ -10,7 +10,7 @@ $companyID = $_SESSION['userID'];
 -->
 <html>
 	<head>
-		<title>Followers</title>
+		<title>Employee List</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -33,27 +33,18 @@ $companyID = $_SESSION['userID'];
 				<div id="main" class="wrapper style1">
 					<div class="container">
 						<header class="major">
-							<h2>Followers</h2>
-							<p>This is your folowers</p>
+							<h2>Employee List</h2>
+							<p>Look for all employees</p>
 						</header>
 						<!-- Table -->
             <form method="post" action="#">
 			<input type="text" name="search" placeholder="Search Employee">
 			<select name="filter">
 				<option value="all">Select Filter(All employees)</option>
-				<option value="name">Employee Name</option>
-				<option value="surname">Employee Surname</option>
-				<option value="highest_education">Highest Education</option>
+				<option value="first_name">Employee First Name</option>
+        <option value="last_name">Employee Last Name</option>
 			</select>
-			<input type="submit" name="submit" value="Find">
-      <select name="sort">
-				<option value="all">Sort By</option>
-				<option value="name">Employee Name</option>
-				<option value="surname">Employee Surname</option>
-				<option value="highest_education">Highest Education</option>
-			</select>
-			<input type="submit" name="ascending_sort" value="Ascending Sort">
-      <input type="submit" name="descending_sort" value="Descending Sort">
+      <input type="submit" name="submit" value="Find">
 		</form>
 							<section>
 								<h4>Alternate</h4>
@@ -78,8 +69,8 @@ $companyID = $_SESSION['userID'];
                           if($filter == 'all')
                           {
 
-                                    $qu = "SELECT * FROM employee ;";
-                                    $result = $conn -> query($qu);
+                                $qu = "SELECT * FROM employee ;";
+                                $result = $conn -> query($qu);
                             		if($result -> num_rows > 0)
                             		{
 
@@ -100,8 +91,8 @@ $companyID = $_SESSION['userID'];
                           else
                           {
 
-                                    $qu = "SELECT * FROM employee WHERE $filter LIKE '%$search%';";
-                                    $result = $conn -> query($qu);
+                                $qu = "SELECT * FROM employee WHERE $filter LIKE '%$search%';";
+                                $result = $conn -> query($qu);
                             		if($result -> num_rows > 0)
                             		{
 
@@ -120,74 +111,24 @@ $companyID = $_SESSION['userID'];
 
 
                       }
-
-                        else if(isset($_POST['ascending_sort']))
-                        {
-
-													$filter = $_POST['sort'];
-
-
-                                  $qu = "SELECT * FROM employee ORDER BY $filter ASC;";
-                                  $result = $conn -> query($qu);
-                                if($result -> num_rows > 0)
-                                {
-																while ($row = $result ->fetch_assoc())
-																{
-																	$employeeID = $row['employeeID'];
-																	//$var2=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$companyID\" name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>	</section>";
-
-																	$var=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$employeeID name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
-																	</section>";
-																		echo "<tr><td>" . $row['first_name'] . "</td><td>" . $row['last_name'] . "</td><td>" . $row['highest_education'] . "</td><td>" . $var ."</td></tr>";
-																}
-															}
-
-
-											}
-                        else if(isset($_POST['descending_sort']))
-                        {
-                          $filter = $_POST['sort'];
-
-
-                                  $qu = "SELECT * FROM employee ORDER BY $filter DESC;";
-                                  $result = $conn -> query($qu);
-                                if($result -> num_rows > 0)
-                                {
-														while ($row = $result ->fetch_assoc())
-														{
-																	$employeeID = $row['employeeID'];
-																	//$var2=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$companyID\" name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>	</section>";
-
-																	$var=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$employeeID name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
-																	</section>";
-																		echo "<tr><td>" . $row['first_name'] . "</td><td>" . $row['last_name'] . "</td><td>" . $row['highest_education'] . "</td><td>" . $var ."</td></tr>";
-																}
-															}
-
-
-                        }
-                        else
-                        {
-                          $qu = "SELECT * FROM employee;";
-                          $result = $conn -> query($qu);
+                      else {
+                        $qu = "SELECT * FROM employee ;";
+                        $result = $conn -> query($qu);
                         if($result -> num_rows > 0)
                         {
-																while ($row = $result ->fetch_assoc())
-																{
-																	$employeeID = $row['employeeID'];
-																	//$var2=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$companyID\" name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>	</section>";
 
-																	$var=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$employeeID name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
-																	</section>";
-																		echo "<tr><td>" . $row['first_name'] . "</td><td>" . $row['last_name'] . "</td><td>" . $row['highest_education'] . "</td><td>" . $var ."</td></tr>";
-																}
+                          while ($row = $result ->fetch_assoc())
+                          {
+                            $employeeID = $row['employeeID'];
+                            //$var2=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$companyID\" name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>	</section>";
 
-															}
+                            $var=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$employeeID name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
+                            </section>";
+                              echo "<tr><td>" . $row['first_name'] . "</td><td>" . $row['last_name'] . "</td><td>" . $row['highest_education'] . "</td><td>" . $var ."</td></tr>";
+                          }
 
-
-                        }
-
-
+                      }
+                      }
                     ?>
                     </tbody>
 										<tfoot>
