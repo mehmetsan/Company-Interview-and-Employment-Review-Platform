@@ -106,8 +106,16 @@ if($result -> num_rows == 1)
 
 				</table>
 			</div>
-		                <a href="jobList.php" class="button primary" style="text-align:center">Return To Job List</a>
-                    <a href="companyPage.php" class="button primary" style="text-align:center">Return To Company Page</a>
+      <?php
+      $mode = $_SESSION['UserType'];
+      if($mode == "employee"){
+        echo "<a href=\"jobList.php\" class=\"button primary\" style=\"text-align:center\">Return To Job List</a>";
+        echo "<a href=\"companyPage.php\" class=\"button primary\" style=\"text-align:center\">Return To Company Page</a>";
+      }
+      else {
+        echo "<a href=\"companyProfile.php\" class=\"button primary\" style=\"text-align:center\">Return To Company Page</a>";
+      }
+       ?>
 
 
 
