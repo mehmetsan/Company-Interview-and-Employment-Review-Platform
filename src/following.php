@@ -48,14 +48,14 @@ include_once 'conn.php';
 				<div id="main" class="wrapper style1">
 					<div class="container">
 						<header class="major">
-							<h2>Company List</h2>
+							<h2>FollowingList</h2>
 							<p>Ipsum dolor feugiat aliquam tempus sed magna lorem consequat accumsan</p>
 						</header>
 						<!-- Table -->
             <form method="post" action="#">
 			<input type="text" name="search" placeholder="Search Company">
 			<select name="filter">
-				<option value="all">Select Filter(All show all companies)</option>
+				<option value="all">Select Filter(All followed companies)</option>
 				<option value="name">Company Name</option>
 				<option value="industry">Industry</option>
         <option value="sector">Sector</option>
@@ -92,18 +92,26 @@ include_once 'conn.php';
                     ob_start();
                     if(isset($_POST['submit']))
                     {
-
+													$employeeID = $_SESSION['userID'];
                           $filter = $_POST['filter'];
                           $search = $_POST['search'];
                           if($filter == 'all')
                           {
-                            $query = "SELECT * FROM company;";
-                            $result = $conn -> query($query);
+														$qu = "SELECT companyID FROM follows WHERE employeeID = '$employeeID';";
+														$result = $conn -> query($qu);
 
-                            if($result -> num_rows > 0)
+														if($result -> num_rows > 0)
                             {
-
                                 while ($row = $result ->fetch_assoc())
+                                {
+
+                            				$query = "SELECT * FROM company WHERE companyID = $row['companyID'];";
+                            				$result2 = $conn -> query($query);
+
+                            		if($result2 -> num_rows > 0)
+                            		{
+
+                                while ($row = $result2 ->fetch_assoc())
                                 {
                                   $companyID = $row['companyID'];
                                   //$var2=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$companyID\" name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>	</section>";
@@ -113,7 +121,7 @@ include_once 'conn.php';
                                     echo "<tr><td>" . $row['name'] . "</td><td>" . $row['industry'] . "</td><td>" . $row['sector'] . "</td><td>" . $row['revenue'] . "</td><td>" . $row['headquarter'] . "</td><td>" . $var ."</td></tr>";
                                 }
 
-
+															}
                             }
                           }
                           else
