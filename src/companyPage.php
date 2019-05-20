@@ -177,7 +177,19 @@
 			<form method="post" action="#" name = "login">
 				<ul class="actions">
 				<div class="col-6 col-12-xsmall">
-						<li><input type="submit" value="Follow Company" name ="follow" class="primary"/></li>
+						<?php
+						$employeeID = $_SESSION['userID'];
+						$companyID = $_SESSION['companyID'];
+						  $query = "SELECT * FROM follows WHERE employeeID = '$employeeID' AND companyID = '$companyID'";
+							$result = $conn-> query($query);
+
+		          if($result -> num_rows == 0)
+								echo "<li><input type=\"submit\" value=\"Follow Company\" name =\"follow\" class=\"primary\"/></li>";
+							else
+								echo "<li><input type=\"submit\" value=\"Unfollow Company\" name =\"unfollow\" class=\"primary\"/></li>";
+
+
+						?>
 				</div>
 						<li><a href="review_selection.php" class="button primary fit">Make a Review</a><li>
 						<li><a href="jobList.php" class="button primary fit">Display Job Offers</a><li>
@@ -216,6 +228,21 @@ if(isset($_POST['follow']))
 
 
 	$result2 = $conn-> query($query2);
-echo "<script type='text/javascript'>window.location = 'companyPage.php' </script>";
+	$message = "You have been followed this company SUCCESSFULLY";
+	echo "<script type='text/javascript'>alert('$message');
+	window.location = 'companyPage.php' </script>";
+}
+
+if(isset($_POST['unfollow']))
+{
+	$employeeID = $_SESSION['userID'];
+	$companyID = $_SESSION['companyID'];
+	$query2 = "DELETE FROM follows WHERE employeeID = '$employeeID' AND companyID = '$companyID'";
+
+
+	$result2 = $conn-> query($query2);
+	$message = "You have been unfollowed this company SUCCESSFULLY";
+	echo "<script type='text/javascript'>alert('$message');
+	window.location = 'companyPage.php' </script>";
 }
 ?>
