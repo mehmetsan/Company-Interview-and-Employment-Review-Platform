@@ -60,9 +60,21 @@ if($result -> num_rows == 1)
 			<nav id="nav">
 				<ul>
 					<li><a href="home_page.php">Home</a></li>
-					<li>
-						<a href="index.php" class ="button primary">Logout</a>
-					</li>
+          <?php
+            $type = $_SESSION['UserType'];
+            if($type =="employee"){
+              echo "<li><a href=\"companyList.php\">Companies</a></li>";
+              echo "<li><a href=\"myReviewList.php\">My Reviews</a></li>";
+              echo "<li><a href=\"jobList.php\">Jobs</a></li>";
+              echo "<li><a href=\"projectList.php\">Projecs</a></li>";
+            }
+            else {
+              echo "<li><a href=\"companyProfile.php\">Profile</a></li>";
+            }
+          ?>
+
+					<li><a href="index.php" class ="button primary">Logout</a></li>
+
 				</ul>
 			</nav>
 		</header>
@@ -120,24 +132,28 @@ if($result -> num_rows == 1)
 							<td>Email</td>
 							<td class ="test" name = "email" id="email"><?php echo  $userInfo['mail']; ?></td>
 						</tr>
-						<tr>
-							<td>Password</td>
-							<td class ="test" name = "password" id="password">*********</td>
-						</tr>
+            <?php
+                if ($type == "employee") {
+                  echo "<tr><td>Password</td><td class =\"test\" name =\"password\" id=\"password\">".$userInfo['password']."</td></tr>";
+               }
+             ?>
 					</tbody>
 
 				</table>
 			</div>
-		                <a href="appliedJob.php" class="button primary" style="text-align:center">Applied Jobs</a>
-		                <a href="#" class="button primary" style="text-align:center">Projects</a>
-		                <a href="following.php" class="button primary" style="text-align:center">Following</a>
-		                <a href="myReviewList.php" class="button primary" style="text-align:center">Reviews</a>
-									  <a href="editEmployeeProfile.php" class ="button primary" id="edit-btn"="">Edit Profile</a>
 
+     <?php
+
+      if ($type == "employee") {
+        echo "<a href=\"appliedJob.php\" class=\"button primary\" style=\"text-align:center\">Applied Jobs</a> \n
+         <a href=\"#\" class=\"button primary\" style=\"text-align:center\">My Projects</a> \n
+         <a href=\"following.php\" class=\"button primary\" style=\"text-align:center\">Followed Companies</a> \n
+         <a href=\"myReviewList.php\" class=\"button primary\" style=\"text-align:center\">My Reviews</a> \n
+         <a href=\"editEmployeeProfile.php\" class=\"button primary\" id=\"edit-btn\"=\"\">Edit Profile</a>";
+      }
+      ?>
 
 		</section>
-
-
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.scrolly.min.js"></script>

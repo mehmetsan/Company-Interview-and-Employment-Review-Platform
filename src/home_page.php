@@ -4,6 +4,10 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
+<?php
+session_start();
+$connection = mysqli_connect('dijkstra.ug.bcc.bilkent.edu.tr', 'ege.marasli', '8nhmQrdt', 'ege_marasli');
+?>
 <html>
 	<head>
 		<title>Home</title>
@@ -19,19 +23,19 @@
 				<header id="header">
 					<nav id="nav">
 						<ul>
-							<li><a href="home_page.php">Home</a></li>
 							<?php
-							session_start();
-							$connection = mysqli_connect('dijkstra.ug.bcc.bilkent.edu.tr', 'ege.marasli', '8nhmQrdt', 'ege_marasli');
-								$test = "employee";
 								$type = $_SESSION['UserType'];
-								if($type == $test){
+								if($type =="employee"){
 									echo "<li><a href=\"employeeProfile.php\">Profile</a></li>";
+									echo "<li><a href=\"companyList.php\">Companies</a></li>";
+									echo "<li><a href=\"myReviewList.php\">My Reviews</a></li>";
+									echo "<li><a href=\"jobList.php\">Jobs</a></li>";
+									echo "<li><a href=\"projectList.php\">Projects</a></li>";
 								}
 								else {
 									echo "<li><a href=\"companyProfile.php\">Profile</a></li>";
 								}
-							 ?>
+							?>
 							<li><a href="index.php" class="button primary">Logout</a></li>
 						</ul>
 					</nav>

@@ -61,14 +61,11 @@ if($result -> num_rows == 1)
 					<h1 id="logo"><a href="index.php"></a></h1>
 					<nav id="nav">
 						<ul>
-							<li><a href="index.php">Home</a></li>
-							<li>
-								<a href="#" class ="button primary">Sign Up</a>
-								<ul>
-									<li><a href="left-sidebar.php">Employee Register</a></li>
-									<li><a href="right-sidebar.php">Company Register</a></li>
-								</ul>
-							</li>
+              <li><a href="home_page.php" class ="button primary">Home</a></li>
+              <li><a href="employeeProfile.php" class ="button primary">Profile</a></li>
+              <li><a href="companyList.php" class ="button primary">Companies</a></li>
+              <li><a href="jobList.php" class ="button primary">Jobs</a></li>
+              <li><a href="projectList.php" class ="button primary">Projects</a></li>
 						</ul>
 					</nav>
 				</header>
@@ -95,13 +92,24 @@ if($result -> num_rows == 1)
                 {
 										$reviewID =  $review['reviewID'];
 										$reviewType = findReviewType($reviewID);
+
+                    $query = "SELECT * FROM related WHERE reviewID = '$reviewID'";
+                    $result2 = $conn-> query($query);
+
+                    $temp = $result2->fetch_assoc();
+                    $companyID = $temp['companyID'];
+
+                    $query = "SELECT * FROM company WHERE companyID = '$companyID'";
+                    $result2 = $conn-> query($query);
+
+                    $temp2 = $result2->fetch_assoc();
+
 									//	$var = "<a href=\"#\" type=\"display\" name=\"disp\" value=$reviewID class=\"primary\" >DISPLAY</a>";
 									$var=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$reviewID\" name =\"submit\" class=\"primary\"/></li>	</ul>	</div>	</form>
   								</section>";
 
 
-                    echo "<tr><td>" . $review['reviewID'] . "</td><td>" . "COMPANY" . "</td><td>" . $reviewType . "</td><td>" . $var  ."</td></tr>";
-
+                    echo "<tr><td>" . $review['reviewID'] . "</td><td>" . $temp2['name'] . "</td><td>" . $reviewType . "</td><td>" . $var  ."</td></tr>";
 
                 }
 								if(isset($_POST['submit'])){
@@ -128,12 +136,6 @@ if($result -> num_rows == 1)
               </tbody>
             </table>
           </div>
-          <ul>
-
-            <div>
-                <a href="employeeProfile.php" class="button primary" style="text-align:center">My Profile</a>
-            </div>
-          </ul>
 
 		</div>
 

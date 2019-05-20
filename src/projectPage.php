@@ -91,9 +91,18 @@ if($result -> num_rows == 1)
 
 				</table>
 			</div>
-		                <a href="projectList.php" class="button primary" style="text-align:center">Return To Project List</a>
-                    <a href="companyPage.php" class="button primary" style="text-align:center">Return To Company Page</a>
 
+      <?php
+      $userType = $_SESSION['UserType'];
+      if($userType == "employee"){
+        echo "<a href=\"projectList.php\" class=\"button primary\" style=\"text-align:center\">Return To Project List</a>";
+        echo "<a href=\"companyPage.php\" class=\"button primary\" style=\"text-align:center\">Return To Company Page</a>";
+      }
+      else {
+        echo "<a href=\"companyProfile.php\" class=\"button primary\" style=\"text-align:center\">Return To Company Page</a>";
+      }
+      
+      ?>
 
 
 		</section>

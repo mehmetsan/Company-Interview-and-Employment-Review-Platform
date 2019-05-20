@@ -39,6 +39,7 @@
 			<nav id="nav">
 				<ul>
 					<li><a href="home_page.php">Home</a></li>
+					<li><a href="employeeProfile.php">Profile</a></li>
 				</ul>
 			</nav>
 		</header>
