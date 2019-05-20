@@ -203,7 +203,7 @@ $companyID = $_SESSION['userID'];
               <?php
               if(isset($_POST['link']))
               {
-                $message =$_POST['link'];
+                $message =$_POST['link'];      
 								$_SESSION['employeeID'] = $message;
                 echo "<script type='text/javascript'>window.location = 'employeeProfile.php' </script>";
               }

@@ -12,7 +12,6 @@ public class Main {
         dropMembersTable();
         dropPublishesTable();
         dropResponsesTable();
-        dropRequestsTable();
         dropSalary_reviewTable();
         dropBenefits_reviewTable();
         dropGeneral_reviewTable();
@@ -48,7 +47,6 @@ public class Main {
         createResponsesTable();
         createPublishesTable();
         createRelatedTable();
-        createRequestsTable();
         createMembersTable();
     }
 
@@ -371,21 +369,6 @@ public class Main {
         }
     }
 
-    public static void dropRequestsTable()
-            throws Exception
-    {
-        try
-        {
-            Connection con = getConnection();
-            PreparedStatement posted = con.prepareStatement("DROP TABLE requests");
-            posted.executeUpdate();
-        }
-        catch (Exception e) {System.out.println(e);}
-        finally
-        {
-            System.out.println("requests table drop complete");
-        }
-    }
 
     public static void dropMembersTable()
             throws Exception
@@ -617,7 +600,8 @@ public class Main {
                     + "rating			    double NOT NULL,"
                     + "location		        varchar(40) NOT NULL,"
                     + "comment		        varchar(500) NOT NULL,"
-                    + "visibility		    bit NOT NULL )"
+                    + "visibility		    bit NOT NULL,"
+                    + "requested		    bit NOT NULL)"
                     + "Engine=InnoDB");
             ownsT.executeUpdate();
         }
@@ -764,26 +748,6 @@ public class Main {
         }
         catch (Exception e) {System.out.print(e);}
         finally{System.out.println("interview_review table created");}
-    }
-
-    public static void createRequestsTable()
-    {
-        try
-        {
-            Connection connection = getConnection();
-            PreparedStatement ownsT = connection.prepareStatement("CREATE TABLE requests ("
-                    + "reviewID         int,"
-                    + "companyID        varchar(20),"
-                    + "adminID          varchar(20),"
-                    + "PRIMARY KEY (reviewID),"
-                    + "FOREIGN KEY (reviewID) references review(reviewID) ON UPDATE CASCADE ON DELETE CASCADE,"
-                    + "FOREIGN KEY (companyID) references company(companyID) ON UPDATE CASCADE ON DELETE CASCADE,"
-                    + "FOREIGN KEY (adminID) references admin(adminID) ON UPDATE CASCADE ON DELETE CASCADE)"
-                    + "Engine=InnoDB");
-            ownsT.executeUpdate();
-        }
-        catch (Exception e) {System.out.print(e);}
-        finally{System.out.println("requests table created");}
     }
 
     public static void createMembersTable()

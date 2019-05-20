@@ -161,6 +161,9 @@ if($result -> num_rows == 1)
          <a href=\"myReviewList.php\" class=\"button primary\" style=\"text-align:center\">My Reviews</a> \n
          <a href=\"editEmployeeProfile.php\" class=\"button primary\" id=\"edit-btn\"=\"\">Edit Profile</a>";
       }
+
+      else
+      echo "<section> <form method=\"post\" action=\"#\"><div class=\"col-12\"> <ul class=\"actions\"> <li><input type=\"submit\" value=\"Make this employee as a worker\" name =\"add\" class=\"primary\"/></li></ul></div></form></section>";
       ?>
 
 		</section>
@@ -177,3 +180,26 @@ if($result -> num_rows == 1)
 
 	</body>
 </html>
+
+<?php
+if(isset($_POST['add']))
+{
+$userType = $_SESSION['UserType'];
+if($userType == "company"){
+  $employeeID = $_SESSION['employeeID'];
+  $companyID = $_SESSION['companyID'];
+  $query = "INSERT INTO works(employeeID,companyID)
+            VALUES('$employeeID','$companyID')";
+  $result = $connection-> query($query);
+
+    if($result -> num_rows > 0) {
+        $message = "You have been added this eployee as a worker SUCCESSFULLY";
+        echo "<script type='text/javascript'>alert('$message')
+        window.location = 'companyProfile.php' </script>";
+      }
+
+
+    }
+}
+
+?>

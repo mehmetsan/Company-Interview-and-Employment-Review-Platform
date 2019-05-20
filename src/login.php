@@ -150,6 +150,7 @@ if(! $connection)
               }
               else if ($result2 -> num_rows == 0 && $adminCont -> num_rows == 0 ){
                 $_SESSION['UserType'] = "company";
+                $_SESSION['companyID'] = $userID[userID];
               }
 
 
