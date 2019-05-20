@@ -57,15 +57,13 @@ include_once 'conn.php';
 			<select name="filter">
 				<option value="all">Select Filter(Show all projects)</option>
 				<option value="title">Project Title</option>
-				<option value="experience">Experience</option>
-        <option value="position">Position</option>
+        <option value="position">Status</option>
 			</select>
 			<input type="submit" name="submit" value="Find">
       <select name="sort">
 				<option value="all">Sort By</option>
 				<option value="title">Project Title</option>
-				<option value="experience">Start Date</option>
-        <option value="position">Position</option>
+        <option value="position">Status</option>
 			</select>
 			<input type="submit" name="ascending_sort" value="Ascending Sort">
       <input type="submit" name="descending_sort" value="Descending Sort">
@@ -77,8 +75,7 @@ include_once 'conn.php';
 										<thead>
 											<tr>
 												<th>Project Title</th>
-												<th>Experience</th>
-												<th>Position</th>
+												<th>Status</th>
                         <th>Link to Project Page</th>
 											</tr>
 										</thead>
@@ -104,7 +101,7 @@ include_once 'conn.php';
 
                                   $var=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$projectID name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
                                   </section>";
-                                    echo "<tr><td>" . $row['title'] . "</td><td>" . $row['experience'] . "</td><td>" . $row['position'] .  "</td><td>" . $var ."</td></tr>";
+                                    echo "<tr><td>" . $row['title'] . "</td><td>" . $row['status'] .  "</td><td>" . $var ."</td></tr>";
                                 }
 
 
@@ -123,7 +120,7 @@ include_once 'conn.php';
                                 $projectID = $row['projectID'];
                                 $var=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$projectID\" name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
                                 </section>";
-                                  echo "<tr><td>" . $row['title'] . "</td><td>" . $row['experience'] . "</td><td>" . $row['position'] .  "</td><td>" . $var ."</td></tr>";
+                                  echo "<tr><td>" . $row['title'] . "</td><td>" . $row['status'] .   "</td><td>" . $var ."</td></tr>";
                               }
 
                             }
@@ -142,7 +139,7 @@ include_once 'conn.php';
                             $projectID = $row['projectID'];
                             $var=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$projectID\" name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
                             </section>";
-                              echo "<tr><td>" . $row['title'] . "</td><td>" . $row['experience'] . "</td><td>" . $row['position'] . "</td><td>" . $var ."</td></tr>";
+                              echo "<tr><td>" . $row['title'] . "</td><td>" . $row['status'] .  "</td><td>" . $var ."</td></tr>";
                           }
 
                         }
@@ -161,7 +158,7 @@ include_once 'conn.php';
                               $projectID = $row['projectID'];
                               $var=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$projectID\" name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
                               </section>";
-                                echo "<tr><td>" . $row['title'] . "</td><td>" . $row['experience'] . "</td><td>" . $row['position'] .  "</td><td>" . $var ."</td></tr>";
+                                echo "<tr><td>" . $row['title'] . "</td><td>" . $row['status'] .  "</td><td>" . $var ."</td></tr>";
                             }
 
 
@@ -180,7 +177,7 @@ include_once 'conn.php';
                               $projectID = $row['projectID'];
                               $var=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$projectID\" name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
                               </section>";
-                                echo "<tr><td>" . $row['title'] . "</td><td>" . $row['experience'] . "</td><td>" . $row['position'] .  "</td><td>" . $var ."</td></tr>";
+                                echo "<tr><td>" . $row['title'] . "</td><td>" . $row['status'] .  "</td><td>" . $var ."</td></tr>";
                             }
 
 
