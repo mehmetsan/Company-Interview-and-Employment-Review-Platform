@@ -103,9 +103,9 @@ include_once 'conn.php';
                                 $remove_txt = 'remove';
                                 $var=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$userID name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
                                 </section>";
-                                $remove_button = "<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$remove_txt name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
+                                $remove_button = "<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value='remove'+$userID name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
                                 </section>";
-                                  echo "<tr><td>" .  $row['userID'] . "</td><td>" . $row['mail'] . "</td><td>" .  $var ."</td></tr>";
+                                  echo "<tr><td>" .  $row['userID'] . "</td><td>" . $row['mail'] . "</td><td>" .  $var ."</td><td>". $remove_button."</td></tr>";
                               }
                           }
                         //}
