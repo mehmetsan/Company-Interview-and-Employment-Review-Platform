@@ -24,7 +24,6 @@
 					<h1 id="logo"><a href="index.php">Künefele Beni</a></h1>
 					<nav id="nav">
 						<ul>
-							<li><a href="index.php">Home</a></li>
 							<li><a href="login.php" class="button primary">Login</a></li>
 							<li>
 								<a href="#" class ="button primary">Sign Up</a>

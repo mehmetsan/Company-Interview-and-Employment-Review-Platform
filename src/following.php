@@ -97,38 +97,47 @@ include_once 'conn.php';
                           $search = $_POST['search'];
                           if($filter == 'all')
                           {
-														$qu = "SELECT companyID FROM follows WHERE employeeID = '$employeeID';";
-														$result = $conn -> query($qu);
+														$qu = "SELECT * FROM follows WHERE employeeID = '$employeeID';";
+														$result2 = $conn -> query($qu);
 
-														if($result -> num_rows > 0)
+														if($result2 -> num_rows > 0)
                             {
-                                while ($row = $result ->fetch_assoc())
+                                while ($row2 = $result2 ->fetch_assoc())
                                 {
+																		$temp = $row2['companyID'];
+                            				$query = "SELECT * FROM company WHERE companyID = '$temp';";
+                            				$result = $conn -> query($query);
 
-                            				$query = "SELECT * FROM company WHERE companyID = $row['companyID'];";
-                            				$result2 = $conn -> query($query);
-
-                            		if($result2 -> num_rows > 0)
+                            		if($result -> num_rows > 0)
                             		{
 
-                                while ($row = $result2 ->fetch_assoc())
-                                {
-                                  $companyID = $row['companyID'];
-                                  //$var2=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$companyID\" name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>	</section>";
+	                                while ($row = $result ->fetch_assoc())
+	                                {
+	                                  $companyID = $row['companyID'];
+	                                  //$var2=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$companyID\" name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>	</section>";
 
-                                  $var=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$companyID name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
-                                  </section>";
-                                    echo "<tr><td>" . $row['name'] . "</td><td>" . $row['industry'] . "</td><td>" . $row['sector'] . "</td><td>" . $row['revenue'] . "</td><td>" . $row['headquarter'] . "</td><td>" . $var ."</td></tr>";
-                                }
+	                                  $var=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$companyID name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
+	                                  </section>";
+	                                    echo "<tr><td>" . $row['name'] . "</td><td>" . $row['industry'] . "</td><td>" . $row['sector'] . "</td><td>" . $row['revenue'] . "</td><td>" . $row['headquarter'] . "</td><td>" . $var ."</td></tr>";
+	                                }
 
 															}
                             }
                           }
+												}
                           else
                           {
-                            $query = "SELECT * FROM company where $filter LIKE '%$search%';";
+														$qu = "SELECT * FROM follows WHERE employeeID = '$employeeID';";
+														$result2 = $conn -> query($qu);
 
-                            $result = $conn -> query($query);
+														if($result2 -> num_rows > 0)
+                            {
+                                while ($row2 = $result2 ->fetch_assoc())
+                                {
+																		$temp = $row2['companyID'];
+                            				$query = "SELECT * FROM company WHERE companyID = '$temp' AND $filter LIKE '%$search%' ;";
+                            				$result = $conn -> query($query);
+
 
                             if($result -> num_rows > 0)
                             {
@@ -141,13 +150,27 @@ include_once 'conn.php';
                               }
 
                             }
+													}
+												}
                         }
                       }
 
                         else if(isset($_POST['ascending_sort']))
                         {
-                          $filter = $_POST['sort'];
-                          $query = "SELECT * FROM company ORDER BY $filter ASC;";
+													$employeeID = $_SESSION['userID'];
+													$filter = $_POST['sort'];
+													$qu = "SELECT * FROM follows WHERE employeeID = '$employeeID';";
+													$result2 = $conn -> query($qu);
+
+													if($result2 -> num_rows > 0)
+													{
+															while ($row2 = $result2 ->fetch_assoc())
+															{
+																	$temp = $row2['companyID'];
+																	$query = "SELECT * FROM company WHERE companyID = '$temp' ORDER BY $filter ASC; ;";
+																	$result = $conn -> query($query);
+
+
                           $result = $conn -> query($query);
 
                           while ($row = $result ->fetch_assoc())
@@ -157,14 +180,23 @@ include_once 'conn.php';
                             </section>";
                               echo "<tr><td>" . $row['name'] . "</td><td>" . $row['industry'] . "</td><td>" . $row['sector'] . "</td><td>" . $row['revenue'] . "</td><td>" . $row['headquarter'] . "</td><td>" . $var ."</td></tr>";
                           }
-
-                        }
+												}
+											}
+                    }
                         else if(isset($_POST['descending_sort']))
                         {
-                          $filter = $_POST['sort'];
-                          $query = "SELECT * FROM company ORDER BY $filter DESC;";
+													$employeeID = $_SESSION['userID'];
+													$filter = $_POST['sort'];
+													$qu = "SELECT * FROM follows WHERE employeeID = '$employeeID';";
+													$result2 = $conn -> query($qu);
 
-                          $result = $conn -> query($query);
+													if($result2 -> num_rows > 0)
+													{
+															while ($row2 = $result2 ->fetch_assoc())
+															{
+																	$temp = $row2['companyID'];
+																	$query = "SELECT * FROM company WHERE companyID = '$temp' ORDER BY $filter DESC; ;";
+																	$result = $conn -> query($query);
 
                           if($result -> num_rows > 0)
                           {
@@ -175,17 +207,26 @@ include_once 'conn.php';
                               </section>";
                                 echo "<tr><td>" . $row['name'] . "</td><td>" . $row['industry'] . "</td><td>" . $row['sector'] . "</td><td>" . $row['revenue'] . "</td><td>" . $row['headquarter'] . "</td><td>" . $var ."</td></tr>";
                             }
-
-
+													}
+													}
                           }
                         }
                         else
                         {
-                          $query = "SELECT * FROM company;";
-                          $result = $conn -> query($query);
+													$employeeID = $_SESSION['userID'];
+													$qu = "SELECT * FROM follows WHERE employeeID = '$employeeID';";
+													$result2 = $conn -> query($qu);
 
-                          if($result -> num_rows > 0)
-                          {
+													if($result2 -> num_rows > 0)
+													{
+															while ($row2 = $result2 ->fetch_assoc())
+															{
+																	$temp = $row2['companyID'];
+																	$query = "SELECT * FROM company WHERE companyID = '$temp';";
+																	$result = $conn -> query($query);
+
+															if($result -> num_rows > 0)
+															{
                             while ($row = $result ->fetch_assoc())
                             {
                               $companyID = $row['companyID'];
@@ -194,7 +235,8 @@ include_once 'conn.php';
                                 echo "<tr><td>" . $row['name'] . "</td><td>" . $row['industry'] . "</td><td>" . $row['sector'] . "</td><td>" . $row['revenue'] . "</td><td>" . $row['headquarter'] . "</td><td>" . $var ."</td></tr>";
                             }
 
-
+													}
+													}
                           }
                         }
 

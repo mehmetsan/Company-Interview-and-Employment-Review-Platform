@@ -25,8 +25,9 @@
     <header id="header">
       <nav id="nav">
         <ul>
-          <li><a href="home_page.php">Home</a></li>
-          <li><a href="index.php">Logout</a></li>
+					<li><a href="home_page.php" class ="button primary">Home</a></li>
+					<li><a href="projectList.php" class ="button primary">Projects</a></li>
+          <li><a href="index.php" class ="button primary">Logout</a></li>
         </ul>
       </nav>
     </header>
