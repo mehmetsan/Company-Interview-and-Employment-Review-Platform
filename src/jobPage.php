@@ -114,6 +114,21 @@ if($result -> num_rows == 1)
         echo "<ul><li><section> <form method=\"post\" action=\"#\"><div class=\"col-12\"> <ul class=\"actions\"> <li><input type=\"submit\" value=\"Apply this Job\" name =\"submit\" class=\"primary\"/></li></ul></div></form></section><li><a href=\"jobList.php\" class=\"button primary\" style=\"text-align:center\">Return To Job List</a><li>><a href=\"companyPage.php\" class=\"button primary\" style=\"text-align:center\">Return To Company Page</a></div>";
 
 
+<<<<<<< HEAD
+=======
+        $userType = $_SESSION['UserType'];
+          $userID = $_SESSION['userID'];
+          $companyID = $_SESSION['companyID'];
+          $jobID = $_SESSION['jobID'];
+          $title = $jobInfo['title'];
+          $query = "SELECT * FROM applies WHERE employeeID = '$userID' AND companyID = '$companyID' AND jobID = '$jobID'";
+          $result = $connection-> query($query);
+
+          if($result -> num_rows == 0)
+                echo "<section> <form method=\"post\" action=\"#\"><div class=\"col-12\"> <ul class=\"actions\"> <li><input type=\"submit\" value=\"Apply this Job\" name =\"submit\" class=\"primary\"/></li></ul></div></form></section>";
+          else
+                echo "<section> <form method=\"post\" action=\"#\"><div class=\"col-12\"> <ul class=\"actions\"> <li><input type=\"submit\" value=\"Unapply\" name =\"unapply\" class=\"primary\"/></li></ul></div></form></section>";
+>>>>>>> 8ab2043f9bfc5830ec3e8395d316d70b9ecac2b0
 
 
       }
@@ -168,6 +183,25 @@ if($userType == "employee"){
         echo "<script type='text/javascript'>alert('$message');
         window.location = 'jobPage.php' </script>";
       }
+
+    }
+}
+
+if(isset($_POST['unapply']))
+{
+$userType = $_SESSION['UserType'];
+if($userType == "employee"){
+  $userID = $_SESSION['userID'];
+  $companyID = $_SESSION['companyID'];
+  $jobID = $_SESSION['jobID'];
+  $title = $jobInfo['title'];
+  $query = "DELETE FROM applies WHERE employeeID = '$userID' AND companyID = '$companyID' AND jobID = '$jobID'";
+  $result = $connection-> query($query);
+
+        $message = "You have been unapplied this job SUCCESSFULLY";
+        echo "<script type='text/javascript'>alert('$message');
+        window.location = 'jobPage.php' </script>";
+
 
     }
 }
