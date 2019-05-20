@@ -88,6 +88,7 @@
 								$status = $_POST['status'];
 								$description = $_POST['description'];
 								$projectID = randomID_user();;
+								$_SESSION['projectID'] = $projectID;
 
 								$qu = "SELECT * FROM project WHERE title = '$title' AND start_date = '$startDate' AND status = '$status' ";
 								$res = $conn-> query($qu);
@@ -99,7 +100,7 @@
 
 									$message = "Project is created succesfully";
 									echo "<script type='text/javascript'>alert('$message');
-									window.location = 'home_page.php' </script>";
+									window.location = 'projectPage.php' </script>";
 								}
 
 								else {

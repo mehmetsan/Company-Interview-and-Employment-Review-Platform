@@ -100,6 +100,8 @@
 							$benefits = $_POST['benefits'];
 							$type = $_POST['type'];
 							$jobID = randomID_user();
+							$_SESSION['jobID'] = $jobID;
+
 
 							$qu = "SELECT * FROM job WHERE title = '$title' AND salary = '$salary' AND post_date = '$postDate' ";
 							$res = $conn-> query($qu);
@@ -113,7 +115,7 @@
 
 								$message = "Job is created succesfully";
 								echo "<script type='text/javascript'>alert('$message');
-								window.location = 'home_page.php' </script>";
+								window.location = 'jobPage.php' </script>";
 							}
 
 							else {
