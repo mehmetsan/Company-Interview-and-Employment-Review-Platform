@@ -47,21 +47,6 @@ $companyID= $_SESSION['userID'];
                     <?php
 
                           $userID= $_SESSION['userID'];
-
-                          //
-                          /*
-                          $query = "SELECT * FROM applies WHERE employeeID = '$userID'";
-                          $result = $conn-> query($query);
-
-                          if($result -> num_rows == 1)
-                          {
-                          	$info = $result->fetch_assoc();
-                          	$query = "SELECT * FROM job WHERE jobID = '$info[jobID]'";
-                          	$result = $conn-> query($query);
-
-                          }
-                          */
-                          //
                           $query = "SELECT * FROM related WHERE companyID = '$userID'";
                           $result = $conn-> query($query);
 
@@ -72,10 +57,6 @@ $companyID= $_SESSION['userID'];
                           	$result = $conn-> query($query);
 
                           }
-                          //
-                          //$query = "SELECT reviewID FROM (SELECT reviewID FROM review NATURAL JOIN related WHERE requested = 1) as q WHERE q.companyID = '$companyID';";
-                          //$result = $conn -> query($query);
-
                           if($result -> num_rows > 0)
                           {
 
