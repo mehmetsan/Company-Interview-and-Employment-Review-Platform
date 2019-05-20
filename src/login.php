@@ -133,6 +133,17 @@ if(! $connection)
 
               $_SESSION['userID'] = $userID[userID];
 
+              $admin_query = "SELECT * FROM admin WHERE adminID = $userID[userID]";
+    					$adminCont = $connection-> query($admin_query);
+              if($adminCont -> num_rows == 1)
+              {
+                $_SESSION['UserType'] = "admin";
+              }
+              if ($adminCont -> num_rows == 1){
+                $message = "admin logged in";
+                echo "<script type='text/javascript'>alert('$message');
+                window.location = 'home_page.php' </script>";
+              }
 
               $query = "SELECT * FROM employee WHERE employeeID = $userID[userID]";
     					$result2 = $connection-> query($query);
@@ -141,7 +152,7 @@ if(! $connection)
               {
                 $_SESSION['UserType'] = "employee";
               }
-              else {
+              else if ($result2 -> num_rows == 0 && $adminCont -> num_rows == 0 ){
                 $_SESSION['UserType'] = "company";
               }
 
@@ -157,7 +168,7 @@ if(! $connection)
                 echo "<script type='text/javascript'>alert('$message');
                 window.location = 'home_page.php' </script>";
               }
-              else if ($reses -> num_rows == 0){
+              else if ($reses -> num_rows == 0  && $adminCont -> num_rows == 0){
               /*
               SESSION TRIAL
               */
