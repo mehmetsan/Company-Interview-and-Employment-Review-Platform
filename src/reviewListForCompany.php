@@ -117,8 +117,8 @@ if($result -> num_rows == 1)
 								}
                 if(isset($_POST['request'])){
 									$message =$_POST['request'];
-									//$_SESSION['reviewID'] = $message;
-									$request_statement = "INSERT INTO requests(reviewID,companyID,adminID) VALUES ('$message',''$userID',0) ";
+                  $query = "UPDATE review SET requested = 1 WHERE reviewID = '$message'";
+              		$result = $connection-> query($query);
 								}
 
 								?>
