@@ -79,17 +79,17 @@
 								<?php
 								$gender = $arr['gender'];
 								if ($gender=="") {
-									echo "<option value=\"empty\" selected>" . "Select Gender" . "</option>";
-									echo "<option value=\"male\" >" . "Male" . "</option>";
-									echo "<option value=\"female\">" . "Female" . "</option>";
+									echo "<option value=\"Empty\" selected>" . "Select Gender" . "</option>";
+									echo "<option value=\"Male\" >" . "Male" . "</option>";
+									echo "<option value=\"Female\">" . "Female" . "</option>";
 								}
-								else if($gender=="male") {
-									echo "<option value=\"male\"selected>" . "Male" . "</option>";
-									echo "<option value=\"female\">" . "Female" . "</option>";
+								else if($gender=="Male") {
+									echo "<option value=\"Male\"selected>" . "Male" . "</option>";
+									echo "<option value=\"Female\">" . "Female" . "</option>";
 								}
 								else{
-									echo "<option value=\"male\" >" . "Male" . "</option>";
-									echo "<option value=\"female\"selected>" . "female" . "</option>";
+									echo "<option value=\"Male\" >" . "Male" . "</option>";
+									echo "<option value=\"Female\"selected>" . "Female" . "</option>";
 								}
 								 ?>
 							</select>
