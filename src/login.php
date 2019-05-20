@@ -142,7 +142,7 @@ if(! $connection)
               if ($adminCont -> num_rows == 1){
                 $message = "admin logged in";
                 echo "<script type='text/javascript'>alert('$message');
-                window.location = 'home_page.php' </script>";
+                window.location = 'admin_control.php' </script>";
               }
 
               $query = "SELECT * FROM employee WHERE employeeID = $userID[userID]";
