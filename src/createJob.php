@@ -111,7 +111,9 @@
 													VALUES('$userID','$title','$salary','$postDate','$jobID','$education','$position','$experience','$benefits','$type')";
 								$result = $conn-> query($query);
 
-
+								$query = "INSERT INTO publishes(companyID,jobID)
+													VALUES('$userID','$jobID')";
+								$result = $conn-> query($query);
 
 								$message = "Job is created succesfully";
 								echo "<script type='text/javascript'>alert('$message');

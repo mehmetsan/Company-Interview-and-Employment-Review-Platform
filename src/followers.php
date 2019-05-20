@@ -130,7 +130,7 @@ include_once 'conn.php';
 	                                while ($row2 = $result2 ->fetch_assoc())
 	                                {
 																			$temp = $row2['employeeID'];
-	                            				$query = "SELECT * FROM employee WHERE employeeID = '$temp' AND '$filter' LIKE '%$search%';";
+	                            				$query = "SELECT * FROM employee WHERE employeeID = '$temp' AND $filter LIKE '%$search%';";
 	                            				$result = $conn -> query($query);
 
 	                            		if($result -> num_rows > 0)
