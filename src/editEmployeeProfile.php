@@ -61,10 +61,40 @@
 							<div class="col-2 col-12-xsmall">
 	              Last Name <input type="text" name="lastName" id="lastName" value= <?php echo $arr['last_name']  ?> />
 	            </div>
+							<div class="col-2 col-12-xsmall">
+								Highest Education <select name="highestEducation" id="highestEducation">
+									<?php
+									$edu = $arr['highest_education'];
+									if ($edu=="") {
+										echo "<option value=\"Empty\" selected>" . "Select Education" . "</option>";
+										echo "<option value=\"High School\" >" . "High School" . "</option>";
+										echo "<option value=\"Bachelors\">" . "Bachelors" . "</option>";
+										echo "<option value=\"Masters\" >" . "Masters" . "</option>";
+										echo "<option value=\"PhD\">" . "PhD" . "</option>";
+									}
+									else if($edu=="Bachelors") {
+										echo "<option value=\"Male\">" . "High School" . "</option>";
+										echo "<option value=\"Bachelors\">selected" . "Bachelors" . "</option>";
+										echo "<option value=\"Masters\" >" . "Masters" . "</option>";
+										echo "<option value=\"PhD\">" . "PhD" . "</option>";
+									}
+									else if($edu=="Masters"){
+										echo "<option value=\"Male\" >" . "High School" . "</option>";
+										echo "<option value=\"Bachelors\">" . "Bachelors" . "</option>";
+										echo "<option value=\"Masters\" >selected" . "Masters" . "</option>";
+										echo "<option value=\"PhD\">" . "PhD" . "</option>";
+									}
+									else if($edu=="PhD"){
+										echo "<option value=\"Male\" >" . "High School" . "</option>";
+										echo "<option value=\"Bachelors\">" . "Bachelors" . "</option>";
+										echo "<option value=\"Masters\" >" . "Masters" . "</option>";
+										echo "<option value=\"PhD\">selected" . "PhD" . "</option>";
+									}
+									 ?>
+								</select>
 
-								<div class="col-4 col-12-medium">
-		              Highest Education <input type="text" name="highestEducation" id="highestEducation" value=<?php echo $arr['highest_education']  ?>>
-		            </div>
+							</div>
+
 		            <div class="col-2 col-12-xsmall">
 		              Position <input type="text" name="position" id="position" value=<?php echo $arr['position']  ?>>
 		            </div>

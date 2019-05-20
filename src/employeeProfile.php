@@ -12,6 +12,10 @@ https://www.youtube.com/watch?v=J5RHnJCy8AE
 */
 session_start();
 $connection = mysqli_connect('dijkstra.ug.bcc.bilkent.edu.tr', 'ege.marasli', '8nhmQrdt', 'ege_marasli');
+?>
+
+<?php
+
 $_SESSION['companyID'] = $_SESSION['userID'];
 if(! $connection)
 {

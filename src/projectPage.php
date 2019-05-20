@@ -59,7 +59,7 @@ if($result -> num_rows == 1)
               echo"\n";
               echo "<li><a href=\"jobList.php\" class=\"button primary\" style=\"text-align:center\">Jobs</a></li>";
               echo"\n";
-              echo "<li><a href=\"projectList.php\" class=\"button primary\" style=\"text-align:center\">Projects</a></li>";
+              echo "<li><a href=\"allProjectList.php\" class=\"button primary\" style=\"text-align:center\">Projects</a></li>";
             }
             else {
               echo "<li><a href=\"companyProfile.php\" class=\"button primary\" style=\"text-align:center\">Profile</a></li>";
@@ -106,7 +106,7 @@ if($result -> num_rows == 1)
       <?php
 
       if($userType == "employee"){
-        echo "<a href=\"projectList.php\" class=\"button primary\" style=\"text-align:center\">Return To Project List</a>";
+        echo "<a href=\"allProjectList.php\" class=\"button primary\" style=\"text-align:center\">Return To Project List</a>";
         echo"\n";
         echo "<a href=\"companyPage.php\" class=\"button primary\" style=\"text-align:center\">Return To Company Page</a>";
       }
