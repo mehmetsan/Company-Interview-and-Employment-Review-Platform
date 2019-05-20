@@ -65,7 +65,7 @@
 								Highest Education <select name="highestEducation" id="highestEducation">
 									<?php
 									$edu = $arr['highest_education'];
-									if ($edu=="") {
+									if ($edu=="Empty") {
 										echo "<option value=\"Empty\" selected>" . "Select Education" . "</option>";
 										echo "<option value=\"High School\" >" . "High School" . "</option>";
 										echo "<option value=\"Bachelors\">" . "Bachelors" . "</option>";
@@ -73,28 +73,28 @@
 										echo "<option value=\"PhD\">" . "PhD" . "</option>";
 									}
 									else if($edu=="High School"){
-										echo "<option value=\"Male\" >selected" . "High School" . "</option>";
+										echo "<option value=\"Male\" selected>" . "High School" . "</option>";
 										echo "<option value=\"Bachelors\">" . "Bachelors" . "</option>";
 										echo "<option value=\"Masters\" >" . "Masters" . "</option>";
 										echo "<option value=\"PhD\">" . "PhD" . "</option>";
 									}
 									else if($edu=="Bachelors") {
 										echo "<option value=\"Male\">" . "High School" . "</option>";
-										echo "<option value=\"Bachelors\">selected" . "Bachelors" . "</option>";
+										echo "<option value=\"Bachelors\"selected>" . "Bachelors" . "</option>";
 										echo "<option value=\"Masters\" >" . "Masters" . "</option>";
 										echo "<option value=\"PhD\">" . "PhD" . "</option>";
 									}
 									else if($edu=="Masters"){
 										echo "<option value=\"Male\" >" . "High School" . "</option>";
 										echo "<option value=\"Bachelors\">" . "Bachelors" . "</option>";
-										echo "<option value=\"Masters\" >selected" . "Masters" . "</option>";
+										echo "<option value=\"Masters\"selected>" . "Masters" . "</option>";
 										echo "<option value=\"PhD\">" . "PhD" . "</option>";
 									}
 									else if($edu=="PhD"){
 										echo "<option value=\"Male\" >" . "High School" . "</option>";
 										echo "<option value=\"Bachelors\">" . "Bachelors" . "</option>";
 										echo "<option value=\"Masters\" >" . "Masters" . "</option>";
-										echo "<option value=\"PhD\">selected" . "PhD" . "</option>";
+										echo "<option value=\"PhD\"selected>" . "PhD" . "</option>";
 									}
 									 ?>
 								</select>

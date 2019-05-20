@@ -31,7 +31,7 @@ $userType = $_SESSION['UserType'];
                     echo "<li><a href=\"employeeProfile.php\" class =\"button primary\">Profile</a></li>";
                     echo "<li><a href=\"companyList.php\" class =\"button primary\">Companies</a></li>";
                     echo "<li><a href=\"jobList.php\" class =\"button primary\">Jobs</a></li>";
-                    echo "<li><a href=\"projectList.php\" class =\"button primary\">Projects</a></li>";
+                    echo "<li><a href=\"allProjectList.php\" class =\"button primary\">Projects</a></li>";
                 }
                 else {
                   echo "<li><a href=\"companyProfile.php\" class =\"button primary\">Profile</a></li>";
