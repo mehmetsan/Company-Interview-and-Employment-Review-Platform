@@ -22,9 +22,9 @@
 				<header id="header">
 					<nav id="nav">
 						<ul>
-							<li><a href="home_page.php">Home</a></li>
-							<li><a href="elements.php">Elements</a></li>
-							<li><a href="index.php" class="button primary">Logout</a></li>
+							<li><a href="home_page.php" class ="button primary">Home</a></li>
+							<li><a href="projectList.php" class ="button primary">Projects</a></li>
+		          <li><a href="index.php" class ="button primary">Logout</a></li>
 						</ul>
 					</nav>
 				</header>
@@ -54,7 +54,13 @@
 															<input type="text" name="post_date" id="post_date" value="" placeholder="Post Date" />
 														</div>
 														<div class="col-12 col-12-xsmall">
-															<input type="text" name="education" id="education" value="" placeholder="Education" />
+															<select  name="education" id="education">
+																<option value=""selected>Select Education</option>
+																<option value="High School">High School</option>
+																<option value="Bachelors">Bachelors</option>
+																<option value="Masters">Masters</option>
+																<option value="PhD">PhD</option>
+															</select>
 														</div>
 														<div class="col-12 col-12-xsmall">
 															<input type="text" name="position" id="position" value="" placeholder="Position" />
@@ -66,12 +72,16 @@
 															<input type="text" name="benefits" id="benefits" value="" placeholder="Benefits" />
 														</div>
 														<div class="col-12 col-12-xsmall">
-															<input type="text" name="type" id="type" value="" placeholder="Type" />
+															<select  name="type" id="type">
+																<option value=""selected>Select Type</option>
+																<option value="Internship">Internship</option>
+																<option value="Part Time">Part Time</option>
+																<option value="Full Time">Full Time</option>
+															</select>
 														</div>
         											<div class="col-12">
         												<ul class="actions">
         													<li><input type="submit" value="Submit" name ="submit" class="primary"/></li>
-        													<li><a href="createJob.php" class ="button primary">Cancel</a></li>
 																	<li><a href="companyProfile.php" class ="button primary">Cancel</a></li>
         												</ul>
         											</div>
