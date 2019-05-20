@@ -20,7 +20,7 @@ if(! $connection)
 
 $userID = $_SESSION['userID'];
 $jobID = $_SESSION['jobID'];
-$query = "SELECT * FROM job WHERE job = '$jobID'";
+$query = "SELECT * FROM job WHERE jobID = '$jobID'";
 $result = $connection-> query($query);
 
 if($result -> num_rows == 1)
