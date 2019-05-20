@@ -114,6 +114,7 @@ if($result -> num_rows == 1)
 
 
 
+
         $userType = $_SESSION['UserType'];
           $userID = $_SESSION['userID'];
           $companyID = $_SESSION['companyID'];

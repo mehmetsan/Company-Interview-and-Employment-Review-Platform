@@ -53,8 +53,8 @@
 														<div class="col-12">
 															<select name="status" id="status">
 																<option value="">Project Status</option>
-																<option value="0">Ongoing</option>
-																<option value="1">Finished</option>
+																<option value="Ongoing">Ongoing</option>
+																<option value="Finished">Finished</option>
 															</select>
 														</div>
 														<div class="col-12">

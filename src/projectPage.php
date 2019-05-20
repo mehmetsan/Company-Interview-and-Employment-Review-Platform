@@ -11,6 +11,7 @@ References
 https://www.youtube.com/watch?v=J5RHnJCy8AE
 */
 session_start();
+$userType = $_SESSION['UserType'];
 $connection = mysqli_connect('dijkstra.ug.bcc.bilkent.edu.tr', 'ege.marasli', '8nhmQrdt', 'ege_marasli');
 
 if(! $connection)
@@ -51,10 +52,20 @@ if($result -> num_rows == 1)
 			<h1 id="logo"><a href="home_page.php"></a></h1>
 			<nav id="nav">
 				<ul>
-					<li><a href="home_page.php">Home</a></li>
-					<li>
-						<a href="index.php" class ="button primary">Logout</a>
-					</li>
+          <li><a href="home_page.php" class ="button primary">Home</a></li>
+          <?php
+            if($userType == "employee"){
+              echo "<li><a href=\"companyList.php\" class=\"button primary\" style=\"text-align:center\">Companies</a></li>";
+              echo"\n";
+              echo "<li><a href=\"jobList.php\" class=\"button primary\" style=\"text-align:center\">Jobs</a></li>";
+              echo"\n";
+              echo "<li><a href=\"projectList.php\" class=\"button primary\" style=\"text-align:center\">Projects</a></li>";
+            }
+            else {
+              echo "<li><a href=\"companyProfile.php\" class=\"button primary\" style=\"text-align:center\">Profile</a></li>";
+            }
+           ?>
+          <li><a href="index.php" class ="button primary">Logout</a></li>
 				</ul>
 			</nav>
 		</header>
@@ -93,21 +104,20 @@ if($result -> num_rows == 1)
 			</div>
 
       <?php
-      $userType = $_SESSION['UserType'];
+
       if($userType == "employee"){
         echo "<a href=\"projectList.php\" class=\"button primary\" style=\"text-align:center\">Return To Project List</a>";
+        echo"\n";
         echo "<a href=\"companyPage.php\" class=\"button primary\" style=\"text-align:center\">Return To Company Page</a>";
       }
       else {
-        echo "<a href=\"companyProfile.php\" class=\"button primary\" style=\"text-align:center\">Return To Company Page</a>";
+        echo "<a href=\"companyProfile.php\" class=\"button primary\" style=\"text-align:center\">Return To Company Profile</a>";
       }
 
       ?>
 
 
 		</section>
-
-
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.scrolly.min.js"></script>
