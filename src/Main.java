@@ -502,6 +502,7 @@ public class Main {
         catch (Exception e) {System.out.print(e);}
         finally{System.out.println("works table created");}
     }
+
     public static void createJobTable()
     {
         try
@@ -512,13 +513,14 @@ public class Main {
                     + "title			varchar(40),"
                     + "salary			double,"
                     + "post_date		date,"
+                    + "jobID			varchar(20),"
                     + "education		varchar(40),"
                     + "position		    varchar(20) NOT NULL,"
                     + "experience		varchar(40),"
                     + "benefits		    varchar(40),"
                     + "type			    varchar(40) NOT NULL,"
-                    + "PRIMARY KEY(companyID,title, salary, post_date),"
-                    + "FOREIGN KEY(companyID) REFERENCES company(companyID) ON UPDATE CASCADE ON DELETE CASCADE )"
+                    + "PRIMARY KEY(companyID, title,salary,post_date),"
+                    + "FOREIGN KEY(companyID) REFERENCES company(companyID) ON UPDATE CASCADE ON DELETE CASCADE  )"
                     + "Engine=InnoDB");
             ownsT.executeUpdate();
         }
@@ -533,18 +535,20 @@ public class Main {
             Connection connection = getConnection();
             PreparedStatement ownsT = connection.prepareStatement("CREATE TABLE project("
                     + "companyID		varchar(20),"
+                    + "projectID		varchar(20),"
                     + "title			varchar(20),"
                     + "start_date		date,"
                     + "status			varchar(40),"
                     + "description		varchar(40),"
-                    + "PRIMARY KEY(companyID ,title, start_date),"
-                    + "FOREIGN KEY(companyID) REFERENCES company(companyID) ON UPDATE CASCADE ON DELETE CASCADE)"
+                    + "PRIMARY KEY(companyID ,title,start_date),"
+                    + "FOREIGN KEY(companyID) REFERENCES company(companyID) ON UPDATE CASCADE ON DELETE CASCADE )"
                     + "Engine=InnoDB");
             ownsT.executeUpdate();
         }
         catch (Exception e) {System.out.print(e);}
         finally{System.out.println("project table created");}
     }
+
 
     public static void createPhotoTable()
     {
