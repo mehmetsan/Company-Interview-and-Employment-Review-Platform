@@ -146,11 +146,16 @@
 
 									$result3 = $conn-> query($query3);
 
+									$companyID = $_SESSION['companyID'];
+									$query4 = "INSERT INTO related(reviewID, companyID)
+															VALUES('$reviewID' , '$companyID')";
+
+									$result4 = $conn-> query($query4);
 
 
 									$message = "Review is uploaded succesfully";
 									echo "<script type='text/javascript'>alert('$message');
-									window.location = 'home_page.php' </script>";
+									window.location = 'myReviewList.php' </script>";
 								}
 
 								else {

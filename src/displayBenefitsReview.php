@@ -26,6 +26,17 @@ include_once 'conn.php';
 	$result = $conn-> query($query);
 
 	$benefits = $result->fetch_assoc();
+
+  $query = "SELECT * FROM related WHERE reviewID = '$reviewID'";
+  $result = $conn-> query($query);
+
+  $temp = $result->fetch_assoc();
+  $companyID = $temp['companyID'];
+
+  $query = "SELECT * FROM company WHERE companyID = '$companyID'";
+  $result = $conn-> query($query);
+
+  $temp2 = $result->fetch_assoc();
  ?>
 <html>
 	<head>
@@ -53,7 +64,7 @@ include_once 'conn.php';
 					<nav id="nav">
 						<ul>
 							<li><a href="index.php">Home</a></li>
-							<li><a href="myReviewList.php" class ="button primary">Return to MyLists</a></li>
+							<li><a href="myReviewList.php" class ="button primary">Return to My Reviews</a></li>
 							<li>
 								<a href="#" class ="button primary">Sign Up</a>
 								<ul>
@@ -78,7 +89,7 @@ include_once 'conn.php';
               </thead>
               <tbody>
                 <tr><td>Review ID: </td>	<td><?php echo $info['reviewID'] ?></td> </tr>
-								<tr><td>Company Name: </td> <td>"COMPANY"</td> </tr>
+								<tr><td>Company Name: </td> <td><?php echo $temp2['name'] ?></td> </tr>
 								<tr><td>Opportunities: </td> <td><?php echo $benefits['opportunities'] ?></td> </tr>
 								<tr><td>Employment Status: </td> <td><?php if($info['Employment_status'] == 1 ) echo "WORKING"; else echo "NOT WORKING"; ?></td> </tr>
 								<tr><td>Job Title: </td> <td><?php echo $info['job_title'] ?></td> </tr>

@@ -20,6 +20,7 @@ if(! $connection)
 
 $userID = $_SESSION['userID'];
 $projectID = $_SESSION['projectID'];
+
 $query = "SELECT * FROM project WHERE projectID = '$projectID'";
 $result = $connection-> query($query);
 
