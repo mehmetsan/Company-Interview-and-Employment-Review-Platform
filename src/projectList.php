@@ -1,5 +1,6 @@
 <?php
 include_once 'conn.php';
+
  ?>
 <!DOCTYPE HTML>
 <!--
@@ -23,7 +24,7 @@ include_once 'conn.php';
 					<nav id="nav">
 						<ul>
               <li><a href="home_page.php" class ="button primary">Home</a></li>
-              <li><a href="employeeProfile.php" class ="button primary">Profile</a></li>
+              <li><a href="employeeProfile.php" class ="button primary">Profile</a></li>    
               <li><a href="companyList.php" class ="button primary">Companies</a></li>
               <li><a href="jobList.php" class ="button primary">Jobs</a></li>
               <li><a href="projectList.php" class ="button primary">Projects</a></li>

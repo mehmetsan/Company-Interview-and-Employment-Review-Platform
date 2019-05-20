@@ -11,6 +11,7 @@ References
 https://www.youtube.com/watch?v=J5RHnJCy8AE
 */
 session_start();
+$userType = $_SESSION['UserType'];
 $connection = mysqli_connect('dijkstra.ug.bcc.bilkent.edu.tr', 'ege.marasli', '8nhmQrdt', 'ege_marasli');
 
 if(! $connection)
@@ -52,10 +53,18 @@ if($result -> num_rows == 1)
 			<nav id="nav">
 				<ul>
           <li><a href="home_page.php" class ="button primary">Home</a></li>
-          <li><a href="employeeProfile.php" class ="button primary">Profile</a></li>
-          <li><a href="companyList.php" class ="button primary">Companies</a></li>
-          <li><a href="jobList.php" class ="button primary">Jobs</a></li>
-          <li><a href="projectList.php" class ="button primary">Projects</a></li>
+          <?php
+            if($userType == "employee"){
+              echo "<a href=\"companyList.php\" class=\"button primary\" style=\"text-align:center\">Companies</a>";
+              echo"\n";
+              echo "<a href=\"jobList.php\" class=\"button primary\" style=\"text-align:center\">Jobs</a>";
+              echo"\n";
+              echo "<a href=\"projectList.php\" class=\"button primary\" style=\"text-align:center\">Projects</a>";
+            }
+            else {
+              echo "<a href=\"employeeProfile.php\" class=\"button primary\" style=\"text-align:center\">Profile</a>";
+            }
+           ?>
           <li><a href="index.php" class ="button primary">Logout</a></li>
 				</ul>
 			</nav>
@@ -95,7 +104,7 @@ if($result -> num_rows == 1)
 			</div>
 
       <?php
-      $userType = $_SESSION['UserType'];
+
       if($userType == "employee"){
         echo "<a href=\"projectList.php\" class=\"button primary\" style=\"text-align:center\">Return To Project List</a>";
         echo"\n";
