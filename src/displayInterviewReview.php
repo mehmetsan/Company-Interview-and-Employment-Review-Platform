@@ -63,15 +63,9 @@ include_once 'conn.php';
 					<h1 id="logo"><a href="index.php"></a></h1>
 					<nav id="nav">
 						<ul>
-							<li><a href="index.php">Home</a></li>
+							<li><a href="home_page.php" class ="button primary">Home</a></li>
 							<li><a href="myReviewList.php" class ="button primary">Return to MyLists</a></li>
-							<li>
-								<a href="#" class ="button primary">Sign Up</a>
-								<ul>
-									<li><a href="left-sidebar.php">Employee Register</a></li>
-									<li><a href="right-sidebar.php">Company Register</a></li>
-								</ul>
-							</li>
+							<li><a href="index.php" class ="button primary">Logout</a></li>
 						</ul>
 					</nav>
 				</header>

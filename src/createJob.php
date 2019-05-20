@@ -22,7 +22,7 @@
 				<header id="header">
 					<nav id="nav">
 						<ul>
-							<li><a href="index.php">Home</a></li>
+							<li><a href="home_page.php">Home</a></li>
 							<li><a href="elements.php">Elements</a></li>
 							<li><a href="index.php" class="button primary">Logout</a></li>
 						</ul>

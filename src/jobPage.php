@@ -50,10 +50,12 @@ if($result -> num_rows == 1)
 			<h1 id="logo"><a href="home_page.php"></a></h1>
 			<nav id="nav">
 				<ul>
-					<li><a href="home_page.php">Home</a></li>
-					<li>
-						<a href="index.php" class ="button primary">Logout</a>
-					</li>
+          <li><a href="home_page.php" class ="button primary">Home</a></li>
+          <li><a href="employeeProfile.php" class ="button primary">Profile</a></li>
+          <li><a href="companyList.php" class ="button primary">Companies</a></li>
+          <li><a href="jobList.php" class ="button primary">Jobs</a></li>
+          <li><a href="projectList.php" class ="button primary">Projects</a></li>
+          <li><a href="index.php" class ="button primary">Logout</a></li>
 				</ul>
 			</nav>
 		</header>
@@ -109,9 +111,11 @@ if($result -> num_rows == 1)
       <?php
       $mode = $_SESSION['UserType'];
       if($mode == "employee"){
-        echo "<a href=\"jobList.php\" class=\"button primary\" style=\"text-align:center\">Return To Job List</a>";
-        echo "<a href=\"companyPage.php\" class=\"button primary\" style=\"text-align:center\">Return To Company Page</a>";
+        echo "<ul><li><section> <form method=\"post\" action=\"#\"><div class=\"col-12\"> <ul class=\"actions\"> <li><input type=\"submit\" value=\"Apply this Job\" name =\"submit\" class=\"primary\"/></li></ul></div></form></section><li><a href=\"jobList.php\" class=\"button primary\" style=\"text-align:center\">Return To Job List</a><li>><a href=\"companyPage.php\" class=\"button primary\" style=\"text-align:center\">Return To Company Page</a></div>";
 
+
+<<<<<<< HEAD
+=======
         $userType = $_SESSION['UserType'];
           $userID = $_SESSION['userID'];
           $companyID = $_SESSION['companyID'];
@@ -124,6 +128,7 @@ if($result -> num_rows == 1)
                 echo "<section> <form method=\"post\" action=\"#\"><div class=\"col-12\"> <ul class=\"actions\"> <li><input type=\"submit\" value=\"Apply this Job\" name =\"submit\" class=\"primary\"/></li></ul></div></form></section>";
           else
                 echo "<section> <form method=\"post\" action=\"#\"><div class=\"col-12\"> <ul class=\"actions\"> <li><input type=\"submit\" value=\"Unapply\" name =\"unapply\" class=\"primary\"/></li></ul></div></form></section>";
+>>>>>>> 8ab2043f9bfc5830ec3e8395d316d70b9ecac2b0
 
 
       }

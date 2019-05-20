@@ -22,9 +22,12 @@
 				<header id="header">
 					<nav id="nav">
 						<ul>
-							<li><a href="index.php">Home</a></li>
-							<li><a href="elements.php">Elements</a></li>
-							<li><a href="index.php" class="button primary">Logout</a></li>
+							<li><a href="home_page.php" class ="button primary">Home</a></li>
+              <li><a href="employeeProfile.php" class ="button primary">Profile</a></li>
+              <li><a href="companyList.php" class ="button primary">Companies</a></li>
+              <li><a href="jobList.php" class ="button primary">Jobs</a></li>
+              <li><a href="projectList.php" class ="button primary">Projects</a></li>
+							<li><a href="index.php" class ="button primary">Logout</a></li>
 						</ul>
 					</nav>
 				</header>
@@ -78,8 +81,8 @@
 															</div>
         											<div class="col-12">
         												<ul class="actions">
-        													<li><input type="submit" value="submit" name ="submit" class="primary"/></li>
-        													<li><input type="reset" value="reset" /></li>
+        													<li><input type="submit" value="Submit" name ="submit" class="primary"/></li>
+        													<li><a href="companyList.php" class ="button primary">Cancel</a></li>
         												</ul>
         											</div>
         										</div>
