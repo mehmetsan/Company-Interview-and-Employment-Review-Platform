@@ -139,8 +139,8 @@
 								$res = $conn-> query($qu);
 								if($res -> num_rows == 0){
 
-									$query = "INSERT INTO review(reviewID,Employment_status,job_title,publish_date,rating,location,comment, visibility)
-														VALUES('$reviewID' , '$employment_status' , '$job_title' , '2008-11-11' , '$rating' , '$location','$comment', '$visibility')";
+									$query = "INSERT INTO review(reviewID,Employment_status,job_title,publish_date,rating,location,comment, visibility,requested)
+														VALUES('$reviewID' , '$employment_status' , '$job_title' , '2008-11-11' , '$rating' , '$location','$comment', '$visibility',0)";
 
 
 									$result = $conn-> query($query);
