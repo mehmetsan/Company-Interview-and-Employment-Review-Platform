@@ -34,7 +34,7 @@
         				<div id="main" class="wrapper style1">
         					<div class="container">
         						<header class="major">
-        							<h2>Select the Type of the Review</h2>
+        							<h2>Select to Remove an Element</h2>
         							<p></p>
         						</header>
         						<div class="sign">
@@ -42,6 +42,7 @@
                       <div class="col-6 col-12-xsmall">
                         <ul>
                           <li><a href="admin_userList.php" class="button primary fit">Users</a></li>
+                          <li><a href="admin_userList.php" class="button primary fit">Requested Reviews</a></li>
                         </ul>
                       </div>
 
