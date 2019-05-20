@@ -129,6 +129,8 @@ if($result -> num_rows == 1)
         $_SESSION['jobID'] = $jobID;
         echo " ";
         echo "<a href=\"applicants.php\" class=\"button primary\" style=\"text-align:center\">See Applicants</a>";
+        echo " ";
+        echo "<section> <form method=\"post\" action=\"#\"><div class=\"col-12\"> <ul class=\"actions\"> <li><input type=\"submit\" value=\"Delete this Job\" name =\"delete\" class=\"primary\"/></li></ul></div></form></section>";
       }
        ?>
 
@@ -196,6 +198,28 @@ if($userType == "employee"){
         $message = "You have been unapplied this job SUCCESSFULLY";
         echo "<script type='text/javascript'>alert('$message');
         window.location = 'jobPage.php' </script>";
+
+
+    }
+}
+
+
+
+if(isset($_POST['delete']))
+{
+$userType = $_SESSION['UserType'];
+if($userType == "company"){
+  $jobID = $_SESSION['jobID'];
+
+  $query = "DELETE FROM applies WHERE jobID = '$jobID'";
+  $result = $connection-> query($query);
+
+  $query = "DELETE FROM job WHERE jobID = '$jobID'";
+  $result = $connection-> query($query);
+
+        $message = "You have been deleted this job SUCCESSFULLY";
+        echo "<script type='text/javascript'>alert('$message');
+        window.location = 'companyProfile.php' </script>";
 
 
     }
