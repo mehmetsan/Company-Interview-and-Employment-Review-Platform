@@ -352,11 +352,6 @@ $type = $_SESSION['userID'];
 									</table>
 								</div>
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 67e137c7c3a955d1cae0c886ee362df0380dd4b5
 							</section>
 
               <?php

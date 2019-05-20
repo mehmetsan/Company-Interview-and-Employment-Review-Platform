@@ -31,7 +31,7 @@ $userType = $_SESSION['UserType'];
                     echo "<li><a href=\"employeeProfile.php\" class =\"button primary\">Profile</a></li>";
                     echo "<li><a href=\"companyList.php\" class =\"button primary\">Companies</a></li>";
                     echo "<li><a href=\"jobList.php\" class =\"button primary\">Jobs</a></li>";
-                    echo "<li><a href=\"projectList.php\" class =\"button primary\">Projects</a></li>";
+                    echo "<li><a href=\"allProjectList.php\" class =\"button primary\">Projects</a></li>";
                 }
                 else {
                   echo "<li><a href=\"companyProfile.php\" class =\"button primary\">Profile</a></li>";
@@ -81,7 +81,12 @@ $userType = $_SESSION['UserType'];
                     <?php
                     if(isset($_POST['submit']))
                     {
-                          $companyID = $_SESSION['companyID'];
+                      $userType = $_SESSION['UserType'];
+                      if($userType == "company"){
+                        $companyID = $_SESSION['userID'];
+                      }
+                      else
+                        $companyID = $_SESSION['companyID'];
                           $filter = $_POST['filter'];
                           $search = $_POST['search'];
                           if($filter == 'all')
@@ -127,7 +132,12 @@ $userType = $_SESSION['UserType'];
 
                         else if(isset($_POST['ascending_sort']))
                         {
-                          $companyID = $_SESSION['companyID'];
+                          $userType = $_SESSION['UserType'];
+                          if($userType == "company"){
+                            $companyID = $_SESSION['userID'];
+                          }
+                          else
+                            $companyID = $_SESSION['companyID'];
                           $filter = $_POST['sort'];
                           $query = "SELECT * FROM project where companyID = '$companyID' ORDER BY $filter ASC;";
                           $result = $conn -> query($query);
@@ -143,7 +153,12 @@ $userType = $_SESSION['UserType'];
                         }
                         else if(isset($_POST['descending_sort']))
                         {
-                          $companyID = $_SESSION['companyID'];
+                          $userType = $_SESSION['UserType'];
+                          if($userType == "company"){
+                            $companyID = $_SESSION['userID'];
+                          }
+                          else
+                            $companyID = $_SESSION['companyID'];
                           $filter = $_POST['sort'];
                           $query = "SELECT * FROM project where companyID = '$companyID' ORDER BY $filter DESC;";
 
@@ -164,7 +179,12 @@ $userType = $_SESSION['UserType'];
                         }
                         else
                         {
-                          $companyID = $_SESSION['companyID'];
+                          $userType = $_SESSION['UserType'];
+                          if($userType == "company"){
+                            $companyID = $_SESSION['userID'];
+                          }
+                          else
+                            $companyID = $_SESSION['companyID'];
                           $query = "SELECT * FROM project where companyID = '$companyID';";
                           $result = $conn -> query($query);
 
@@ -192,9 +212,15 @@ $userType = $_SESSION['UserType'];
 
 									</table>
 								</div>
+                <?php
 
-								<a href="companyPage.php" class="button primary" style="text-align:center">Return To Company Page</a>
+                    if($userType == "company")
+                      echo "<a href=\"companyProfile.php\" class=\"button primary\" style=\"text-align:center\">Return To Company Page</a>";
+                    else {
+                      echo "<a href=\"companyPage.php\" class=\"button primary\" style=\"text-align:center\">Return To Company Page</a>";
 
+                    }
+                 ?>
 							</section>
 
               <?php

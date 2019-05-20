@@ -4,6 +4,35 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
+
+<?php
+/*
+References
+https://www.youtube.com/watch?v=J5RHnJCy8AE
+*/
+include_once 'conn.php';
+$conn = mysqli_connect('dijkstra.ug.bcc.bilkent.edu.tr', 'ege.marasli', '8nhmQrdt', 'ege_marasli');
+
+if(! $conn)
+{
+    die('Connection Error!!! ' . mysqli_error());
+}
+
+$userID = $_SESSION['userID'];
+
+$query = "SELECT * FROM applies WHERE employeeID = '$userID'";
+$result = $conn-> query($query);
+
+if($result -> num_rows == 1)
+{
+	$info = $result->fetch_assoc();
+	$query = "SELECT * FROM job WHERE jobID = '$info[jobID]'";
+	$result = $conn-> query($query);
+
+}
+
+?>
+
 <html>
 	<head>
 		<title>Landed by HTML5 UP</title>
@@ -31,52 +60,63 @@
 					<h1 id="logo"><a href="index.php"></a></h1>
 					<nav id="nav">
 						<ul>
-							<li><a href="index.php">Home</a></li>
-							<li>
-								<a href="#" class ="button primary">Sign Up</a>
-								<ul>
-									<li><a href="left-sidebar.php">Employee Register</a></li>
-									<li><a href="right-sidebar.php">Company Register</a></li>
-								</ul>
-							</li>
+              <li><a href="home_page.php" class ="button primary">Home</a></li>
+              <li><a href="employeeProfile.php" class ="button primary">Profile</a></li>
+              <li><a href="companyList.php" class ="button primary">Companies</a></li>
+              <li><a href="jobList.php" class ="button primary">Jobs</a></li>
+              <li><a href="projectList.php" class ="button primary">Projects</a></li>
 						</ul>
 					</nav>
 				</header>
 
 				<!-- Form -->
         <section>
-          <h3>APPLIED JOB LIST</h3>
+          <h3>MY APPLICATIONS</h3>
           <div class="table-wrapper">
             <table>
               <thead>
                 <tr>
+                  <th>Job ID</th>
                   <th>Job Title</th>
-                  <th>Company Name</th>
-                  <th>Job Link</th>
+									<th>Company Name</th>
+                  <th>DISPLAY</th>
                   <th></th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>PHP CODE</td>
-                  <br></br>
-                  <td>PHP CODE</td>
-                  <td><a href="#">LINK</a></td>
-                  <td><a href="#" class="button primary" onclick="">DELETE</a></td>
-                </tr>
+								<?php
 
+
+								while ($job = $result ->fetch_assoc())
+                {
+										$jobID =  $job['jobID'];
+
+                    $companyID = $job['companyID'];
+
+                    $query = "SELECT * FROM company WHERE companyID = '$companyID'";
+                    $result2 = $conn-> query($query);
+
+                    $temp2 = $result2->fetch_assoc();
+
+									//	$var = "<a href=\"#\" type=\"display\" name=\"disp\" value=$jobID class=\"primary\" >DISPLAY</a>";
+									$var=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$jobID\" name =\"submit\" class=\"primary\"/></li>	</ul>	</div>	</form>
+  								</section>";
+
+
+                    echo "<tr><td>" . $job['jobID'] . "</td><td>" . $job['title'] . "</td><td>" . $temp2['name'] . "</td><td>" . $var  ."</td></tr>";
+
+                }
+								if(isset($_POST['submit'])){
+									$message =$_POST['submit'];
+									$_SESSION['jobID'] = $message;
+									header("Location: jobPage.php");
+
+								}
+
+								?>
               </tbody>
             </table>
           </div>
-          <ul>
-            <div>
-                <a href="#" class="button primary" style="text-align:center">Reviews</a>
-            </div>
-            <br>
-            <div>
-                <a href="employeeProfile.php" class="button primary" style="text-align:center">My Profile</a>
-            </div>
-          </ul>
 
 		</div>
 

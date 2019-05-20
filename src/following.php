@@ -22,24 +22,11 @@ include_once 'conn.php';
 				<header id="header">
 					<nav id="nav">
 						<ul>
-							<li><a href="home_page.php">Home</a></li>
-							<li>
-								<ul>
-									<li><a href="left-sidebar.php">Left Sidebar</a></li>
-									<li><a href="right-sidebar.php">Right Sidebar</a></li>
-									<li><a href="no-sidebar.php">No Sidebar</a></li>
-									<li>
-										<a href="#">Submenu</a>
-										<ul>
-											<li><a href="#">Option 1</a></li>
-											<li><a href="#">Option 2</a></li>
-											<li><a href="#">Option 3</a></li>
-											<li><a href="#">Option 4</a></li>
-										</ul>
-									</li>
-								</ul>
-							</li>
-							<li><a href="index.php" class="button primary">Logout</a></li>
+              <li><a href="home_page.php" class ="button primary">Home</a></li>
+    					<li><a href="employeeProfile.php" class ="button primary">Profile</a></li>
+    					<li><a href="companyList.php" class ="button primary">Companies</a></li>
+    					<li><a href="jobList.php" class ="button primary">Jobs</a></li>
+    					<li><a href="allProjectList.php" class ="button primary">Projects</a></li>
 						</ul>
 					</nav>
 				</header>

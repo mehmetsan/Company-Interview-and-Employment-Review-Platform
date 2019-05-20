@@ -26,7 +26,7 @@
       <nav id="nav">
         <ul>
 					<li><a href="home_page.php" class ="button primary">Home</a></li>
-					<li><a href="allProjectList.php" class ="button primary">Projects</a></li>
+					<li><a href="projectList.php" class ="button primary">Projects</a></li>
           <li><a href="index.php" class ="button primary">Logout</a></li>
         </ul>
       </nav>
@@ -184,6 +184,8 @@
 					<li><a href="followers.php" class="button primary fit">My Followers</a></li>
 					<li><a href="createJob.php" class="button primary fit">Create a Job</a></li>
 					<li><a href="createProject.php" class="button primary fit">Create a Project</a></li>
+					<li><a href="jobList.php" class="button primary fit">My Offered Jobs</a></li>
+					<li><a href="projectList.php" class="button primary fit">My Published Projects</a></li>
 				</ul>
 			</div>
 
