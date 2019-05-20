@@ -110,14 +110,13 @@ if($result -> num_rows == 1)
 
         $userType = $_SESSION['UserType'];
           $userID = $_SESSION['userID'];
-          $companyID = $_SESSION['companyID'];
           $jobID = $_SESSION['jobID'];
           $title = $jobInfo['title'];
           $query = "SELECT * FROM applies WHERE employeeID = '$userID' AND jobID = '$jobID'";
           $result = $connection-> query($query);
 
           if($result -> num_rows == 0)
-                echo "<section> <form method=\"post\" action=\"#\"><div class=\"col-12\"> <ul class=\"actions\"> <li><input type=\"submit\" value=\"Apply this Job\" name =\"submit\" class=\"primary\"/></li></ul></div></form></section>";
+                echo "<section> <form method=\"post\" action=\"#\"><div class=\"col-12\"> <ul class=\"actions\"> <li><input type=\"submit\" value=\"Apply this Job\" name =\"submit\" class=\"primary\"/></li><li><a href=\"allJobsList.php\" class=\"button primary\">Rerturn to All Jobs</a></li></ul></div></form></section>";
           else
                 echo "<section> <form method=\"post\" action=\"#\"><div class=\"col-12\"> <ul class=\"actions\"> <li><input type=\"submit\" value=\"Unapply\" name =\"unapply\" class=\"primary\"/></li></ul></div></form></section>";
 
@@ -158,7 +157,6 @@ if(isset($_POST['submit']))
 $userType = $_SESSION['UserType'];
 if($userType == "employee"){
   $userID = $_SESSION['userID'];
-  $companyID = $_SESSION['companyID'];
   $jobID = $_SESSION['jobID'];
   $title = $jobInfo['title'];
   $query = "SELECT * FROM applies WHERE employeeID = '$userID'  AND jobID = '$jobID'";
@@ -189,7 +187,6 @@ if(isset($_POST['unapply']))
 $userType = $_SESSION['UserType'];
 if($userType == "employee"){
   $userID = $_SESSION['userID'];
-  $companyID = $_SESSION['companyID'];
   $jobID = $_SESSION['jobID'];
   $title = $jobInfo['title'];
   $query = "DELETE FROM applies WHERE employeeID = '$userID' AND jobID = '$jobID'";
