@@ -274,10 +274,10 @@ include_once 'conn.php';
                 $deletion_query = "DELETE FROM user where userID = '$toBeDeleted'";
                 $deletion_result = $conn -> query($deletion_query);
                 if ($deletion_result){
-                $message ="removed";
-                echo "<script type='text/javascript'>alert('$message');
-                window.location = 'admin_userList.php' </script>";
-              }
+                  $message ="removed";
+                  echo "<script type='text/javascript'>alert('$message');
+                  window.location = 'admin_userList.php' </script>";
+                }
               }
 
                ?>
