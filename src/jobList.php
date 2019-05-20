@@ -204,6 +204,6 @@ include_once 'conn.php';
               {
                 $message =$_POST['link'];
                 $_SESSION['jobID'] = $message;
-                header("Location: companyPage.php");
+                header("Location: jobPage.php");
               }
                ?>
