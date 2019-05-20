@@ -111,12 +111,14 @@ if($result -> num_rows == 1)
       if($mode == "employee"){
         echo "<a href=\"jobList.php\" class=\"button primary\" style=\"text-align:center\">Return To Job List</a>";
         echo "<a href=\"companyPage.php\" class=\"button primary\" style=\"text-align:center\">Return To Company Page</a>";
+        echo "<section> <form method=\"post\" action=\"#\"><div class=\"col-12\"> <ul class=\"actions\"> <li><input type=\"submit\" value=\"Apply this Job\" name =\"submit\" class=\"primary\"/></li></ul></div></form></section>";
+
+
       }
       else {
         echo "<a href=\"companyProfile.php\" class=\"button primary\" style=\"text-align:center\">Return To Company Page</a>";
       }
        ?>
-
 
 
 		</section>
@@ -135,3 +137,25 @@ if($result -> num_rows == 1)
 
 	</body>
 </html>
+
+<?php
+$userType = $_SESSION['UserType'];
+if($userType == "employee"){
+  $userID = $_SESSION['userID'];
+  $companyID = $_SESSION['companyID'];
+  $jobID = $_SESSION['jobID'];
+
+    if(isset($_POST['submit']))
+    {
+      $query = "INSERT INTO applies(employeeID,companyID,jobID,title)
+                VALUES('$userID','$companyID','$jobID','$title')";
+      $result = $conn-> query($query);
+
+      $message = "You have been applied this job SUCCESSFULLY!";
+      echo "<script type='text/javascript'>alert('$message');
+      window.location = 'jobPage.php' </script>";
+
+    }
+}
+
+?>

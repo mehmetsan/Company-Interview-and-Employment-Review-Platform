@@ -513,13 +513,13 @@ public class Main {
                     + "title			varchar(40),"
                     + "salary			double,"
                     + "post_date		date,"
-                    + "jobID			varchar(20),"
+                    + "jobID			varchar(10),"
                     + "education		varchar(40),"
                     + "position		    varchar(20) NOT NULL,"
                     + "experience		varchar(40),"
                     + "benefits		    varchar(40),"
                     + "type			    varchar(40) NOT NULL,"
-                    + "PRIMARY KEY(companyID, title,salary,post_date),"
+                    + "PRIMARY KEY(companyID, jobID),"
                     + "FOREIGN KEY(companyID) REFERENCES company(companyID) ON UPDATE CASCADE ON DELETE CASCADE  )"
                     + "Engine=InnoDB");
             ownsT.executeUpdate();
@@ -535,12 +535,12 @@ public class Main {
             Connection connection = getConnection();
             PreparedStatement ownsT = connection.prepareStatement("CREATE TABLE project("
                     + "companyID		varchar(20),"
-                    + "projectID		varchar(20),"
+                    + "projectID		varchar(10),"
                     + "title			varchar(20),"
                     + "start_date		date,"
                     + "status			varchar(40),"
                     + "description		varchar(40),"
-                    + "PRIMARY KEY(companyID ,title,start_date),"
+                    + "PRIMARY KEY(companyID,projectID),"
                     + "FOREIGN KEY(companyID) REFERENCES company(companyID) ON UPDATE CASCADE ON DELETE CASCADE )"
                     + "Engine=InnoDB");
             ownsT.executeUpdate();
@@ -593,13 +593,12 @@ public class Main {
             Connection connection = getConnection();
             PreparedStatement ownsT = connection.prepareStatement("CREATE TABLE applies("
                     + "employeeID     varchar(20),"
-                    + "companyID    	varchar(20),"
-                    + "title 		varchar(40),"
-                    + "salary		double,"
-                    + "post_date	date,"
-                    + "PRIMARY KEY ( employeeID, companyID, title, salary, post_date ),"
-                    + "FOREIGN KEY ( employeeID) REFERENCES employee(employeeID) ON UPDATE CASCADE ON DELETE CASCADE,"
-                    + "FOREIGN KEY ( companyID, title, salary,post_date ) references job(companyID, title, salary, post_date) ON UPDATE CASCADE ON DELETE CASCADE)"
+                    + "companyID      varchar(20),"
+                    + "jobID          varchar(10),"
+                    + "title 		  varchar(40),"
+                    + "PRIMARY KEY ( employeeID, companyID, jobID),"
+                    + "FOREIGN KEY ( employeeID) references employee(employeeID) ON UPDATE CASCADE ON DELETE CASCADE,"
+                    + "FOREIGN KEY ( companyID, jobID) references job(companyID, jobID) ON UPDATE CASCADE ON DELETE CASCADE)"
                     + "Engine=InnoDB");
             ownsT.executeUpdate();
         }
@@ -797,11 +796,10 @@ public class Main {
             PreparedStatement ownsT = connection.prepareStatement("CREATE TABLE members ("
                     + "employeeID       varchar(20),"
                     + "companyID        varchar(20),"
-                    + "title            varchar(40),"
-                    + "start_date       date,"
-                    + "PRIMARY KEY ( employeeID, companyID, title, start_date),"
+                    + "projectID		varchar(10),"
+                    + "PRIMARY KEY ( employeeID, companyID, projectID),"
                     + "FOREIGN KEY ( employeeID ) references employee(employeeID) ON UPDATE CASCADE ON DELETE CASCADE,"
-                    + "FOREIGN KEY ( companyID, title, start_date ) references project(companyID, title, start_date) ON UPDATE CASCADE ON DELETE CASCADE)"
+                    + "FOREIGN KEY ( companyID, projectID ) references project(companyID, projectID) ON UPDATE CASCADE ON DELETE CASCADE)"
                     + "Engine=InnoDB");
             ownsT.executeUpdate();
         }
