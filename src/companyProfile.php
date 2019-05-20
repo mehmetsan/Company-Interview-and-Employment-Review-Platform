@@ -186,6 +186,7 @@
 					<li><a href="createProject.php" class="button primary fit">Create a Project</a></li>
 					<li><a href="jobList.php" class="button primary fit">My Offered Jobs</a></li>
 					<li><a href="projectList.php" class="button primary fit">My Published Projects</a></li>
+					<li><a href="reviewListForCompany.php" class="button primary fit">Reviews about My Company</a></li>
 				</ul>
 			</div>
 
