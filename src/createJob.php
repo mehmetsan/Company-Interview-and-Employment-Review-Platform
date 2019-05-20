@@ -99,13 +99,14 @@
 							$experience = $_POST['experience'];
 							$benefits = $_POST['benefits'];
 							$type = $_POST['type'];
+							$jobID = randomID_user();
 
 							$qu = "SELECT * FROM job WHERE title = '$title' AND salary = '$salary' AND post_date = '$postDate' ";
 							$res = $conn-> query($qu);
 							if($res -> num_rows == 0){
 
-								$query = "INSERT INTO job(companyID,title,salary,post_date,education,position,experience,benefits,type)
-													VALUES('$userID','$title','$salary','$postDate','$education','$position','$experience','$benefits','$type')";
+								$query = "INSERT INTO job(companyID,title,salary,post_date,jobID,education,position,experience,benefits,type)
+													VALUES('$userID','$title','$salary','$postDate','$jobID','$education','$position','$experience','$benefits','$type')";
 								$result = $conn-> query($query);
 
 

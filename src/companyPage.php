@@ -179,7 +179,7 @@
 				<div class="col-6 col-12-xsmall">
 						<li><input type="submit" value="Follow Company" name ="follow" class="primary"/></li>
 				</div>
-						<li><a href="#" class="button primary fit">Display Job Offers</a><li>
+						<li><a href="jobList.php" class="button primary fit">Display Job Offers</a><li>
 						<li><a href="#" class="button primary fit">Display Projects</a><li>
 					</ul>
 				</div>
