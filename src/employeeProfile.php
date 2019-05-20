@@ -12,17 +12,20 @@ https://www.youtube.com/watch?v=J5RHnJCy8AE
 */
 session_start();
 $connection = mysqli_connect('dijkstra.ug.bcc.bilkent.edu.tr', 'ege.marasli', '8nhmQrdt', 'ege_marasli');
-?>
 
-<?php
-
-$_SESSION['companyID'] = $_SESSION['userID'];
 if(! $connection)
 {
     die('Connection Error!!! ' . mysqli_error());
 }
 
-$userID = $_SESSION['userID'];
+$userType = $_SESSION['UserType'];
+if($userType == "company"){
+  $userID = $_SESSION['employeeID'];
+}
+
+else {
+  $userID = $_SESSION['userID'];
+}
 
 $query = "SELECT * FROM user WHERE userID = '$userID'";
 $result = $connection-> query($query);
@@ -70,7 +73,7 @@ if($result -> num_rows == 1)
               echo "<li><a href=\"companyList.php\" class =\"button primary\">Companies</a></li>";
               echo "<li><a href=\"myReviewList.php\" class =\"button primary\">My Reviews</a></li>";
               echo "<li><a href=\"jobList.php\" class =\"button primary\">Jobs</a></li>";
-              echo "<li><a href=\"allProjectList.php\" class =\"button primary\">Projects</a></li>";
+              echo "<li><a href=\"projectList.php\" class =\"button primary\">Projects</a></li>";
             }
             else {
               echo "<li><a href=\"companyProfile.php\">Profile</a></li>";
