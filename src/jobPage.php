@@ -111,7 +111,8 @@ if($result -> num_rows == 1)
       if($mode == "employee"){
         echo "<a href=\"jobList.php\" class=\"button primary\" style=\"text-align:center\">Return To Job List</a>";
         echo "<a href=\"companyPage.php\" class=\"button primary\" style=\"text-align:center\">Return To Company Page</a>";
-        echo "<section> <form method=\"post\" action=\"#\"><div class=\"col-12\"> <ul class=\"actions\"> <li><input type=\"submit\" value=\"Apply this Job\" name =\"submit\" class=\"primary\"/></li></ul></div></form></section>";
+
+          echo "<section> <form method=\"post\" action=\"#\"><div class=\"col-12\"> <ul class=\"actions\"> <li><input type=\"submit\" value=\"Apply this Job\" name =\"submit\" class=\"primary\"/></li></ul></div></form></section>";
 
 
       }
@@ -139,21 +140,33 @@ if($result -> num_rows == 1)
 </html>
 
 <?php
+if(isset($_POST['submit']))
+{
 $userType = $_SESSION['UserType'];
 if($userType == "employee"){
   $userID = $_SESSION['userID'];
   $companyID = $_SESSION['companyID'];
   $jobID = $_SESSION['jobID'];
+  $title = $jobInfo['title'];
+  $query = "SELECT * FROM applies WHERE employeeID = '$userID' AND companyID = '$companyID' AND jobID = '$jobID'";
+  $result = $connection-> query($query);
 
-    if(isset($_POST['submit']))
-    {
-      $query = "INSERT INTO applies(employeeID,companyID,jobID,title)
-                VALUES('$userID','$companyID','$jobID','$title')";
-      $result = $conn-> query($query);
 
-      $message = "You have been applied this job SUCCESSFULLY!";
-      echo "<script type='text/javascript'>alert('$message');
-      window.location = 'jobPage.php' </script>";
+      if($result -> num_rows == 0){
+        $query = "INSERT INTO applies(employeeID,companyID,jobID,title)
+                  VALUES('$userID','$companyID','$jobID','$title')";
+        $result = $connection-> query($query);
+
+        $message = "You have been applied this job SUCCESSFULLY!";
+
+        echo "<script type='text/javascript'>alert('$message');
+        window.location = 'jobPage.php' </script>";
+      }
+      else {
+        $message = "You have been ALREADY applied for this job!";
+        echo "<script type='text/javascript'>alert('$message');
+        window.location = 'jobPage.php' </script>";
+      }
 
     }
 }
