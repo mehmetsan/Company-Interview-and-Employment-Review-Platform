@@ -24,6 +24,11 @@ include_once 'conn.php';
 						<ul>
               <li><a href="admin_control.php" class ="button primary">Home</a></li>
               <li><a href="admin_userList.php" class ="button primary">User List</a></li>
+              <li><a href="admin_userList.php" class ="button primary">Requested Reviews List</a></li>
+              <li><a href="companyList.php" class ="button primary">Companies</a></li>
+              <li><a href="jobList.php" class ="button primary">Jobs</a></li>
+              <li><a href="projectList.php" class ="button primary">Projects</a></li>
+              <li><a href="index.php" class ="button primary">Logout</a></li>
 						</ul>
 					</nav>
 				</header>
@@ -65,7 +70,6 @@ include_once 'conn.php';
 												<!--<th>Name</th>-->
 												<th>UserID</th>
                         <th>Mail</th>
-                        <th>Link to Profile</th>
                         <th>Remove</th>
 											</tr>
 										</thead>
@@ -103,11 +107,9 @@ include_once 'conn.php';
                                     $type = 'not specified';
                                   }
                                   if ($admin_result -> num_rows == 0){
-                                  $var=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$userID name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
-                                  </section>";
                                   $rem_button = "<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$userID name =\"rem_button\" class=\"primary\"/></li>	</ul>	</div>	</form>
                                   </section>";
-                                    echo "<tr><td>" . $type  . "</td><td>" . $row['userID'] . "</td><td>" . $row['mail'] . "</td><td>" .  $var ."</td><td>" .  $rem_button ."</td></tr>";
+                                    echo "<tr><td>" . $type  . "</td><td>" . $row['userID'] . "</td><td>" . $row['mail'] . "</td><td>" .  $rem_button ."</td></tr>";
                                 }
                             }
                           }
@@ -137,11 +139,9 @@ include_once 'conn.php';
                                 $type = 'not specified';
                               }
                               if ($admin_result -> num_rows == 0){
-                                $var=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$userID name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
-                              </section>";
                                 $rem_button = "<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$userID name =\"rem_button\" class=\"primary\"/></li>	</ul>	</div>	</form>
                               </section>";
-                                echo "<tr><td>" . $type . "</td><td>" . $row['userID'] . "</td><td>" . $row['mail'] . "</td><td>" .  $var ."</td><td>" .  $rem_button ."</td></tr>";
+                                echo "<tr><td>" . $type . "</td><td>" . $row['userID'] . "</td><td>" . $row['mail'] . "</td><td>" .   $rem_button ."</td></tr>";
                               }
                           }
 
@@ -173,11 +173,9 @@ include_once 'conn.php';
                             $type = 'not specified';
                           }
                           if ($admin_result -> num_rows == 0){
-                            $var=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$userID name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
-                            </section>";
                             $rem_button = "<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$userID name =\"rem_button\" class=\"primary\"/></li>	</ul>	</div>	</form>
                             </section>";
-                              echo "<tr><td>" . $type .  "</td><td>" . $row['userID'] . "</td><td>" . $row['mail'] . "</td><td>" .  $var ."</td><td>" .  $rem_button ."</td></tr>";
+                              echo "<tr><td>" . $type .  "</td><td>" . $row['userID'] . "</td><td>" . $row['mail'] . "</td><td>" .  $rem_button ."</td></tr>";
                           }
                         }
                       }
@@ -209,11 +207,9 @@ include_once 'conn.php';
                               $type = 'not specified';
                             }
                             if ($admin_result -> num_rows == 0){
-                              $var=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$userID name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
-                              </section>";
                               $rem_button = "<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$userID name =\"rem_button\" class=\"primary\"/></li>	</ul>	</div>	</form>
                               </section>";
-                                echo "<tr><td>" . $type  . "</td><td>" . $row['userID'] . "</td><td>" . $row['mail'] . "</td><td>" .  $var ."</td><td>" .  $rem_button ."</td></tr>";
+                                echo "<tr><td>" . $type  . "</td><td>" . $row['userID'] . "</td><td>" . $row['mail'] ."</td><td>" .  $rem_button ."</td></tr>";
                             }
                           }
                         }
@@ -244,11 +240,9 @@ include_once 'conn.php';
                                 $type = 'not specified';
                               }
                               if ($admin_result -> num_rows == 0){
-                              $var=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$userID name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
-                              </section>";
                               $rem_button = "<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$userID name =\"rem_button\" class=\"primary\"/></li>	</ul>	</div>	</form>
                               </section>";
-                                echo "<tr><td>" . $type  . "</td><td>" . $row['userID'] . "</td><td>" . $row['mail'] . "</td><td>" .  $var. "</td><td>" .  $rem_button ."</td></tr>";
+                                echo "<tr><td>" . $type  . "</td><td>" . $row['userID'] . "</td><td>" . $row['mail'] . "</td><td>" .  $rem_button ."</td></tr>";
                             }
                             }
                         }
