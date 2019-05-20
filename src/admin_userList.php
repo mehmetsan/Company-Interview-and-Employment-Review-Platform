@@ -67,9 +67,10 @@ include_once 'conn.php';
 									<table>
 										<thead>
 											<tr>
+                        <th>Type</th>
 												<th>UserID</th>
                         <th>Mail</th>
-                        <th>Link to Profile Page</th>
+                        <th>Remove</th>
 											</tr>
 										</thead>
                     <tbody>
@@ -100,13 +101,14 @@ include_once 'conn.php';
                                 else if ($type_result -> num_rows == 0 && $admin_result -> num_rows == 0){
                                   $type = 'company';
                                 }
+                                if ($admin_result -> num_rows == 0){
                                 $remove_txt = 'remove';
-                                $var=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$userID name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
-                                </section>";
                                 $remove_button = "<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value='remove'+$userID name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
                                 </section>";
-                                  echo "<tr><td>" .  $row['userID'] . "</td><td>" . $row['mail'] . "</td><td>" .  $var ."</td><td>". $remove_button."</td></tr>";
+                                  echo "<tr><td>" .$type . "</td><td>" . $row['userID'] . "</td><td>" . $row['mail'] . "</td><td>" .   $remove_button."</td></tr>";
                               }
+                            }
+
                           }
                         //}
 
