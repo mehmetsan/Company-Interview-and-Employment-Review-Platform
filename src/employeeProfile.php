@@ -147,6 +147,9 @@ if($result -> num_rows == 1)
 					</tbody>
 
 				</table>
+        <div>
+         Resume	<textarea name="resume" id="resume" rows="6" cols="20"><?php echo $employeeInfo['resume']  ?></textarea>
+       </div>
 			</div>
 
      <?php

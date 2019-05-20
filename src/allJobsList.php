@@ -338,8 +338,7 @@ include_once 'conn.php';
                               $companyName = $resultCompany ->fetch_assoc();
                               $companyName = $companyName['name'];
 
-                              $var=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$jobID\" name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
-                              </section>";
+                              $var=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$jobID\" name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form> </section>";
                               echo "<tr><td>"  . $companyName . "</td><td>". $row['title'] . "</td><td>" . $row['education'] .  "</td><td>" . $row['position'] .  "</td><td>" . $row['type'] .  "</td><td>" . $row['salary'] .  "</td><td>" . $var ."</td></tr>";
                             }
 
