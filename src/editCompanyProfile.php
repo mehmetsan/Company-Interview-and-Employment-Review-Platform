@@ -58,32 +58,32 @@
               Industry <input type="text" name="industry" id=industry"" value=<?php echo $arr['industry']  ?> />
             </div>
             <div class="col-2 col-12-xsmall">
-              Sector <input type="text" name="sector" id="sector" value="Sector"/>
+              Sector <input type="text" name="sector" id="sector" value=<?php echo $arr['sector']  ?>/>
             </div>
             <div class="col-2 col-12-xsmall">
               Revenue <input type="text" name="revenue" id="revenue" value=<?php echo $arr['revenue']  ?>>
             </div>
 						<div class="col-2 col-12-xsmall">
-              Establish_date <input type="text" name="establish_date" id="establish_date" value="Establish Date"/>
+              Type <input type="text" name="type" id="type" value=<?php echo $arr['type']  ?>/>
             </div>
 						<div class="col-2 col-12-xsmall">
-              Type <input type="text" name="type" id="type" value="Type"/>
-            </div>
-						<div class="col-2 col-12-xsmall">
-              Headquarter <input type="text" name="headquarter" id="headquarter" value="Headquarter"/>
+              Headquarter <input type="text" name="headquarter" id="headquarter" value=<?php echo $arr['headquarter']  ?>/>
             </div>
             <div class="col-5 col-12-xsmall">
-              Phone Number 1 <input type="text" name="phone1" id="phone1" value="Phone1"/>
+              Phone Number 1 <input type="text" name="phone1" id="phone1" value=<?php echo $arr2['phone_number1']  ?>/>
             </div>
             <div class="col-5 col-12-xsmall">
-              Phone Number 2 <input type="text" name="phone2" id="phone2" value="Phone2"/>
+              Phone Number 2 <input type="text" name="phone2" id="phone2" value=<?php echo $arr2['phone_number2']  ?>/>
             </div>
             <div class="col-6 col-12-xsmall">
-              Email <input type="text" name="email" id="email" value="Mail"/>
+              Email <input type="text" name="email" id="email" value=<?php echo $arr2['mail']  ?>/>
             </div>
             <div class="col-6 col-12-xsmall">
-              Password <input type="text" name="password" id="password" value="Password"/>
+              Password <input type="text" name="password" id="password" value=<?php echo $arr2['password']  ?>/>
             </div>
+						<div class="col-12-medium">
+							*Establish Date: <input type="date" style="background-color:black;" name="establish_date" id="establish_date">
+						</div>
             <div class="col-12">
               <ul class="actions">
                 <li><input type="submit" value="Update" name="update" class="primary" /></li>
