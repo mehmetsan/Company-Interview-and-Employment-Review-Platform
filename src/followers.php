@@ -246,6 +246,6 @@ include_once 'conn.php';
               {
                 $message =$_POST['link'];
 								$_SESSION['employeeID'] = $message;
-                header("Location: employeeProfile.php");
+                echo "<script type='text/javascript'>window.location = 'employeeProfile.php' </script>";
               }
                ?>
