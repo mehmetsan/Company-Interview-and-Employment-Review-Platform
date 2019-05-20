@@ -49,7 +49,7 @@ include_once 'conn.php';
 					<div class="container">
 						<header class="major">
 							<h2>Project List</h2>
-							<p>You can find every projects from the company here.</p>
+							<p>You can find every projects here.</p>
 						</header>
 						<!-- Table -->
             <form method="post" action="#">
