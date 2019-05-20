@@ -9,7 +9,7 @@ include_once 'conn.php';
 -->
 <html>
 	<head>
-		<title>Elements - Landed by HTML5 UP</title>
+		<title>All Jobs List</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -22,24 +22,8 @@ include_once 'conn.php';
 				<header id="header">
 					<nav id="nav">
 						<ul>
-							<li><a href="home_page.php">Home</a></li>
-							<li>
-								<ul>
-									<li><a href="left-sidebar.php">Left Sidebar</a></li>
-									<li><a href="right-sidebar.php">Right Sidebar</a></li>
-									<li><a href="no-sidebar.php">No Sidebar</a></li>
-									<li>
-										<a href="#">Submenu</a>
-										<ul>
-											<li><a href="#">Option 1</a></li>
-											<li><a href="#">Option 2</a></li>
-											<li><a href="#">Option 3</a></li>
-											<li><a href="#">Option 4</a></li>
-										</ul>
-									</li>
-								</ul>
-							</li>
-							<li><a href="index.php" class="button primary">Logout</a></li>
+							<li><a href="home_page.php" class ="button primary">Home</a></li>
+		          <li><a href="index.php" class ="button primary">Logout</a></li>
 						</ul>
 					</nav>
 				</header>

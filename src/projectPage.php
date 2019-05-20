@@ -57,7 +57,7 @@ if($result -> num_rows == 1)
             if($userType == "employee"){
               echo "<li><a href=\"companyList.php\" class=\"button primary\" style=\"text-align:center\">Companies</a></li>";
               echo"\n";
-              echo "<li><a href=\"jobList.php\" class=\"button primary\" style=\"text-align:center\">Jobs</a></li>";
+              echo "<li><a href=\"allJobsList.php\" class=\"button primary\" style=\"text-align:center\">Jobs</a></li>";
               echo"\n";
               echo "<li><a href=\"allProjectList.php\" class=\"button primary\" style=\"text-align:center\">Projects</a></li>";
             }

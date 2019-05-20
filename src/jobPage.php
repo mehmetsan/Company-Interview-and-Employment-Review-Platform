@@ -49,14 +49,10 @@ if($result -> num_rows == 1)
 		<header id="header">
 			<h1 id="logo"><a href="home_page.php"></a></h1>
 			<nav id="nav">
-				<ul>
+        <ul>
           <li><a href="home_page.php" class ="button primary">Home</a></li>
-          <li><a href="employeeProfile.php" class ="button primary">Profile</a></li>
-          <li><a href="companyList.php" class ="button primary">Companies</a></li>
-          <li><a href="jobList.php" class ="button primary">Jobs</a></li>
-          <li><a href="projectList.php" class ="button primary">Projects</a></li>
           <li><a href="index.php" class ="button primary">Logout</a></li>
-				</ul>
+        </ul>
 			</nav>
 		</header>
 		<section>
@@ -111,9 +107,6 @@ if($result -> num_rows == 1)
       <?php
       $mode = $_SESSION['UserType'];
       if($mode == "employee"){
-
-
-
 
         $userType = $_SESSION['UserType'];
           $userID = $_SESSION['userID'];
