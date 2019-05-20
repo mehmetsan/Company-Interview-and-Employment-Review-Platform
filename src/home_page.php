@@ -34,6 +34,7 @@ $connection = mysqli_connect('dijkstra.ug.bcc.bilkent.edu.tr', 'ege.marasli', '8
 								}
 								else {
 									echo "<li><a href=\"companyProfile.php\"class=\"button primary\">Profile</a></li>";
+									echo "<li><a href=\"projectList.php\"class=\"button primary\">Projects</a></li>";
 								}
 							?>
 							<li><a href="index.php" class="button primary">Logout</a></li>

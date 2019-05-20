@@ -193,7 +193,7 @@ $userType = $_SESSION['UserType'];
 									</table>
 								</div>
 
-								<a href="companyProfile.php" class="button primary" style="text-align:center">Return To Company Profile</a>
+								<a href="companyPage.php" class="button primary" style="text-align:center">Return To Company Page</a>
 
 							</section>
 

@@ -1,6 +1,7 @@
 <?php
 	include_once 'conn.php';
 	$userID = $_SESSION['companyID'];
+	$type = $_SESSION['UserType'];
 	$query = "SELECT * FROM company WHERE companyID = '$userID'";
 	$result = $conn-> query($query);
 
@@ -33,7 +34,17 @@
 					<li><a href="employeeProfile.php" class ="button primary">Profile</a></li>
 					<li><a href="companyList.php" class ="button primary">Companies</a></li>
 					<li><a href="jobList.php" class ="button primary">Jobs</a></li>
-					<li><a href="projectList.php" class ="button primary">Projects</a></li>
+					<?php
+					if ($type=="employee") {
+						echo "<li><a href=\"allProjectList.php\"class=\"button primary\">Projects</a></li>";
+					}
+					else {
+						echo "<li><a href=\"projectList.php\"class=\"button primary\">Projects</a></li>";
+					}
+
+					 ?>
+
+					<li><a href="allProjectList.php" class ="button primary">Projects</a></li>
 					<li><a href="index.php" class ="button primary">Logout</a></li>
 				</ul>
 			</nav>

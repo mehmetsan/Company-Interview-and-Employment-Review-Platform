@@ -26,7 +26,7 @@
               <li><a href="employeeProfile.php" class ="button primary">Profile</a></li>
               <li><a href="companyList.php" class ="button primary">Companies</a></li>
               <li><a href="jobList.php" class ="button primary">Jobs</a></li>
-              <li><a href="projectList.php" class ="button primary">Projects</a></li>
+              <li><a href="allProjectList.php" class ="button primary">Projects</a></li>
 							<li><a href="index.php" class ="button primary">Logout</a></li>
 						</ul>
 					</nav>
