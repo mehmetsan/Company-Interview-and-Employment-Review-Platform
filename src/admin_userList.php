@@ -22,14 +22,8 @@ include_once 'conn.php';
 				<header id="header">
 					<nav id="nav">
 						<ul>
-              <!--
-              <li><a href="home_page.php" class ="button primary">Home</a></li>
-              <li><a href="employeeProfile.php" class ="button primary">Profile</a></li>
-              <li><a href="companyList.php" class ="button primary">Companies</a></li>
-              <li><a href="jobList.php" class ="button primary">Jobs</a></li>
-              <li><a href="projectList.php" class ="button primary">Projects</a></li>
-              -->
-              <li><a href="index.php" class ="button primary">Logout</a></li>
+              <li><a href="admin_control.php" class ="button primary">Home</a></li>
+              <li><a href="admin_userList.php" class ="button primary">User List</a></li>
 						</ul>
 					</nav>
 				</header>
@@ -46,7 +40,7 @@ include_once 'conn.php';
 			<select name="filter">
 				<option value="all">Select Filter(All show all users)</option>
 				<option value="mail">type</option>
-				<option value="name">name</option>
+				<!--<option value="name">name</option>-->
 				<option value="userID">userID</option>
         <option value="mail">mail</option>
 			</select>
@@ -54,7 +48,7 @@ include_once 'conn.php';
       <select name="sort">
 				<option value="all">Sort By</option>
         <option value="mail">type</option>
-				<option value="name">name</option>
+				<!--<option value="name">name</option>-->
 				<option value="userID">userID</option>
         <option value="mail">mail</option>
 			</select>
@@ -67,50 +61,199 @@ include_once 'conn.php';
 									<table>
 										<thead>
 											<tr>
-                        <th>Type</th>
+												<th>Type</th>
+												<!--<th>Name</th>-->
 												<th>UserID</th>
                         <th>Mail</th>
+                        <th>Link to Profile</th>
                         <th>Remove</th>
 											</tr>
 										</thead>
                     <tbody>
                     <?php
                     ob_start();
-                    //if(isset($_POST['submit']))
-                    //{
+                    if(isset($_POST['submit']))
+                    {
 
-                          //$filter = $_POST['filter'];
-                          //$search = $_POST['search'];
+                          $filter = $_POST['filter'];
+                          $search = $_POST['search'];
+                          if($filter == 'all')
+                          {
+                            $query = "SELECT * FROM user;";
+                            $result = $conn -> query($query);
+
+                            if($result -> num_rows > 0)
+                            {
+
+                                while ($row = $result ->fetch_assoc())
+                                {
+                                  $userID = $row['userID'];
+                                  $type_query = "SELECT * FROM employee WHERE employeeID ='$userID'";
+                                  $type_result = $conn -> query($type_query);
+                                  $admin_query = "SELECT * FROM admin WHERE adminID ='$userID'";
+                                  $admin_result = $conn -> query($admin_query);
+
+                                  if ($type_result -> num_rows == 1){
+                                    $type = 'employee';
+                                  }
+                                  else if ($type_result -> num_rows == 0 && $admin_result -> num_rows == 0){
+                                    $type = 'company';
+                                  }
+                                  else{
+                                    $type = 'not specified';
+                                  }
+                                  if ($admin_result -> num_rows == 0){
+                                  $var=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$userID name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
+                                  </section>";
+                                  $rem_button = "<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$userID name =\"rem_button\" class=\"primary\"/></li>	</ul>	</div>	</form>
+                                  </section>";
+                                    echo "<tr><td>" . $type  . "</td><td>" . $row['userID'] . "</td><td>" . $row['mail'] . "</td><td>" .  $var ."</td><td>" .  $rem_button ."</td></tr>";
+                                }
+                            }
+                          }
+                        }
+                        else
+                        {
+                          $query = "SELECT * FROM user where $filter LIKE '%$search%';";
+
+                          $result = $conn -> query($query);
+                          if($result -> num_rows > 0)
+                          {
+                            while ($row = $result ->fetch_assoc())
+                            {
+                              $userID = $row['userID'];
+                              $type_query = "SELECT * FROM employee WHERE employeeID ='$userID'";
+                              $type_result = $conn -> query($type_query);
+                              $admin_query = "SELECT * FROM admin WHERE adminID ='$userID'";
+                              $admin_result = $conn -> query($admin_query);
+
+                              if ($type_result -> num_rows == 1){
+                                $type = 'employee';
+                              }
+                              else if ($type_result -> num_rows == 0 && $admin_result -> num_rows == 0){
+                                $type = 'company';
+                              }
+                              else{
+                                $type = 'not specified';
+                              }
+                              if ($admin_result -> num_rows == 0){
+                                $var=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$userID name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
+                              </section>";
+                                $rem_button = "<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$userID name =\"rem_button\" class=\"primary\"/></li>	</ul>	</div>	</form>
+                              </section>";
+                                echo "<tr><td>" . $type . "</td><td>" . $row['userID'] . "</td><td>" . $row['mail'] . "</td><td>" .  $var ."</td><td>" .  $rem_button ."</td></tr>";
+                              }
+                          }
+
+                          }
+                        }
+                      }
+
+                      else if(isset($_POST['ascending_sort']))
+                      {
+                        $filter = $_POST['sort'];
+                        $query = "SELECT * FROM user ORDER BY $filter ASC;";
+                        $result = $conn -> query($query);
+
+                        while ($row = $result ->fetch_assoc())
+                        {
+                          $userID = $row['userID'];
+                          $type_query = "SELECT * FROM employee WHERE employeeID ='$userID'";
+                          $type_result = $conn -> query($type_query);
+                          $admin_query = "SELECT * FROM admin WHERE adminID ='$userID'";
+                          $admin_result = $conn -> query($admin_query);
+
+                          if ($type_result -> num_rows == 1){
+                            $type = 'employee';
+                          }
+                          else if ($type_result -> num_rows == 0 && $admin_result -> num_rows == 0){
+                            $type = 'company';
+                          }
+                          else{
+                            $type = 'not specified';
+                          }
+                          if ($admin_result -> num_rows == 0){
+                            $var=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$userID name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
+                            </section>";
+                            $rem_button = "<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$userID name =\"rem_button\" class=\"primary\"/></li>	</ul>	</div>	</form>
+                            </section>";
+                              echo "<tr><td>" . $type .  "</td><td>" . $row['userID'] . "</td><td>" . $row['mail'] . "</td><td>" .  $var ."</td><td>" .  $rem_button ."</td></tr>";
+                          }
+                        }
+                      }
+
+                      else if(isset($_POST['descending_sort']))
+                      {
+                        $filter = $_POST['sort'];
+                        $query = "SELECT * FROM user ORDER BY $filter DESC;";
+
+                        $result = $conn -> query($query);
+
+                        if($result -> num_rows > 0)
+                        {
+                          while ($row = $result ->fetch_assoc())
+                          {
+                            $userID = $row['userID'];
+                            $type_query = "SELECT * FROM employee WHERE employeeID ='$userID'";
+                            $type_result = $conn -> query($type_query);
+                            $admin_query = "SELECT * FROM admin WHERE adminID ='$userID'";
+                            $admin_result = $conn -> query($admin_query);
+
+                            if ($type_result -> num_rows == 1){
+                              $type = 'employee';
+                            }
+                            else if ($type_result -> num_rows == 0 && $admin_result -> num_rows == 0){
+                              $type = 'company';
+                            }
+                            else{
+                              $type = 'not specified';
+                            }
+                            if ($admin_result -> num_rows == 0){
+                              $var=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$userID name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
+                              </section>";
+                              $rem_button = "<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$userID name =\"rem_button\" class=\"primary\"/></li>	</ul>	</div>	</form>
+                              </section>";
+                                echo "<tr><td>" . $type  . "</td><td>" . $row['userID'] . "</td><td>" . $row['mail'] . "</td><td>" .  $var ."</td><td>" .  $rem_button ."</td></tr>";
+                            }
+                          }
+                        }
+                      }
+
+                        else
+                        {
                           $query = "SELECT * FROM user;";
                           $result = $conn -> query($query);
 
                           if($result -> num_rows > 0)
                           {
+                            while ($row = $result ->fetch_assoc())
+                            {
+                              $userID = $row['userID'];
+                              $type_query = "SELECT * FROM employee WHERE employeeID ='$userID'";
+                              $type_result = $conn -> query($type_query);
+                              $admin_query = "SELECT * FROM admin WHERE adminID ='$userID'";
+                              $admin_result = $conn -> query($admin_query);
 
-                              while ($row = $result ->fetch_assoc())
-                              {
-                                $userID = $row['userID'];
-                                $type_query = "SELECT * FROM employee WHERE employeeID ='$userID'";
-                                $type_result = $conn -> query($type_query);
-                                $admin_query = "SELECT * FROM admin WHERE adminID ='$userID'";
-                                $admin_result = $conn -> query($admin_query);
-
-                                if ($type_result -> num_rows == 1){
-                                  $type = 'employee';
-                                }
-                                else if ($type_result -> num_rows == 0 && $admin_result -> num_rows == 0){
-                                  $type = 'company';
-                                }
-                                if ($admin_result -> num_rows == 0){
-                                $remove_txt = 'remove';
-                                $remove_button = "<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value='remove'+$userID name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
-                                </section>";
-                                  echo "<tr><td>" .$type . "</td><td>" . $row['userID'] . "</td><td>" . $row['mail'] . "</td><td>" .   $remove_button."</td></tr>";
+                              if ($type_result -> num_rows == 1){
+                                $type = 'employee';
                               }
+                              else if ($type_result -> num_rows == 0 && $admin_result -> num_rows == 0){
+                                $type = 'company';
+                              }
+                              else{
+                                $type = 'not specified';
+                              }
+                              if ($admin_result -> num_rows == 0){
+                              $var=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$userID name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
+                              </section>";
+                              $rem_button = "<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$userID name =\"rem_button\" class=\"primary\"/></li>	</ul>	</div>	</form>
+                              </section>";
+                                echo "<tr><td>" . $type  . "</td><td>" . $row['userID'] . "</td><td>" . $row['mail'] . "</td><td>" .  $var. "</td><td>" .  $rem_button ."</td></tr>";
                             }
-
+                            }
+                        }
                           }
-                        //}
+
 
                     ?>
                     </tbody>
@@ -125,16 +268,16 @@ include_once 'conn.php';
 							</section>
 
               <?php
-              if(isset($_POST['link']) && $type == 'company')
+              if(isset($_POST['rem_button']))
               {
-                $message =$_POST['link'];
-                $_SESSION['companyID'] = $message;
-                header("Location: companyPage.php");
+                $toBeDeleted = $_POST['rem_button'];
+                $deletion_query = "DELETE FROM user where userID = '$toBeDeleted'";
+                $deletion_result = $conn -> query($deletion_query);
+                if ($deletion_result){
+                $message ="removed";
+                echo "<script type='text/javascript'>alert('$message');
+                window.location = 'admin_userList.php' </script>";
               }
-              else if(isset($_POST['link']) && $type == 'employee')
-              {
-                $message =$_POST['link'];
-                $_SESSION['companyID'] = $message;
-                header("Location: employeeProfile.php"); //for now
               }
+
                ?>
