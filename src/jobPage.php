@@ -117,7 +117,7 @@ if($result -> num_rows == 1)
           $companyID = $_SESSION['companyID'];
           $jobID = $_SESSION['jobID'];
           $title = $jobInfo['title'];
-          $query = "SELECT * FROM applies WHERE employeeID = '$userID' AND companyID = '$companyID' AND jobID = '$jobID'";
+          $query = "SELECT * FROM applies WHERE employeeID = '$userID' AND jobID = '$jobID'";
           $result = $connection-> query($query);
 
           if($result -> num_rows == 0)
