@@ -94,7 +94,7 @@
 								if($res -> num_rows == 0){
 
 									$query = "INSERT INTO project(companyID,projectID,title,start_date,status,description)
-														VALUES('$userID','$projectID',$title','$startDate','$status','$description')";
+														VALUES('$userID','$projectID','$title','$startDate','$status','$description')";
 									$result = $conn-> query($query);
 
 									$message = "Project is created succesfully";

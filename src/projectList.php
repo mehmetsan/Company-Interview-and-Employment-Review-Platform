@@ -48,7 +48,7 @@ include_once 'conn.php';
 				<div id="main" class="wrapper style1">
 					<div class="container">
 						<header class="major">
-							<h2>Company List</h2>
+							<h2>Project List</h2>
 							<p>You can find every projects from the company here.</p>
 						</header>
 						<!-- Table -->
