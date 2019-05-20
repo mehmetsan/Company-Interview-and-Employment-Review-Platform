@@ -66,7 +66,7 @@ if($result -> num_rows == 1)
               echo "<li><a href=\"companyList.php\" class =\"button primary\">Companies</a></li>";
               echo "<li><a href=\"myReviewList.php\" class =\"button primary\">My Reviews</a></li>";
               echo "<li><a href=\"jobList.php\" class =\"button primary\">Jobs</a></li>";
-              echo "<li><a href=\"projectList.php\" class =\"button primary\">Projects</a></li>";
+              echo "<li><a href=\"allProjectList.php\" class =\"button primary\">Projects</a></li>";
             }
             else {
               echo "<li><a href=\"companyProfile.php\">Profile</a></li>";

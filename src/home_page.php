@@ -26,19 +26,11 @@ $connection = mysqli_connect('dijkstra.ug.bcc.bilkent.edu.tr', 'ege.marasli', '8
 							<?php
 								$type = $_SESSION['UserType'];
 								if($type =="employee"){
-<<<<<<< HEAD
 									echo "<li><a href=\"employeeProfile.php\"class=\"button primary\">Profile</a></li>";
 									echo "<li><a href=\"companyList.php\"class=\"button primary\">Companies</a></li>";
 									echo "<li><a href=\"myReviewList.php\"class=\"button primary\">My Reviews</a></li>";
 									echo "<li><a href=\"jobList.ph\"class=\"button primary\">Jobs</a></li>";
-									echo "<li><a href=\"projectList.php\"class=\"button primary\">Projects</a></li>";
-=======
-									echo "<li><a href=\"employeeProfile.php\">Profile</a></li>";
-									echo "<li><a href=\"companyList.php\">Companies</a></li>";
-									echo "<li><a href=\"myReviewList.php\">My Reviews</a></li>";
-									echo "<li><a href=\"jobList.php\">Jobs</a></li>";
-									echo "<li><a href=\"allProjectList.php\">Projects</a></li>";
->>>>>>> af03a095ea6d77d5d1a381d15740ef23c47a4701
+									echo "<li><a href=\"allProjectList.php\"class=\"button primary\">Projects</a></li>";
 								}
 								else {
 									echo "<li><a href=\"companyProfile.php\"class=\"button primary\">Profile</a></li>";

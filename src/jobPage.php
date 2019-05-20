@@ -111,10 +111,7 @@ if($result -> num_rows == 1)
       <?php
       $mode = $_SESSION['UserType'];
       if($mode == "employee"){
-<<<<<<< HEAD
-        
-=======
->>>>>>> af03a095ea6d77d5d1a381d15740ef23c47a4701
+
 
 
 

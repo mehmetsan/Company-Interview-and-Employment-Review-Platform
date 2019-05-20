@@ -32,11 +32,7 @@ if(! $connection)
 				text-align: center;
 
 			}
-
-
 		</style>
-
-
 	</head>
 	<body class="is-preload landing">
 		<div id="page-wrapper">
