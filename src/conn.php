@@ -15,7 +15,7 @@ function randomID_user()
   {
       die('Connection Error!!! ' . mysqli_error());
   }
-  $min = 0;
+  $min = 10;
   $max = 999999;
 
   $temp = rand (  $min ,  $max );
