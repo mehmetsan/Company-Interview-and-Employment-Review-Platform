@@ -9,7 +9,7 @@ include_once 'conn.php';
 -->
 <html>
 	<head>
-		<title>User List(Admin)</title>
+		<title>MESA</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -106,23 +106,11 @@ include_once 'conn.php';
                                   else{
                                     $type = 'not specified';
                                   }
-                                  /*
-
-                                  */
-                                  $deneme_query = "SELECT * FROM testDeneme;";
-                                  $deneme_result = $conn -> query($deneme_query);
-                                  $userID = $deneme_result['userID'];
-                                  /*
-
-                                  */
-                                  if ($deneme_result -> num_rows == 0){
-                                    $rem_button = "<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$userID name =\"rem_button\" class=\"primary\"/></li>	</ul>	</div>	</form>
+                                  if ($admin_result -> num_rows == 0){
+                                  $rem_button = "<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$userID name =\"rem_button\" class=\"primary\"/></li>	</ul>	</div>	</form>
                                   </section>";
-                                    echo "<tr><td>" . $type . "</td><td>" . $deneme_result['userID'] . "</td><td>" . $deneme_result['mail'] . "</td><td>" .   $rem_button ."</td></tr>";
-                                  }
-                                  /*
-
-                                  */
+                                    echo "<tr><td>" . $type  . "</td><td>" . $row['userID'] . "</td><td>" . $row['mail'] . "</td><td>" .  $rem_button ."</td></tr>";
+                                }
                             }
                           }
                         }
@@ -150,24 +138,11 @@ include_once 'conn.php';
                               else{
                                 $type = 'not specified';
                               }
-
-                              /*
-
-                              */
-                              $deneme_query = "SELECT * FROM testDeneme;";
-                              $deneme_result = $conn -> query($deneme_query);
-                              $userID = $deneme_result['userID'];
-                              /*
-
-                              */
-                              if ($deneme_result -> num_rows == 0){
+                              if ($admin_result -> num_rows == 0){
                                 $rem_button = "<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$userID name =\"rem_button\" class=\"primary\"/></li>	</ul>	</div>	</form>
                               </section>";
-                                echo "<tr><td>" . $type . "</td><td>" . $deneme_result['userID'] . "</td><td>" . $deneme_result['mail'] . "</td><td>" .   $rem_button ."</td></tr>";
+                                echo "<tr><td>" . $type . "</td><td>" . $row['userID'] . "</td><td>" . $row['mail'] . "</td><td>" .   $rem_button ."</td></tr>";
                               }
-                              /*
-
-                              */
                           }
 
                           }
@@ -197,23 +172,11 @@ include_once 'conn.php';
                           else{
                             $type = 'not specified';
                           }
-                          /*
-
-                          */
-                          $deneme_query = "SELECT * FROM testDeneme;";
-                          $deneme_result = $conn -> query($deneme_query);
-                          $userID = $deneme_result['userID'];
-                          /*
-
-                          */
-                          if ($deneme_result -> num_rows == 0){
+                          if ($admin_result -> num_rows == 0){
                             $rem_button = "<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$userID name =\"rem_button\" class=\"primary\"/></li>	</ul>	</div>	</form>
-                          </section>";
-                            echo "<tr><td>" . $type . "</td><td>" . $deneme_result['userID'] . "</td><td>" . $deneme_result['mail'] . "</td><td>" .   $rem_button ."</td></tr>";
+                            </section>";
+                              echo "<tr><td>" . $type .  "</td><td>" . $row['userID'] . "</td><td>" . $row['mail'] . "</td><td>" .  $rem_button ."</td></tr>";
                           }
-                          /*
-
-                          */
                         }
                       }
 
@@ -243,23 +206,11 @@ include_once 'conn.php';
                             else{
                               $type = 'not specified';
                             }
-                            /*
-
-                            */
-                            $deneme_query = "SELECT * FROM testDeneme;";
-                            $deneme_result = $conn -> query($deneme_query);
-                            $userID = $deneme_result['userID'];
-                            /*
-
-                            */
-                            if ($deneme_result -> num_rows == 0){
+                            if ($admin_result -> num_rows == 0){
                               $rem_button = "<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$userID name =\"rem_button\" class=\"primary\"/></li>	</ul>	</div>	</form>
-                            </section>";
-                              echo "<tr><td>" . $type . "</td><td>" . $deneme_result['userID'] . "</td><td>" . $deneme_result['mail'] . "</td><td>" .   $rem_button ."</td></tr>";
+                              </section>";
+                                echo "<tr><td>" . $type  . "</td><td>" . $row['userID'] . "</td><td>" . $row['mail'] ."</td><td>" .  $rem_button ."</td></tr>";
                             }
-                            /*
-
-                            */
                           }
                         }
                       }
