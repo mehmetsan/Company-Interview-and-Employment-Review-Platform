@@ -88,7 +88,6 @@ if($result -> num_rows == 1)
 		<section>
 			<h3>My Profile</h3>
 			<h4>Details</h4>
-			<img src="images/tayyip.jpg" alt="">
 			<div class="table-wrapper">
 				<table>
 					<thead>
