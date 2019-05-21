@@ -65,7 +65,7 @@
 								Highest Education <select name="highestEducation" id="highestEducation">
 									<?php
 									$edu = $arr['highest_education'];
-									if ($edu=="Empty") {
+									if ($edu=="") {
 										echo "<option value=\"Empty\" selected>" . "Select Education" . "</option>";
 										echo "<option value=\"High School\" >" . "High School" . "</option>";
 										echo "<option value=\"Bachelors\">" . "Bachelors" . "</option>";

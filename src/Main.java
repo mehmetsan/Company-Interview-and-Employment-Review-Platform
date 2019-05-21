@@ -42,9 +42,25 @@ public class Main {
         createPublishesTable();
         createRelatedTable();
         createMembersTable();
+        createDeneme();
+
     }
 
-
+    public static void createDeneme()
+            throws Exception
+    {
+        try
+        {
+            Connection con = getConnection();
+            PreparedStatement posted = con.prepareStatement("CREATE VIEW testDeneme AS SELECT userID FROM user WHERE userID > 9;");
+            posted.executeUpdate();
+        }
+        catch (Exception e) {System.out.println(e);}
+        finally
+        {
+            System.out.println("employee table drop complete");
+        }
+    }
 
     public static void dropEmployeeTable()
             throws Exception
