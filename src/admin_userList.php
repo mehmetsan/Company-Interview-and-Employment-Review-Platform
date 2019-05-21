@@ -23,11 +23,6 @@ include_once 'conn.php';
 					<nav id="nav">
 						<ul>
               <li><a href="admin_control.php" class ="button primary">Home</a></li>
-              <li><a href="admin_userList.php" class ="button primary">User List</a></li>
-              <li><a href="admin_userList.php" class ="button primary">Requested Reviews List</a></li>
-              <li><a href="companyList.php" class ="button primary">Companies</a></li>
-              <li><a href="jobList.php" class ="button primary">Jobs</a></li>
-              <li><a href="projectList.php" class ="button primary">Projects</a></li>
               <li><a href="index.php" class ="button primary">Logout</a></li>
 						</ul>
 					</nav>
