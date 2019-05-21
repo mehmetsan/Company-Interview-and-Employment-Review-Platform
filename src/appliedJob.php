@@ -20,17 +20,10 @@ if(! $conn)
 
 $userID = $_SESSION['userID'];
 
-$query = "SELECT * FROM applies WHERE employeeID = '$userID'";
+$query = "SELECT * FROM applies WHERE employeeID = '$userID';";
 $result = $conn-> query($query);
 
-if($result -> num_rows == 1)
-{
-	$info = $result->fetch_assoc();
-  $vrr = $info['jobID'];
-	$query = "SELECT * FROM job WHERE jobID = '$vrr'";
-	$result = $conn-> query($query);
 
-}
 
 ?>
 
@@ -88,36 +81,41 @@ if($result -> num_rows == 1)
 								<?php
 
 
-								while ($job = $result ->fetch_assoc())
+                if($result->num_rows != 0)
                 {
+                	while($info = $result->fetch_assoc())
+                  {
+                  $vrr = $info['jobID'];
+
+                	$query = "SELECT * FROM job WHERE jobID = '$vrr';";
+                	$result2 = $conn-> query($query);
+
+
+								  $job = $result2 ->fetch_assoc();
+
 										$jobID =  $job['jobID'];
 
-                    $query = "SELECT * FROM related WHERE jobID = '$jobID';";
-                    $result2 = $conn-> query($query);
 
-                    $company = $result2->fetch_assoc();
-                    $tempp = $company['companyID'];
+                    $tempp = $job['companyID'];
+
                     $query = "SELECT * FROM company WHERE companyID = '$tempp';";
-                    $result2 = $conn-> query($query);
+                    $result4 = $conn-> query($query);
 
-                    $temp2 = $result2->fetch_assoc();
+                    $temp2 = $result4->fetch_assoc();
 
 									//	$var = "<a href=\"#\" type=\"display\" name=\"disp\" value=$jobID class=\"primary\" >DISPLAY</a>";
 									$var=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$jobID\" name =\"submit\" class=\"primary\"/></li>	</ul>	</div>	</form>
   								</section>";
 
 
-                    echo "<tr><td>" . $job['jobID'] . "</td><td>" . "title" . "</td><td>" . $temp2['name'] . "</td><td>" . $var  ."</td></tr>";
+                    echo "<tr><td>" . $job['jobID'] . "</td><td>" . $job['title'] . "</td><td>" . $temp2['name'] . "</td><td>" . $var  ."</td></tr>";
 
+                  }
                 }
-								if(isset($_POST['submit'])){
-									$message =$_POST['submit'];
-									$_SESSION['jobID'] = $message;
-									header("Location: jobPage.php");
 
-								}
 
-								?>
+              ?>
+
               </tbody>
             </table>
           </div>
@@ -136,3 +134,14 @@ if($result -> num_rows == 1)
 
 	</body>
 </html>
+
+<?php
+
+if(isset($_POST['submit'])){
+  $message =$_POST['submit'];
+  $_SESSION['jobID'] = $message;
+  header("Location: jobPage.php");
+
+}
+
+?>
