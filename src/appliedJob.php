@@ -80,7 +80,7 @@ if($result -> num_rows == 1)
                   <th>Job Title</th>
 									<th>Company Name</th>
                   <th>DISPLAY</th>
-                  <th></th>
+                  <th>STATUS</th>
                 </tr>
               </thead>
               <tbody>
@@ -102,9 +102,15 @@ if($result -> num_rows == 1)
 									$var=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$jobID\" name =\"submit\" class=\"primary\"/></li>	</ul>	</div>	</form>
   								</section>";
 
+                  $status = $_SESSION['status'];
+                  if($status == "accept")
+                    echo "<tr><td>" . $job['jobID'] . "</td><td>" . $job['title'] . "</td><td>" . $temp2['name'] . "</td><td>" . $var  . "</td><td>" . "ACCEPTED" ."</td></tr>";
 
-                    echo "<tr><td>" . $job['jobID'] . "</td><td>" . $job['title'] . "</td><td>" . $temp2['name'] . "</td><td>" . $var  ."</td></tr>";
-
+                  else if($status == "decline")
+                    echo "<tr><td>" . $job['jobID'] . "</td><td>" . $job['title'] . "</td><td>" . $temp2['name'] . "</td><td>" . $var  . "</td><td>" . "DECLINED" ."</td></tr>";
+                  else {
+                    echo "<tr><td>" . $job['jobID'] . "</td><td>" . $job['title'] . "</td><td>" . $temp2['name'] . "</td><td>" . $var  . "</td><td>" . "PENDING" ."</td></tr>";
+                  }
                 }
 								if(isset($_POST['submit'])){
 									$message =$_POST['submit'];

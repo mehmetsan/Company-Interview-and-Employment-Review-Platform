@@ -32,14 +32,14 @@ include_once 'conn.php';
 				<div id="main" class="wrapper style1">
 					<div class="container">
 						<header class="major">
-							<h2>Followers</h2>
-							<p>This is your folowers</p>
+							<h2>Workers</h2>
+							<p>This is your workers</p>
 						</header>
 						<!-- Table -->
             <form method="post" action="#">
 			<input type="text" name="search" placeholder="Search Employee">
 			<select name="filter">
-				<option value="all">Select Filter(All followed companies)</option>
+				<option value="all">Select Filter(All workers)</option>
 				<option value="first_name">Employee Name</option>
 				<option value="last_name">Employee Surname</option>
 				<option value="highest_education">Highest Education</option>

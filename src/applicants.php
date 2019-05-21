@@ -41,7 +41,7 @@ $jobID = $_SESSION['jobID'];
             <form method="post" action="#">
 			<input type="text" name="search" placeholder="Search Employee">
 			<select name="filter">
-				<option value="all">Select Filter(All followed companies)</option>
+				<option value="all">Select Filter(All applicants)</option>
 				<option value="name">Employee Name</option>
 				<option value="surname">Employee Surname</option>
 				<option value="highest_education">Highest Education</option>
@@ -249,7 +249,7 @@ $jobID = $_SESSION['jobID'];
                 $message =$_POST['link'];
 								$_SESSION['employeeID'] = $message;
                 $_SESSION['apply'] = "true";
-                $_SESSION['jobID'] = "jobID";
+                $_SESSION['jobID'] = $jobID;
                 echo "<script type='text/javascript'>window.location = 'employeeProfile.php' </script>";
               }
                ?>

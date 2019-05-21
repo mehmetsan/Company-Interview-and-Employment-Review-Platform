@@ -227,6 +227,8 @@ if($userType == "company"){
         $jobID = $_SESSION['jobID'];
         $query = "DELETE FROM applies where jobID ='$jobID' AND employeeID = '$employeeID'";
         $result2 = $connection-> query($query);
+        $_SESSION['apply'] = "false";
+        $_SESSION['status'] = "accept";
       }
         $message = "You have been added this eployee as a worker SUCCESSFULLY";
         echo "<script type='text/javascript'>alert('$message');
@@ -238,21 +240,21 @@ if($userType == "company"){
 
 if(isset($_POST['fire']))
 {
-$userType = $_SESSION['UserType'];
-if($userType == "company"){
-  $employeeID = $_SESSION['employeeID'];
-  $companyID = $_SESSION['companyID'];
+  $userType = $_SESSION['UserType'];
+  if($userType == "company"){
+    $employeeID = $_SESSION['employeeID'];
+    $companyID = $_SESSION['companyID'];
 
 
-  $query = "DELETE FROM works where companyID ='$companyID' AND employeeID = '$employeeID'";
-  $result2 = $connection-> query($query);
+    $query = "DELETE FROM works where companyID ='$companyID' AND employeeID = '$employeeID'";
+    $result2 = $connection-> query($query);
 
-        $message = "You have been fired this eployee as a worker SUCCESSFULLY";
-        echo "<script type='text/javascript'>alert('$message');
-        window.location = 'companyProfile.php' </script>";
+          $message = "You have been fired this eployee as a worker SUCCESSFULLY";
+          echo "<script type='text/javascript'>alert('$message');
+          window.location = 'companyProfile.php' </script>";
+  }
+
 }
-
-    }
 
     if(isset($_POST['decline']))
     {
@@ -265,7 +267,8 @@ if($userType == "company"){
 
       $query = "DELETE FROM applies where jobID ='$jobID' AND employeeID = '$employeeID'";
       $result2 = $connection-> query($query);
-
+      $_SESSION['apply'] = "false";
+      $_SESSION['status'] = "decline";
             $message = "You have been declined this employee's application  SUCCESSFULLY";
             echo "<script type='text/javascript'>alert('$message');
             window.location = 'companyProfile.php' </script>";
