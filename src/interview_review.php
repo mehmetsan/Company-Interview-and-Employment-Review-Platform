@@ -96,7 +96,7 @@
         											</div>
 															<div class="col-12 col-12-xsmall">
 																<select  name="difficulty" id="difficulty">
-																	<option value=""selected>Rating (0-10)</option>
+																	<option value=""selected>Difficulty (0-10)</option>
 																	<option value="0">0</option>
 																	<option value="1">1</option>
 																	<option value="2">2</option>
@@ -192,7 +192,7 @@
 												if($res -> num_rows == 0){
 
 													$query = "INSERT INTO review(reviewID,Employment_status,job_title,publish_date,rating,location,comment, visibility,requested)
-																		VALUES('$reviewID' , '$employment_status' , '$job_title' , '2008-11-11' , '$rating' , '$location','$comment', '$visibility',0";
+																		VALUES('$reviewID' , '$employment_status' , '$job_title' , '2008-11-11' , '$rating' , '$location','$comment', '$visibility',0)";
 
 
 													$result = $conn-> query($query);
