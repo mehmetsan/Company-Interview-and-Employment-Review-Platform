@@ -22,14 +22,10 @@ if(! $conn)
 
 
 $query = "SELECT * FROM related WHERE companyID = '$companyID'";
-$result = $conn-> query($query);
+$res = $conn-> query($query);
 
 
-	$info = $result->fetch_assoc();
 
-	$query = "SELECT * FROM review WHERE reviewID = '$info[reviewID]'";
-	$result = $conn-> query($query);
-	//$review = $result->fetch_assoc();
 
 
 
@@ -87,7 +83,7 @@ $result = $conn-> query($query);
 								<?php
 
 
-								while ($review = $result ->fetch_assoc())
+								while ($review = $res ->fetch_assoc())
                 {
 
 										$reviewID =  $review['reviewID'];
