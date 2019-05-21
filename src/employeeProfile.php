@@ -158,22 +158,34 @@ if($result -> num_rows == 1)
         echo "<a href=\"appliedJob.php\" class=\"button primary\" style=\"text-align:center\">Applied Jobs</a>
          <a href=\"#\" class=\"button primary\" style=\"text-align:center\">My Projects</a>
          <a href=\"following.php\" class=\"button primary\" style=\"text-align:center\">Followed Companies</a>
-         <a href=\"myReviewList.php\" class=\"button primary\" style=\"text-align:center\">My Reviews</a> 
+         <a href=\"myReviewList.php\" class=\"button primary\" style=\"text-align:center\">My Reviews</a>
          <a href=\"editEmployeeProfile.php\" class=\"button primary\" id=\"edit-btn\"=\"\">Edit Profile</a>";
       }
 
       else{
         $userType = $_SESSION['UserType'];
         if($userType == "company"){
-          $employeeID = $_SESSION['employeeID'];
-          $companyID = $_SESSION['companyID'];
+          $apply = $_SESSION['apply'];
+          if($apply != "true"){
+            $employeeID = $_SESSION['employeeID'];
+            $companyID = $_SESSION['companyID'];
 
-          $query = "SELECT * FROM works WHERE companyID ='$companyID' AND employeeID = '$employeeID'";
-          $result2 = $connection-> query($query);
-          if($result2->num_rows > 0)
-            echo "<section> <form method=\"post\" action=\"#\"><div class=\"col-12\"> <ul class=\"actions\"> <li><input type=\"submit\" value=\"Fire this worker\" name =\"fire\" class=\"primary\"/></li></ul></div></form></section>";
-          else
-            echo "<section> <form method=\"post\" action=\"#\"><div class=\"col-12\"> <ul class=\"actions\"> <li><input type=\"submit\" value=\"Make this employee as a worker\" name =\"add\" class=\"primary\"/></li></ul></div></form></section>";
+            $query = "SELECT * FROM works WHERE companyID ='$companyID' AND employeeID = '$employeeID'";
+            $result2 = $connection-> query($query);
+            if($result2->num_rows > 0)
+              echo "<section> <form method=\"post\" action=\"#\"><div class=\"col-12\"> <ul class=\"actions\"> <li><input type=\"submit\" value=\"Fire this worker\" name =\"fire\" class=\"primary\"/></li></ul></div></form></section>";
+            else
+              echo "<section> <form method=\"post\" action=\"#\"><div class=\"col-12\"> <ul class=\"actions\"> <li><input type=\"submit\" value=\"Make this employee as a worker\" name =\"add\" class=\"primary\"/></li></ul></div></form></section>";
+          }
+
+          else{
+
+              echo "<section> <form method=\"post\" action=\"#\"><div class=\"col-12\"> <ul class=\"actions\"> <li><input type=\"submit\" value=\"Accept the job application\" name =\"add\" class=\"primary\"/></li></ul></div></form></section>";
+              echo " ";
+              echo "<section> <form method=\"post\" action=\"#\"><div class=\"col-12\"> <ul class=\"actions\"> <li><input type=\"submit\" value=\"Decline the job application\" name =\"decline\" class=\"primary\"/></li></ul></div></form></section>";
+
+          }
+
       }
     }
       ?>
@@ -209,14 +221,18 @@ if($userType == "company"){
     window.location = 'employeeProfile.php' </script>";
   }
   else{
-  $query = "INSERT INTO works(employeeID,companyID)
-            VALUES('$employeeID','$companyID')";
-  $result2 = $connection-> query($query);
-
+      $query = "INSERT INTO works(employeeID,companyID)
+                VALUES('$employeeID','$companyID')";
+      $result2 = $connection-> query($query);
+      if($apply == "true"){
+        $jobID = $_SESSION['jobID'];
+        $query = "DELETE FROM applies where jobID ='$jobID' AND employeeID = '$employeeID'";
+        $result2 = $connection-> query($query);
+      }
         $message = "You have been added this eployee as a worker SUCCESSFULLY";
         echo "<script type='text/javascript'>alert('$message');
         window.location = 'companyProfile.php' </script>";
-}
+      }
 
     }
 }
@@ -238,6 +254,30 @@ if($userType == "company"){
 }
 
     }
+
+    if(isset($_POST['decline']))
+    {
+    $userType = $_SESSION['UserType'];
+    if($userType == "company"){
+      $employeeID = $_SESSION['employeeID'];
+      $companyID = $_SESSION['companyID'];
+      $jobID = $_SESSION['jobID'];
+
+
+      $query = "DELETE FROM applies where jobID ='$jobID' AND employeeID = '$employeeID'";
+      $result2 = $connection-> query($query);
+
+            $message = "You have been declined this employee's application  SUCCESSFULLY";
+            echo "<script type='text/javascript'>alert('$message');
+            window.location = 'companyProfile.php' </script>";
+          }
+
+      }
+
+
+
+
+
 
 
 ?>

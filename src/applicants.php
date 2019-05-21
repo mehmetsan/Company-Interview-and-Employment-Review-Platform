@@ -248,6 +248,8 @@ $jobID = $_SESSION['jobID'];
               {
                 $message =$_POST['link'];
 								$_SESSION['employeeID'] = $message;
+                $_SESSION['apply'] = "true";
+                $_SESSION['jobID'] = "jobID";
                 echo "<script type='text/javascript'>window.location = 'employeeProfile.php' </script>";
               }
                ?>
