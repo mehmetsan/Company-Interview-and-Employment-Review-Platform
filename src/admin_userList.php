@@ -66,6 +66,7 @@ include_once 'conn.php';
 												<th>UserID</th>
                         <th>Mail</th>
                         <th>Remove</th>
+                        <th>Display</th>
 											</tr>
 										</thead>
                     <tbody>
