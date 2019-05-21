@@ -76,7 +76,7 @@ include_once 'conn.php';
                           $search = $_POST['search'];
                           if($filter == 'all')
                           {
-														$qu = "SELECT * FROM follows WHERE companyID = '$companyID';";
+														$qu = "SELECT * FROM works WHERE companyID = '$companyID';";
 														$result2 = $conn -> query($qu);
 
 														if($result2 -> num_rows > 0)
@@ -106,7 +106,7 @@ include_once 'conn.php';
 												}
                           else
                           {
-															$qu = "SELECT * FROM follows WHERE companyID = '$companyID';";
+															$qu = "SELECT * FROM works WHERE companyID = '$companyID';";
 															$result2 = $conn -> query($qu);
 
 															if($result2 -> num_rows > 0)
@@ -139,7 +139,7 @@ include_once 'conn.php';
                         {
 													$companyID = $_SESSION['userID'];
 													$filter = $_POST['sort'];
-													$qu = "SELECT * FROM follows WHERE companyID = '$companyID';";
+													$qu = "SELECT * FROM works WHERE companyID = '$companyID';";
 													$result2 = $conn -> query($qu);
 
 													if($result2 -> num_rows > 0)
@@ -170,7 +170,7 @@ include_once 'conn.php';
                         {
 													$companyID = $_SESSION['userID'];
 													$filter = $_POST['sort'];
-													$qu = "SELECT * FROM follows WHERE companyID = '$companyID';";
+													$qu = "SELECT * FROM works WHERE companyID = '$companyID';";
 													$result2 = $conn -> query($qu);
 
 													if($result2 -> num_rows > 0)
@@ -199,7 +199,7 @@ include_once 'conn.php';
                         else
                         {
 													$companyID = $_SESSION['userID'];
-													$qu = "SELECT * FROM follows WHERE companyID = '$companyID';";
+													$qu = "SELECT * FROM works WHERE companyID = '$companyID';";
 													$result2 = $conn -> query($qu);
 
 													if($result2 -> num_rows > 0)

@@ -162,8 +162,20 @@ if($result -> num_rows == 1)
          <a href=\"editEmployeeProfile.php\" class=\"button primary\" id=\"edit-btn\"=\"\">Edit Profile</a>";
       }
 
-      else
-      echo "<section> <form method=\"post\" action=\"#\"><div class=\"col-12\"> <ul class=\"actions\"> <li><input type=\"submit\" value=\"Make this employee as a worker\" name =\"add\" class=\"primary\"/></li></ul></div></form></section>";
+      else{
+        $userType = $_SESSION['UserType'];
+        if($userType == "company"){
+          $employeeID = $_SESSION['employeeID'];
+          $companyID = $_SESSION['companyID'];
+
+          $query = "SELECT * FROM works WHERE companyID ='$companyID' AND employeeID = '$employeeID'";
+          $result2 = $connection-> query($query);
+          if($result2->num_rows > 0)
+            echo "<section> <form method=\"post\" action=\"#\"><div class=\"col-12\"> <ul class=\"actions\"> <li><input type=\"submit\" value=\"Fire this worker\" name =\"fire\" class=\"primary\"/></li></ul></div></form></section>";
+          else
+            echo "<section> <form method=\"post\" action=\"#\"><div class=\"col-12\"> <ul class=\"actions\"> <li><input type=\"submit\" value=\"Make this employee as a worker\" name =\"add\" class=\"primary\"/></li></ul></div></form></section>";
+      }
+    }
       ?>
 
 		</section>
@@ -188,18 +200,44 @@ $userType = $_SESSION['UserType'];
 if($userType == "company"){
   $employeeID = $_SESSION['employeeID'];
   $companyID = $_SESSION['companyID'];
+
+  $query = "SELECT * FROM works WHERE companyID ='$companyID' AND employeeID = '$employeeID'";
+  $result2 = $connection-> query($query);
+  if($result2->num_rows > 0){
+    $message = "This employee is already your worker";
+    echo "<script type='text/javascript'>alert('$message');
+    window.location = 'employeeProfile.php' </script>";
+  }
+  else{
   $query = "INSERT INTO works(employeeID,companyID)
             VALUES('$employeeID','$companyID')";
-  $result = $connection-> query($query);
+  $result2 = $connection-> query($query);
 
-    if($result -> num_rows > 0) {
         $message = "You have been added this eployee as a worker SUCCESSFULLY";
         echo "<script type='text/javascript'>alert('$message');
         window.location = 'companyProfile.php' </script>";
-      }
-
+}
 
     }
 }
+
+if(isset($_POST['fire']))
+{
+$userType = $_SESSION['UserType'];
+if($userType == "company"){
+  $employeeID = $_SESSION['employeeID'];
+  $companyID = $_SESSION['companyID'];
+
+
+  $query = "DELETE FROM works where companyID ='$companyID' AND employeeID = '$employeeID'";
+  $result2 = $connection-> query($query);
+
+        $message = "You have been fired this eployee as a worker SUCCESSFULLY";
+        echo "<script type='text/javascript'>alert('$message');
+        window.location = 'companyProfile.php' </script>";
+}
+
+    }
+
 
 ?>
