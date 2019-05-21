@@ -26,7 +26,8 @@ $result = $conn-> query($query);
 if($result -> num_rows == 1)
 {
 	$info = $result->fetch_assoc();
-	$query = "SELECT * FROM job WHERE jobID = '$info[jobID]'";
+  $vrr = $info['jobID'];
+	$query = "SELECT * FROM job WHERE jobID = '$vrr'";
 	$result = $conn-> query($query);
 
 }
@@ -91,12 +92,12 @@ if($result -> num_rows == 1)
                 {
 										$jobID =  $job['jobID'];
 
-                    $query = "SELECT * FROM related WHERE jobID = '$jobID'";
+                    $query = "SELECT * FROM related WHERE jobID = '$jobID';";
                     $result2 = $conn-> query($query);
 
                     $company = $result2->fetch_assoc();
-
-                    $query = "SELECT * FROM company WHERE companyID = '$companyID['companyID']'";
+                    $tempp = $company['companyID'];
+                    $query = "SELECT * FROM company WHERE companyID = '$tempp';";
                     $result2 = $conn-> query($query);
 
                     $temp2 = $result2->fetch_assoc();
@@ -106,7 +107,7 @@ if($result -> num_rows == 1)
   								</section>";
 
 
-                    echo "<tr><td>" . $job['jobID'] . "</td><td>" . $job['title'] . "</td><td>" . $temp2['name'] . "</td><td>" . $var  ."</td></tr>";
+                    echo "<tr><td>" . $job['jobID'] . "</td><td>" . "title" . "</td><td>" . $temp2['name'] . "</td><td>" . $var  ."</td></tr>";
 
                 }
 								if(isset($_POST['submit'])){
