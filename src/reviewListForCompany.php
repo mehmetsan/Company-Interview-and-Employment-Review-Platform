@@ -65,6 +65,7 @@ $res = $conn-> query($query);
 				<!-- Form -->
         <section>
           <h3>MY REVIEWS</h3>
+              <p>You can see all reviews here. If your requests are accepted, they will disappear.</p>
           <div class="table-wrapper">
             <table>
               <thead>
@@ -73,6 +74,7 @@ $res = $conn-> query($query);
                   <th>Publisher Name</th>
 									<th>Review Type</th>
                   <th>DISPLAY</th>
+                  <th>Status</th>
                   <th></th>
                 </tr>
               </thead>
@@ -102,8 +104,27 @@ $res = $conn-> query($query);
   									$var=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$reviewID\" name =\"submit\" class=\"primary\"/></li>	</ul>	</div>	</form>
     								</section>";
 
+                    //$status = $_SESSION['status'];
+                    /*
+                    if($status == "accept")
+                      echo "<tr><td>" . $review['reviewID'] . "</td><td>" . $temp2['first_name'] . "</td><td>" . $reviewType . "</td><td>" . $var . "</td><td>" . "ACCEPTED" ."</td></tr>";
 
-                    echo "<tr><td>" . $review['reviewID'] . "</td><td>" . $temp2['first_name'] . "</td><td>" . $reviewType . "</td><td>" . $var  ."</td></tr>";
+                    if($status == "decline")
+                      echo "<tr><td>" . $review['reviewID'] . "</td><td>" . $temp2['first_name'] . "</td><td>" . $reviewType . "</td><td>" . $var . "</td><td>" . "DECLINED" ."</td></tr>";
+                    else if($status == "pending") {
+                      echo "<tr><td>" . $review['reviewID'] . "</td><td>" . $temp2['first_name'] . "</td><td>" . $reviewType . "</td><td>" . $var . "</td><td>" . "p" ."</td></tr>";
+                    }
+                    */
+                    $query_pend = "SELECT * FROM review WHERE reviewID = '$reviewID' AND requested=1";
+                    $result_pend = $conn-> query($query_pend);
+
+                    $temp_pend = $result_pend->fetch_assoc();
+                    if ($result_pend -> num_rows >0){
+                    echo "<tr><td>" . $review['reviewID'] . "</td><td>" . $temp2['first_name'] . "</td><td>" . $reviewType . "</td><td>" . $var."</td><td>" . "waiting for removal"  ."</td></tr>";
+                  }
+                  else{
+                  echo "<tr><td>" . $review['reviewID'] . "</td><td>" . $temp2['first_name'] . "</td><td>" . $reviewType . "</td><td>" . $var."</td><td>" . "not requested"  ."</td></tr>";
+                }
 
                 }
 
