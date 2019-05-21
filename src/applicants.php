@@ -10,7 +10,7 @@ $jobID = $_SESSION['jobID'];
 -->
 <html>
 	<head>
-		<title>Followers</title>
+		<title>Applicants</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -34,8 +34,8 @@ $jobID = $_SESSION['jobID'];
 				<div id="main" class="wrapper style1">
 					<div class="container">
 						<header class="major">
-							<h2>Followers</h2>
-							<p>This is your folowers</p>
+							<h2>Apllicants</h2>
+							<p>These are your applicants</p>
 						</header>
 						<!-- Table -->
             <form method="post" action="#">

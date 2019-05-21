@@ -269,6 +269,7 @@ include_once 'conn.php';
               {
                 $message =$_POST['link'];
                 $_SESSION['jobID'] = $message;
+								
                 $temp = "<script>window.location ='jobPage.php';</script>";
                 echo $temp;
               }

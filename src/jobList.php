@@ -9,7 +9,7 @@ include_once 'conn.php';
 -->
 <html>
 	<head>
-		<title>Elements - Landed by HTML5 UP</title>
+		<title>MESA</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -33,7 +33,7 @@ include_once 'conn.php';
 					<div class="container">
 						<header class="major">
 							<h2>Job List</h2>
-							<p>You can find every job offerings from the company here.</p>
+							<p>You can find your company's job offerings from here.</p>
 						</header>
 						<!-- Table -->
             <form method="post" action="#">
