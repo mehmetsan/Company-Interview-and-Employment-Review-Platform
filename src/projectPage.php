@@ -71,7 +71,6 @@ if($result -> num_rows == 1)
 			</nav>
 		</header>
 		<section>
-			<h3>My Profile</h3>
 			<h4>Project Details</h4>
 			<div class="table-wrapper">
 				<table>

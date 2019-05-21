@@ -34,10 +34,6 @@
 		<section>
 			<h3>Company Profile</h3>
 			<h4>Details</h4>
-      <ul>
-        <img src="images/microsoft.jpg" alt="">
-        <img src="images/theme.jpg" alt="" style="margin: 0px 0px 0px 200px">
-      </ul>
 
 			<div class="table-wrapper">
 				<table>
