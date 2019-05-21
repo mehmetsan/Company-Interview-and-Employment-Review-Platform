@@ -33,7 +33,7 @@ include_once 'conn.php';
 					<div class="container">
 						<header class="major">
 							<h2>Workers</h2>
-							<p>This is your workers</p>
+							<p>These are your workers</p>
 						</header>
 						<!-- Table -->
             <form method="post" action="#">
