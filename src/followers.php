@@ -47,8 +47,8 @@ include_once 'conn.php';
 			<input type="submit" name="submit" value="Find">
       <select name="sort">
 				<option value="all">Sort By</option>
-				<option value="name">Employee Name</option>
-				<option value="surname">Employee Surname</option>
+				<option value="first_name">Employee Name</option>
+				<option value="last_name">Employee Surname</option>
 				<option value="highest_education">Highest Education</option>
 			</select>
 			<input type="submit" name="ascending_sort" value="Ascending Sort">

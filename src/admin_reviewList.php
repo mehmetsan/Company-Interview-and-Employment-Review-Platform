@@ -22,7 +22,7 @@ include_once 'conn.php';
 				<header id="header">
 					<nav id="nav">
 						<ul>
-              <li><a href="home_page.php" class ="button primary">Home</a></li>
+              <li><a href="admin_control.php" class ="button primary">Home</a></li>
               <li><a href="index.php" class ="button primary">Logout</a></li>
 						</ul>
 					</nav>
