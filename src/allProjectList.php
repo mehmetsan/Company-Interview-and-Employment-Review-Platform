@@ -339,11 +339,6 @@ $type = $_SESSION['userID'];
               {
                 $message =$_POST['link'];
                 $_SESSION['projectID'] = $message;
-                $query = "SELECT companyID FROM project where projectID = '$message';";
-                $result = $conn -> query($query);
-                $result = $result ->fetch_assoc();
-                $companyID = $result['name'];
-                $_SESSION['companyID'] = $companyID;
                 header("Location: projectPage.php");
               }
                ?>
