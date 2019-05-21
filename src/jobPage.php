@@ -167,7 +167,8 @@ if($userType == "employee"){
         $query = "INSERT INTO applies(employeeID,jobID)
                   VALUES('$userID','$jobID')";
         $result = $connection-> query($query);
-
+        
+        $_SESSION['status'] = "nope";
         $message = "You have been applied this job SUCCESSFULLY!";
 
         echo "<script type='text/javascript'>alert('$message');
