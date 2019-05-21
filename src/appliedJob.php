@@ -91,9 +91,12 @@ if($result -> num_rows == 1)
                 {
 										$jobID =  $job['jobID'];
 
-                    $companyID = $job['companyID'];
+                    $query = "SELECT * FROM related WHERE jobID = '$jobID'";
+                    $result2 = $conn-> query($query);
 
-                    $query = "SELECT * FROM company WHERE companyID = '$companyID'";
+                    $company = $result2->fetch_assoc();
+
+                    $query = "SELECT * FROM company WHERE companyID = '$companyID['companyID']'";
                     $result2 = $conn-> query($query);
 
                     $temp2 = $result2->fetch_assoc();
