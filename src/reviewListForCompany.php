@@ -129,8 +129,6 @@ $result = $conn-> query($query);
 
 									else if($reviewType == "interview_review")
 										header("Location: displayInterviewReview.php");
-								//	echo "<script type='text/javascript'>alert('$message');</script>";
-								//	$_SESSION['reviewID'] = $_GET['id'];
 
 								}
 

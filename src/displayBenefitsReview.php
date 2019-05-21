@@ -17,6 +17,12 @@ include_once 'conn.php';
 
 	$info = $result->fetch_assoc();
 
+  $query = "SELECT * FROM publishes WHERE reviewID = '$reviewID'";
+	$result4 = $conn-> query($query);
+
+	$info2 = $result4->fetch_assoc();
+  $publisher = $info2['employeeID'];
+
 	$query = "SELECT * FROM employee WHERE employeeID = '$userID'";
 	$result = $conn-> query($query);
 
@@ -108,14 +114,20 @@ include_once 'conn.php';
 
                 <div class="col-12">
                   <ul class="actions">
-                    <li><input type="submit" value="DELETE REVIEW" name ="submit" class="primary"/><li>
-                  </ul>
+                    <?php
+                    if($userID == $publisher)
+                      echo "<li><input type=\"submit\" value=\"MY PROFILE\" name =\"submit\" class=\"primary\"/><li>";
+
+                    ?>                   </ul>
                 </div>
 
                 <div class="col-12">
                   <ul class="actions">
-                    <li> <input type="submit" value="MY PROFILE" name ="submit" class="primary"/><li>
-                  </ul>
+                    <?php
+                    if($userID == $publisher)
+                      echo "<li><input type=\"submit\" value=\"DELETE REVIEW\" name =\"submit\" class=\"primary\"/><li>";
+
+                    ?>                   </ul>
                 </div>
             </form>
           </section>

@@ -12,10 +12,17 @@ include_once 'conn.php';
 
   $reviewID = $_SESSION['reviewID'];
 	$userID = $_SESSION['userID'];
+
 	$query = "SELECT * FROM review WHERE reviewID = '$reviewID'";
 	$result = $conn-> query($query);
 
 	$info = $result->fetch_assoc();
+
+  $query = "SELECT * FROM publishes WHERE reviewID = '$reviewID'";
+	$result4 = $conn-> query($query);
+
+	$info2 = $result4->fetch_assoc();
+  $publisher = $info2['employeeID'];
 
 	$query = "SELECT * FROM employee WHERE employeeID = '$userID'";
 	$result = $conn-> query($query);
@@ -64,8 +71,7 @@ include_once 'conn.php';
 					<nav id="nav">
 						<ul>
 							<li><a href="home_page.php" class ="button primary">Home</a></li>
-							<li><a href="myReviewList.php" class ="button primary">Return to MyLists</a></li>
-							<li><a href="index.php" class ="button primary">Logout</a></li>
+              <li><a href="index.php" class ="button primary">Logout</a></li>
 						</ul>
 					</nav>
 				</header>
@@ -108,14 +114,21 @@ include_once 'conn.php';
 
             <div class="col-12">
               <ul class="actions">
-                <li><input type="submit" value="DELETE REVIEW" name ="submit" class="primary"/><li>
+                <?php
+                if($userID == $publisher)
+                  echo "<li><input type=\"submit\" value=\"DELETE REVIEW\" name =\"submit\" class=\"primary\"/><li>";
+
+                ?>
               </ul>
             </div>
 
             <div class="col-12">
               <ul class="actions">
-                <li> <input type="submit" value="MY PROFILE" name ="submit" class="primary"/><li>
-              </ul>
+                <?php
+                if($userID == $publisher)
+                  echo "<li><input type=\"submit\" value=\"MY PROFILE\" name =\"submit\" class=\"primary\"/><li>";
+
+                ?>  </ul>
             </div>
 
         </form>
