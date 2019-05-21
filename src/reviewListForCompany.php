@@ -18,14 +18,6 @@ if(! $conn)
     die('Connection Error!!! ' . mysqli_error());
 }
 
-$userType = $_SESSION['UserType'];
-if($userType == "employee")
-  $employeeID = $_SESSION['userID'];
-
-else {
-  $employeeID = $_SESSION['employeeID'];
-}
-
   $companyID = $_SESSION['companyID'];
 
 
@@ -34,6 +26,7 @@ $result = $conn-> query($query);
 
 
 	$info = $result->fetch_assoc();
+
 	$query = "SELECT * FROM review WHERE reviewID = '$info[reviewID]'";
 	$result = $conn-> query($query);
 	//$review = $result->fetch_assoc();
@@ -96,11 +89,18 @@ $result = $conn-> query($query);
 
 								while ($review = $result ->fetch_assoc())
                 {
+
 										$reviewID =  $review['reviewID'];
 										$reviewType = findReviewType($reviewID);
 
+                    $query = "SELECT * FROM publishes WHERE reviewID = '$reviewID'";
+                    $result3 = $conn-> query($query);
 
-                    $query = "SELECT * FROM employee WHERE employeeID = '$employeeID'";
+                    $temp3 = $result3->fetch_assoc();
+
+                    $publisherID = $temp3['employeeID'];
+
+                    $query = "SELECT * FROM employee WHERE employeeID = '$publisherID'";
                     $result2 = $conn-> query($query);
 
                     $temp2 = $result2->fetch_assoc();

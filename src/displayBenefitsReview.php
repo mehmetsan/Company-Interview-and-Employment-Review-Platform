@@ -115,6 +115,9 @@ include_once 'conn.php';
                 <div class="col-12">
                   <ul class="actions">
                     <?php
+                    if($companyID == $userID)
+                      echo "<li><input type=\"submit\" value=\"Request to Remove this Review\" name =\"submit\" class=\"primary\"/><li>";
+
                     if($userID == $publisher)
                       echo "<li><input type=\"submit\" value=\"MY PROFILE\" name =\"submit\" class=\"primary\"/><li>";
 
@@ -153,6 +156,13 @@ if(isset($_POST['submit'])){
   if($_POST['submit'] == "MY PROFILE"){
     header("Location: employeeProfile.php");
   }
+
+else if($_POST['submit'] == "Request to Remove this Review"){
+  $update_statement = "UPDATE review SET requested =1 WHERE reviewID = '$reviewID';";
+  $update_result = $conn-> query($update_statement);
+
+  echo "<script type='text/javascript'>window.location = 'home_page.php' </script>";
+}
 
   else{
     $query = "DELETE FROM review WHERE reviewID = '$reviewID'";
