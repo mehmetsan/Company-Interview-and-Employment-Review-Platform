@@ -1,101 +1,155 @@
-<?php
-include_once 'conn.php';
-$companyID= $_SESSION['userID'];
- ?>
 <!DOCTYPE HTML>
+<!--
+	Landed by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+
+<?php
+/*
+References
+https://www.youtube.com/watch?v=J5RHnJCy8AE
+*/
+include_once 'conn.php';
+$conn = mysqli_connect('dijkstra.ug.bcc.bilkent.edu.tr', 'ege.marasli', '8nhmQrdt', 'ege_marasli');
+
+if(! $conn)
+{
+    die('Connection Error!!! ' . mysqli_error());
+}
+
+$userType = $_SESSION['UserType'];
+if($userType == "employee")
+  $employeeID = $_SESSION['userID'];
+
+else {
+  $employeeID = $_SESSION['employeeID'];
+}
+
+  $companyID = $_SESSION['companyID'];
+
+
+$query = "SELECT * FROM related WHERE companyID = '$companyID'";
+$result = $conn-> query($query);
+
+
+	$info = $result->fetch_assoc();
+	$query = "SELECT * FROM review WHERE reviewID = '$info[reviewID]'";
+	$result = $conn-> query($query);
+	//$review = $result->fetch_assoc();
+
+
+
+?>
 
 <html>
 	<head>
-		<title>MESA</title>
+		<title>Landed by HTML5 UP</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
+		<style>
+			form {
+				text-align: center;
+
+			}
+		</style>
+
+
 	</head>
-	<body class="is-preload">
+	<body class="is-preload landing">
 		<div id="page-wrapper">
 
 			<!-- Header -->
 				<header id="header">
+					<h1 id="logo"><a href="index.php"></a></h1>
 					<nav id="nav">
-            <ul>
-    					<li><a href="home_page.php" class = "primary button">Home</a></li>
-    					<li><a href="index.php" class = "primary button">Logout</a></li>
-    				</ul>
+						<ul>
+              <li><a href="home_page.php" class ="button primary">Home</a></li>
+              <li><a href="employeeProfile.php" class ="button primary">Profile</a></li>
+              <li><a href="companyList.php" class ="button primary">Companies</a></li>
+              <li><a href="allJobsList.php" class ="button primary">Jobs</a></li>
+              <li><a href="allProjectList.php" class ="button primary">Projects</a></li>
+						</ul>
 					</nav>
 				</header>
 
-			<!-- Main -->
-				<div id="main" class="wrapper style1">
-					<div class="container">
-						<header class="major">
-  							<h2>Review List</h2>
-							<p>You can find every reviews about your company</p>
-						</header>
-						<!-- Table -->
-
-							<section>
-								<h4>Alternate</h4>
-								<div class="table-wrapper">
-									<table>
-										<thead>
-											<tr>
-												<th>REQUEST</th>
-											</tr>
-										</thead>
-                    <tbody>
-                    <?php
-
-                          $userID= $_SESSION['userID'];
-                          $query = "SELECT * FROM related WHERE companyID = '$userID'";
-                          $result = $conn-> query($query);
-
-                          if($result -> num_rows == 1)
-                          {
-                          	$info = $result->fetch_assoc();
-                          	$query = "SELECT * FROM review WHERE reviewID = '$info[reviewID]'";
-                          	$result = $conn-> query($query);
-
-                          }
-                          if($result -> num_rows > 0)
-                          {
-
-                              while ($row = $result ->fetch_assoc())
-                              {
-                                $reviewID = $row['reviewID'];
-
-                                $var=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$reviewID name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
-                                </section>";
-                                  echo "<tr><td>" .  $var ."</td></tr>";
-                              }
+				<!-- Form -->
+        <section>
+          <h3>MY REVIEWS</h3>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Review ID</th>
+                  <th>Publisher Name</th>
+									<th>Review Type</th>
+                  <th>DISPLAY</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+								<?php
 
 
-                          }
-                          else{
-                            echo "<script type='text/javascript'>window.location = 'home_page.php' </script>";
-                          }
+								while ($review = $result ->fetch_assoc())
+                {
+										$reviewID =  $review['reviewID'];
+										$reviewType = findReviewType($reviewID);
 
-                    ?>
-                    </tbody>
-										<tfoot>
-											<tr>
-												<td colspan="2"></td>
-											</tr>
-										</tfoot>
 
-									</table>
-								</div>
+                    $query = "SELECT * FROM employee WHERE employeeID = '$employeeID'";
+                    $result2 = $conn-> query($query);
 
-							</section>
+                    $temp2 = $result2->fetch_assoc();
 
-              <?php
-              if(isset($_POST['link']))
-              {
-                $message =$_POST['link'];
-                //$_SESSION['reviewID'] = $message;
-                $update_statement = "UPDATE review SET requested =1 WHERE reviewID = '$message';";
-            		$update_result = $conn-> query($update_statement);
+  									//	$var = "<a href=\"#\" type=\"display\" name=\"disp\" value=$reviewID class=\"primary\" >DISPLAY</a>";
+  									$var=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$reviewID\" name =\"submit\" class=\"primary\"/></li>	</ul>	</div>	</form>
+    								</section>";
 
-            		echo "<script type='text/javascript'>window.location = 'home_page.php' </script>";
-              }
-               ?>
+
+                    echo "<tr><td>" . $review['reviewID'] . "</td><td>" . $temp2['first_name'] . "</td><td>" . $reviewType . "</td><td>" . $var  ."</td></tr>";
+
+                }
+
+								if(isset($_POST['submit'])){
+									$message =$_POST['submit'];
+									$_SESSION['reviewID'] = $message;
+									$reviewType = findReviewType($message);
+									if($reviewType == "salary_review")
+										header("Location: displaySalaryReview.php");
+
+									else if($reviewType == "benefits_review")
+										header("Location: displayBenefitsReview.php");
+
+									else if($reviewType == "general_review")
+										header("Location: displayGeneralReview.php");
+
+									else if($reviewType == "interview_review")
+										header("Location: displayInterviewReview.php");
+								//	echo "<script type='text/javascript'>alert('$message');</script>";
+								//	$_SESSION['reviewID'] = $_GET['id'];
+
+								}
+
+								?>
+              </tbody>
+            </table>
+          </div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

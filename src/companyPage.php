@@ -206,7 +206,7 @@
 						<li><a href="jobList.php" class="button primary fit">Display Job Offers</a><li>
 						<li><a href="projectList.php" class="button primary fit">Display Projects</a><li>
 							<!-- lol -->
-							<li><a href="employee_reviewList.php" class="button primary fit">Reviews</a><li>
+							<li><a href="reviewListForCompany.php" class="button primary fit">Reviews about Company</a><li>
 								<!-- lol -->
 						<li>
 					</ul>
