@@ -7,26 +7,23 @@ import java.sql.PreparedStatement;
 public class Main {
     public static void main(String[] args) throws Exception
     {
-        dropRelatedTable();
-        dropAppliesTable();
-        dropMembersTable();
-        dropPublishesTable();
-        dropResponsesTable();
-        dropSalary_reviewTable();
-        dropBenefits_reviewTable();
-        dropGeneral_reviewTable();
-        dropInterview_reviewTable();
-        dropAwardTable();
-        dropPhotoTable();
-        dropProjectTable();
-        dropJobTable();
-        dropWorksTable();
-        dropFollowsTable();
-        dropAdminTable();
-        dropEmployeeTable();
-        dropCompanyTable();
-        dropReviewTable();
-        dropUserTable();
+      dropRelatedTable();
+      dropAppliesTable();
+      dropMembersTable();
+      dropPublishesTable();
+      dropSalary_reviewTable();
+      dropBenefits_reviewTable();
+      dropGeneral_reviewTable();
+      dropInterview_reviewTable();
+      dropProjectTable();
+      dropJobTable();
+      dropWorksTable();
+      dropFollowsTable();
+      dropAdminTable();
+      dropEmployeeTable();
+      dropCompanyTable();
+      dropReviewTable();
+      dropUserTable();
 
         createUserTable();
         createEmployeeTable();
@@ -55,7 +52,7 @@ public class Main {
         try
         {
             Connection con = getConnection();
-            PreparedStatement posted = con.prepareStatement("CREATE VIEW testDeneme AS SELECT userID FROM user WHERE userID > 9;");
+            PreparedStatement posted = con.prepareStatement("CREATE VIEW testDeneme AS SELECT * FROM user WHERE userID > 9;");
             posted.executeUpdate();
         }
         catch (Exception e) {System.out.println(e);}

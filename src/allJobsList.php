@@ -9,7 +9,7 @@ include_once 'conn.php';
 -->
 <html>
 	<head>
-		<title>Elements - Landed by HTML5 UP</title>
+		<title>All Jobs List</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -269,7 +269,7 @@ include_once 'conn.php';
               {
                 $message =$_POST['link'];
                 $_SESSION['jobID'] = $message;
-								
+
                 $temp = "<script>window.location ='jobPage.php';</script>";
                 echo $temp;
               }
