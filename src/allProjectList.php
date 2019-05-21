@@ -246,26 +246,6 @@ $type = $_SESSION['userID'];
                               }
                             }
                           }
-                          $query = "SELECT * FROM project ORDER BY $filter DESC;";
-
-                          $result = $conn -> query($query);
-
-                          if($result -> num_rows > 0)
-                          {
-                            while ($row = $result ->fetch_assoc())
-                            {
-                              $projectID = $row['projectID'];
-                              $companyID = $row['companyID'];
-                              $queryCompany = "SELECT name FROM company WHERE companyID = '$companyID';";
-                              $resultCompany = $conn -> query($queryCompany);
-                              $companyName = $resultCompany ->fetch_assoc();
-                              $companyName = $companyName['name'];
-
-                              $var=	"<section><form method=\"post\" action=\"#\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=\"$projectID\" name =\"link\" class=\"primary\"/></li>	</ul>	</div>	</form>
-                              </section>";
-                              echo "<tr><td>"  . $companyName . "</td><td>". $row['title'] . "</td><td>" . $row['status'] .  "</td><td>" . $var ."</td></tr>";
-                            }
-                          }
 
 
                           }
