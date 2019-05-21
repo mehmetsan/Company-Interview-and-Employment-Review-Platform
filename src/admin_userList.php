@@ -104,7 +104,9 @@ include_once 'conn.php';
                                   if ($admin_result -> num_rows == 0){
                                   $rem_button = "<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$userID name =\"rem_button\" class=\"primary\"/></li>	</ul>	</div>	</form>
                                   </section>";
-                                    echo "<tr><td>" . $type  . "</td><td>" . $row['userID'] . "</td><td>" . $row['mail'] . "</td><td>" .  $rem_button ."</td></tr>";
+                                  $navi = "<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$userID name =\"navi\" class=\"primary\"/></li>	</ul>	</div>	</form>
+                                  </section>";
+                                    echo "<tr><td>" . $type  . "</td><td>" . $row['userID'] . "</td><td>" . $row['mail'] . "</td><td>" .  $rem_button. "</td><td>" .  $navi ."</td></tr>";
                                 }
                             }
                           }
@@ -136,7 +138,9 @@ include_once 'conn.php';
                               if ($admin_result -> num_rows == 0){
                                 $rem_button = "<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$userID name =\"rem_button\" class=\"primary\"/></li>	</ul>	</div>	</form>
                               </section>";
-                                echo "<tr><td>" . $type . "</td><td>" . $row['userID'] . "</td><td>" . $row['mail'] . "</td><td>" .   $rem_button ."</td></tr>";
+                              $navi = "<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$userID name =\"navi\" class=\"primary\"/></li>	</ul>	</div>	</form>
+                              </section>";
+                                echo "<tr><td>" . $type  . "</td><td>" . $row['userID'] . "</td><td>" . $row['mail'] . "</td><td>" .  $rem_button. "</td><td>" .  $navi ."</td></tr>";
                               }
                           }
 
@@ -170,8 +174,10 @@ include_once 'conn.php';
                           if ($admin_result -> num_rows == 0){
                             $rem_button = "<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$userID name =\"rem_button\" class=\"primary\"/></li>	</ul>	</div>	</form>
                             </section>";
-                              echo "<tr><td>" . $type .  "</td><td>" . $row['userID'] . "</td><td>" . $row['mail'] . "</td><td>" .  $rem_button ."</td></tr>";
-                          }
+                            $navi = "<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$userID name =\"navi\" class=\"primary\"/></li>	</ul>	</div>	</form>
+                            </section>";
+                              echo "<tr><td>" . $type  . "</td><td>" . $row['userID'] . "</td><td>" . $row['mail'] . "</td><td>" .  $rem_button. "</td><td>" .  $navi ."</td></tr>";
+                            }
                         }
                       }
 
@@ -204,7 +210,9 @@ include_once 'conn.php';
                             if ($admin_result -> num_rows == 0){
                               $rem_button = "<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$userID name =\"rem_button\" class=\"primary\"/></li>	</ul>	</div>	</form>
                               </section>";
-                                echo "<tr><td>" . $type  . "</td><td>" . $row['userID'] . "</td><td>" . $row['mail'] ."</td><td>" .  $rem_button ."</td></tr>";
+                              $navi = "<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$userID name =\"navi\" class=\"primary\"/></li>	</ul>	</div>	</form>
+                              </section>";
+                                echo "<tr><td>" . $type  . "</td><td>" . $row['userID'] . "</td><td>" . $row['mail'] . "</td><td>" .  $rem_button. "</td><td>" .  $navi ."</td></tr>";
                             }
                           }
                         }
@@ -237,7 +245,9 @@ include_once 'conn.php';
                               if ($admin_result -> num_rows == 0){
                                 $rem_button = "<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$userID name =\"rem_button\" class=\"primary\"/></li>	</ul>	</div>	</form>
                               </section>";
-                                echo "<tr><td>" . $type . "</td><td>" . $row['userID'] . "</td><td>" . $row['mail'] . "</td><td>" .   $rem_button ."</td></tr>";
+                              $navi = "<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$userID name =\"navi\" class=\"primary\"/></li>	</ul>	</div>	</form>
+                              </section>";
+                                echo "<tr><td>" . $type  . "</td><td>" . $row['userID'] . "</td><td>" . $row['mail'] . "</td><td>" .  $rem_button. "</td><td>" .  $navi ."</td></tr>";
                               }
                               /*
 
@@ -270,6 +280,18 @@ include_once 'conn.php';
                   echo "<script type='text/javascript'>alert('$message');
                   window.location = 'admin_userList.php' </script>";
                 }
+              }
+              if(isset($_POST['navi']))
+              {
+                $message =$_POST['navi'];
+                $_SESSION['userID'] = $message;
+                $user_type = findUserType($message);
+                if($user_type == "employee")
+                  header("Location: employeeProfile.php");
+
+                else if($user_type == "company")
+                  header("Location: companyProfile.php");
+
               }
 
                ?>
