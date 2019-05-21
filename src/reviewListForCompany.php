@@ -57,10 +57,7 @@ $res = $conn-> query($query);
 					<nav id="nav">
 						<ul>
               <li><a href="home_page.php" class ="button primary">Home</a></li>
-              <li><a href="employeeProfile.php" class ="button primary">Profile</a></li>
-              <li><a href="companyList.php" class ="button primary">Companies</a></li>
-              <li><a href="allJobsList.php" class ="button primary">Jobs</a></li>
-              <li><a href="allProjectList.php" class ="button primary">Projects</a></li>
+              <li><a href="index.php" class ="button primary">Logout</a></li>
 						</ul>
 					</nav>
 				</header>
