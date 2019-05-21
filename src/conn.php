@@ -85,4 +85,29 @@ function findReviewType($reviewID)
 
   return $review_type;
 }
+function findUserType($userID)
+{
+  $conn = mysqli_connect('dijkstra.ug.bcc.bilkent.edu.tr', 'ege.marasli', '8nhmQrdt', 'ege_marasli');
+  $user_type = "";
+
+  if(! $conn)
+  {
+      die('Connection Error!!! ' . mysqli_error());
+  }
+
+  $query = "SELECT * FROM employee WHERE employeeID = '$userID' ";
+  $result = $conn-> query($query);
+  $query = "SELECT * FROM admin WHERE adminID = '$userID' ";
+  $result1 = $conn-> query($query);
+  if( $result -> num_rows ==1){
+    $user_type = "employee";
+  }
+  else if( $result -> num_rows ==0 && $result1 -> num_rows ==0){
+    $user_type = "company";
+  }
+  else if( $result -> num_rows ==0 && $result1 -> num_rows ==1){
+    $user_type = "admin";
+  }
+  return $user_type;
+}
 ?>
