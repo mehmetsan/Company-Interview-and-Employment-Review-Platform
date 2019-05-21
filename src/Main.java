@@ -52,7 +52,7 @@ public class Main {
         try
         {
             Connection con = getConnection();
-            PreparedStatement posted = con.prepareStatement("CREATE VIEW testDeneme AS SELECT userID FROM user WHERE userID > 9;");
+            PreparedStatement posted = con.prepareStatement("CREATE VIEW testDeneme AS SELECT * FROM user WHERE userID > 9;");
             posted.executeUpdate();
         }
         catch (Exception e) {System.out.println(e);}

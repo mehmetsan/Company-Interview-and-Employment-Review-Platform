@@ -9,7 +9,7 @@ include_once 'conn.php';
 -->
 <html>
 	<head>
-		<title>User List(Admin)</title>
+		<title>MESA</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -23,11 +23,6 @@ include_once 'conn.php';
 					<nav id="nav">
 						<ul>
               <li><a href="admin_control.php" class ="button primary">Home</a></li>
-              <li><a href="admin_userList.php" class ="button primary">User List</a></li>
-              <li><a href="admin_userList.php" class ="button primary">Requested Reviews List</a></li>
-              <li><a href="companyList.php" class ="button primary">Companies</a></li>
-              <li><a href="jobList.php" class ="button primary">Jobs</a></li>
-              <li><a href="projectList.php" class ="button primary">Projects</a></li>
               <li><a href="index.php" class ="button primary">Logout</a></li>
 						</ul>
 					</nav>
@@ -217,12 +212,12 @@ include_once 'conn.php';
 
                         else
                         {
-                          $query = "SELECT * FROM user;";
-                          $result = $conn -> query($query);
+                          $deneme_query = "SELECT * FROM testDeneme;";
+                          $deneme_result = $conn -> query($deneme_query);
 
-                          if($result -> num_rows > 0)
+                          if($deneme_result -> num_rows > 0)
                           {
-                            while ($row = $result ->fetch_assoc())
+                            while ($row = $deneme_result ->fetch_assoc())
                             {
                               $userID = $row['userID'];
                               $type_query = "SELECT * FROM employee WHERE employeeID ='$userID'";
@@ -240,10 +235,13 @@ include_once 'conn.php';
                                 $type = 'not specified';
                               }
                               if ($admin_result -> num_rows == 0){
-                              $rem_button = "<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$userID name =\"rem_button\" class=\"primary\"/></li>	</ul>	</div>	</form>
+                                $rem_button = "<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$userID name =\"rem_button\" class=\"primary\"/></li>	</ul>	</div>	</form>
                               </section>";
-                                echo "<tr><td>" . $type  . "</td><td>" . $row['userID'] . "</td><td>" . $row['mail'] . "</td><td>" .  $rem_button ."</td></tr>";
-                            }
+                                echo "<tr><td>" . $type . "</td><td>" . $row['userID'] . "</td><td>" . $row['mail'] . "</td><td>" .   $rem_button ."</td></tr>";
+                              }
+                              /*
+
+                              */
                             }
                         }
                           }
