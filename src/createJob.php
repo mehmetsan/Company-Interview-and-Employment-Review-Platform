@@ -51,7 +51,8 @@
 															<input type="text" name="salary" id="salary" value="" placeholder="Salary" />
 														</div>
 														<div class="col-12 col-12-xsmall">
-															<input type="text" name="post_date" id="post_date" value="" placeholder="Post Date" />
+															Post Date <input type="date" style="background-color:black;" name="post_date" id="post_date"/>
+														</div>
 														</div>
 														<div class="col-12 col-12-xsmall">
 															<select  name="education" id="education">
