@@ -109,7 +109,7 @@ if($result -> num_rows == 1)
                   else if($status == "decline")
                     echo "<tr><td>" . $job['jobID'] . "</td><td>" . $job['title'] . "</td><td>" . $temp2['name'] . "</td><td>" . $var  . "</td><td>" . "DECLINED" ."</td></tr>";
                   else {
-                    echo "<tr><td>" . $job['jobID'] . "</td><td>" . $job['title'] . "</td><td>" . $temp2['name'] . "</td><td>" . $var  . "</td><td>" . "PENDING" ."</td></tr>";
+                    echo "<tr><td>" . $job['jobID'] . "</td><td>" . $job['title'] . "</td><td>" . $temp2['name'] . "</td><td>" . $var  . "</td><td>" . $status ."</td></tr>";
                   }
                 }
 								if(isset($_POST['submit'])){
