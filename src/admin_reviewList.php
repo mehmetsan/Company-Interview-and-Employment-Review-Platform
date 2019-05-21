@@ -57,6 +57,7 @@ include_once 'conn.php';
 											<tr>
 												<th>reviewID</th>
                         <th>Remove Review</th>
+                        <th>Decline</th>
                         <th>Display Review</th>
 											</tr>
 										</thead>
@@ -85,7 +86,9 @@ include_once 'conn.php';
                                   </section>";
                                   $navi=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$reviewID name =\"navi\" class=\"primary\"/></li>	</ul>	</div>	</form>
                                   </section>";
-                                    echo "<tr><td>" . $row['reviewID'] . "</td><td>" .  $var . "</td><td>" .  $navi."</td></tr>";
+                                  $dec=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$reviewID name =\"dec\" class=\"primary\"/></li>	</ul>	</div>	</form>
+                                  </section>";
+                                    echo "<tr><td>" . $row['reviewID'] . "</td><td>" .  $var . "</td><td>" . $dec . "</td><td>".  $navi."</td></tr>";
                                 }
 
 
@@ -109,7 +112,9 @@ include_once 'conn.php';
                                   </section>";
                                   $navi=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$reviewID name =\"navi\" class=\"primary\"/></li>	</ul>	</div>	</form>
                                   </section>";
-                                    echo "<tr><td>" . $row['reviewID'] . "</td><td>" .  $var . "</td><td>" .  $navi."</td></tr>";
+                                  $dec=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$reviewID name =\"dec\" class=\"primary\"/></li>	</ul>	</div>	</form>
+                                  </section>";
+                                    echo "<tr><td>" . $row['reviewID'] . "</td><td>" .  $var . "</td><td>" . $dec . "</td><td>".  $navi."</td></tr>";
                                 }
 
 
@@ -135,7 +140,9 @@ include_once 'conn.php';
                                 </section>";
                                 $navi=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$reviewID name =\"navi\" class=\"primary\"/></li>	</ul>	</div>	</form>
                                 </section>";
-                                  echo "<tr><td>" . $row['reviewID'] . "</td><td>" .  $var . "</td><td>" .  $navi."</td></tr>";
+                                $dec=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$reviewID name =\"dec\" class=\"primary\"/></li>	</ul>	</div>	</form>
+                                </section>";
+                                  echo "<tr><td>" . $row['reviewID'] . "</td><td>" .  $var . "</td><td>" . $dec . "</td><td>".  $navi."</td></tr>";
                               }
 
 
@@ -159,7 +166,9 @@ include_once 'conn.php';
                                 </section>";
                                 $navi=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$reviewID name =\"navi\" class=\"primary\"/></li>	</ul>	</div>	</form>
                                 </section>";
-                                  echo "<tr><td>" . $row['reviewID'] . "</td><td>" .  $var . "</td><td>" .  $navi."</td></tr>";
+                                $dec=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$reviewID name =\"dec\" class=\"primary\"/></li>	</ul>	</div>	</form>
+                                </section>";
+                                  echo "<tr><td>" . $row['reviewID'] . "</td><td>" .  $var . "</td><td>" . $dec . "</td><td>".  $navi."</td></tr>";
                               }
 
 
@@ -182,7 +191,9 @@ include_once 'conn.php';
                                 </section>";
                                 $navi=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$reviewID name =\"navi\" class=\"primary\"/></li>	</ul>	</div>	</form>
                                 </section>";
-                                  echo "<tr><td>" . $row['reviewID'] . "</td><td>" .  $var . "</td><td>" .  $navi."</td></tr>";
+                                $dec=	"<section><form method=\"post\" action=\"\" name = \"login\"> <div class=\"col-12\">	<ul class=\"actions\"> <li><input type=\"submit\" value=$reviewID name =\"dec\" class=\"primary\"/></li>	</ul>	</div>	</form>
+                                </section>";
+                                  echo "<tr><td>" . $row['reviewID'] . "</td><td>" .  $var . "</td><td>" . $dec . "</td><td>".  $navi."</td></tr>";
                               }
 
 
@@ -237,5 +248,13 @@ include_once 'conn.php';
 
                 else if($reviewType == "interview_review")
                   header("Location: displayInterviewReview.php");
+              }
+              if(isset($_POST['dec']))
+              {
+                $message =$_POST['dec'];
+                $update_statement = "UPDATE review SET requested =0 WHERE reviewID = '$message';";
+                $update_result = $conn-> query($update_statement);
+
+                echo "<script type='text/javascript'>window.location = 'admin_reviewList.php' </script>";
               }
                ?>
