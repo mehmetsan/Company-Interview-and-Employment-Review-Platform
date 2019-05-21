@@ -237,7 +237,7 @@ if($userType == "company"){
     }
 }
 
-if(isset($_POST['fire']))
+else if(isset($_POST['fire']))
 {
   $userType = $_SESSION['UserType'];
   if($userType == "company"){
@@ -255,29 +255,21 @@ if(isset($_POST['fire']))
 
 }
 
-    if(isset($_POST['decline']))
+    else if(isset($_POST['decline']))
     {
-    $userType = $_SESSION['UserType'];
-    if($userType == "company"){
-      $employeeID = $_SESSION['employeeID'];
-      $companyID = $_SESSION['companyID'];
-      $jobID = $_SESSION['jobID'];
-
-
-      $query = "DELETE FROM applies where jobID ='$jobID' AND employeeID = '$employeeID'";
-      $result2 = $connection-> query($query);
-      $_SESSION['apply'] = "false";
-            $message = "You have been declined this employee's application  SUCCESSFULLY";
-            echo "<script type='text/javascript'>alert('$message');
-            window.location = 'companyProfile.php' </script>";
-          }
-
+      $userType = $_SESSION['UserType'];
+      if($userType == "company"){
+        $employeeID = $_SESSION['employeeID'];
+        $companyID = $_SESSION['companyID'];
+        $jobID = $_SESSION['jobID'];
+        $query = "DELETE FROM applies where jobID ='$jobID' AND employeeID = '$employeeID'";
+        $result2 = $connection-> query($query);
+        $_SESSION['apply'] = "false";
+        $message = "You have been declined job application of this eployee  SUCCESSFULLY";
+        echo "<script type='text/javascript'>alert('$message');
+        window.location = 'companyProfile.php' </script>";
       }
-
-
-
-
-
+    }
 
 
 ?>
