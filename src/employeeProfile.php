@@ -156,9 +156,8 @@ if($result -> num_rows == 1)
 
       if ($type == "employee") {
         echo "<a href=\"appliedJob.php\" class=\"button primary\" style=\"text-align:center\">Applied Jobs</a>
-         <a href=\"#\" class=\"button primary\" style=\"text-align:center\">My Projects</a>
          <a href=\"following.php\" class=\"button primary\" style=\"text-align:center\">Followed Companies</a>
-         <a href=\"myReviewList.php\" class=\"button primary\" style=\"text-align:center\">My Reviews</a> 
+         <a href=\"myReviewList.php\" class=\"button primary\" style=\"text-align:center\">My Reviews</a>
          <a href=\"editEmployeeProfile.php\" class=\"button primary\" id=\"edit-btn\"=\"\">Edit Profile</a>";
       }
 
