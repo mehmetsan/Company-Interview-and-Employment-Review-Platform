@@ -225,8 +225,9 @@ if($userType == "company"){
       $result2 = $connection-> query($query);
       if($apply == "true"){
         $jobID = $_SESSION['jobID'];
+        $query = "DELETE FROM applies where jobID ='$jobID' AND employeeID = '$employeeID'";
+        $result2 = $connection-> query($query);
         $_SESSION['apply'] = "false";
-        $_SESSION['status'] = "accept";
       }
         $message = "You have been added this eployee as a worker SUCCESSFULLY";
         echo "<script type='text/javascript'>alert('$message');
@@ -261,8 +262,11 @@ if(isset($_POST['fire']))
       $employeeID = $_SESSION['employeeID'];
       $companyID = $_SESSION['companyID'];
       $jobID = $_SESSION['jobID'];
+
+
+      $query = "DELETE FROM applies where jobID ='$jobID' AND employeeID = '$employeeID'";
+      $result2 = $connection-> query($query);
       $_SESSION['apply'] = "false";
-      $_SESSION['status'] = "decline";
             $message = "You have been declined this employee's application  SUCCESSFULLY";
             echo "<script type='text/javascript'>alert('$message');
             window.location = 'companyProfile.php' </script>";
