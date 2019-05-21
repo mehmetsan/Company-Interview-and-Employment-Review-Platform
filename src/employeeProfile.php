@@ -225,8 +225,6 @@ if($userType == "company"){
       $result2 = $connection-> query($query);
       if($apply == "true"){
         $jobID = $_SESSION['jobID'];
-        $query = "DELETE FROM applies where jobID ='$jobID' AND employeeID = '$employeeID'";
-        $result2 = $connection-> query($query);
         $_SESSION['apply'] = "false";
         $_SESSION['status'] = "accept";
       }
@@ -265,8 +263,7 @@ if(isset($_POST['fire']))
       $jobID = $_SESSION['jobID'];
 
 
-      $query = "DELETE FROM applies where jobID ='$jobID' AND employeeID = '$employeeID'";
-      $result2 = $connection-> query($query);
+
       $_SESSION['apply'] = "false";
       $_SESSION['status'] = "decline";
             $message = "You have been declined this employee's application  SUCCESSFULLY";
