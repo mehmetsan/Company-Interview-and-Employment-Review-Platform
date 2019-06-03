@@ -7,8 +7,8 @@
 
 					     GROUP 5
 					 Mehmet Sanisoğlu
-				        Mehmet Selim Özcan
-				       Ayça Begüm Taşçıoğlu
+				   Mehmet Selim Özcan
+				   Ayça Begüm Taşçıoğlu
 					 Erdem Ege Maraşlı
 
 
@@ -24,4 +24,3 @@
 	within their ranks with the pre-requirements they are looking for.
 	The platform, in turn, provides the employees and employment seekers
 	with possible job suggestions.
-
