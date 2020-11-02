@@ -15,7 +15,7 @@
 	# Company Interview and Employment Review Platform Database System
 
   	Company Interview and Employment Review Platform is a proposed platform that
-	form users to give reviews related to companies, jobs, and interview processes.
+	enable users to give reviews related to companies, jobs, and interview processes.
 	In the platform, users can share information regarding their employment status,
 	qualifications, resume, and their desired job.
 	The desired job specification can include fundamental information
