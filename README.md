@@ -7,9 +7,9 @@
 
 					     GROUP 5
 					 Mehmet Sanisoğlu
-				   Mehmet Selim Özcan
-				   Ayça Begüm Taşçıoğlu
-					 Erdem Ege Maraşlı
+				   	Mehmet Selim Özcan
+				       Ayça Begüm Taşçıoğlu
+					Erdem Ege Maraşlı
 
 
 	# Company Interview and Employment Review Platform Database System
